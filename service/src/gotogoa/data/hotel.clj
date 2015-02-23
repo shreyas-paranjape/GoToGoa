@@ -1,0 +1,1 @@
+(ns gotogoa.data.hotel)

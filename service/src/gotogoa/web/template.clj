@@ -1,0 +1,1 @@
+(ns gotogoa.web.template)
