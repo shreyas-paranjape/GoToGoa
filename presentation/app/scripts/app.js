@@ -14,10 +14,12 @@ angular
     'ngCookies',
     'restangular',
     'ui.router',
+    'ncy-angular-breadcrumb',
     'permission',
     'ngSanitize',
     'ngTouch',
     'ui.bootstrap',
+    
     
     'hotel',
     'rental'
