@@ -4,9 +4,9 @@
             [gotogoa.middleware.auth :as auth]))
 
 (defroutes app-routes
-           (GET "/" [] "<h1>Hello World</h1>")
-           (GET "/authlink" request
+           (GET "/api" [] "<h1>Hello World!!!!</h1>")
+           (GET "/api/authlink" request
                 (auth/authorize #{::user} "Authorized page."))
-           (auth/logout (ANY "/logout" request (ring.util.response/redirect "/")))
-           (route/resources "/")
+           (auth/logout (ANY "/api/logout" request (ring.util.response/redirect "/")))
+           (route/resources "/api/")
            (route/not-found "<h1>Page not found</h1>"))

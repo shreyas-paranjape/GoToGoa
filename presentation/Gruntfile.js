@@ -400,8 +400,8 @@ module.exports = function (grunt) {
     'wiredep:test',
     'concurrent:test',
     'autoprefixer',
-    'connect:test',
-    'karma'
+    'connect:test'
+    //'karma'
   ]);
 
   grunt.registerTask('build', [
