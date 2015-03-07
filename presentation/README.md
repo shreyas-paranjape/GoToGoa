@@ -6,3 +6,5 @@ Installation : 	Install Nodejs,npm using apt-get.
 Preview : 	grunt serve.
 
 Test : 		grunt test.
+
+Test : 		grunt test.
