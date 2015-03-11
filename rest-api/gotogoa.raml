@@ -1,0 +1,118 @@
+#%RAML 0.8
+title: GotoGoa travel portal API
+version: 1
+baseUri: https://api.gotogoa.com/{version}/
+mediaType: application/json
+schemas:
+  - hotel-min: |
+  - hotel-all: |
+# Hotel
+/hotel:
+  description: Hotel booking API
+  get:
+    description: Get a list of hotels fitting the criteria defined by the queryParameters  
+    queryParameters:
+      q:
+        description: Keyword like name of an city or name of the hotel
+        type: string
+      startDate:
+        type: date
+      endDate:
+        type: date
+      rooms:
+        description: Number of rooms required
+        type: integer
+    responses:
+      200:
+        body:
+          application/json:
+            schema: hotel-min
+            example:
+      404:
+        body:
+          application/json:
+            example: |
+              {"message": "No hotels found matching the given criteria"}
+  post:
+    description: Create a new hotel record
+    body:
+      application/json:
+        example:
+        schema:
+         
+  /{code}:
+    uriParameters:        
+      code:
+        type: string
+    get:
+      description: Get all the information about the seleted hotel
+      responses:
+        200:
+          body:
+            application/json:
+              schema: hotel-all
+              example:
+    delete:
+      description: delete the hotel record
+      body:
+        application/json:
+          example:
+          schema:
+    put:
+      description: modify the hotel details
+      body:
+        application/json:
+          example:
+          schema:       
+            
+    /book:
+      post: 
+        body:
+          application/json:
+            example:
+            schema:
+         
+       
+    /like:
+      post:
+        body:
+          application/json:
+            example:
+            schema:
+    
+    /comment:
+      post:
+        body:
+          application/json:
+            example:
+            schema:
+      get:
+    
+    /share:
+      post:
+        body:
+          application/json:
+            example:
+            schema:
+    
+    /review:
+      post:
+        body:
+          application/json:
+            example:
+            schema:
+    
+      get:
+      
+
+# Rental
+/rental:
+
+# Event
+/event:
+
+# Places
+/place:
+
+# Booking
+/booking:
