@@ -3,14 +3,15 @@ angular.module('hotel', [
   ])
 
 .config(function ($stateProvider) {
-
+    
     $stateProvider
         .state('hotel', {
             url: '/hotel',
             templateUrl: 'module/hotel/view/search.html',
             ncyBreadcrumb: {
                 label: 'Hotel'
-            }
+            },
+        
         })
         .state('hotel.list', {
             url: '/hotel.list',
