@@ -1,44 +1,52 @@
-<h3>List of State 1 Items</h3>
+<h3>Hotel list</h3>
 
 <ul>
+    Sort :
+    <select ng-model="hotelSort">
+        <option value="id">Id</option>
+        <option value="name">Name</option>
+        <option value="location">Location</option>
+        <option value="-stars">Stars</option>
+    </select>
     
-<!--  <li ng-repeat="item in hotels">{{ item.name }}</li>-->
+    <!--  <li ng-repeat="item in hotels">{{ item.name }}</li>-->
+    <div>{{ items }}</div>
     <table style="width : 100%">
-    <tr>
-        <th>Id</th>
-        <th>Name</th>
-        <th>Location</th>
-        <th>Stars</th>
-    </tr>
-    <tr ng-repeat="hotel in hotels | filter: nameKey | filter: locationKey | orderBy: hotelSort">
-        <td>{{ hotel.id }}</td>
-        <td><a data-toggle="modal" data-target="#detailModal" >{{ hotel.name }}</a></td>
-        <td>{{ hotel.location }}</td>
-        <td>{{ hotel.stars }}</td>
-    </tr>
-</table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Stars</th>
+        </tr>
+        <tr ng-repeat="hotel in hotels | filter: nameKey | filter: locationKey | orderBy: hotelSort">
+            <td>{{ hotel.id }}</td>
+            <td><a data-toggle="modal" data-target="#detailModal">{{ hotel.name }}</a>
+            </td>
+            <td>{{ hotel.location }}</td>
+            <td>{{ hotel.stars }}</td>
+        </tr>
+    </table>
 </ul>
 
 
 <!-- Modal -->
 <div class="modal fade" id="detailModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-repeat="hotel in hotels">
-  <div class="modal-dialog">
-    <div class="modal-content" >
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">{{ hotel.name }}</h4>
-      </div>
-      <div class="modal-body">
-        <p><strong>Name : </strong> {{ hotel.name }}</p>
-        <p><strong>Location : </strong> {{ hotel.location }}</p>
-        <p><strong>Stars : </strong> {{ hotel.stars }}</p>
-      </div>
-      <div class="modal-footer">
-         <button type="button" class="btn btn-primary" ng-click="window.alert('Your hotel has been booked!!')">Book</button>
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{ hotel.name }}</h4>
+            </div>
+            <div class="modal-body">
+                <p><strong>Name : </strong> {{ hotel.name }}</p>
+                <p><strong>Location : </strong> {{ hotel.location }}</p>
+                <p><strong>Stars : </strong> {{ hotel.stars }}</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" ng-click="window.alert('Your hotel has been booked!!')">Book</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-

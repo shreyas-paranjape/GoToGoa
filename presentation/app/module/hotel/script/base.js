@@ -5,13 +5,20 @@ angular.module('hotel', [
 .config(function ($stateProvider) {
     
     $stateProvider
-        .state('hotel', {
+        .state('hotel',{
             url: '/hotel',
-            templateUrl: 'module/hotel/view/search.html',
+            templateUrl: 'module/hotel/view/home.html',
             ncyBreadcrumb: {
                 label: 'Hotel'
             },
-        
+            abstract: true
+        })
+        .state('hotel.search', {
+            url: '',
+            templateUrl: 'module/hotel/view/search.html',
+            ncyBreadcrumb: {
+                label: 'Hotel-Search'
+            }
         })
         .state('hotel.list', {
             url: '/hotel.list',

@@ -1,23 +1,14 @@
-<h1>Hotels</h1>
-<hr/>
-
 <div class="container">
-        <form>
-            Name : <input type="text" ng-model="nameKey" > </br>
-            Location : <input type="text" ng-model="locationKey" > </br>
-            <input type="submit" value="Search" ui-sref="hotel.list()"></br>
-        </form>
-
-    Sort : 
-    <select ng-model="hotelSort" >
-        <option value="id">Id</option>
-        <option value="name">Name</option>
-        <option value="location">Location</option>
-        <option value="-stars">Stars</option>
-    </select>
-
+    <form>
+        <fieldset>
+            <input type="text" style="display:block" ng-model="searchParam.keyword" placeholder="Enter area or hotel name">
+            <div>
+                <input type="text" ng-model="searchParam.fromDate" placeholder="From date">
+                <input type="text" ng-model="searchParam.toDate" placeholder="To date">
+            </div>
+            <input type="text" style="display:block" ng-model="searchParam.roomCount" placeholder="Number of rooms">
+            
+            <input type="submit" style="display:block" value="Search" ui-sref="hotel.list({data: searchParam})">
+        </fieldset>
+    </form>
 </div>
-
-<!--<a ui-sref="hotel.list({data: ['Vivanta', 'Radisson', 'Novotel', 'Ramada']})">Show List</a>-->
-
-<div ui-view></div>
