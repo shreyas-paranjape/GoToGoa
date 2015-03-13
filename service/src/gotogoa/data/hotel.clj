@@ -28,9 +28,14 @@
 (defn insert-hotel [record]
   (insert hotel (values record)))
 
+;;(defn update-hotel-name [record id]
+;;  (update hotel 
+;;               (set-fields {:name (get-in record ["name"])})
+;;               (where {:id id})))
+
 (defn update-hotel-name [record id]
   (update hotel 
-               (set-fields {:name (get-in record ["name"])})
+               (set-fields record)
                (where {:id id})))
 
 (defn delete-hotel [id]
