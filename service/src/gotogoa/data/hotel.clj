@@ -1,8 +1,7 @@
 (ns gotogoa.data.hotel
   (:require [taoensso.timbre :as timbre]
             [environ.core :refer [env]])
-  (:use korma.db korma.core)
-  (:require [cheshire.core :refer :all]))
+  (:use korma.db korma.core))
 
 (def db{:classname "com.mysql.jdbc.Driver"
 	:subprotocol "mysql"
