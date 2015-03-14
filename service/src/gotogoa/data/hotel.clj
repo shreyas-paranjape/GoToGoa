@@ -19,6 +19,9 @@
 (defentity hotel
 (pk :id))
 
+(defentity lac
+(pk :id))
+
 (defn get-all-hotels [] 
   (select hotel))
 
@@ -40,3 +43,14 @@
 
 (defn delete-hotel [id]
   (delete hotel (where {:id id})))
+  
+(defn get-likes [id]
+	(select lac 
+		(aggregate (count :*) :likes)
+			(where {:id id})))
+(defn insert-like [record id]
+	(insert lac (values record))
+	(update lac
+		(set-fields {:id id})
+		(where {:customer_id (get-in record ["customer_id"]) :comment (get-in record ["comment"]) :liked (get-in record ["liked"])}))
+)

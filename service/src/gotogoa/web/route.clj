@@ -8,6 +8,7 @@
            (ANY "/api" [] "Hello World")
            (ANY "/api/hotel" request (res/hotel-res request))
 	   (ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))
+	   (ANY "/api/hotel/:id/like" [id request] (res/hotel-like-res id request))
            (ANY "/api/authlink" request
                 (auth/authorize #{::user} "Authorized page."))
            (auth/logout 
