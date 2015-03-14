@@ -19,8 +19,7 @@
 (defentity hotel
 (pk :id))
 
-(defentity lac
-(pk :id))
+(defentity lac)
 
 (defn get-all-hotels [] 
   (select hotel))
