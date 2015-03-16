@@ -47,9 +47,13 @@
 	(select lac 
 		(aggregate (count :*) :likes)
 			(where {:id id})))
+
 (defn insert-like [record id]
 	(insert lac (values record))
 	(update lac
 		(set-fields {:id id})
 		(where {:customer_id (get-in record ["customer_id"]) :comment (get-in record ["comment"]) :liked (get-in record ["liked"])}))
 )
+
+(defn delete-like [record id]
+	(delete lac (where {:id id :customer_id (get-in record ["customer_id"])})))

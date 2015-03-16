@@ -40,15 +40,20 @@
 
 (defresource hotel-like-res [id request]
 :available-media-types ["application/json"]
-:allowed-methods [:get :post]
+:allowed-methods [:get :post :delete]
 
 ;;curl -v http://localhost:3000/api/hotel/1/like
 
 :handle-ok (fn [_] (hotel/get-likes
 			id))
 			
-;;curl -v -X POST http://localhost:3000/api/hotel/1/like -d '{"customer_id": 223,"liked": "y","comment": "\"It rocks\""}' -H "Content-Type: application/json"
+;;curl -v -X POST http://localhost:3000/api/hotel/1/like -d '{"customer_id": 223,"liked": "y","comment": "It rocks"}' -H "Content-Type: application/json"
 
 :post! (fn [ctx] (hotel/insert-like 
                     (get-in ctx [:request :json-params]) id))
+
+;;curl -v -X DELETE http://localhost:3000/api/hotel/1/like -d '{"customer_id": 223}' -H "Content-Type: application/json"
+
+:delete! (fn [ctx] (hotel/delete-like 
+		    (get-in ctx [:request :json-params]) id))
 )
