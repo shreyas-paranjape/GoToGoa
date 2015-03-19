@@ -1,33 +1,59 @@
 (ns gotogoa.data.hotel
   (:require [taoensso.timbre :as timbre]
-            [korma.core :as core]
-            [korma.db :as db]
-            [environ.core :refer [env]]))
+            [environ.core :refer [env]])
+  (:use korma.db korma.core))
 
-(def dbcon (db/postgres 
-            {:db "gotogoa" 
-             :user "postgres" 
-             :password (env :db-password)}))
+(def db{:classname "com.mysql.jdbc.Driver"
+	:subprotocol "mysql"
+	:subname "//localhost:3306/gtg"
+	:delimiters "`"
+	:useUnicode "yes"
+	:characterEncoding "UTF-8"
+	:user "root"
+	:password "root"})
 
-(db/defdb dbconnection dbcon)
+(defdb korma-db db)
 
 ;;;;;;;;;;;;;;; HOTEL 
 
-(core/defentity hotel)
+(defentity hotel
+(pk :id))
+
+(defentity lac)
 
 (defn get-all-hotels [] 
-  (core/select hotel))
+  (select hotel))
 
 (defn get-hotel [id]
-  (core/select hotel (core/where {:id id})))
+  (select hotel (where {:id id})))
 
 (defn insert-hotel [record]
-  (core/insert hotel (core/values record)))
+  (insert hotel (values record)))
 
-(defn update-hotel-name [record]
-  (core/update hotel 
-               (core/set-fields {:name (get-in record ["name"])})
-               (core/where {:id (get-in record ["id"])})))
+;;(defn update-hotel-name [record id]
+;;  (update hotel 
+;;               (set-fields {:name (get-in record ["name"])})
+;;               (where {:id id})))
+
+(defn update-hotel-name [record id]
+  (update hotel 
+               (set-fields record)
+               (where {:id id})))
 
 (defn delete-hotel [id]
-  (core/delete hotel (core/where {:id id})))
+  (delete hotel (where {:id id})))
+  
+(defn get-likes [id]
+	(select lac 
+		(aggregate (count :*) :likes)
+			(where {:id id})))
+
+(defn insert-like [record id]
+	(insert lac (values record))
+	(update lac
+		(set-fields {:id id})
+		(where {:customer_id (get-in record ["customer_id"]) :comment (get-in record ["comment"]) :liked (get-in record ["liked"])}))
+)
+
+(defn delete-like [record id]
+	(delete lac (where {:id id :customer_id (get-in record ["customer_id"])})))

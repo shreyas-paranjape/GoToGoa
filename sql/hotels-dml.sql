@@ -15,7 +15,7 @@ insert into booked_rooms select 1,215 from hotels where availability='y' and id=
 -- 		greater than the number of rooms booked.
 update hotels 
 set 
-    room_availability = 'N'
+    room_availability = 'n'
 where
     total_rooms = (select 
             count(room_number)
