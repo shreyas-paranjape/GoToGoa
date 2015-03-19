@@ -39,6 +39,24 @@ angular.module('hotel')
         return hotels;
     }
 
+    
+    $scope.myInterval = 3000;
+  $scope.slides = [
+    {
+      image: 'http://placehold.it/150&text=one!'
+    },
+    {
+      image: 'http://placehold.it/150&text=two!'
+    },
+    {
+      image: 'http://placehold.it/150&text=three!'
+    },
+    {
+      image: 'http://placehold.it/150&text=four!'
+    }
+  ];
+    
+    
 }]);
 
 
