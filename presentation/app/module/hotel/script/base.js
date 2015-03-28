@@ -1,6 +1,8 @@
 angular.module('hotel', [
-    'ui.router',
+    'ui.router', 
   ])
+
+
 
 .config(function ($stateProvider) {
     
@@ -32,3 +34,4 @@ angular.module('hotel', [
             controller: 'HotelsController'
         });
 });
+

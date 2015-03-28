@@ -38,6 +38,7 @@ angular.module('hotel')
         
         return hotels;
     }
+<<<<<<< HEAD
 
     
     $scope.myInterval = 3000;
@@ -58,6 +59,27 @@ angular.module('hotel')
     
     
 }]);
+=======
+    
+ 
+  $scope.myInterval = 3000;
+  $scope.slides = [
+    {
+      image: 'http://lorempixel.com/400/200/'
+    },
+    {
+      image: 'http://lorempixel.com/400/200/food'
+    },
+    {
+      image: 'http://lorempixel.com/400/200/sports'
+    },
+    {
+      image: 'http://lorempixel.com/400/200/people'
+    }
+  ];
+}
+]);
+>>>>>>> d441f63f74f7190864b27778f2908e104866b58a
 
 
   

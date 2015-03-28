@@ -1,14 +1,30 @@
 <div class="container">
-    <form>
+   <form id="myForm">
         <fieldset>
-            <input type="text" style="display:block" ng-model="searchParam.keyword" placeholder="Enter area or hotel name">
+            <input type="text" style="display:block" ng-model="searchParam.keyword" placeholder="Enter area or hotel name"><br>
             <div>
-                <input type="text" ng-model="searchParam.fromDate" placeholder="From date">
-                <input type="text" ng-model="searchParam.toDate" placeholder="To date">
-            </div>
-            <input type="text" style="display:block" ng-model="searchParam.roomCount" placeholder="Number of rooms">
-            
-            <input type="submit" style="display:block" value="Search" ui-sref="hotel.list({data: searchParam})">
+                <input type="text" ng-model="searchParam.fromDate" placeholder="From date" class="datepicker">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input type="text" ng-model="searchParam.toDate" placeholder="To date" class="datepicker">
+            </div><br>
+            <input type="number" style="display:block" ng-model="searchParam.roomCount" placeholder="Number of rooms" min="1" max="100"><br>
+             <button onclick="myfunction()">Reset</button>
+            <input type="submit"  value="Search" ui-sref="hotel.list({data: searchParam})"/>
+           
         </fieldset>
+       
+        
+            
+            
     </form>
+     
+   
+    <script>
+        function myfunction(){
+   document.getElementById("myForm").reset();
+   }
+        
+    </script>
+    <script>
+    $('.datepicker').datepicker();
+    </script>
 </div>

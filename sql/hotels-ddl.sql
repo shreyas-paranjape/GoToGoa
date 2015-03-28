@@ -9,7 +9,7 @@ create table hotels (
     area float(10 , 4 ),
     zip bigint,
     total_rooms int,
-    room_availability varchar(1) default 'Y',
+    room_availability varchar(1) default 'y',
     telephone bigint,
     star_rating int not null,
     user_rating float(10 , 2 ) default NULL,
