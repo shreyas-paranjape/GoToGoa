@@ -30,11 +30,6 @@
 (defn insert-hotel [record]
   (insert hotel (values record)))
 
-;;(defn update-hotel-name [record id]
-;;  (update hotel 
-;;               (set-fields {:name (get-in record ["name"])})
-;;               (where {:id id})))
-
 (defn update-hotel-name [record id]
   (update hotel 
                (set-fields record)
@@ -49,10 +44,7 @@
 			(where {:id id})))
 
 (defn insert-like [record id]
-	(insert lac (values record))
-	(update lac
-		(set-fields {:id id})
-		(where {:customer_id (get-in record ["customer_id"]) :comment (get-in record ["comment"]) :liked (get-in record ["liked"])}))
+	(insert lac (values (conj record {(name :id) id})))
 )
 
 (defn delete-like [record id]

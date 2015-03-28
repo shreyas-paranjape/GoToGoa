@@ -1,26 +1,21 @@
-
 <h3>Hotel list</h3>
-
 <ul>
-<<<<<<< HEAD
-        
-    
 
-    
     <!--  <li ng-repeat="item in hotels">{{ item.name }}</li>-->
     <div>{{ items }}</div>
-    
+
     <div ng-controller="HotelsController">
-        
+
         Filter : </br>
-        <input type="checkbox" ng-click="includeLocation('A')"/> A</br>
-        <input type="checkbox" ng-click="includeLocation('B')"/> B </br>
-        
+        <input type="checkbox" ng-click="includeLocation('A')" /> A</br>
+        <input type="checkbox" ng-click="includeLocation('B')" /> B </br>
+
         Sort :
         <a href="" ng-click="reverse=!reverse;order('id', reverse)">Id</a>
         <a href="" ng-click="reverse=!reverse;order('name', reverse)">Name</a>
         <a href="" ng-click="reverse=!reverse;order('location', reverse)">Location</a>
-        <a href="" ng-click="reverse=!reverse;order('stars', reverse)">Stars</a> </br></br>
+        <a href="" ng-click="reverse=!reverse;order('stars', reverse)">Stars</a> </br>
+        </br>
         <accordion>
             <accordion-group heading="{{hotel.name}}" ng-repeat="hotel in hotels | filter: items.keyword | filter: locationFilter">
                 <ul>
@@ -28,58 +23,48 @@
                     <li>{{hotel.location}}</li>
                     <li>{{hotel.stars}}</li>
                     <div>
-      <carousel interval="myInterval">
-        <slide ng-repeat="slide in slides" active="slide.active">
-          <img ng-src="{{slide.image}}">
-          <div class="carousel-caption">
-            <h4>Slide {{$index+1}}</h4>
-          </div>
-        </slide>
-      </carousel>
-    </div>
+                        <carousel interval="myInterval">
+                            <slide ng-repeat="slide in slides" active="slide.active">
+                                <img ng-src="{{slide.image}}">
+                                <div class="carousel-caption">
+                                    <h4>Slide {{$index+1}}</h4>
+                                </div>
+                            </slide>
+                        </carousel>
+                    </div>
                 </ul>
-            </accordion-group>   
+            </accordion-group>
         </accordion>
     </div>
-=======
     <div ng-controller="HotelsController">
-        
-        <strong>Filter :</strong>&nbsp;&nbsp;
-        <input type="checkbox" ng-click="includeLocation('A')"/> A&nbsp;&nbsp;
-        <input type="checkbox" ng-click="includeLocation('B')"/> B </br><br>
-        <strong>Sort :</strong>&nbsp;&nbsp;
-        <a class="padding" href="" ng-click="reverse=!reverse;order('id', reverse)"><u>Id</u></a>&nbsp;&nbsp;&nbsp;
-        <a class="padding" href="" ng-click="reverse=!reverse;order('name', reverse)"><u>Name</u></a>&nbsp;&nbsp;&nbsp;
-        <a href="" ng-click="reverse=!reverse;order('location', reverse)"><u>Location</u></a>&nbsp;&nbsp;&nbsp;
-        <a href="" ng-click="reverse=!reverse;order('stars', reverse)"><u>Stars</u></a> </br></br>
-        <accordion>
-            <accordion-group heading="{{hotel.name}}" ng-repeat="hotel in hotels | filter: items.keyword | filter: locationFilter">
-                <ul>
-                     <li>{{hotel.name}}</li>
-                    <li>{{hotel.location}}</li>
-                    <li>{{hotel.stars}}</li>
-                   
-      <carousel interval="myInterval">
-        <slide ng-repeat="slide in slides" active="slide.active">
-          <img ng-src="{{slide.image}}">
-          <div class="carousel-caption">
-            <h4>Slide {{$index+1}}</h4>
-          </div>
-        </slide>
-      </carousel>
-    
-                   
-                </ul>
-            </accordion-group>   
-        </accordion>
+        <div>
+            <strong>Filter :</strong>&nbsp;&nbsp;
+            <input type="checkbox" ng-click="includeLocation('A')" /> A &nbsp;&nbsp;
+            <input type="checkbox" ng-click="includeLocation('B')" /> B </br>
+            <br>
+            <strong>Sort :</strong>&nbsp;&nbsp;
+            <a class="padding" href="" ng-click="reverse=!reverse;order('id', reverse)"><u>Id</u></a>&nbsp;&nbsp;&nbsp;
+            <a class="padding" href="" ng-click="reverse=!reverse;order('name', reverse)"><u>Name</u></a>&nbsp;&nbsp;&nbsp;
+            <a href="" ng-click="reverse=!reverse;order('location', reverse)"><u>Location</u></a>&nbsp;&nbsp;&nbsp;
+            <a href="" ng-click="reverse=!reverse;order('stars', reverse)"><u>Stars</u></a> </br>
+            </br>
+            <accordion>
+                <accordion-group heading="{{hotel.name}}" ng-repeat="hotel in hotels | filter: items.keyword | filter: locationFilter">
+                    <ul>
+                        <li>{{hotel.name}}</li>
+                        <li>{{hotel.location}}</li>
+                        <li>{{hotel.stars}}</li>
 
-    </div>
+                        <carousel interval="myInterval">
+                            <slide ng-repeat="slide in slides" active="slide.active">
+                                <img ng-src="{{slide.image}}">
+                                <div class="carousel-caption">
+                                    <h4>Slide {{$index+1}}</h4>
+                                </div>
+                            </slide>
+                        </carousel>
+                    </ul>
+                </accordion-group>
+            </accordion>
+        </div>
 </ul>
->>>>>>> d441f63f74f7190864b27778f2908e104866b58a
-
- 
-
-<<<<<<< HEAD
-</ul>
-=======
->>>>>>> d441f63f74f7190864b27778f2908e104866b58a
