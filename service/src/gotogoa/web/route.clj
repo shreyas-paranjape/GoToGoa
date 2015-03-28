@@ -1,11 +1,19 @@
 (ns gotogoa.web.route
+  (:use [ring.util.response])
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
+            [taoensso.timbre :as timbre]
             [gotogoa.middleware.auth :as auth]
             [gotogoa.web.resource :as res]))
 
+(timbre/refer-timbre)
+
 (defroutes app-routes
-           (ANY "/api" [] "Hello World")
+           (ANY "/api" request (fn [{session :session}]
+                                 (let [count   (:count session 0)
+                                       session (assoc session :count (inc count))]
+                                   (-> (response (str "You accessed this page " count " times."))
+                                       (assoc :session session)))))
            (ANY "/api/hotel" request (res/hotel-res request))
 	   (ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))
 	   (ANY "/api/hotel/:id/like" [id request] (res/hotel-like-res id request))

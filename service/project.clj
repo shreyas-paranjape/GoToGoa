@@ -9,6 +9,7 @@
                            [environ "1.0.0"]
                            [korma "0.4.0"]
                            [liberator "0.12.2"]
+                           [commons-codec/commons-codec "1.10"]
                            [ring.middleware.logger "0.5.0"]
                            [com.taoensso/timbre "3.4.0"]
                            [com.taoensso/carmine "2.9.0"]
