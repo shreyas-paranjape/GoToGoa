@@ -9,6 +9,7 @@
 (timbre/refer-timbre)
 
 (defroutes app-routes
+	   (ANY "/" [] "Welcome to GoToGoa!")
            (ANY "/test" request (res/testing request))
            (ANY "/api/hotel" request (res/hotel-res request))
 	   (ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))
