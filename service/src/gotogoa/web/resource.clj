@@ -1,6 +1,7 @@
 (ns gotogoa.web.resource
   (:require [liberator.core :refer [defresource]]
-            [gotogoa.data.hotel :as hotel]))
+            [gotogoa.data.hotel :as hotel]
+            [liberator.representation :refer [ring-response]]))
 
 (defresource hotel-res
   :available-media-types ["application/json"]
@@ -56,4 +57,27 @@
 
 :delete! (fn [ctx] (hotel/delete-like 
 		    (get-in ctx [:request :json-params]) id))
+)
+
+(defresource login
+:available-media-types ["application/json"]
+:allowed-methods [:get :post]
+:handle-ok (fn [ctx] 
+		(let [id (get-in ctx [request :session :id])]
+			(ring-response {:session (get-in ctx [request :session]) :body (str "ID: " id)})))
+:post! (fn [ctx]
+	(let [id (get-in ctx [:request :json-params "id"])]
+		(ring-response {:session {:id id} :body (str "")})))
+
+)
+
+(defresource testing
+:available-media-types ["application/json"]
+:allowed-methods [:get]
+:handle-ok (fn [ctx]
+              (let [counter (if-let [counter (get-in ctx [:request :session :counter])]
+				(+ counter 1) 1)]
+	      	(ring-response {:session {:counter counter} :body (str "You accessed this page " counter " times.")})
+	      )
+	   )
 )

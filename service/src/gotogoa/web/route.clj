@@ -9,11 +9,7 @@
 (timbre/refer-timbre)
 
 (defroutes app-routes
-           (ANY "/api" request (fn [{session :session}]
-                                 (let [count   (:count session 0)
-                                       session (assoc session :count (inc count))]
-                                   (-> (response (str "You accessed this page " count " times."))
-                                       (assoc :session session)))))
+           (ANY "/test" request (res/testing request))
            (ANY "/api/hotel" request (res/hotel-res request))
 	   (ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))
 	   (ANY "/api/hotel/:id/like" [id request] (res/hotel-like-res id request))
