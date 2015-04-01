@@ -63,8 +63,8 @@
 :available-media-types ["application/json"]
 :allowed-methods [:get :post]
 :handle-ok (fn [ctx] 
-		(let [id (get-in ctx [request :session :id])]
-			(ring-response {:session (get-in ctx [request :session]) :body (str "ID: " id)})))
+		(let [id (get-in ctx [:request :session :id])]
+			(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})))
 :post! (fn [ctx]
 	(let [id (get-in ctx [:request :json-params "id"])]
 		(ring-response {:session {:id id} :body (str "")})))
