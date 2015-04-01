@@ -6,11 +6,12 @@
             [ring.middleware.json :refer 
              [wrap-json-params wrap-json-response]]
             [ring.middleware.session :refer [wrap-session]]
-            [taoensso.timbre :as timbre]))
+            [taoensso.timbre :as timbre]
+            [noir.session :as session]))
 
 (timbre/refer-timbre)
 
 (def app
-  (wrap-session (auth/auth-handler 
-                 (wrap-json-response (wrap-json-params r/app-routes)))
+  (session/wrap-noir-session ;;(auth/auth-handler 
+                 (wrap-json-response (wrap-json-params r/app-routes));;)
                 {:store (carmine-store {}) }))

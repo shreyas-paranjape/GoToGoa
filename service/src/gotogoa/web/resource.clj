@@ -1,7 +1,11 @@
 (ns gotogoa.web.resource
   (:require [liberator.core :refer [defresource]]
             [gotogoa.data.hotel :as hotel]
-            [liberator.representation :refer [ring-response]]))
+            [liberator.representation :refer [ring-response]]
+            [taoensso.timbre :as timbre]
+            [noir.session :as session]))
+            
+(timbre/refer-timbre)
 
 (defresource hotel-res
   :available-media-types ["application/json"]
@@ -63,11 +67,13 @@
 :available-media-types ["application/json"]
 :allowed-methods [:get :post]
 :handle-ok (fn [ctx] 
-		(let [id (get-in ctx [:request :session :id])]
-			(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})))
+		(let [id (get-in ctx [:request :session :noir :id])]
+			(ring-response {:session {:noir {:id id}} :body (str "ID: " id)})
+			))
 :post! (fn [ctx]
 	(let [id (get-in ctx [:request :json-params "id"])]
-		(ring-response {:session {:id id} :body (str "")})))
+		(session/put! :id 5)
+		))
 
 )
 

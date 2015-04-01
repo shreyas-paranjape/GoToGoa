@@ -4,12 +4,14 @@
             [compojure.route :as route]
             [taoensso.timbre :as timbre]
             [gotogoa.middleware.auth :as auth]
-            [gotogoa.web.resource :as res]))
+            [gotogoa.web.resource :as res]
+            [noir.session :as session]))
 
 (timbre/refer-timbre)
 
 (defroutes app-routes
 	   (ANY "/" [] "Welcome to GoToGoa!")
+	   (ANY "/login" request (res/login request))
            (ANY "/test" request (res/testing request))
            (ANY "/api/hotel" request (res/hotel-res request))
 	   (ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))

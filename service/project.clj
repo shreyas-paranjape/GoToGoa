@@ -16,7 +16,8 @@
                            [org.postgresql/postgresql "9.2-1002-jdbc4"]
                            [cheshire "5.4.0"]
 			   [org.clojure/java.jdbc "0.3.5"]
-		           [mysql/mysql-connector-java "5.1.25"]]
+		           [mysql/mysql-connector-java "5.1.25"]
+		           [lib-noir "0.9.5"]]
             :plugins [[lein-ring "0.8.13"]
                       [lein-environ "1.0.0"]]
             :ring {:handler gotogoa.web.handler/app}
