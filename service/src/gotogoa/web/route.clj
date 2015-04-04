@@ -12,14 +12,14 @@
 (defroutes app-routes
 	(ANY "/" [] "Welcome to GoToGoa!")
 	(ANY "/login" request (res/login request))
-             (ANY "/test" request (res/testing request))
-             (ANY "/api/hotel" request (res/hotel-res request))
+	(ANY "/test" request (res/testing request))
+	(ANY "/api/hotel" request (res/hotel-res request))
 	(ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))
 	(ANY "/api/hotel/:id/like" [id request] (res/hotel-like-res id request))
-             (ANY "/api/authlink" request
-             	(auth/authorize #{::user} "Authorized page."))
-             (auth/logout 
-             (ANY "/api/logout" request 
-              (ring.util.response/redirect "/")))
-             (route/resources "/api/")
-             (route/not-found "<h1>Page not found</h1>"))
+	(ANY "/api/authlink" request
+		(auth/authorize #{::user} "Authorized page."))
+	(auth/logout 
+		(ANY "/api/logout" request 
+			(ring.util.response/redirect "/")))
+	(route/resources "/api/")
+	(route/not-found "<h1>Page not found</h1>"))
