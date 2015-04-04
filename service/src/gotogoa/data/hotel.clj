@@ -22,21 +22,21 @@
 (defentity lac)
 
 (defn get-all-hotels [] 
-  (select hotel))
+	(select hotel))
 
 (defn get-hotel [id]
-  (select hotel (where {:id id})))
+  	(select hotel (where {:id id})))
 
 (defn insert-hotel [record]
-  (insert hotel (values record)))
+  	(insert hotel (values record)))
 
 (defn update-hotel-name [record id]
-  (update hotel 
-               (set-fields record)
-               (where {:id id})))
+  	(update hotel 
+              	(set-fields record)
+               	(where {:id id})))
 
 (defn delete-hotel [id]
-  (delete hotel (where {:id id})))
+  	(delete hotel (where {:id id})))
   
 (defn get-likes [id]
 	(select lac 

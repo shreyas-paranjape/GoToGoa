@@ -13,5 +13,5 @@
 
 (def app
   (session/wrap-noir-session ;;(auth/auth-handler 
-                 (wrap-json-response (wrap-json-params r/app-routes));;)
-                {:store (carmine-store {}) }))
+            	(wrap-json-response (wrap-json-params r/app-routes));;)
+            	{:store (carmine-store {}) }))

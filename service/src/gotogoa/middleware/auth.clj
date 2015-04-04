@@ -6,14 +6,14 @@
   "Returns a middleware that enables authentication via oauth2."
   [handler]
   (-> handler
-      (friend/authenticate oa-g/friend-config)))
+      	(friend/authenticate oa-g/friend-config)))
 
 (defn authorize
   "Checks if user has access"
   [role resource]
-  (friend/authorize role resource))
+  	(friend/authorize role resource))
 
 (defn logout
   "logs out a user"
   [route]
-  (friend/logout route))
+  	(friend/logout route))
