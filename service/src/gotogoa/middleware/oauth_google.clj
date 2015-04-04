@@ -9,8 +9,8 @@
 (derive ::admin ::user)
 
 (def client-config
-  {:client-id     "test";;(env :friend-oauth2-client-id)
-   :client-secret "test";;(env :friend-oauth2-client-secret)
+  {:client-id     "1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com"
+   :client-secret "rItsLP2ydSc_wPsrUynEfJ57"
    :callback      {:domain "http://localhost:3000"
                    :path   "/oauth2callback"}})
 
@@ -18,14 +18,14 @@
   {:authentication-uri {:url   "https://accounts.google.com/o/oauth2/auth"
                         :query {:client_id     (:client-id client-config)
                                 :response_type "code"
-                                :redirect_uri  (format-config-uri client-config)
+                                :redirect_uri  "http://localhost:3000/oauth2callback"
                                 :scope         "email"}}
 
    :access-token-uri   {:url   "https://accounts.google.com/o/oauth2/token"
                         :query {:client_id     (:client-id client-config)
                                 :client_secret (:client-secret client-config)
                                 :grant_type    "authorization_code"
-                                :redirect_uri  (format-config-uri client-config)}}})
+                                :redirect_uri  "http://localhost:3000/oauth2callback"}}})
 
 (defn- credential-fn
   [token]

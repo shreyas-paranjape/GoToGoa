@@ -68,11 +68,11 @@
 :allowed-methods [:get :post]
 :handle-ok (fn [ctx] 
 		(let [id (get-in ctx [:request :session :noir :id])]
-			(ring-response {:session {:noir {:id id}} :body (str "ID: " id)})
+			(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})
 			))
 :post! (fn [ctx]
-	(let [id (get-in ctx [:request :json-params "id"])]
-		(session/put! :id 5)
+	(let [id1 (get-in ctx [:request :json-params "id"])]
+		(session/put! :id 6)
 		))
 
 )
@@ -81,9 +81,9 @@
 :available-media-types ["application/json"]
 :allowed-methods [:get]
 :handle-ok (fn [ctx]
-              (let [counter (if-let [counter (get-in ctx [:request :session :counter])]
+             (let [counter (if-let [counter (get-in ctx [:request :session :counter])]
 				(+ counter 1) 1)]
 	      	(ring-response {:session {:counter counter} :body (str "You accessed this page " counter " times.")})
 	      )
-	   )
+	)
 )
