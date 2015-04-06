@@ -27,7 +27,7 @@
                                              :grant_type    "authorization_code"
                                              :redirect_uri  "http://localhost:3000/oauth2callback"}}})
 
-(defn- credential-fn
+(defn credential-fn
   [token]
   ;;TODO lookup token in DB or whatever to fetch appropriate :roles
   	{:identity token :roles #{::user}})
