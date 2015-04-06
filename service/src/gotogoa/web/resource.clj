@@ -71,8 +71,8 @@
 			(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})
 			))
 :post! (fn [ctx]
-	(let [id1 (get-in ctx [:request :json-params "id"])]
-		(session/put! :id 6)
+	(let [id (get-in ctx [:request :json-params "id"])]
+		(session/put! :id 7)
 		))
 
 )
