@@ -10,7 +10,9 @@
 
 (timbre/refer-timbre)
 
+(def server-conn {:pool {} :spec {:host "127.0.0.1" :port 6379}})
+
 (def app
   (session/wrap-noir-session ;;(auth/auth-handler 
             	(wrap-json-response (wrap-json-params r/app-routes));;)
-            	{:store (carmine-store {}) }))
+            	{:store (carmine-store server-conn {})}))
