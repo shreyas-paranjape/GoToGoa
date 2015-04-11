@@ -5,7 +5,6 @@
             [taoensso.carmine.ring :refer [carmine-store]]
             [ring.middleware.json :refer 
              [wrap-json-params wrap-json-response]]
-            [ring.middleware.session :refer [wrap-session]]
             [taoensso.timbre :as timbre]
             [noir.session :as session]))
 
