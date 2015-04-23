@@ -63,6 +63,16 @@
 		 	(get-in ctx [:request :json-params]) id))
 )
 
+(defresource hotel-dislike-res [id request]
+	:available-media-types ["application/json"]
+	:allowed-methods [:get]
+
+	;;curl -v http://localhost:3000/api/hotel/1/dislike
+
+	:handle-ok (fn [_] (hotel/get-dislikes
+		      	id))
+)
+
 (defresource login
 :available-media-types ["application/json"]
 :allowed-methods [:get :post]

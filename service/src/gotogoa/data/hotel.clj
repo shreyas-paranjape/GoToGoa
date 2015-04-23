@@ -41,7 +41,12 @@
 (defn get-likes [id]
 	(select lac 
 		(aggregate (count :*) :likes)
-			(where {:id id})))
+			(where {:id id :liked "y"})))
+
+(defn get-dislikes [id]
+	(select lac 
+		(aggregate (count :*) :dislikes)
+			(where {:id id :liked "n"})))
 
 (defn insert-like [record id]
 	(insert lac (values (conj record {(name :id) id})))
