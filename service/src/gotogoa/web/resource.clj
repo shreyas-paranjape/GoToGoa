@@ -82,7 +82,8 @@
 			))
 :post! (fn [ctx]
 	(let [id (get-in ctx [:request :json-params "id"])]
-		(session/put! :id 7)
+		(info id)
+		(session/put! :id id)
 		))
 
 )

@@ -54,6 +54,7 @@ select name, location, address, area, zip, total_rooms,
 	price_of_room, popularity 
 from hotels order by price_of_room desc;
  
+ -- 5. Sort by Star Rating of the hotel.
 select 
     name,
     location,
@@ -73,7 +74,7 @@ from
     hotels
 order by star_rating desc; 
 
--- 5. Sort by Star Rating of the hotel.
+-- 5. Sort by User rating of the hotel.
 select 
     name,
     location,
@@ -93,7 +94,8 @@ from
     hotels
 order by user_rating desc; 
 
--- 5. Sort by User rating of the hotel.
+-- 6. Filters results based on data provided by the user.
+-- Here 10000 and 100000 is the price range. 
 select 
     name,
     location,
@@ -119,8 +121,11 @@ where
         or wifi = 'y'
         or parking = 'y';	
 
--- Here 10000 and 100000 is the price range. 
--- 6. Filters results based on data provided by the user.
+
+-- 7. This query will count the instances of "id" only where both the ids match 
+-- i.e. hotel.id and popular.id and will pipe that value into the popularity field 
+-- where id in the "hotel" is equal to any id produces by the query 
+-- "select DISTINCT id from popular" i.e. its doing an update on multiple rows.
 update hotels 
 set 
     popularity = (select 
@@ -136,10 +141,7 @@ where
         from
             popular); 
 
--- 7. This query will count the instances of "id" only where both the ids match 
--- i.e. hotel.id and popular.id and will pipe that value into the popularity field 
--- where id in the "hotel" is equal to any id produces by the query 
--- "select DISTINCT id from popular" i.e. its doing an update on multiple rows.
+-- additional.  This query can be executed after adding data in the table "user_ratings" for calculating the average user_rating in the hotels table.
 update hotels 
 set 
     user_rating = (select 
@@ -159,8 +161,4 @@ where
     hotels.id in (select DISTINCT
             id
         from
-            user_ratings); 
-
--- additional.  This query can be executed after adding data in the table "user_ratings".
-
-
+            user_ratings);
