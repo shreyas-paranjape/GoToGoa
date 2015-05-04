@@ -74,14 +74,14 @@
 )
 
 (defresource login
-:available-media-types ["application/json"]
-:allowed-methods [:get :post]
-:handle-ok (fn [ctx] 
-		(let [id (get-in ctx [:request :session :noir :id])]
-			(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})
+	:available-media-types ["application/json"]
+	:allowed-methods [:get :post]
+	:handle-ok (fn [ctx] 
+			(let [id (get-in ctx [:request :session :noir :id])]
+				(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})
 			))
-:post! (fn [ctx]
-	(let [id (get-in ctx [:request :params "id"])]
+	:post! (fn [ctx]
+		(let [id (get-in ctx [:request :params "id"])]
 		;;(info (get-in ctx [:request :json-params "id"]))
 		(session/put! :id id)
 		))
@@ -89,12 +89,12 @@
 )
 
 (defresource testing
-:available-media-types ["application/json"]
-:allowed-methods [:get]
-:handle-ok (fn [ctx]
-             (let [counter (if-let [counter (get-in ctx [:request :session :counter])]
+	:available-media-types ["application/json"]
+	:allowed-methods [:get]
+	:handle-ok (fn [ctx]
+             		(let [counter (if-let [counter (get-in ctx [:request :session :counter])]
 				(+ counter 1) 1)]
-	      	(ring-response {:session {:counter counter} :body (str "You accessed this page " counter " times.")})
-	      )
-	)
+	      				(ring-response {:session {:counter counter} :body (str "You accessed this page " counter " times.")})
+	      			)
+			)
 )
