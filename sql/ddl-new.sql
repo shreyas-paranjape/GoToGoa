@@ -9,32 +9,52 @@ create table party (
 	party_id int not null primary key auto_increment
 );
 
+-- 1.1 Tables related to "party"
+
+create table comm (
+	comm_id int not null primary key,
+	comm_address text,
+	comm_contact int(22),
+	comm_location varchar(30),
+	comm_email varchar(20),
+	comm_website varchar(20),
+	comm_zip bigint,
+	foreign key (comm_id)
+		references party (party_id)
+);
+
 -- 2.0 Tables "organisation" and "person" which are both related to the main table "party" on the field "id".
 
 create table organisation (
 	org_id int not null primary key,
+	comm_id int not null,
 	--party_id int not null,
 	org_name varchar(100),
-	org_contact int(22),
-	org_address text,
-	org_location varchar(30),
-	org_email varchar(20),
-	org_website varchar(20),
-	org_zip bigint,
+	--org_contact int(22),
+	--org_address text,
+	--org_location varchar(30),
+	--org_email varchar(20),
+	--org_website varchar(20),
+	--org_zip bigint,
 	foreign key (org_id)
-		references party (party_id)
+		references party (party_id),
+	foreign key (comm_id)
+		references comm (comm_id)
 );
 
 create table person (
 	person_id int not null primary key,
+	comm_id int not null,
 	--party_id int not null,
 	person_name varchar(50),
-	person_email varchar(20),
-	person_contact int(22),
-	person_residential_address text,
+	--person_email varchar(20),
+	--person_contact int(22),
+	--person_residential_address text,
 	person_office_address text,
 	foreign key (person_id)
-		references party (party_id)
+		references party (party_id),
+	foreign key (comm_id)
+		references comm (comm_id)
 );
 
 -- 3.1 Tables related to "organisation".
@@ -56,7 +76,7 @@ create table hotel (
 		references organisation (org_id)
 );
 
--- 3.2 Tables related to "person".
+-- 3.2 Tables related to "person"
 
 create table employee (
 	employee_id int not null primary key,
@@ -71,7 +91,11 @@ create table employee (
 -- 4.0 "product" table
 
 create table product (
-	
+	pro_id int not null primary key,
+	cost float(10 , 4 ) ,
+	supplier varchar(100),
+	foreign key (pro_id)
+		references organisation (org_id)
 );
 
 -- 5.0 "orders" table
