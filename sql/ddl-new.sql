@@ -16,8 +16,11 @@ create table organisation (
 	--party_id int not null,
 	org_name varchar(100),
 	org_contact int(22),
-	org_office_address text,
-	org_description text,
+	org_address text,
+	org_location varchar(30),
+	org_email varchar(20),
+	org_website varchar(20),
+	org_zip bigint,
 	foreign key (org_id)
 		references party (party_id)
 );
@@ -26,8 +29,10 @@ create table person (
 	person_id int not null primary key,
 	--party_id int not null,
 	person_name varchar(50),
+	person_email varchar(20),
 	person_contact int(22),
 	person_residential_address text,
+	person_office_address text,
 	foreign key (person_id)
 		references party (party_id)
 );
@@ -37,14 +42,9 @@ create table person (
 create table hotel (
 	hotel_id int not null primary key,
 	--org_id int not null,
-	hotel_name varchar(50),
-	hotel_location varchar(30),
-	hotel_address varchar(256),
 	hotel_area float(10 , 4 ),
-	hotel_zip bigint,
 	hotel_total_rooms int,
 	hotel_room_availability varchar(1) default 'y',
-	hotel_contact bigint,
 	hotel_star_rating int not null,
 	hotel_user_rating float(10 , 2 ) default NULL,
 	hotel_parking varchar(1),
