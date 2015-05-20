@@ -6,7 +6,7 @@ use tnt;
 -- 1.0 Main table "party".
 
 create table party (
-	party_id int not null primary key
+	party_id int not null primary key auto_increment
 );
 
 -- 2.0 Tables "organisation" and "person" which are both related to the main table "party" on the field "id".
