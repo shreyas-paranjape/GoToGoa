@@ -67,3 +67,15 @@ create table employee (
 	foreign key (employee_id)
 		references person (person_id)
 );
+
+-- 4.0 "product" table
+
+create table product (
+	
+);
+
+-- 5.0 "orders" table
+
+create table orders(
+	
+);
