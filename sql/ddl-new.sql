@@ -1,7 +1,7 @@
 -- Create the main database.
 -- Use it!
 
-use tnt;
+--use tnt;
 
 -- 1.0 Main table "party".
 
@@ -69,11 +69,29 @@ create table hotel (
 	hotel_user_rating float(10 , 2 ) default NULL,
 	hotel_parking varchar(1),
 	hotel_wifi varchar(1),
+	hotel_bar varchar(1),
+	hotel_swimming_pool varchar(1),
+	hotel_restraunt varchar(1),
+	hotel_general_facilities text,
 	hotel_price_of_room float(10 , 4 ) not null,
 	hotel_popularity int not null,
-	hotel_description text.
+	hotel_description text,
 	foreign key (hotel_id)
 		references organisation (org_id)
+);
+
+--3.1.1 Tables related to "hotel"
+
+create table room_types (
+	room_id int not null primary key auto_increment,
+	hotel_id int not null,
+	room_type varchar(20),
+	number int,
+	price float (10,4),
+	room_facilities text,
+	description text,
+	foreign key (hotel_id)
+		references hotel (hotel_id)
 );
 
 -- 3.2 Tables related to "person"
