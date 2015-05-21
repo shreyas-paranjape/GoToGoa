@@ -86,7 +86,7 @@ create table room_types (
 	room_id int not null primary key auto_increment,
 	hotel_id int not null,
 	room_type varchar(20),
-	number int,
+	num int,
 	price float (10,4),
 	room_facilities text,
 	description text,
