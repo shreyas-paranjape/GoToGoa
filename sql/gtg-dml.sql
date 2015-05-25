@@ -1,4 +1,6 @@
-﻿-- Insert a new organization record
+-- use the "gtg" database
+use gtg;
+-- Insert a new organization record
 insert into phy_add(pincode) values ('000000');
 insert into comm(comm_email) values('a@b.com');
 insert into party(party_comm_id,party_phy_add_id) 
