@@ -141,12 +141,11 @@ create table person (
 );
 
 create table person_role (
-    per_role_id int PRIMARY KEY,
+    per_role_id int PRIMARY KEY auto_increment,
     description varchar(50) NOT NULL
 );
 
 create table person_role_map (
-    person_role_map_id int PRIMARY KEY,
     person_id INT,
     person_role_id INT,
     foreign key (person_id)
