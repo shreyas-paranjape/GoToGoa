@@ -10,6 +10,7 @@ create table phy_add (
 
 create table comm (
     comm_id int PRIMARY KEY,
+    comm_website varchar(25),
     comm_email varchar(50),
     comm_phone varchar(20)
 );
