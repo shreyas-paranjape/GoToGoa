@@ -47,7 +47,7 @@ create table org_type_map (
 );
 
 CREATE TABLE facility (
-    fac_id int PRIMARY KEY not null,
+    fac_id int PRIMARY KEY not null auto_increment,
     fac_name varchar(50) NOT NULL,
     fac_org_id INT,
     fac_comm_id INT,
