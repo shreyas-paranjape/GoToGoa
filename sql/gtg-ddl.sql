@@ -115,7 +115,7 @@ create table vehicle_type (
 );
 
 create table vehicle (
-    veh_id int PRIMARY KEY,
+    veh_id int PRIMARY KEY auto_increment,
     veh_no varchar(50) NOT NULL,
     veh_type INT,
     foreign key (veh_type)
