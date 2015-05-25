@@ -16,7 +16,7 @@ create table comm (
 );
 
 create table party (
-    party_id int PRIMARY KEY,
+    party_id int PRIMARY KEY auto_increment,
     party_comm_id INT,
     party_phy_add_id INT,
     foreign key (party_comm_id)
