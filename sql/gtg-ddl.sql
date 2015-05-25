@@ -110,7 +110,7 @@ create table hotel_room (
 );
 
 create table vehicle_type (
-    veh_type_id int PRIMARY KEY,
+    veh_type_id int PRIMARY KEY auto_increment,
     description varchar(50) NOT NULL
 );
 
@@ -123,12 +123,12 @@ create table vehicle (
 );
 
 create table person_id_type (
-    per_id_type_id int primary key,
+    per_id_type_id int primary key auto_increment,
     description text
 );
 
 create table person (
-    per_id INT PRIMARY KEY,
+    per_id INT PRIMARY KEY auto_increment,
     last_name varchar(50) NOT NULL,
     first_name varchar(50) NOT NULL,
     username varchar(50) NOT NULL,
