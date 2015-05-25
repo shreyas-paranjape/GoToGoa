@@ -66,7 +66,6 @@ create table facility_type (
 );
 
 create table facility_type_map (
-    facility_type_map_id int PRIMARY KEY,
     facility_id INT,
     facility_type_id INT,
     foreign key (facility_id)
