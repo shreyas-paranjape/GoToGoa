@@ -75,7 +75,7 @@ create table facility_type_map (
 );
 
 create table hotel (
-    hotel_id INT PRIMARY KEY,
+    hotel_id INT PRIMARY KEY auto_increment,
     hotel_description text
 );
 
