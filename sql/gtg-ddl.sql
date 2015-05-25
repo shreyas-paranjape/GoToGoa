@@ -83,6 +83,12 @@ create table hotel (
 
 create table hotel_features (
     hotel_id INT PRIMARY KEY,
+    hotel_total_rooms int,
+    hotel_room_availability varchar(1) default 'y',
+    hotel_star_rating int,
+    hotel_user_rating float(10 , 2 ),
+    hotel_price_of_room float(10 , 4 ),
+    hotel_popularity int,
     hotel_parking varchar(1) default 'N',
     hotel_wifi varchar(1) default 'N',
     hotel_bar varchar(1) default 'N',
