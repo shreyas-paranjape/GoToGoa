@@ -9,7 +9,7 @@ create table phy_add (
 );
 
 create table comm (
-    comm_id int PRIMARY KEY,
+    comm_id int PRIMARY KEY auto_increment,
     comm_website varchar(25),
     comm_email varchar(50),
     comm_phone varchar(20)
@@ -38,7 +38,6 @@ create table org_type (
 );
 
 create table org_type_map (
-    org_type_map_id int PRIMARY KEY,
     org_id INT,
     org_type_id INT,
     foreign key (org_id)
