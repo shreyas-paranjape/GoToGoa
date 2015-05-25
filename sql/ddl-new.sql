@@ -42,6 +42,24 @@ create table organisation (
 		references comm (comm_id)
 );
 
+-- Tables for apping "organisation" to "organisation_type"
+
+create table organisation_type (
+	type_id int not null primary key auto_increment,
+	type_name varchar (20)
+);
+
+create table org_type_mapper (
+	otype_id int not null primary key,
+	o_id int not null,
+	foreign key (otype_id)
+		references organisation_type (type_id),
+	foreign key (o_id)
+		references organisation (org_id)
+);
+
+--
+
 create table person (
 	person_id int not null primary key,
 	comm_id int not null,
@@ -57,7 +75,7 @@ create table person (
 		references comm (comm_id)
 );
 
--- 3.1 Tables related to "organisation".
+-- 3.0 Tables related to "organisation".
 
 create table hotel (
 	hotel_id int not null primary key,
@@ -80,7 +98,7 @@ create table hotel (
 		references organisation (org_id)
 );
 
---3.1.1 Tables related to "hotel"
+--3.0.1 Tables related to "hotel"
 
 create table room_types (
 	room_id int not null primary key auto_increment,
@@ -94,7 +112,7 @@ create table room_types (
 		references hotel (hotel_id)
 );
 
--- 3.2 Tables related to "person"
+-- 3.1 Tables related to "person"
 
 create table employee (
 	employee_id int not null primary key,
