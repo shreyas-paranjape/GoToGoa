@@ -4,14 +4,15 @@
     tools:context=".Home">
 
     <item android:id="@+id/action_search"
-        android:icon="@android:drawable/ic_menu_search"
         android:title="@string/action_search"
-        app:showAsAction="always" />
+        android:icon="@android:drawable/ic_menu_search"
+        app:showAsAction="collapseActionView|ifRoom"
+        app:actionViewClass="android.support.v7.widget.SearchView" />
 
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:title=""
+        android:title="@string/action_settings"
         android:icon="@android:drawable/ic_menu_preferences"
-        app:showAsAction="always" />
+        app:showAsAction="never" />
 </menu>
