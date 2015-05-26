@@ -75,12 +75,14 @@ create table facility_type_map (
 );
 
 create table hotel (
-    hotel_id INT PRIMARY KEY auto_increment,
-    hotel_description text
+    hotel_id INT PRIMARY KEY,
+    hotel_description text,
+    foreign key (hotel_id)
+        references facility (fac_id)
 );
 
 create table hotel_features (
-    hotel_id INT PRIMARY KEY,
+    hotel_id INT PRIMARY KEY not null,
     hotel_total_rooms int,
     hotel_room_availability varchar(1) default 'y',
     hotel_star_rating int,
@@ -109,26 +111,13 @@ create table hotel_room (
         references hotel (hotel_id)
 );
 
-create table vehicle_type (
-    veh_type_id int PRIMARY KEY auto_increment,
-    description varchar(50) NOT NULL
-);
-
-create table vehicle (
-    veh_id int PRIMARY KEY auto_increment,
-    veh_no varchar(50) NOT NULL,
-    veh_type INT,
-    foreign key (veh_type)
-        references vehicle_type (veh_type_id)
-);
-
 create table person_id_type (
     per_id_type_id int primary key auto_increment,
     description text
 );
 
 create table person (
-    per_id INT PRIMARY KEY auto_increment,
+    per_id INT PRIMARY KEY not null,
     last_name varchar(50) NOT NULL,
     first_name varchar(50) NOT NULL,
     username varchar(50) NOT NULL,
@@ -137,7 +126,9 @@ create table person (
     id_no INT,
     birth_date DATE,
     foreign key (id_type)
-        references person_id_type (per_id_type_id)
+        references person_id_type (per_id_type_id),
+    foreign key (per_id)
+        references party (party_id)
 );
 
 create table person_role (
@@ -152,4 +143,50 @@ create table person_role_map (
         references person (per_id),
     foreign key (person_role_id)
         references person_role (per_role_id)
+);
+
+create table feedback (
+    user_id int not null,
+    hotel_id int not null,
+    liked varchar(1),
+    comment text,
+    review text,
+    foreign key (user_id)
+        references person (per_id),
+    foreign key (hotel_id)
+        references hotel (hotel_id)
+);
+
+create table vehicle_type (
+    veh_type_id int PRIMARY KEY auto_increment,
+    description varchar(50) NOT NULL
+);
+
+create table vehicle (
+    veh_id int PRIMARY KEY auto_increment,
+    veh_no varchar(50) NOT NULL,
+    veh_type INT,
+    foreign key (veh_type)
+        references vehicle_type (veh_type_id)
+);
+
+create table taxi (
+    tid int not null primary key,
+    tcid int not null,
+    location text,
+    booked varchar(1),
+    foreign key (tcid)
+        references person (per_id)
+    foreign key (tid)
+        references vehicle (veh_id)
+);
+
+create table rental (
+    rid int not null primary key,
+    fi int not null,
+    booked varchar(1),
+    foreign key (fi)
+        references facility (fac_id),
+    foreign key (rid)
+        references vehicle (veh_id)
 );
