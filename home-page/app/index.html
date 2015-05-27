@@ -1,6 +1,7 @@
 <!doctype html>
 <html class="no-js">
-  <head>
+
+<head>
     <meta charset="utf-8">
     <title>home page</title>
     <meta name="description" content="">
@@ -13,20 +14,24 @@
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/gridster/dist/jquery.gridster.css">
-    <!-- endbuild -->
-    
 
-  </head>
-  <body>
+    <link rel="stylesheet" href="bower_components/gridster/dist/jquery.gridster.css">
+   
+    <!-- endbuild -->
+    <style>
+    </style>
+
+</head>
+
+<body>
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. 
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
-    
+
     <nav class="navbar navbar-gtg">
-            <div class="container-fluid">
-                <div class="navbar-header">
+        <div class="container-fluid">
+            <div class="navbar-header">
                 <a class="navbar-brand" href="#">GoToGoa</a>
             </div>
 
@@ -36,7 +41,7 @@
                         <a href="#">
                             <i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i> Trip
                         </a>
-                     </li>
+                    </li>
                     <li>
                         <a href="#"><i class="glyphicon glyphicon-star" aria-hidden="true"></i> Hotel</a>
                     </li>
@@ -51,44 +56,45 @@
                 </ul>
             </div>
 
-         </div>
+        </div>
     </nav>
-   
+
     <div class="jumbo-wrapper">
         <div class="jumbotron">
-            <div class="row">  
+            <div class="row">
                 <div class="col-xs-6">
                     <h1>Welcome</h1>
-                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
+                    <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
 
-    <div class="container-fluid trip-planner-form";>
+    <div class="container-fluid trip-planner-form" ;>
         <div class="row">
             <h3>Trip plan</h3>
         </div>
-        <div class="row"> 
+        <div class="row">
             <form>
                 <fieldset>
                     <div class="col-md-3">
                         <label>From date</label>
-                        <input type="text" >
+                        <input type="text">
                     </div>
-                    
+
                     <div class="col-md-3">
                         <label>To date</label>
-                        <input type="text" > 
+                        <input type="text">
                     </div>
-                    
+
                     <div class="col-md-3">
                         <label>Interest</label>
                         <select>
                             <option>Choose many</option>
                         </select>
                     </div>
-                    
+
                     <div class="col-md-3">
                         <button class="btn btn-primary" href="#" role="button">Create trip</button>
                     </div>
@@ -96,8 +102,8 @@
             </form>
         </div>
     </div>
-      
-    <div class="container-fluid random-picks-grid";>
+
+    <div class="container-fluid random-picks-grid" ;>
         <!--<div id="grid" class="row">
           <figure class="col-md-3 picture-item nopadding" data-groups='["photography"]'>
             <img src="images/one.jpg" height="100%" width="100%" />
@@ -122,80 +128,109 @@
           </figure>
             
          </div>-->
-       <div class="gridster">
+        <div class="gridster">
             <div class="grid">
-                <section data-row="1" data-col="1" data-sizex="1" data-sizey="1"></section>
-                <section data-row="2" data-col="1" data-sizex="1" data-sizey="1"></section>
-                <section data-row="3" data-col="1" data-sizex="1" data-sizey="1"></section>
+                <section data-row="1" data-col="1" data-sizex="1" data-sizey="1">
+                    <img src="images/pic1.jpg" />
+                </section>
 
-                <section data-row="1" data-col="2" data-sizex="2" data-sizey="1"></section>
-                <section data-row="2" data-col="2" data-sizex="2" data-sizey="2"></section>
+                <section data-row="2" data-col="1" data-sizex="1" data-sizey="1">
+                    <img src="images/pic3.jpg" />
+                </section>
+                <section data-row="3" data-col="1" data-sizex="1" data-sizey="1">
+                    <img src="images/pic9.jpg" />
+                </section>
 
-                <section data-row="1" data-col="4" data-sizex="1" data-sizey="1"></section>
-                <section data-row="2" data-col="4" data-sizex="2" data-sizey="1"></section>
-                <section data-row="3" data-col="4" data-sizex="1" data-sizey="1"></section>
+                <section data-row="1" data-col="2" data-sizex="2" data-sizey="1">
+                    <div class="imageContainer1">Hello World Hello</div>
+                </section>
+                <section data-row="2" data-col="2" data-sizex="2" data-sizey="2">
+                    <div class="imageContainer2">
+                        <p>Hello World</p>
+                       
+                </section>
 
-                <section data-row="1" data-col="5" data-sizex="1" data-sizey="1"></section>
-                <section data-row="3" data-col="5" data-sizex="1" data-sizey="1"></section>
+                <section data-row="1" data-col="4" data-sizex="1" data-sizey="1">
+                    <img src="images/pic5.jpg" />
+                </section>
+                <section data-row="2" data-col="4" data-sizex="2" data-sizey="1">
+                    <img src="images/pic10.jpg" />
+                </section>
+                <!--
+                <section data-row="3" data-col="4" data-sizex="1" data-sizey="1">
+                
+                </section>
+-->
 
-                <section data-row="1" data-col="6" data-sizex="1" data-sizey="1"></section>
-                <section data-row="2" data-col="6" data-sizex="1" data-sizey="2"></section>
-            </ul>
+                <section data-row="1" data-col="5" data-sizex="1" data-sizey="1">
+                    <div class="imageContainer">Some Text</div>
+                </section>
+                <section data-row="3" data-col="5" data-sizex="1" data-sizey="1">
+                    <img src="images/pic8.jpg" />
+                </section>
+
+                <section data-row="1" data-col="6" data-sizex="1" data-sizey="1">
+                    <img src="images/pic11jpg" />
+                </section>
+                <section data-row="2" data-col="6" data-sizex="1" data-sizey="2">
+                    <img src="images/pic7.jpg" />
+                </section>
+                </ul>
+            </div>
+
         </div>
 
-    </div>
-      
-    <footer class="footer" role="contentinfo">
-        <div class="footer-logo">
-            <img src="" alt="Logo image">
-        </div>
-        <div class="footer-links">
-            <ul>
-                <li>
-                    <h3>Content</h3>
-                </li>
-                <li><a href="javascript:void(0)">About</a>
-                </li>
-                <li><a href="javascript:void(0)">Contact</a>
-                </li>
-                <li><a href="javascript:void(0)">Products</a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <h3>Follow Us</h3>
-                </li>
-                <li><a href="javascript:void(0)">Facebook</a>
-                </li>
-                <li><a href="javascript:void(0)">Twitter</a>
-                </li>
-                <li><a href="javascript:void(0)">YouTube</a>
-                </li>
-            </ul>
-            <ul>
-                <li>
-                    <h3>Legal</h3>
-                </li>
-                <li><a href="javascript:void(0)">Terms and Conditions</a>
-                </li>
-                <li><a href="javascript:void(0)">Privacy Policy</a>
-                </li>
-            </ul>
-        </div>
-        <hr>
-        <p>Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.</p>
-    </footer>
-      
-      
-    <!-- build:js(.) scripts/vendor.js -->
-    <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <!-- endbower -->
-    <!-- endbuild -->
-    <script src="bower_components/gridster/dist/jquery.gridster.js"></script>
+        <footer class="footer" role="contentinfo">
+            <div class="footer-logo">
+                <img src="" alt="Logo image">
+            </div>
+            <div class="footer-links">
+                <ul>
+                    <li>
+                        <h3>Content</h3>
+                    </li>
+                    <li><a href="javascript:void(0)">About</a>
+                    </li>
+                    <li><a href="javascript:void(0)">Contact</a>
+                    </li>
+                    <li><a href="javascript:void(0)">Products</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <h3>Follow Us</h3>
+                    </li>
+                    <li><a href="javascript:void(0)">Facebook</a>
+                    </li>
+                    <li><a href="javascript:void(0)">Twitter</a>
+                    </li>
+                    <li><a href="javascript:void(0)">YouTube</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <h3>Legal</h3>
+                    </li>
+                    <li><a href="javascript:void(0)">Terms and Conditions</a>
+                    </li>
+                    <li><a href="javascript:void(0)">Privacy Policy</a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <p>Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.</p>
+        </footer>
 
-    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-    <!--<script>
+
+        <!-- build:js(.) scripts/vendor.js -->
+        <!-- bower:js -->
+        <script src="bower_components/jquery/dist/jquery.js"></script>
+        <!-- endbower -->
+        <!-- endbuild -->
+        <script src="bower_components/gridster/dist/jquery.gridster.js"></script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--<script>
       (function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=
       function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;
       e=o.createElement(i);r=o.getElementsByTagName(i)[0];
@@ -206,6 +241,7 @@
 
         <!-- build:js({app,.tmp}) scripts/main.js -->
         <script src="scripts/main.js"></script>
-        <!-- endbuild -->  
+        <!-- endbuild -->
 </body>
+
 </html>
