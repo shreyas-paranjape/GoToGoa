@@ -201,15 +201,15 @@ create table rental (
 );
 
 create table product (
-	pro_id int not null primary key auto_increment,
-	pro_name varchar(20),
-	cost float(10 , 4 ),
-	pro_descrip text,
-	vendor_id int not null,
-	foreign key (vendor_id)
-		references person (per_id)
+    pro_id int not null primary key auto_increment,
+    pro_name varchar(20),
+    cost float(10 , 4 ),
+    pro_descrip text,
+    vendor_id int not null,
+    foreign key (vendor_id)
+        references person (per_id)
 );
 
-create table order (
-	
+create table orders (
+
 );
