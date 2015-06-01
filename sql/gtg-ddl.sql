@@ -102,13 +102,16 @@ create table hotel_features (
 create table hotel_room (
     room_id int not null primary key,
     hotel_id int,
+    pid int,
     room_type varchar(20),
     num int,
     price float(10 , 4 ),
     room_facilities text,
     description text,
     foreign key (hotel_id)
-        references hotel (hotel_id)
+        references hotel (hotel_id),
+    foreign key (pid)
+        references product (pro_id)
 );
 
 create table person_id_type (
@@ -132,7 +135,7 @@ create table person (
 );
 
 create table person_role (
-    per_role_id int PRIMARY KEY auto_increment,
+    per_role_id int PRIMARY KEY not null auto_increment,
     description varchar(50) NOT NULL
 );
 
@@ -173,20 +176,40 @@ create table vehicle (
 create table taxi (
     tid int not null primary key,
     tcid int not null,
+    pid int,
     location text,
     booked varchar(1),
     foreign key (tcid)
-        references person (per_id)
+        references person (per_id),
     foreign key (tid)
-        references vehicle (veh_id)
+        references vehicle (veh_id),
+    foreign key (pid)
+        references product (pro_id)
 );
 
 create table rental (
     rid int not null primary key,
     fi int not null,
+    pid int,
     booked varchar(1),
     foreign key (fi)
         references facility (fac_id),
     foreign key (rid)
-        references vehicle (veh_id)
+        references vehicle (veh_id),
+    foreign key (pid)
+        references product (pro_id)
+);
+
+create table product (
+    pro_id int not null primary key auto_increment,
+    pro_name varchar(20),
+    cost float(10 , 4 ),
+    pro_descrip text,
+    vendor_id int not null,
+    foreign key (vendor_id)
+        references person (per_id)
+);
+
+create table orders (
+
 );
