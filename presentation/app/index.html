@@ -27,51 +27,19 @@
                 </div>
                 <nav class="nav navbar-nav">
                     <li>
-                        <a>Trip planner</a>
+                        <a ui-sref="planner.hotel.list" >Trip planner</a>
                     </li>
                     <li>
-                        <a>Trip itenarary</a>
+                        <a ui-sref="details">Trip itenarary</a>
                     </li>
                 </nav>
             </div>
         </div>
     </header>
     
-
-    
     <div class="container">
-        <div class="trip-params" style="padding:20px;">
-            Trip params : 
-        </div>
-        <aside class="module-nav">
-            <nav class="nav navbar-nav">
-                <div>
-                    <a ui-sref="trip">Trips</a>
-                </div>
-                <div>
-                    <a ui-sref="hotel.list">Hotels</a>
-                </div>
-                <div>
-                    <a ui-sref="rental.list">Rentals</a>
-                </div>
-                <div>
-                    <a ui-sref="restaurant">Restaurants</a>
-                </div>
-                <div>
-                    <a ui-sref="cruise">Cruises</a>
-                </div>
-                <div>
-                    <a ui-sref="destination">Destinations</a>
-                </div>
-                <div>
-                    <a ui-sref="activity">Activities</a>
-                </div>
-            </nav>
-        </aside>
-        <section class="module-wrapper">
-            <!--<div ncy-breadcrumb></div>-->
-            <div ui-view></div>
-        </section>
+        <!--<div ncy-breadcrumb></div>-->
+        <div ui-view></div>
     </div>
     
     <footer class="footer">
@@ -102,6 +70,8 @@
     <script src="module/hotel/script/controller.js"></script>
     <script src="module/rental/script/base.js"></script>
     <script src="module/rental/script/controller.js"></script>
+    <script src="module/itenarary/script/base.js"></script>
+    <script src="module/itenarary/script/controller.js"></script>
     <script src="scripts/app.js"></script>
     <!-- endbuild -->
 

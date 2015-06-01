@@ -19,7 +19,7 @@
         <section class="items">
             <div ng-repeat="hotel in hotels | filter: items.keyword | filter: locationFilter">
                 <ul>
-                    <li><a ui-sref="hotel.detail">{{hotel.name}}</a></li>
+                    <li><a ui-sref="planner.hotel.detail">{{hotel.name}}</a></li>
                     <li>{{hotel.location}}</li>
                     <li>{{hotel.stars}}</li>
                 </ul>

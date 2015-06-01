@@ -22,10 +22,11 @@ angular.element(document).ready(function () {
             'ui.bootstrap',
 
             'hotel',
-            'rental'
+            'rental',
+            'itenarary'
         ])
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/hotel');
+            $urlRouterProvider.otherwise('/trip');
         });
     
     angular.bootstrap(document, ['gotogoa']);

@@ -5,7 +5,7 @@ angular.module('rental', [
     .config(function ($stateProvider) {
         'use strict';
         $stateProvider
-            .state('rental', {
+            .state('planner.rental', {
                 url: '/rental',
                 templateUrl: 'module/rental/view/home.html',
                 ncyBreadcrumb: {
@@ -13,7 +13,7 @@ angular.module('rental', [
                 },
                 abstract: true
             })
-            .state('rental.list', {
+            .state('planner.rental.list', {
                 url: '',
                 templateUrl: 'module/rental/view/list.html',
                 ncyBreadcrumb: {
@@ -24,7 +24,7 @@ angular.module('rental', [
                 },
                 controller: 'RentalListController'
             })
-            .state('rental.detail', {
+            .state('planner.rental.detail', {
                 url: '/detail',
                 templateUrl: 'module/rental/view/detail.html',
                 ncyBreadcrumb: {

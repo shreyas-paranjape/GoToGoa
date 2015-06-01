@@ -5,15 +5,15 @@ angular.module('hotel', [
     .config(function ($stateProvider) {
         'use strict';
         $stateProvider
-            .state('hotel', {
-                url: '/hotel',
+            .state('planner.hotel', {
+                url: '',
                 templateUrl: 'module/hotel/view/home.html',
                 ncyBreadcrumb: {
                     label: 'Hotels'
                 },
                 abstract: true
             })
-            .state('hotel.list', {
+            .state('planner.hotel.list', {
                 url: '',
                 templateUrl: 'module/hotel/view/list.html',
                 ncyBreadcrumb: {
@@ -24,7 +24,7 @@ angular.module('hotel', [
                 },
                 controller: 'HotelListController'
             })
-            .state('hotel.detail', {
+            .state('planner.hotel.detail', {
                 url: '/detail',
                 templateUrl: 'module/hotel/view/detail.html',
                 ncyBreadcrumb: {
