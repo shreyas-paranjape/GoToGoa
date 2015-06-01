@@ -11,13 +11,13 @@
   	:available-media-types ["application/json"]
   	:allowed-methods [:get :post]
   
-  	;;curl -v http://localhost:3000/api/hotel 
-  	:handle-ok (fn [_] 
-             	     	(hotel/get-all-hotels))
+  	;;curl -v -X GET http://localhost:3000/api/hotel -d '{"q":"fomento travel"}' -H "Content-Type: application/json"
+  	:handle-ok (fn [ctx] 
+             	     	(hotel/get-min-hotels (get-in ctx [:request :json-params])))
   
-  	;;curl -v -X POST http://localhost:3000/api/hotel -d '{"name": "hotel 3"}' -H "Content-Type: application/json"
-  	:post! (fn [ctx] (hotel/insert-hotel 
-            	          	(get-in ctx [:request :json-params])))
+  	;;curl -v -X POST http://localhost:3000/api/hotel -d '{"r1":{"i1" :1},"r2":{"i2" : 1}}' -H "Content-Type: application/json"
+	:post! (fn [ctx] (hotel/insert-hotel 
+            	        	(get-in ctx [:request :json-params])))
   )
 
 (defresource hotel-update-res [id request]
@@ -43,35 +43,35 @@
 	         	(get-in ctx [:request :json-params]) id))
 )
 
-(defresource hotel-like-res [id request]
-	:available-media-types ["application/json"]
-	:allowed-methods [:get :post :delete]
+;;(defresource hotel-like-res [id request]
+;;	:available-media-types ["application/json"]
+;;	:allowed-methods [:get :post :delete]
 
 	;;curl -v http://localhost:3000/api/hotel/1/like
 
-	:handle-ok (fn [_] (hotel/get-likes
-		      	id))
+;;	:handle-ok (fn [_] (hotel/get-likes
+;;		      	id))
 			
 	;;curl -v -X POST http://localhost:3000/api/hotel/1/like -d '{"customer_id": 223,"liked": "y","comment": "It rocks"}' -H "Content-Type: application/json"
 
-	:post! (fn [ctx] (hotel/insert-like 
-                       	(get-in ctx [:request :json-params]) id))
+;;	:post! (fn [ctx] (hotel/insert-like 
+;;                     	(get-in ctx [:request :json-params]) id))
 
 	;;curl -v -X DELETE http://localhost:3000/api/hotel/1/like -d '{"customer_id": 223}' -H "Content-Type: application/json"
 
-	:delete! (fn [ctx] (hotel/delete-like 
-		 	(get-in ctx [:request :json-params]) id))
-)
+;;	:delete! (fn [ctx] (hotel/delete-like 
+;;		 	(get-in ctx [:request :json-params]) id))
+;;)
 
-(defresource hotel-dislike-res [id request]
-	:available-media-types ["application/json"]
-	:allowed-methods [:get]
+;;(defresource hotel-dislike-res [id request]
+;;	:available-media-types ["application/json"]
+;;	:allowed-methods [:get]
 
 	;;curl -v http://localhost:3000/api/hotel/1/dislike
 
-	:handle-ok (fn [_] (hotel/get-dislikes
-		      	id))
-)
+;;	:handle-ok (fn [_] (hotel/get-dislikes
+;;		      	id))
+;;)
 
 (defresource login
 	:available-media-types ["application/json"]

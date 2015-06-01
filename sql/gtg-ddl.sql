@@ -3,9 +3,8 @@ create table phy_add (
     pincode varchar(10) NOT NULL,
     phy_add_line1 varchar(100),
     phy_add_line2 varchar(100),
-    phy_add_town varchar(30),
-    phy_add_district varchar(30),
-    phy_add_state varchar(20)
+    phy_add_city varchar(30),
+    phy_add_district varchar(30)
 );
 
 create table comm (
@@ -208,8 +207,4 @@ create table product (
     vendor_id int not null,
     foreign key (vendor_id)
         references person (per_id)
-);
-
-create table orders (
-
 );
