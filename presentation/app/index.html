@@ -7,62 +7,78 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
-    <!-- build:css(.) styles/vendor.css -->
-    <!-- bower:css -->
-    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-    <!-- endbower -->
-    <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/css/datepicker.css" />
     <!-- endbuild -->
-    <!--
-    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
-    -->
+   
 </head>
 
 <body>
     <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your      browser</a> to improve your experience.</p>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. 
+        Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
-    <div class="header">
+    <header class="header">
         <div class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="#/">GoToGoa</a>
+                    <a class="navbar-brand" ui-sref="hotel">Go To Goa</a>
                 </div>
-                <div class="collapse navbar-collapse" id="js-navbar-collapse">
-
-                    <ul class="nav navbar-nav">
-                        <li><a ui-sref="hotel">Hotels</a>
-                        </li>
-                        <li><a ui-sref="rental">Rentals</a>
-                        </li>
-                    </ul>
-                </div>
+                <nav class="nav navbar-nav">
+                    <li>
+                        <a>Trip planner</a>
+                    </li>
+                    <li>
+                        <a>Trip itenarary</a>
+                    </li>
+                </nav>
             </div>
         </div>
-    </div>
+    </header>
+    
+
+    
     <div class="container">
-        <div ncy-breadcrumb></div>
-        <div ui-view></div>
-    </div>
-    <div class="footer">
-        <div class="container">
-            <p><span class="glyphicon glyphicon-heart"></span> from the GTS team</p>
+        <div class="trip-params" style="padding:20px;">
+            Trip params : 
         </div>
+        <aside class="module-nav">
+            <nav class="nav navbar-nav">
+                <div>
+                    <a ui-sref="trip">Trips</a>
+                </div>
+                <div>
+                    <a ui-sref="hotel.list">Hotels</a>
+                </div>
+                <div>
+                    <a ui-sref="rental.list">Rentals</a>
+                </div>
+                <div>
+                    <a ui-sref="restaurant">Restaurants</a>
+                </div>
+                <div>
+                    <a ui-sref="cruise">Cruises</a>
+                </div>
+                <div>
+                    <a ui-sref="destination">Destinations</a>
+                </div>
+                <div>
+                    <a ui-sref="activity">Activities</a>
+                </div>
+            </nav>
+        </aside>
+        <section class="module-wrapper">
+            <!--<div ncy-breadcrumb></div>-->
+            <div ui-view></div>
+        </section>
     </div>
+    
+    <footer class="footer">
+        <div class="container" style="padding-top:50px;">
+            Footer :
+        </div>
+    </footer>
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -80,20 +96,15 @@
     <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
-    <!--    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.0-beta.17/angular.min.js"></script>-->
     <script src="module/hotel/script/base.js"></script>
     <script src="module/hotel/script/controller.js"></script>
     <script src="module/rental/script/base.js"></script>
     <script src="module/rental/script/controller.js"></script>
-    <script src="scripts/js/bootstrap-datepicker.js"></script>
-    <!--
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    -->
     <script src="scripts/app.js"></script>
-    <!--<script src="scripts/controllers/about.js"></script>-->
     <!-- endbuild -->
+
 </body>
 
 </html>

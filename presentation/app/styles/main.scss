@@ -1,0 +1,40 @@
+$icon-font-path: "fonts/bootstrap/";
+@import "../app/styles/stylesheets/_bootstrap.scss";
+
+/* Fonts */
+@font-face {
+    font-family: 'BrandonGrotReg'; 
+    src: url('/styles/fonts/Brandon_Grot/Brandon_reg.otf'); 
+}
+
+@font-face {
+    font-family: 'BrandonGrotBold'; 
+    src: url('/styles/fonts/Brandon_Grot/Brandon_bld.otf'); 
+}
+
+@font-face {
+    font-family: 'BrandonGrotLight'; 
+    src: url('/styles/fonts/Brandon_Grot/Brandon_light.otf'); 
+}
+
+body {
+    font-family: 'BrandonGrotReg'
+}
+
+.navbar-brand {
+    font-family: 'BrandonGrotBold'
+}
+
+body > .container {
+    position: relative;
+    aside.module-nav {
+        font-family: 'BrandonGrotBold';
+        width: 10%;
+        position: relative;
+    }
+    section.module-wrapper {
+        width: 90%;
+        left: 10%;
+        position: relative;
+    }
+}
