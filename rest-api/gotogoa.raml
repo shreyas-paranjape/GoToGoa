@@ -1,11 +1,45 @@
 #%RAML 0.8
-title: GotoGoa travel portal API
+title: Goa travel portal API
 version: 1
 baseUri: https://api.gotogoa.com/{version}/
 mediaType: application/json
+
+#securitySchemes:
+#securedBy:
+#traits:
+#resourceTypes:
+
+documentation:
+  - title: Authentication
+    content: Explain how to autheticate with the server
+            
+
 schemas:
   - hotel-min: |
   - hotel-all: |
+  
+#trip
+/trip:
+  description: Trip api
+  get: 
+    description: Get all trips matching the query
+    queryParameters:
+    responses:
+      200:
+      404:
+  post:
+    description: Create a new trip using the data provided
+  /{id}:
+    uriParameters:
+      id:
+        type: integer
+    get:
+      description: Get all trip details
+    put:
+      description: update trip details
+    delete: 
+      description: delete the trip record
+
 # Hotel
 /hotel:
   description: Hotel booking API
@@ -19,7 +53,7 @@ schemas:
         type: date
       endDate:
         type: date
-      rooms:
+      room:
         description: Number of rooms required
         type: integer
     responses:
@@ -27,7 +61,16 @@ schemas:
         body:
           application/json:
             schema: hotel-min
-            example:
+            example: |
+              {
+                "name": "",
+                "description":"",
+                "city":"",
+                "star-rating":"",
+                "user-rating": "",
+                "price-range": "",
+                "amenities":"",
+              }
       404:
         body:
           application/json:
@@ -40,10 +83,10 @@ schemas:
         example:
         schema:
          
-  /{code}:
+  /{id}:
     uriParameters:        
-      code:
-        type: string
+      id:
+        type: integer
     get:
       description: Get all the information about the seleted hotel
       responses:
@@ -51,7 +94,28 @@ schemas:
           body:
             application/json:
               schema: hotel-all
-              example:
+              example: |
+                {
+                  "name": "",
+                  "description": "",
+                  "city": "",
+                  "star-rating": "",
+                  "user-rating": "",
+                  "price-range": "",
+                  "amenities": "",
+                  "policy": "",
+                  "reviews": "",
+                  "location": "",
+                  "checkin": "",
+                  "checkout": "",
+                  "room":
+                    [
+                      "type-name": "",
+                      "facilities":"",
+                      "policy":"",
+                      "price":""
+                    ]
+                }
     delete:
       description: delete the hotel record
       body:
@@ -65,16 +129,14 @@ schemas:
           example:
           schema:       
             
-    /book:
-      post: 
-        body:
-          application/json:
-            example:
-            schema:
-         
-       
+
+             
     /like:
+      get:
+        description: get the number of likes for the hotel
+        
       post:
+        description: like the hotel if not already liked
         body:
           application/json:
             example:
@@ -82,37 +144,135 @@ schemas:
     
     /comment:
       post:
+        description: Add a new comment
         body:
           application/json:
             example:
             schema:
+            
       get:
-    
-    /share:
-      post:
-        body:
-          application/json:
-            example:
-            schema:
-    
+        description: get all comments for the hotel
+        
     /review:
       post:
         body:
           application/json:
             example:
             schema:
-    
+            
       get:
+      
+    /room:
+      get:
+        description: Get all rooms matching query
+        queryParameters:
+        responses:
+          200:
+          404:
+          
+      post: 
+        description: Create a new room record for the hotel
+        body:
+          application/json:
+            example:
+            schema:
+      
+      /{id}:
+        get:
+          description: get all the room details
+          
+        put: 
+          description: update the rooms details
+          
+        delete: 
+          description: delete the room record
+        
+        /book:
+          post:
+            description: Book the room
+            
+          get:
+            description: get the booking status of the room
+
+
+#Restaurant
+/restaurant:
+    description: restaurant information api
+    get:
+      description: Gets all restaurants matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
+    
+
+#Casino
+/casino:
+    description: Casino information api
+    get:
+      description: Gets all casino's matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
+        
+#Night club
+/club:
+    description: Night club information api
+    get:
+      description: Gets all Night club's matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
       
 
 # Rental
 /rental:
+    description: Rental booking api
+    get:
+      description: Gets all Night club's matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
+
+#Taxi
+/taxi:
+    description: Taxi booking api
+    get:
+      description: Gets all Taxi's matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
+
+#Cruise
+/cruise:
+    description: Cruise booking api
+    get:
+      description: Gets all Cruise's matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
 
 # Event
 /event:
+    description: Event booking api
+    get:
+      description: Gets all Event's matching the query
+      queryParameters:
+      responses:
+        200:
+        404:
 
-# Places
-/place:
-
-# Booking
-/booking:
+# Tourist destination
+/destination:
+    description: Tourist destinations
+    get:
+      description: Gets all places matching the query
+      queryParameters:
+      responses:
+        200:
+        404:

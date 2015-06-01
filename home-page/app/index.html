@@ -29,37 +29,39 @@
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="navbar navbar-gtg">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#">GoToGoa</a>
+    <header>
+        <nav class="navbar navbar-gtg">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">GoToGoa</a>
+                </div>
+
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="#">
+                                <i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i> Trip
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-star" aria-hidden="true"></i> Hotel</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-picture" aria-hidden="true"></i> Destination</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="#"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i> Sign in</a>
+                        </li>
+                    </ul>
+                </div>
+
             </div>
+        </nav>
+    </header>
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-briefcase" aria-hidden="true"></i> Trip
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="glyphicon glyphicon-star" aria-hidden="true"></i> Hotel</a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="glyphicon glyphicon-picture" aria-hidden="true"></i> Destination</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="#"><i class="glyphicon glyphicon-lock" aria-hidden="true"></i> Sign in</a>
-                    </li>
-                </ul>
-            </div>
-
-        </div>
-    </nav>
-
-    <div class="jumbo-wrapper">
+    <section class="jumbo-wrapper">
         <div class="jumbotron">
             <div class="row">
                 <div class="col-xs-6">
@@ -69,9 +71,9 @@
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="container-fluid trip-planner-form" ;>
+    <section class="container-fluid trip-planner-form" ;>
         <div class="row">
             <h3>Trip plan</h3>
         </div>
@@ -101,86 +103,20 @@
                 </fieldset>
             </form>
         </div>
-    </div>
+    </section>
 
-    <div class="container-fluid random-picks-grid" ;>
-        <!--<div id="grid" class="row">
-          <figure class="col-md-3 picture-item nopadding" data-groups='["photography"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-          <figure class="col-md-6 picture-item nopadding" data-groups='["wallpaper","3d"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-          <figure class="col-md-3 picture-item nopadding" data-groups='["wallpaper","3d"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-          <figure class="col-md-3 picture-item picture-item--h2 nopadding" data-groups='["graphics"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-            <figure class="col-md-5 picture-item picture-item--h2 nopadding" data-groups='["graphics"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-            <figure class="col-md-8 picture-item picture-item--h2 nopadding" data-groups='["graphics"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-            <figure class="col-md-10 picture-item picture-item--h2 nopadding" data-groups='["graphics"]'>
-            <img src="images/one.jpg" height="100%" width="100%" />
-          </figure>
-            
-         </div>-->
-        <div class="gridster">
-            <div class="grid">
-                <section data-row="1" data-col="1" data-sizex="1" data-sizey="1">
-                    <img src="images/pic1.jpg" />
-                </section>
-
-                <section data-row="2" data-col="1" data-sizex="1" data-sizey="1">
-                    <img src="images/pic3.jpg" />
-                </section>
-                <section data-row="3" data-col="1" data-sizex="1" data-sizey="1">
-                    <img src="images/pic9.jpg" />
-                </section>
-
-                <section data-row="1" data-col="2" data-sizex="2" data-sizey="1">
-                    <div class="imageContainer1">Hello World Hello</div>
-                </section>
-                <section data-row="2" data-col="2" data-sizex="2" data-sizey="2">
-                    <div class="imageContainer2">
-                        <p>Hello World</p>
-                       
-                </section>
-
-                <section data-row="1" data-col="4" data-sizex="1" data-sizey="1">
-                    <img src="images/pic5.jpg" />
-                </section>
-                <section data-row="2" data-col="4" data-sizex="2" data-sizey="1">
-                    <img src="images/pic10.jpg" />
-                </section>
-                <!--
-                <section data-row="3" data-col="4" data-sizex="1" data-sizey="1">
-                
-                </section>
--->
-
-                <section data-row="1" data-col="5" data-sizex="1" data-sizey="1">
-                    <div class="imageContainer">Some Text</div>
-                </section>
-                <section data-row="3" data-col="5" data-sizex="1" data-sizey="1">
-                    <img src="images/pic8.jpg" />
-                </section>
-
-                <section data-row="1" data-col="6" data-sizex="1" data-sizey="1">
-                    <img src="images/pic11jpg" />
-                </section>
-                <section data-row="2" data-col="6" data-sizex="1" data-sizey="2">
-                    <img src="images/pic7.jpg" />
-                </section>
-                </ul>
+    <section class="random-picks-grid" ;>
+            <div class="gridster">
+                <div class="grid">
+                    <section data-row="1" data-col="1" data-sizex="2" data-sizey="2">
+                    </section>
+                    <section data-row="1" data-col="1" data-sizex="4" data-sizey="2">
+                    </section>
+                </div>
             </div>
+    </section>
 
-        </div>
-
-        <footer class="footer" role="contentinfo">
+    <footer class="footer" role="contentinfo">
             <div class="footer-logo">
                 <img src="" alt="Logo image">
             </div>
@@ -219,7 +155,7 @@
             </div>
             <hr>
             <p>Disclaimer area lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, nostrum repudiandae saepe.</p>
-        </footer>
+     </footer>
 
 
         <!-- build:js(.) scripts/vendor.js -->

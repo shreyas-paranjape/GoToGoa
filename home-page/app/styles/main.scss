@@ -2,12 +2,11 @@ $icon-font-path: "fonts/bootstrap/";
 @import "../app/styles/stylesheets/_bootstrap.scss";
 
 a {
-    color: white;
+  color: white;
 }
 
-ul
-{
-    list-style-type: none;
+ul{
+  list-style-type: none;
 }
 
 .nopadding {
@@ -15,49 +14,6 @@ ul
    margin: 0 !important;
 }
 
-
-
-
-.browsehappy {
-  margin: 0.2em 0;
-  background: #ccc;
-  color: #000;
-  padding: 0.2em 0;
-}
-
-/* Everything but the jumbotron gets side spacing for mobile first views */
-.header,
-.marketing,
-.footer {
-  padding-left: 15px;
-  padding-right: 15px;
-}
-
-/* Custom page header */
-.header {
-  border-bottom: 1px solid #e5e5e5;
-
-  /* Make the masthead heading the same height as the navigation */
-  h3 {
-    margin-top: 0;
-    margin-bottom: 0;
-    line-height: 40px;
-    padding-bottom: 19px;
-  }
-}
-
-/* Custom page footer */
-.footer {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
-}
-
-.container-narrow > hr {
-  margin: 30px 0;
-}
-
-/* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
   width: 100%;
@@ -75,24 +31,20 @@ ul
   }
 }
 
-/* Supporting marketing content */
-.marketing {
-  margin: 40px 0;
-  p + h4 {
-    margin-top: 28px;
-  }
-}
-
 .trip-planner-form{
-    background-color: blue;
-    color: white;
+    background-color: greenyellow;
+    color: crimson;
     height: 10%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
 
 .random-picks-grid{
     padding: 0;
-    width: 95%;
-    margin: 0 auto;
+    /*width: 95%;
+    margin: 0 auto;*/
+    margin-bottom: 10px;
 }
 
 .navbar-gtg {
@@ -107,144 +59,20 @@ ul
     position: relative;
 }
 
-
-
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 800px;
-  }
-
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
-
-  /* Space out the masthead */
-  .header {
-    margin-bottom: 30px;
-  }
-
-  /* Remove the bottom border on the jumbotron for visual effect */
-  .jumbotron {
-    border-bottom: 0;
-  }
-}
-
-/* Footer */
-
-
-.footer {
-    background: #40526b;
-    padding: 0em 1.618em;
-    width: 100%;
-}
-
-.footer .footer-logo {
-    
-    margin-bottom: 2em;
-    text-align: center;
-}
-
-.footer .footer-logo img {
-    height: 3em;
-    margin-top: 15px;
-}
-
-.footer .footer-links {
-    margin-bottom: 1.5em;
-}
-
-.footer .footer-links::after {
-    clear: both;
-    content: "";
-    display: table;
-}
-
-@media screen and (min-width: 40em) {
-    .footer .footer-links {
-        margin-left: 25.58941%;
-    }
-}
-
-.footer ul {
-    margin-bottom: 3em;
-    padding: 0;
-}
-
-@media screen and (min-width: 40em) {
-    .footer ul {
-        float: left;
-        display: block;
-        margin-right: 2.35765%;
-        width: 23.23176%;
-    }
-    .footer ul:last-child {
-        margin-right: 0;
-    }
-    .footer ul:nth-child(3n) {
-        margin-right: 0;
-    }
-    .footer ul:nth-child(3n+1) {
-        clear: left;
-    }
-    .footer ul::after {
-        clear: both;
-        content: "";
-        display: table;
-    }
-}
-
-.footer li {
-    line-height: 1.5em;
-    list-style: none;
-    text-align: center;
-}
-
-@media screen and (min-width: 40em) {
-    .footer li {
-        text-align: left;
-    }
-}
-
-.footer li a {
-    color: rgba(255, 255, 255, 0.4);
-    text-decoration: none;
-}
-
-.footer li a:focus,
-.footer li a:hover {
-    color: white;
-}
-
-.footer li h3 {
-    color: white;
-    font-size: 1em;
-    font-weight: 800;
-    margin-bottom: 0.4em;
-}
-
-.footer hr {
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    margin: 0 auto 1.5em;
-    width: 12em;
-}
-
-.footer p {
-    color: rgba(255, 255, 255, 0.4);
-    font-size: 0.9em;
-    line-height: 1.5em;
-    margin: auto;
-    max-width: 35em;
-    text-align: center;
-}
-
-
-
 /* Gridster */
+
+.gridster {
+    .grid {
+        background-color: yellow;
+        padding: 0px;
+        section {
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            background: url(/images/one.jpg) no-repeat center center;
+            background-size: cover;
+        }
+    }
+}
 
 /*.gridster > * {
     padding: 0;
@@ -318,7 +146,7 @@ ul
 }
 .gridster .gs-w[data-col="11"] {
     left: 90.90909%;
-}*/
+}
 
 @media screen and (max-width: 767px) {
     .gridster > * {
@@ -394,53 +222,96 @@ ul
     .gridster .gs-w[data-col="11"] {
         left: 0%!important;
     }
-}
+}*/
+
 /*ruchita*/
 
-.imageContainer {
-    width: 200px;
-    height: 200px;
-    background-image: url("../images/pic6.jpg");
-    /*    vertical-align: bottom;*/
-    /*       padding-top: 20px;*/
-    
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-weight: bolder;
-    color: #fff;
-    font-size: 20px;
+
+/* Footer */
+
+.footer {
+    background: #40526b;
+    padding: 0em 1.618em;
+    width: 100%;
+    .footer-logo {
+        margin-bottom: 2em;
+        text-align: center;
+        img {
+            height: 3em;
+            margin-top: 15px;
+        }
+    }
+    .footer-links {
+        margin-bottom: 1.5em;
+    }
+    .footer-links::after {
+        clear: both;
+        content: "";
+        display: table;
+    }
+    li {
+        line-height: 1.5em;
+        list-style: none;
+        text-align: center;
+        a {
+            color: rgba(255, 255, 255, 0.4);
+            text-decoration: none;
+        }
+        a:focus,
+        a:hover {
+            color: white;
+        }
+        h3 {
+            color: white;
+            font-size: 1em;
+            font-weight: 800;
+            margin-bottom: 0.4em;
+        }
+    }
+    hr {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        margin: 0 auto 1.5em;
+        width: 12em;
+    }
+    p {
+        color: rgba(255, 255, 255, 0.4);
+        font-size: 0.9em;
+        line-height: 1.5em;
+        margin: auto;
+        max-width: 35em;
+        text-align: center;
+    }
 }
 
-.imageContainer1 {
-    width: 400px;
-    height: 200px;
-    background-image: url("../images/pic2.jpg");
-    /*    vertical-align: bottom;*/
-    
-    padding-top: 60px;
-    padding-left: 10px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-weight: bolder;
-    color: black;
-    font-size: 20px;
+@media screen and (min-width: 40em) {
+    .footer{
+        .footer-links {
+            margin-left: 25.58941%;
+        }
+        ul {
+            margin-bottom: 3em;
+            padding: 0;
+            float: left;
+            display: block;
+            margin-right: 2.35765%;
+            width: 23.23176%;
+        }
+        ul:last-child {
+            margin-right: 0;
+        }
+        ul:nth-child(3n) {
+            margin-right: 0;
+        }
+        ul:nth-child(3n+1) {
+            clear: left;
+        }
+        ul::after {
+            clear: both;
+            content: "";
+            display: table;
+        }
+        li {
+            text-align: left;
+        }
+    }
 }
-
-.imageContainer2 {
-    width: 400px;
-    height: 400px;
-    background-image: url("../images/pic4.jpg");
-    
-    /*    vertical-align: bottom;*/
-    
-    padding-top: 20px;
-    padding-left: 10px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    font-weight: bolder;
-    color: white;
-    font-size: 60px;
-} 
