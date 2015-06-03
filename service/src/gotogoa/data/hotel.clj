@@ -130,3 +130,7 @@
 
 ;;(defn delete-like [record id]
 ;;	(delete lac (where {:id id :customer_id (get-in record ["customer_id"])})))
+
+(defn get-site [record]
+	(j/query db (str "select "(get-in record ["type"])".*, Location.* from "(get-in record ["type"])" inner join (Site inner join Location on location_id=site_location_id) 
+		on hotel_id=site_id")))

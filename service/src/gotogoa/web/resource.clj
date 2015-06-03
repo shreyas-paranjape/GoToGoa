@@ -98,3 +98,11 @@
 	      			)
 			)
 )
+
+(defresource site-res
+	:available-media-types ["application/json"]
+	:allowed-methods [:get :post :put :delete]
+	:handle-ok (fn [ctx]
+			(hotel/get-site 
+				(get-in ctx [:request :json-params])))
+	)

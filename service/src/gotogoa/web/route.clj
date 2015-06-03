@@ -14,6 +14,7 @@
 	(ANY "/login" request (res/login request))
 	(ANY "/test" request (res/testing request))
 	(ANY "/api/hotel" request (res/hotel-res request))
+	(ANY "/api/site" request (res/site-res request))
 	(ANY "/api/hotel/:id" [id request] (res/hotel-update-res id request))
 	;;(ANY "/api/hotel/:id/like" [id request] (res/hotel-like-res id request))
 	;;(ANY "/api/hotel/:id/dislike" [id request] (res/hotel-dislike-res id request))
