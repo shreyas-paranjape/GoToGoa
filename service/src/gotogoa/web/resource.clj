@@ -102,6 +102,9 @@
 (defresource site-res
 	:available-media-types ["application/json"]
 	:allowed-methods [:get :post :put :delete]
+
+	;;curl -v -X GET http://localhost:3000/api/site -d '{"type":"Hotel"}' -H "Content-Type: application/json"
+	
 	:handle-ok (fn [ctx]
 			(hotel/get-site 
 				(get-in ctx [:request :json-params])))
