@@ -36,27 +36,34 @@
 
 
 ;; Select
-
 (defmulti get-site :type)
 
-(defmethod get-site "hotel" [record]
+(defmethod get-site "hotel" [request]
   (select hotel
           (with site (with location))))
 
-(defmethod get-site "restaurant" [record]
+(defmethod get-site "restaurant" [request]
   (select restaurant
           (with site (with location))))
 
-(defmethod get-site :default [record]
-  {"blabla" "blabla"})
+(defmethod get-site :default [request]
+  {"msg" "please specify the type of site to return"
+   "ecode" "101"})
 
 
 
 ;; Insert
-;;(defmulti insert-site "type")
+(defmulti insert-site :type)
 
-;;(defmethod insert-site "hotel" [record]
-;;  (dry-run
-;;   (insert location record)
-;;   (insert site record)
-;;   (insert hotel record)))
+(defmethod insert-site "hotel" [request]
+  (transaction
+   (insert location (values {:city "margaon"}))
+   (insert site (values {:location_id
+                         (subselect location
+                                    (aggregate
+                                     (max :id) :max-location))}))
+   (insert hotel (values {:id
+                          (subselect site
+                                     (aggregate
+                                      (max :id) :max-site))}))))
+           

@@ -9,21 +9,30 @@
 
 (defresource site-res
   :available-media-types ["application/json"]
-  :allowed-methods [:get :post :put :delete]
-  ;;curl -v -X GET http://localhost:3000/api/site
-  ;;     -d '{"type":"Hotel"}'
-  ;;     -H "Content-Type: application/json"
+  :allowed-methods [:get :post]
   :handle-ok (fn [ctx]
                (debug (get-in ctx [:request :body]))
-               (site/get-site (get-in ctx [:request :body]))))
+               (site/get-site (get-in ctx [:request :body])))
+  :post! (fn [ctx]
+           (debug (get-in ctx [:request :body]))
+           (site/insert-site (get-in ctx [:request :body]))))
 
 
-
-
-
-
-
-
+(defresource site [id request]
+  :available-media-types ["application/json"]
+  :allowed-methods[:put :delete :get]
+  :handle-ok (fn[ctx]
+               (debug (get-in ctx [:request :body]))
+               {"message" "not yet implemented"})
+  :delete (fn [ctx]
+            (debug (get-in ctx [:request :body]))
+            {"message" "not yet implemented"})
+  :put! (fn [ctx]
+          (debug (get-in ctx [:request :body]))
+          {"message" "not yet implemented"}))
+          
+        
+          
 
 
 
