@@ -11,7 +11,7 @@
 	:useUnicode "yes"
 	:characterEncoding "UTF-8"
 	:user "root"
-	:password "root"})
+	:password "livefree"})
 
 (timbre/refer-timbre)
 
