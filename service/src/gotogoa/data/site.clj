@@ -1,7 +1,8 @@
 (ns gotogoa.data.site
   (:require [taoensso.timbre :as timbre]
             [environ.core :refer [env]]
-            [clojure.java.jdbc :as j])
+            [clojure.java.jdbc :as j]
+            [clojure.data :refer [diff]])
   (:use korma.db korma.core))
 
 (def db{:classname "com.mysql.jdbc.Driver"
@@ -11,7 +12,7 @@
 	:useUnicode "yes"
 	:characterEncoding "UTF-8"
 	:user "root"
-	:password "root"})
+	:password "livefree"})
 
 (timbre/refer-timbre)
 
@@ -56,14 +57,48 @@
 (defmulti insert-site :type)
 
 (defmethod insert-site "hotel" [request]
-  (transaction
-   (insert location (values {:city "margaon"}))
-   (insert site (values {:location_id
-                         (subselect location
-                                    (aggregate
-                                     (max :id) :max-location))}))
-   (insert hotel (values {:id
-                          (subselect site
-                                     (aggregate
-                                      (max :id) :max-site))}))))
-           
+  (transaction {:isolation :serializable}
+   (insert location (values (get-in request [:hotel :loc])))
+   (insert site (values
+              {:location_id
+               (subselect location
+                          (aggregate(max :id) :max-location))}))
+   (let [hotel-record (dissoc (conj (get-in request [:hotel])
+                                    (first (select site
+                                           (aggregate (max :id) :id)))) :loc)]
+     (debug hotel-record)
+     (insert hotel (values hotel-record)))))
+
+;; Delete
+(defmulti delete-site :type)
+
+(defmethod delete-site "hotel" [request id]
+  (let [loc_id (:location_id (first (select site (fields :location_id) (where {:id id}))))]
+        (transaction {:isolation :serializable}
+                     (delete hotel (where {:id id}))
+                     (delete site (where {:id id})))
+        (try
+          (delete location (where {:id loc_id}))
+          (catch Exception e (error (.getMessage e))))))
+
+;; Update
+
+(defn- update-location [new-loc location_id]
+  (let [ orig-loc (first (select
+                          location (where {:id location_id})))
+        loc-update (first (diff new-loc orig-loc))]
+    (debug loc-update)
+    (if-not (empty? loc-update)
+      (update location (set-fields loc-update) (where {:id (:id orig-loc)})))))
+                                           
+(defmulti update-site :type)
+
+(defmethod update-site "hotel" [request id]
+  (let [new-loc (get-in request [:hotel :loc])
+        orig-hotel (first (select hotel (where {:id id})))
+        new-hotel (dissoc (get-in request [:hotel]) :loc)
+        hotel-update (first (diff new-hotel orig-hotel))]
+    (debug hotel-update)
+    (update-location new-loc (:location_id (first (select site (fields :location_id) (where {:id id})))))
+    (if-not (empty? hotel-update)
+      (update hotel (set-fields hotel-update) (where {:id (:id orig-hotel)})))))
