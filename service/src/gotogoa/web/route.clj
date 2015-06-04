@@ -11,6 +11,7 @@
 
 
 (defroutes app-routes
+  (ANY "/" [] "Welcome to GoToGoa!")
   (ANY "/api/site" request (res/site-res request)))
 
 
