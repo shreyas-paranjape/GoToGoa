@@ -35,7 +35,8 @@
   (belongs-to site {:fk :id}))
 
 
-;; Select
+;; Select whole site
+
 (defmulti get-site :type)
 
 (defmethod get-site "hotel" [request]
@@ -53,6 +54,8 @@
 (defmethod get-site :default [request]
   {"msg" "please specify the type of site to return"
    "ecode" "101"})
+
+;;Select specific site
 
 (defmulti get-specific-site :type)
 

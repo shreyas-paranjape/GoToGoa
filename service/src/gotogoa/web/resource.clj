@@ -10,6 +10,8 @@
 (defresource site-res
   :available-media-types ["application/json"]
   :allowed-methods [:get :post]
+  
+  ;; curl -v -X GET http://localhost:3000/api/site -d '{"type":"hotel"}' -H "Content-Type: application/json"
   :handle-ok (fn [ctx]
                (debug (get-in ctx [:request :body]))
                (site/get-site (get-in ctx [:request :body])))
@@ -21,6 +23,8 @@
 (defresource site [id request]
   :available-media-types ["application/json"]
   :allowed-methods[:put :delete :get]
+
+  ;; curl -v -X GET http://localhost:3000/api/site/1 -d '{"type":"hotel"}' -H "Content-Type: application/json"
   :handle-ok (fn[ctx]
                (debug (get-in ctx [:request :body]))
                (site/get-specific-site (conj (get-in ctx [:request :body]) {:id id})))
