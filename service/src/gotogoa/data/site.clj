@@ -47,11 +47,34 @@
   (select restaurant
           (with site (with location))))
 
+(defmethod get-site "casino" [request]
+  (select casino
+          (with site (with location))))
+
 (defmethod get-site :default [request]
   {"msg" "please specify the type of site to return"
    "ecode" "101"})
 
+(defmulti get-specific-site :type)
 
+(defmethod get-specific-site "hotel" [request]
+  (select hotel
+    (with site (with location))
+    (where {:id (get-in request ["id"])})))
+
+(defmethod get-specific-site "restaurant" [request]
+  (select restaurant
+    (with site (with location))
+    (where {:id (get-in request ["id"])})))
+
+(defmethod get-specific-site "casino" [request]
+  (select casino
+    (with site (with location))
+    (where {:id (get-in request ["id"])})))
+
+(defmethod get-specific-site :default [request]
+  {"msg" "please specify the type of site to return"
+   "ecode" "101"})
 
 ;; Insert
 (defmulti insert-site :type)
