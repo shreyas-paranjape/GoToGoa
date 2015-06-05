@@ -46,6 +46,10 @@
   (select restaurant
           (with site (with location))))
 
+(defmethod get-site "casino" [request]
+  (select casino
+          (with site (with location))))
+
 (defmethod get-site :default [request]
   {"msg" "please specify the type of site to return"
    "ecode" "101"})
