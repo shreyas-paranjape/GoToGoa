@@ -30,10 +30,10 @@
                (site/get-specific-site (conj (get-in ctx [:request :body]) {:id id})))
   :delete (fn [ctx]
             (debug (get-in ctx [:request :body]))
-            {"message" "not yet implemented"})
+            (site/del-specific-site (conj (get-in ctx [:request :body]) {:id id})))
   :put! (fn [ctx]
           (debug (get-in ctx [:request :body]))
-          {"message" "not yet implemented"}))
+          (site/update-specific-hotel (conj (get-in ctx [:request :body]) {:id id}))))
           
         
           
