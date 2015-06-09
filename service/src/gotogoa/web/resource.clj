@@ -14,26 +14,26 @@
   ;; curl -v -X GET http://localhost:3000/api/site -d '{"type":"hotel"}' -H "Content-Type: application/json"
   :handle-ok (fn [ctx]
                (debug (get-in ctx [:request :body]))
-               (site/get-site (get-in ctx [:request :body])))
+               (site/getsite (get-in ctx [:request :body])))
   :post! (fn [ctx]
            (debug (get-in ctx [:request :body]))
            (site/insert-site (get-in ctx [:request :body]))))
 
 
-(defresource site [id request]
+(defresource site-specific-res [id request]
   :available-media-types ["application/json"]
   :allowed-methods[:put :delete :get]
 
   ;; curl -v -X GET http://localhost:3000/api/site/1 -d '{"type":"hotel"}' -H "Content-Type: application/json"
   :handle-ok (fn[ctx]
                (debug (get-in ctx [:request :body]))
-               (site/get-specific-site (conj (get-in ctx [:request :body]) {:id id})))
+               (site/getsite (conj (get-in ctx [:request :body]) {:id id})))
   :delete (fn [ctx]
             (debug (get-in ctx [:request :body]))
             (site/del-specific-site (conj (get-in ctx [:request :body]) {:id id})))
   :put! (fn [ctx]
           (debug (get-in ctx [:request :body]))
-          (site/update-specific-hotel (conj (get-in ctx [:request :body]) {:id id}))))
+          (site/update-specific-site (conj (get-in ctx [:request :body]) {:id id}))))
           
         
           

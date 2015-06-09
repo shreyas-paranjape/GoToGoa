@@ -34,7 +34,13 @@
 (defentity restaurant
   (belongs-to site {:fk :id}))
 
+;; Select modified
 
+(defn getsite [request]
+	(def query (str "select * from " (get-in request [:type])))
+	(if (:id request) (def query (str query " where id=?")))
+	(if (:id request) (j/query db [query (:id request)]) (j/query db [query]))
+	)
 ;; Select whole site
 
 (defmulti get-site :type)
@@ -115,7 +121,7 @@
     (where {:id (get-in request ["id"])})))
 
 (defmethod get-specific-site "casino" [request]
-  (delete casion
+  (delete casino
     (where {:id (get-in request ["id"])}))
   (delete site
     (where {:id (get-in request ["id"])}))

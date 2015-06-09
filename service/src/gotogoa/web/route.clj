@@ -12,7 +12,7 @@
 
 (defroutes app-routes
   (ANY "/api/site" request (res/site-res request))
-  (ANY "/api/site/:id" [id request] (res/site id request)))
+  (ANY "/api/site/:id" [id request] (res/site-specific-res id request)))
 
 
 
