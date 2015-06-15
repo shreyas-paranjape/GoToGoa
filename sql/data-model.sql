@@ -9,14 +9,12 @@ USE `delivery` ;
 -- Table `delivery`.`person`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `delivery`.`person` (
-  `id` INT NOT NULL AUTO_INCREMENT,
+  `id` INT NOT NULL AUTO_INCREMENT primary key,
   `last_name` VARCHAR(100) NULL,
   `first_name` VARCHAR(45) NULL,
   `birth_date` DATE NULL,
   comm_id int not null,
   PRIMARY KEY (`id`),
-  FOREIGN KEY (id)
-  	references person_location (id),
   FOREIGN KEY (comm_id)
   	references comm (id))
 ENGINE = InnoDB;
@@ -167,11 +165,13 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `delivery`.`person_location` (
   `id` INT NOT NULL,
   pid int not null,
-  `location_id` INT NULL,
+  `location_id` INT not NULL,
   `location_type` varchar(40) NULL,
   PRIMARY KEY (`id`),
   FOREIGN KEY (pid)
-  	references person (id))
+  	references person (id),
+  foreign key (location_id)
+  	references location (id))
 ENGINE = InnoDB;
 
 
