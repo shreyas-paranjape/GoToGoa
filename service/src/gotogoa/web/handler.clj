@@ -13,9 +13,10 @@
 (def server-conn {:pool {} :spec {:host "127.0.0.1" :port 6379}})
 
 (def app
-  (wrap-json-body
-   (wrap-json-response (wrap-params r/app-routes))
-   {:keywords? true}))
+      (wrap-json-body
+        (wrap-json-response (wrap-params r/app-routes))
+          {:keywords? true})
+)
   
  ;; (wrap-json-body (session/wrap-noir-session ;;(auth/auth-handler 
    ;;         	(wrap-json-response (wrap-json-params r/app-routes));;)
