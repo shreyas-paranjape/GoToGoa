@@ -125,6 +125,7 @@
 			(let [id (get-in ctx [:request :session :noir :id])]
 				(info (get-in ctx [:request :session :noir :id]))
 				(get-in ctx [:request :session :noir :id])
+				;;(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})
 				"ID: "id
 			))
 	:post! (fn [ctx]
