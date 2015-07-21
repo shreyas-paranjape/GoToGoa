@@ -16,7 +16,7 @@
 (def app
       (session/wrap-noir-session (wrap-json-body
         (wrap-json-response (wrap-params r/app-routes))
-          {:keywords? true}) {:store (carmine-store server-conn {})})
+          {:keywords? true}))
 )
   
  ;; (wrap-json-body (session/wrap-noir-session ;;(auth/auth-handler 

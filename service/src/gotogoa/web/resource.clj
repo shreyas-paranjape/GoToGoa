@@ -1,6 +1,7 @@
 (ns gotogoa.web.resource
   (:require [liberator.core :refer [defresource]]
             [gotogoa.data.site :as site]
+            [liberator.representation :refer :all]
             [noir.session :as session]
             [taoensso.timbre :as timbre]))
             
@@ -123,9 +124,7 @@
 	:allowed-methods [:get :post]
 	:handle-ok (fn [ctx] 
 			(let [id (get-in ctx [:request :session :noir :id])]
-				(info (get-in ctx [:request :session :noir :id]))
-				(get-in ctx [:request :session :noir :id])
-				"ID: "id
+				(ring-response {:body (str "ID: "id)})
 			))
 	:post! (fn [ctx]
 		(let [id (get-in ctx [:request :params "id"])]
