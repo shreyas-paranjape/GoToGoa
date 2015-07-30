@@ -123,12 +123,13 @@
 	:available-media-types ["application/json"]
 	:allowed-methods [:get :post]
 	:handle-ok (fn [ctx] 
+			(info (get-in ctx [:request :session]))
 			(let [id (get-in ctx [:request :session :noir :id])]
 				(ring-response {:body (str "ID: "id)})
 			))
 	:post! (fn [ctx]
 		(let [id (get-in ctx [:request :params "id"])]
-		(info (get-in ctx [:request :params "id"]))
+		(info (get-in ctx [:request :params]))
 		(session/put! :id id)
 		))
 
