@@ -1,6 +1,8 @@
 (ns gotogoa.web.resource
   (:require [liberator.core :refer [defresource]]
             [gotogoa.data.site :as site]
+            [liberator.representation :refer :all]
+            [noir.session :as session]
             [taoensso.timbre :as timbre]))
             
 (timbre/refer-timbre)
@@ -117,20 +119,21 @@
 ;;		      	id))
 ;;)
 
-;;(defresource login
-;;	:available-media-types ["application/json"]
-;;	:allowed-methods [:get :post]
-;;	:handle-ok (fn [ctx] 
-;;			(let [id (get-in ctx [:request :session :noir :id])]
-;;				(ring-response {:session (get-in ctx [:request :session]) :body (str "ID: " id)})
-;;			))
-;;	:post! (fn [ctx]
-;;		(let [id (get-in ctx [:request :params "id"])]
-		;;(info (get-in ctx [:request :json-params "id"]))
-;;		(session/put! :id id)
-;;		))
+(defresource login
+	:available-media-types ["application/json"]
+	:allowed-methods [:get :post]
+	:handle-ok (fn [ctx] 
+			(info (get-in ctx [:request :session]))
+			(let [id (get-in ctx [:request :session :noir :id])]
+				(ring-response {:body (str "ID: "id)})
+			))
+	:post! (fn [ctx]
+		(let [id (get-in ctx [:request :params "id"])]
+		(info (get-in ctx [:request :params]))
+		(session/put! :id id)
+		))
 
-;;)
+)
 
 ;;(defresource testing
 ;;	:available-media-types ["application/json"]

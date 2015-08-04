@@ -38,7 +38,7 @@
 ;; Select modified
 
 (defn getsite [request]
-	(def query (str "select * from " (get-in request [:type])))
+	(def query (str "select * from " (:type request)))
 	(if (:id request) (def query (str query " where id=?")))
 	(if (:id request) (j/query db [query (:id request)]) (j/query db [query]))
 	)

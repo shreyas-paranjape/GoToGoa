@@ -1,4 +1,4 @@
-(defproject gotogoa "0.1.0-SNAPSHOT"
+(defproject goaamigo "0.1.0-SNAPSHOT"
             :dependencies [[org.clojure/clojure "1.6.0"]
                            [compojure "1.3.2"]
                            [ring/ring-defaults "0.1.4"]
@@ -6,6 +6,8 @@
                            [enlive "1.1.5"]
                            [com.cemerick/friend "0.2.0"]
                            [friend-oauth2 "0.1.1"]
+			   [crypto-password "0.1.3"]
+			   [selmer "0.8.7"]
                            [environ "1.0.0"]
                            [korma "0.4.0"]
                            [liberator "0.12.2"]
@@ -19,11 +21,10 @@
                            [mysql/mysql-connector-java "5.1.25"]
                            [lib-noir "0.9.5"]
                            [nginx-clojure "0.3.0"]
-                           [com.novemberain/monger "2.1.0"]
-                           [http-kit "2.1.16"]]
+                           [clj-http "2.0.0"]]
             :plugins [[lein-ring "0.8.13"]
                       [lein-environ "1.0.0"]]
-            :ring {:handler gotogoa.web.handler/app
+            :ring {:handler goaamigo.web.handler/app
                       ;;:port 1234
                         ;;:join? false
                         ;;:ssl? true
