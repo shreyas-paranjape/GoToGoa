@@ -1,4 +1,4 @@
-(ns goaamigo.domain.db
+(ns goaamigo.process.db
   (:require [korma.core :as core]
         [korma.db :as db]))
 
