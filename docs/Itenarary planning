@@ -1,0 +1,47 @@
+Itinerary planning
+
+. trip : 
+	has many trip_event
+	has start_date and end_date
+	has checkin_time and checkout_time
+	has owner : Admin, Customer 
+	has type : Premade, Customer_made, Custom
+	has template
+	has payment
+	has collaborators
+	has itinerary
+
+. event :
+	has duration (minutes)
+	has place
+	has event_category
+	has tags
+	has allows_children
+
+. tags
+	id,description
+
+. event_tags,trip_tags,tourist_tags
+
+. trip_event
+	has one event
+	belongs to trip
+
+. site
+	has location
+	has description
+	has activities
+
+. itinerary
+	For each trip_event 
+		has travel
+		has schedule (day and time)
+		
+. tourist
+	has login credentials
+	has comm (email,phone,address)
+	has social_accounts (Google+, Facebook, Twitter, Instagram ...)
+	has trips
+	
+	
+	

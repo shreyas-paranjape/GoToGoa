@@ -3,3 +3,4 @@
 *.rdb
 *.metadata
 *.bak
+local/

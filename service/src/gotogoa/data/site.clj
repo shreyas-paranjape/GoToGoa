@@ -35,8 +35,15 @@
 (defentity restaurant
   (belongs-to site {:fk :id}))
 
+;; Select modified
 
-;; Select
+(defn getsite [request]
+	(def query (str "select * from " (get-in request [:type])))
+	(if (:id request) (def query (str query " where id=?")))
+	(if (:id request) (j/query db [query (:id request)]) (j/query db [query]))
+	)
+;; Select whole site
+
 (defmulti get-site :type)
 
 (defmethod get-site "hotel" [request]
@@ -54,6 +61,8 @@
 (defmethod get-site :default [request]
   {"msg" "please specify the type of site to return"
    "ecode" "101"})
+
+;;Select specific site
 
 (defmulti get-specific-site :type)
 
@@ -76,7 +85,8 @@
   {"msg" "please specify the type of site to return"
    "ecode" "101"})
 
-;; Insert
+;; Insert site
+
 (defmulti insert-site :type)
 
 (defmethod insert-site "hotel" [request]
@@ -116,12 +126,77 @@
                                            
 (defmulti update-site :type)
 
-(defmethod update-site "hotel" [request id]
-  (let [new-loc (get-in request [:hotel :loc])
-        orig-hotel (first (select hotel (where {:id id})))
-        new-hotel (dissoc (get-in request [:hotel]) :loc)
-        hotel-update (first (diff new-hotel orig-hotel))]
-    (debug hotel-update)
-    (update-location new-loc (:location_id (first (select site (fields :location_id) (where {:id id})))))
-    (if-not (empty? hotel-update)
-      (update hotel (set-fields hotel-update) (where {:id (:id orig-hotel)})))))
+;;(defmethod update-site "hotel" [request id]
+;;  (let [new-loc (get-in request [:hotel :loc])
+;;        orig-hotel (first (select hotel (where {:id id})))
+;;        new-hotel (dissoc (get-in request [:hotel]) :loc)
+;;        hotel-update (first (diff new-hotel orig-hotel))]
+;;    (debug hotel-update)
+;;    (update-location new-loc (:location_id (first (select site (fields :location_id) (where {:id id})))))
+;;    (if-not (empty? hotel-update)
+;;     (update hotel (set-fields hotel-update) (where {:id (:id orig-hotel)})))))
+;;  (transaction
+;;   (insert location (values {:city "margaon"}))
+;;   (insert site (values {:location_id
+;;                         (subselect location
+;;                                    (aggregate
+;;                                     (max :id) :max-location))}))
+;;   (insert hotel (values {:id
+;;                         (subselect site
+;;                                     (aggregate
+;;                                      (max :id) :max-site))}))))
+
+;; Delete specific site
+
+(defmulti del-specific-site :type)
+
+(defmethod get-specific-site "hotel" [request]
+  (delete hotel
+    (where {:id (get-in request ["id"])}))
+  (delete site
+    (where {:id (get-in request ["id"])}))
+  (delete location
+    (where {:id (get-in request ["id"])})))
+
+(defmethod get-specific-site "restaurant" [request]
+  (delete restaurant
+    (where {:id (get-in request ["id"])}))
+  (delete site
+    (where {:id (get-in request ["id"])}))
+  (delete location
+    (where {:id (get-in request ["id"])})))
+
+(defmethod get-specific-site "casino" [request]
+  (delete casino
+    (where {:id (get-in request ["id"])}))
+  (delete site
+    (where {:id (get-in request ["id"])}))
+  (delete location
+    (where {:id (get-in request ["id"])})))
+
+(defmethod del-specific-site :default [request]
+  {"msg" "please specify the type of site to return"
+   "ecode" "101"})
+
+;; Update specific site
+
+(defmulti update-specific-site :type)
+
+(defmethod update-specific-site "hotel" [request]
+  (update hotel
+    (set-fields request)
+    (where {:id (get-in request ["id"])})))
+
+(defmethod update-specific-site "restaurant" [request]
+  (update restaurant
+    (set-fields request)
+    (where {:id (get-in request ["id"])})))
+
+(defmethod update-specific-site "casino" [request]
+  (update casino
+    (set-fields request)
+    (where {:id (get-in request ["id"])})))
+
+(defmethod update-specific-site :default [request]
+  {"msg" "please specify the type of site to return"
+   "ecode" "101"})

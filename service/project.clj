@@ -19,6 +19,7 @@
                            [mysql/mysql-connector-java "5.1.25"]
                            [lib-noir "0.9.5"]
                            [nginx-clojure "0.3.0"]
+                           [com.novemberain/monger "2.1.0"]
                            [http-kit "2.1.16"]]
             :plugins [[lein-ring "0.8.13"]
                       [lein-environ "1.0.0"]]

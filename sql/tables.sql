@@ -144,13 +144,13 @@ ENGINE = InnoDB;
 -- Table `gtg`.`hotel_room`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `gtg`.`hotel_room` (
-  `hotel_id` INT NOT NULL,
+  `id` INT NOT NULL,
   `room_id` INT NULL,
   `room_name` VARCHAR(45) NULL,
   `desciption` VARCHAR(300) NULL,
   `room_price` FLOAT(10,4) NULL,
   primary KEY (`hotel_id`,`room_id`),
-  FOREIGN KEY (hotel_id)
+  FOREIGN KEY (id)
   	REFERENCES hotel(id))
 ENGINE = InnoDB;
 
