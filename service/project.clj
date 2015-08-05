@@ -24,12 +24,12 @@
             :plugins [[lein-ring "0.8.13"]
                       [lein-environ "1.0.0"]]
             :ring {:handler gotogoa.web.handler/app
-                      ;;:port 1234
-                        ;;:join? false
-                        ;;:ssl? true
-                        ;;:ssl-port 443
-                        ;;:keystore "/home/gts1/GoToGoa/service/server.jks"
-                        ;;:key-password "changeme"
+                      :port 3000
+                        :join? false
+                        :ssl? true
+                        :ssl-port 8443
+                        :keystore "/home/punit/keystore.jks"
+                        :key-password "qwerty"
                      }
             :profiles
             {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
