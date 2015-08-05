@@ -33,7 +33,7 @@ create table trip (
 	tourist_id int,
 	foreign key (tourist_id) references tourist (id),
 	trip_id int,
-	foreign key (trip_id) references trip (id),
+	foreign key (trip_id) references trip (id)
 );
 
 create table trip_tag (
