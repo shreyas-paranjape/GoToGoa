@@ -2,6 +2,42 @@ create database if not exists goaamigo;
 
 use goaamigo;
 
+create table car (
+	id int not null primary key auto_increment,
+	vehicle_id int,
+	foreign key (vehicle_id) references vehicle (id)
+);
+
+create table bike (
+	id int not null primary key auto_increment,
+	vehicle_id int,
+	foreign key (vehicle_id) references vehicle (id)
+);
+
+create table boat (
+	id int not null primary key auto_increment,
+	vehicle_id int,
+	foreign key (vehicle_id) references vehicle (id)
+);
+
+create table cruise (
+	id int not null primary key auto_increment,
+	vehicle_id int,
+	foreign key (vehicle_id) references vehicle (id)
+);
+
+create table taxi (
+	id int not null primary key auto_increment,
+	vehicle_id int,
+	foreign key (vehicle_id) references vehicle (id)
+);
+
+create table vehicle (
+	id int not null primary key auto_increment,
+	license_num carhcar(20),
+	type varchar(20)
+);
+
 create table comm (
 	id int not null primary key auto_increment,
 	email varchar(30),
@@ -36,6 +72,16 @@ create table trip (
 	foreign key (trip_id) references trip (id)
 );
 
+create table travel (
+	id int not null primary key auto_increment,
+	type int,
+	start_location DECIMAL(10,0),
+	end_location DECIMAL(10,0),
+	duration int(30),
+	vehicle_id int,
+	foreign key (vehicle_id) references vehicle (id)
+);
+	
 create table trip_tag (
 	id int not null primary key auto_increment,
 	tag text not null
