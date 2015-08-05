@@ -74,7 +74,7 @@ create table event_tag_map (
 	event_tag_id int not null,
 	event_id int not null,
 	foreign key (event_tag_id) references event_tag (id),
-	foreign key (event_id) references even (id)
+	foreign key (event_id) references event (id)
 );
 
 create table trip_event (
