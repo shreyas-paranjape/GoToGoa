@@ -34,7 +34,7 @@ create table taxi (
 
 create table vehicle (
 	id int not null primary key auto_increment,
-	license_num carhcar(20),
+	license_num varchar(20),
 	type varchar(20)
 );
 
@@ -200,7 +200,7 @@ create table casino (
 	id int not null primary key auto_increment
 );
 
-create tabel visit (
+create table visit (
 	id int not null primary key auto_increment,
 	site_id int,
 	foreign key (site_id) references site (id)
