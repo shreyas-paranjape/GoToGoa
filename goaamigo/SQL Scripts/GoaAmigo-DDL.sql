@@ -116,19 +116,6 @@ create table site (
 	decription text
 );
 
-create table feedback (
-    tourist_id int not null,
-    hotel_id int not null,
-    liked varchar(1),
-    comnt text,
-    review text,
-    foreign key (tourist_id)
-        references tourist (id),
-    foreign key (hotel_id)
-        references hotel (id)
-);
-
-
 create table hotel (
 	id int not null primary key auto_increment,
 	site_id int,
@@ -163,6 +150,19 @@ create table touristdestination (
 	id int not null primary key auto_increment
 );
 
-create table casion (
+create table casino (
 	id int not null primary key auto_increment
+);
+
+create table feedback (
+	id int not null primary key auto_increment,
+    tourist_id int not null,
+    hotel_id int not null,
+    liked varchar(1),
+    comnt text,
+    review text,
+    foreign key (tourist_id)
+        references tourist (id),
+    foreign key (hotel_id)
+        references hotel (id)
 );
