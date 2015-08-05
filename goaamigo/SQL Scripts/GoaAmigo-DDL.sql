@@ -2,7 +2,7 @@ create database if not exists goaamigo;
 
 use goaamigo;
 
-create table vehicle (
+/*create table vehicle (
 	id int not null primary key auto_increment,
 	license_num varchar(20),
 	type varchar(20)
@@ -36,7 +36,7 @@ create table taxi (
 	id int not null primary key auto_increment,
 	vehicle_id int,
 	foreign key (vehicle_id) references vehicle (id)
-);
+);*/
 
 create table comm (
 	id int not null primary key auto_increment,
@@ -72,7 +72,7 @@ create table trip (
 	foreign key (trip_id) references trip (id)
 );
 
-create table travel (
+/*create table travel (
 	id int not null primary key auto_increment,
 	type int,
 	start_location DECIMAL(10,0),
@@ -80,7 +80,7 @@ create table travel (
 	duration int(30),
 	vehicle_id int,
 	foreign key (vehicle_id) references vehicle (id)
-);
+);*/
 	
 create table trip_tag (
 	id int not null primary key auto_increment,
@@ -184,7 +184,7 @@ create table hotel_room (
 	description text
 );	
 
-create table restaurant (
+/*create table restaurant (
 	id int not null primary key auto_increment
 );
 
@@ -204,7 +204,7 @@ create table visit (
 	id int not null primary key auto_increment,
 	site_id int,
 	foreign key (site_id) references site (id)
-);
+);*/
 
 create table feedback (
 	id int not null primary key auto_increment,
