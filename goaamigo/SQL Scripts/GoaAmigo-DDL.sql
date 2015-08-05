@@ -2,6 +2,12 @@ create database if not exists goaamigo;
 
 use goaamigo;
 
+create table vehicle (
+	id int not null primary key auto_increment,
+	license_num varchar(20),
+	type varchar(20)
+);
+
 create table car (
 	id int not null primary key auto_increment,
 	vehicle_id int,
@@ -30,12 +36,6 @@ create table taxi (
 	id int not null primary key auto_increment,
 	vehicle_id int,
 	foreign key (vehicle_id) references vehicle (id)
-);
-
-create table vehicle (
-	id int not null primary key auto_increment,
-	license_num varchar(20),
-	type varchar(20)
 );
 
 create table comm (
