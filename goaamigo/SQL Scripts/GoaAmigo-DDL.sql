@@ -1,4 +1,4 @@
-create database if not exists goamigo;
+create database if not exists goaamigo;
 
 use goaamigo;
 
