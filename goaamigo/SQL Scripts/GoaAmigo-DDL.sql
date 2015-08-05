@@ -146,9 +146,9 @@ create table hotel_room (
 	hotel_id int,
 	foreign key (hotel_id) references hotel (id),
 	room_id int,
-	room_type varhcar(50),
+	room_type varchar(50),
 	price float(10,4),
-	description
+	description text
 );	
 
 create table restaurant (
