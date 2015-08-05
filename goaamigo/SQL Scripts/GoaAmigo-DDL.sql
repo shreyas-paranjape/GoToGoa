@@ -200,6 +200,12 @@ create table casino (
 	id int not null primary key auto_increment
 );
 
+create tabel visit (
+	id int not null primary key auto_increment,
+	site_id int,
+	foreign key (site_id) references site (id)
+);
+
 create table feedback (
 	id int not null primary key auto_increment,
     tourist_id int not null,
