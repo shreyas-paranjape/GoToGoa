@@ -35,7 +35,5 @@
  ))
  
 (defroutes google-routes
- (GET "/oauth2callback" {params :query-params}
- (google params))
- 
+ (GET "/oauth2callback" {params :query-params} (google params))
 (GET "/google" [] (resp/redirect red)))
