@@ -44,7 +44,14 @@
 	:available-media-types ["application/json" "text/html"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
-		(insert db/tourist (values (get-in ctx [:request :params]))))
+		(do
+			(insert db/comm (values (get-in ctx [:request :params "comm"])))
+			(insert db/tourist (values (get-in ctx [:request :params "tourist"])))
+			(def a (:max_id ((vec (select comm (aggregate (max :id) :max_id))) 0)))
+			(update tourist (set-fields {:comm_id a}) (where {:id (max :id)}))
+			)
+		)
+	)
 
 (defresource add-account-fb
 	:available-media-types ["application/json" "text/html"]
