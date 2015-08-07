@@ -1,6 +1,7 @@
 (ns goaamigo.process.db
-  (:require [korma.core :as core]
-        [korma.db :as db]))
+  (:use 
+  	[korma.core]
+        	[korma.db]))
 
 (def db {:classname "com.mysql.jdbc.Driver"
 	:subprotocol "mysql"
@@ -11,7 +12,7 @@
 	:user "root"
 	:password "root"})
 
-(db/defdb delivery db)
+(defdb goaamigo db)
 
 (declare comm event event_category event_tag 
 	event_tag_map feedback hotel hotel_room
@@ -63,3 +64,5 @@
 	(has-many trip_tag_map))
 
 (defentity trip_tag_map)
+
+(defentity social)

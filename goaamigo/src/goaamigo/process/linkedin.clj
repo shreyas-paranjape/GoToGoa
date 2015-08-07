@@ -22,7 +22,7 @@
 ;; IN MEMORY
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(def lIn-user (atom {:first_name "" :last_name ""}))
+(def lIn-user (atom {:social_id "" :fullname "" :type ""}))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -56,15 +56,16 @@
   "This is just a simple request to the LinkedIn API,
   where we are going to get our profile data."
   [access_token]
-  (let [{:strs [firstName lastName headline siteStandardProfileRequest]}
+  (let [{:strs [id firstName lastName headline siteStandardProfileRequest]}
         (-> (client/get (str "https://api.linkedin.com/v1/people/~"
                              "?oauth2_access_token=" access_token
                              "&format=json"))
             :body
             (parse/parse-string))]
-    (swap! lIn-user #(assoc % :first_name %2 :last_name %3) firstName lastName)
+    (swap! lIn-user #(assoc % :social_id %2 :fullname %2 :type %3) id (str firstName " " lastName) "linkedin")
     (info @lIn-user)
-    (resp/redirect "/welcome")))
+    ;(resp/redirect "/welcome")
+    ))
 
 (defn- pull-details
   "Login view, if we get back some query params from

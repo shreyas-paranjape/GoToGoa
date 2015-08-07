@@ -206,15 +206,20 @@ create table visit (
 	foreign key (site_id) references site (id)
 );*/
 
+create table social (
+	id int not null primary key auto_increment,
+	social_id varchar(30) not null,
+	type enum('facebook','linkedin','google'),
+	fullname varchar(30) not null
+);
+
 create table feedback (
 	id int not null primary key auto_increment,
-    tourist_id int not null,
-    hotel_id int not null,
-    liked varchar(1),
-    comnt text,
-    review text,
-    foreign key (tourist_id)
-        references tourist (id),
-    foreign key (hotel_id)
-        references hotel (id)
+    	tourist_id int not null,
+    	hotel_id int not null,
+    	liked varchar(1),
+    	comnt text,
+    	review text,
+    	foreign key (tourist_id) references tourist (id),
+    	foreign key (hotel_id) references hotel (id)
 );
