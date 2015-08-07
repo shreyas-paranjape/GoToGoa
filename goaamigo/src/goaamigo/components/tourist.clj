@@ -1,0 +1,2 @@
+(ns goaamigo.components.tourist)
+
