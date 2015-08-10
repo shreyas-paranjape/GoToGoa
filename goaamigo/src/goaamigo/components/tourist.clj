@@ -47,8 +47,7 @@
 		(do
 			(insert db/comm (values (get-in ctx [:request :params "comm"])))
 			(insert db/tourist (values (get-in ctx [:request :params "tourist"])))
-			(def a (:max_id ((vec (select comm (aggregate (max :id) :max_id))) 0)))
-			(update tourist (set-fields {:comm_id a}) (where {:id (max :id)}))
+			(update tourist (set-fields {:comm_id (get-in ctx [:request :params "comm" :comm_id])}) (where {:id (max :id)}))
 			)
 		)
 	)
