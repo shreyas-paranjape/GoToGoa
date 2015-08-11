@@ -53,14 +53,14 @@ create table tourist (
 	last_name varchar(20),
 	gender enum('m','f'),
 	birth_date date,
-	comm_id int not null,
+	comm_id int,
 	foreign key (comm_id) references comm (id)
 );
 
 create table trip (
 	id int not null primary key auto_increment,
 	name varchar(20),
-	owner enum('admin','customer'),
+	owner enum('admin','customer') default 'customer',
 	start_date date,
 	end_date date,
 	checkin_time datetime,
@@ -89,8 +89,8 @@ create table trip_tag (
 
 create table trip_tag_map (
 	id int not null primary key auto_increment,
-	trip_tag_id int not null,
-	trip_id int not null,
+	trip_tag_id int,
+	trip_id int,
 	foreign key (trip_tag_id) references trip_tag (id),
 	foreign key (trip_id) references trip (id)
 );
@@ -104,8 +104,10 @@ create table event_category (
 
 create table event (
 	id int not null primary key auto_increment,
-	duration int(50),
-	place varchar(30),
+	start_time datetime,
+	end_time datetime,
+	event_id int,
+	foreign key (event_id) references event (id),
 	event_category_id int,
 	foreign key (event_category_id) references event_category (id)
 );
@@ -117,28 +119,28 @@ create table event_tag (
 
 create table event_tag_map (
 	id int not null primary key auto_increment,
-	event_tag_id int not null,
-	event_id int not null,
+	event_tag_id int,
+	event_id int,
 	foreign key (event_tag_id) references event_tag (id),
 	foreign key (event_id) references event (id)
 );
 
 create table trip_event (
 	id int not null primary key auto_increment,
-	trip_id int not null,
-	event_id int not null,
+	trip_id int,
+	event_id int,
 	foreign key (trip_id) references trip (id),
 	foreign key (event_id) references event (id)
 );
 
-create table trip_schedule (
+/*create table trip_schedule (
 	id int not null primary key auto_increment,
 	event_id int,
 	foreign key (event_id) references event (id),
 	day int,
 	start_time datetime,
 	end_time datetime
-);
+);*/
 
 create table location (
 	id int not null primary key auto_increment,
@@ -206,15 +208,20 @@ create table visit (
 	foreign key (site_id) references site (id)
 );*/
 
+create table social (
+	id int not null primary key auto_increment,
+	social_id varchar(30) not null,
+	type enum('facebook','linkedin','google'),
+	fullname varchar(30) not null
+);
+
 create table feedback (
 	id int not null primary key auto_increment,
-    tourist_id int not null,
-    hotel_id int not null,
-    liked varchar(1),
-    comnt text,
-    review text,
-    foreign key (tourist_id)
-        references tourist (id),
-    foreign key (hotel_id)
-        references hotel (id)
+    	tourist_id int,
+    	hotel_id int,
+    	liked varchar(1),
+    	comnt text,
+    	review text,
+    	foreign key (tourist_id) references tourist (id),
+    	foreign key (hotel_id) references hotel (id)
 );

@@ -11,7 +11,7 @@
 (def REDIRECT_URI "https://localhost:8443/oauth2callback")
 (def login-uri "https://accounts.google.com")
 (def CLIENT_SECRET "rItsLP2ydSc_wPsrUynEfJ57")
-(def google-user (atom {:google-id "" :google-name "" :google-email ""}))
+(def google-user (atom {:social_id "" :fullname "" :type ""}))
  
 (def red (str "https://accounts.google.com/o/oauth2/auth?"
               "scope=email%20profile&"
@@ -29,7 +29,7 @@
                                            :grant_type "authorization_code"}})
        user-details (parse/parse-string (:body (client/get (str "https://www.googleapis.com/oauth2/v1/userinfo?access_token="
  (get (parse/parse-string (:body access-token-response)) "access_token")))))]
- (swap! google-user #(assoc % :google-id %2 :google-name %3 :google-email %4) (get user-details "id") (get user-details "name") (get user-details "email"))
+ (swap! google-user #(assoc % :social_id %2 :fullname %3 :type %4) (get user-details "id") (get user-details "name") "google")
  (info user-details)
  (info @google-user)
  ))

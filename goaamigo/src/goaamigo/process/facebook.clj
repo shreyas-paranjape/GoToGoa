@@ -9,7 +9,7 @@
 (timbre/refer-timbre)       
 
 (def facebook-user
-(atom {:facebook-id "" :facebook-name "" :facebook-email ""}))
+(atom {:social_id "" :fullname "" :type ""}))
 
 (def APP_ID "786638701455727")
 (def APP_SECRET "83108675a429def3d27fe3191fc8c677")
@@ -38,10 +38,12 @@
                     :body
                     (parse/parse-string))]
 (swap! facebook-user
-#(assoc % :facebook-id %2 :facebook-name %3 :facebook-email %4)
+#(assoc % :social_id %2 :fullname %3 :type %4)
  (get user-details "id")
  (get user-details "name")
- (get user-details "email"))
+ "facebook"
+ ;(get user-details "email")
+ )
 (info user-details)
 (info @facebook-user)))
 
