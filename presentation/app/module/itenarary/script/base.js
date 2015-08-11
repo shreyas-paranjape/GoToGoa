@@ -24,5 +24,16 @@ angular.module('itenarary', [
                     data: ['default', 'list', 'of', 'things']
                 },
                 controller: 'ItenararyDetailController'
+            })
+            .state('grid', {
+                url: '/gridster',
+                templateUrl: 'module/itenarary/view/grid.html',
+                ncyBreadcrumb: {
+                    label: 'random'
+                },
+                params: {
+                    data: ['default', 'list', 'of', 'things']
+                },
+                controller: 'ItenararyDetailController'
             });
     });

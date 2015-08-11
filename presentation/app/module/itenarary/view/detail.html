@@ -1,134 +1,35 @@
-<div class="container1">
-    <h1>Day 1</h1>
-    <ul style="list-style-type: none;">
-        <li>8 AM</li>
-        <li>9 AM</li>
-        <li>10 AM</li>
-        <li>11 AM</li>
-        <li>12 PM</li>
-        <li>1 PM</li>
-        <li>2 PM</li>
-        <li>3 PM</li>
-        <li>4 PM</li>
-        <li>5 PM</li>
-        <li>6 PM</li>
-        <li>7 PM</li>
-        <li>8 PM</li>
-        <li>9 PM</li>
-        <li>10 PM</li>
-        <li>11 PM</li>
-    </ul>
+<section class="ite">
+    <div class="container1">
+        <div class="row stripes">
+            <a href="#"><h5><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>Add item</h5></a>
+        </div>
+        <div ng-repeat="event in events">
+            <ul class="row e1">
 
+                <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1 time no-padding"><h4>{{event.time}}</h4></li>
+                <li class="col-xs-5 col-sm-5 col-md-5 col-lg-5 info" style=" border-left: 1px solid grey;">
+                    <div class="row">
+                        <img src="{{event.url}}">
+                    </div>
+                    <ul class="row no-padding">
+                        <li><a href="#"><h3>{{event.title}}</h3></a></li>
+                        <li><p style="text-align:justify;">{{event.desr}}
+                            <a style="color: #FA8C00;" href="#">Read more..</a></p></li>
+                    </ul>
+                </li>
+<!--                <li class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding"></li>-->
+                <li class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding info vertical-left">
+                    <ul ng-repeat="childEvent in event.events">
+                        <li><a href="#"><h3>{{childEvent.title}}</h3></a></li>
+                        <li><p style="text-align:justify;padding-right:10px;">{{childEvent.desr}}
+                                    <a style="color: #FA8C00;" href="#">Read more..</a></p></li>
+                        <hr>
+                    </ul>
 
-    <div class="r2">
-        <br>
-        <br>
-        <br>
-        <br>
-        <h2>H</h2>
-        <br>
-        <h2>O</h2>
-        <br>
-        <h2>T</h2>
-        <br>
-        <h2>E</h2>
-        <br>
-        <h2>L</h2>
-        <div class="r11">
-            <center>
-                <h4 style="padding-top: 10px;"><u>Check In</u></h4>
-            </center>
-        </div>
-        <div class="r4">
-            <center>
-                <h4 style="padding-top: 10px;"><u>Breakfast</u></h4>
-            </center>
-        </div>
-    </div>
-    <div class="relative2">
-        <center>
-            <h3><u>Beach</u></h3>
-        </center>
-        <div class="r3">
-            <center>
-                <h3 style="padding-top: 45px;"><u>Lunch</u></h3>
-            </center>
-        </div>
-        <div class="r1">
-            <center>
-                <h3 style="padding-top: 8px;"><u>Travel</u></h3>
-            </center>
-        </div>
-        <div class="r5">
-            <center>
-                <h3 style="padding-top: 30px;"><u>Zoo</u></h3>
-            </center>
-        </div>
-        <div class="r12">
-            <center>
-               
-            </center>
-        </div>
-        <div class="r6">
-            <center>
-                <h3 style="padding-top: 30px;"><u>Dinner</u></h3>
-            </center>
-        </div>
-        <div class="r13">
-            <center>
-               
-            </center>
-        </div>
-        <div class="r7">
-            <center>
-                <h5>P</h5>
-
-                <h5>A</h5>
-
-                <h5>R</h5>
-
-                <h5>T</h5>
-
-                <h5>Y</h5>
-            </center>
+                </li>
+            </ul>
+           
         </div>
 
     </div>
-
-
-
-
-
-    <section class="yo">
-        <hr>
-        <h1 id="hi">Day 2</h1>
-        <ul style="list-style-type: none;">
-            <li>4 AM</li>
-            <li>5 AM</li>
-            <li>6 AM</li>
-            <li>7 AM</li>
-            <li>8 AM</li>
-            <li>9 AM</li>
-            <li>10 AM</li>
-            <li>11 AM</li>
-            <li>12 PM</li>
-
-        </ul>
-    </section>
-    <div class="r8">
-        <center>
-            <h4 style="padding-top: 10px;"><u>Breakfast</u></h4>
-        </center>
-    </div>
-    <div class="r9">
-        <center>
-            <h4 style="padding-top: 10px;"><u>Shopping</u></h4>
-        </center>
-    </div>
-    <div class="r10">
-        <center>
-            <h4 style="padding-top: 10px;"><u>CheckOut</u></h4>
-        </center>
-    </div>
-
-</div>
+</section>
