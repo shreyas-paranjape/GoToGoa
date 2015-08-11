@@ -60,7 +60,7 @@ create table tourist (
 create table trip (
 	id int not null primary key auto_increment,
 	name varchar(20),
-	owner enum('admin','customer'),
+	owner enum('admin','customer') default 'customer',
 	start_date date,
 	end_date date,
 	checkin_time datetime,
@@ -104,8 +104,10 @@ create table event_category (
 
 create table event (
 	id int not null primary key auto_increment,
-	duration int(50),
-	place varchar(30),
+	start_time datetime,
+	end_time datetime,
+	event_id int,
+	foreign key (event_id) references event (id),
 	event_category_id int,
 	foreign key (event_category_id) references event_category (id)
 );
@@ -131,14 +133,14 @@ create table trip_event (
 	foreign key (event_id) references event (id)
 );
 
-create table trip_schedule (
+/*create table trip_schedule (
 	id int not null primary key auto_increment,
 	event_id int,
 	foreign key (event_id) references event (id),
 	day int,
 	start_time datetime,
 	end_time datetime
-);
+);*/
 
 create table location (
 	id int not null primary key auto_increment,
