@@ -3,8 +3,10 @@
 	(:require
 		[liberator.core :refer [defresource]]
 		[clj-http.client :as client]
-		[korma.core :as orm]
+		[goaamigo.process.sendmail :as mail]
+		[korma.core :refer :all]
 		[cheshire.core :refer :all]
+		[crypto.password.scrypt :as password]
 		[goaamigo.process.facebook :as fb]
 		[goaamigo.process.google :as goo]
 		[goaamigo.process.linkedin :as li]
@@ -28,6 +30,31 @@
 		)
 	)
 
+(defresource forgot-password
+	:available-media-types ["application/json" "text/html"]
+	:allowed-methods [:post]
+	:handle-created (fn [ctx]
+				(def comm_id (:id ((vec (select comm (fields :id) (where {:email (get-in ctx [:request :body :mail])}))) 0)))
+				(def username (:username ((vec (select tourist (fields :username) (where {:comm_id comm_id}))) 0)))
+				(mail/forgot-password-mail (get-in ctx [:request :body :mail]) (password/encrypt username) username)
+				(generate-string {:status "Please check your e-mail inbox for steps to reset your account's password"})
+				)
+	)
+
+(defresource forgot-password-reset [request username]
+	:available-media-types ["application/json" "text/html"]
+	:allowed-methods [:post]
+	:handle-created (fn [ctx]
+				(if (= (get-in ctx [:request :body :pass]) (get-in ctx [:request :body :pass_confirm]))
+					(let [h username]
+						(def a (clojure.string/split h #"=====>"))
+						(update db/tourist (set-fields {:pass (password/encrypt (get-in ctx [:request :body :pass]))}) (where {:username (a 1)}))
+						)
+					)
+				(generate-string {:status "Your password has been changed"})
+				)
+	)
+
 (defresource login
 	:available-media-types ["application/json" "text/html"]
 	:allowed-methods [:get :post]
@@ -37,7 +64,7 @@
 				(generate-string {:status "You are logged in"})
 				; render the login page
 				(generate-string {:status "You are not logged in"})))
-	:post! (fn [ctx]
+	:handle-created (fn [ctx]
 		(authenticate (get-in ctx [:request :params]))))
 
 (defresource add-account
@@ -47,6 +74,10 @@
 		(do
 			(insert db/comm (values (get-in ctx [:request :params "comm"])))
 			(insert db/tourist (values (get-in ctx [:request :params "tourist"])))
+			(let [username (get-in ctx [:request :params "tourist-userdata" :username])
+				pass (get-in ctx [:request :params "tourist-userdata" :pass])]
+				(update tourist (set-fields {:username username :pass (password/encrypt pass)}) (where {:id (max :id)}))
+				)
 			(update tourist (set-fields {:comm_id (get-in ctx [:request :params "comm" :comm_id])}) (where {:id (max :id)}))
 			)
 		)
@@ -99,6 +130,8 @@
 
 (defroutes tourist-routes
 	(ANY "/user-login" request (login request))
+	(ANY "/forgot-password" request (forgot-password request))
+	(ANY "/forgot-password/:username" [request username] (forgot-password-reset request username))
 	(ANY "/add-account" request (add-account request))
 	(ANY "/add-account-fb" request (add-account-fb request))
 	(ANY "/add-account-google" request (add-account-google request))

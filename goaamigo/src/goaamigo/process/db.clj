@@ -25,7 +25,7 @@
 
 (defentity event
 	(has-many trip_event)
-	(has-many trip_schedule)
+	;(has-many trip_schedule)
 	(has-many event_tag_map))
 
 (defentity event_category
