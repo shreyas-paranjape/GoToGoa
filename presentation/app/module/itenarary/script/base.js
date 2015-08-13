@@ -35,5 +35,17 @@ angular.module('itenarary', [
                     data: ['default', 'list', 'of', 'things']
                 },
                 controller: 'ItenararyDetailController'
+            })
+            .state('calendar', {
+                url: '/calendar',
+                templateUrl: 'module/itenarary/view/calendar.html',
+                ncyBreadcrumb: {
+                    label: 'calendar'
+                },
+                params: {
+                    data: ['default', 'list', 'of', 'things']
+                },
+                controller: 'ItenararyDetailController'
+                
             });
     });

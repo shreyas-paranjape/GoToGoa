@@ -70,7 +70,7 @@ ul {
 }
 .travel {
     background: url(../images/try.png);
-    
+    //    border: 1px solid black;
 }
 .e1 {
     margin-top: 30px;
@@ -86,14 +86,14 @@ ul {
             font-weight: bold;
         }
     }
-    .time {
-        //        border-right: 1px solid grey;
-        height: 100%;
-        h4 {
-            font-weight: bold;
-            text-align: center;
-        }
-    }
+    //    .time {
+    //        //        border-right: 1px solid grey;
+    //        height: 100%;
+    //        h4 {
+    //            font-weight: bold;
+    //            text-align: center;
+    //        }
+    //    }
     .vertical-left {
         border-left: 1px solid grey;
         height: 100%;
@@ -168,4 +168,79 @@ hr {
             color: #FA8C00;
         }
     }
+}
+//celendar.html
+.try {
+    border: 1px solid black;
+}
+.h5-used {
+    text-align: center;
+    font-size: 16px;
+}
+.day1 {
+    .dark {
+        background-color: #f8ce4c;
+    }
+    .light {
+        background-color: #fef1b5;
+    }
+}
+.day2 {
+    .dark {
+        background-color: #74a5e5;
+    }
+    .light {
+        background-color: #c3d8f4;
+    }
+}
+.day3 {
+    .dark {
+        background-color: #32a2a2;
+    }
+    .light {
+        background-color: #b2dcdc;
+    }
+}
+.day4 {
+    .dark {
+        background-color: #ff8384;
+    }
+    .light {
+        background-color: #ffb8b9;
+    }
+}
+.grey {
+    background-color: #e6e6e6;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    li {
+        padding: 10px;
+        border: 1px solid black;
+    }
+}
+table,
+th,
+td {
+    border: 1px solid black;
+    //border-collapse: collapse;
+}
+th,
+td {
+    padding: 5px;
+    //width:90px;
+}
+th {
+    background-color: #e6e6e6;
+    text-align: center;
+    text-transform: uppercase;
+}
+tr {
+    text-align: center;
+}
+.time {
+    //width: 5%;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
 }
