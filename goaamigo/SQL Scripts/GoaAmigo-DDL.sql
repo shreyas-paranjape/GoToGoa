@@ -104,10 +104,11 @@ create table event_category (
 
 create table event (
 	id int not null primary key auto_increment,
+	name varchar(30),
 	start_time datetime,
 	end_time datetime,
-	event_id int,
-	foreign key (event_id) references event (id),
+	lft int,
+	rgt int,
 	event_category_id int,
 	foreign key (event_category_id) references event_category (id)
 );

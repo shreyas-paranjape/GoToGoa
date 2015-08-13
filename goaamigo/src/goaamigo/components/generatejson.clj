@@ -6,7 +6,7 @@
 
 (def c (atom []))
 
-(defn find_events [x] (vec (j/query db/db ["SELECT * FROM event WHERE event_category_id=?" x])))
+(defn find_events [x] (vec (j/query db/db ["SELECT name FROM event WHERE event_category_id=?" x])))
 
 (def parent (vec (j/query db/db ["SELECT * FROM event_category WHERE rgt <> lft + 1 order by lft desc"])))
 
