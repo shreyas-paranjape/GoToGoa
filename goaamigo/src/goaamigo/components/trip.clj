@@ -3,6 +3,7 @@
 	(:require
 		[liberator.core :refer [defresource]]
 		[clj-http.client :as client]
+		[goaamigo.components.generatejson :as json]
 		[korma.core :as orm]
 		[cheshire.core :refer :all]
 		[selmer.parser :refer :all]
@@ -45,6 +46,14 @@
 			)
 	)
 
+(defresource get-event-categories
+	:available-media-types ["application/json" "text/html"]
+	:allowed-methods [:get]
+	:handle-ok (fn [ctx]
+			(json/getval))
+	)
+
 (defroutes trip-routes
 	(ANY "/create-trip" request (create-trip request))
-	(ANY "/get-events" request (get-events request)))
+	(ANY "/get-events" request (get-events request))
+	(ANY "/get-event-categories" request (get-event-categories request)))
