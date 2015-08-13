@@ -13,7 +13,7 @@ angular.module('hotel')
                     "id": 1,
                     "name": "Vivanta",
                     "location": "A",
-                    "stars": 2
+                    "stars": 2,
                 },
                 {
                     "id": 2,

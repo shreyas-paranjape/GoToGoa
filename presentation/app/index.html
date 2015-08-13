@@ -3,12 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>GoAmigo</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css"/>
     <!-- endbuild -->
    
 </head>
@@ -31,6 +32,9 @@
                     </li>
                     <li>
                         <a ui-sref="details">Trip itenarary</a>
+                    </li>
+                    <li>
+                        <a ui-sref="grid">Grid</a>
                     </li>
                 </nav>
             </div>
@@ -62,6 +66,8 @@
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
+    <script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
+    <script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 

@@ -32,6 +32,8 @@ module.exports = function(config) {
       'bower_components/restangular/dist/restangular.js',
       'bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'bower_components/angular-breadcrumb/release/angular-breadcrumb.js',
+      'bower_components/javascript-detect-element-resize/detect-element-resize.js',
+      'bower_components/angular-gridster/src/angular-gridster.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

@@ -20,7 +20,7 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
-
+            'gridster',
             'hotel',
             'rental',
             'itenarary'
