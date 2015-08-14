@@ -3,11 +3,15 @@
 	(:require
 		[liberator.core :refer [defresource]]
 		[clj-http.client :as client]
+		[taoensso.timbre :as timbre]
+		[clojure.java.jdbc :as j]
 		[goaamigo.components.generatejson :as json]
-		[korma.core :as orm]
+		[korma.core :refer :all]
 		[cheshire.core :refer :all]
 		[selmer.parser :refer :all]
 		[goaamigo.process.db :as db]))
+
+(timbre/refer-timbre)
 
 (defn child-events [p] (vec (j/query db/db ["SELECT DISTINCT Child.id, Child.name FROM event as Child, event as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
 

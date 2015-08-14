@@ -1,6 +1,6 @@
 (ns goaamigo.components.generatejson
-    (:require [clojure.java.jdbc :as j]
-          [goaamigo.process.db :as db]))
+	(:require [clojure.java.jdbc :as j]
+		  [goaamigo.process.db :as db]))
 
 (def m (atom {}))
 
