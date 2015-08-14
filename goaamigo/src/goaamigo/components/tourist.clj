@@ -32,7 +32,7 @@
 	)
 
 (defresource forgot-password
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:handle-created (fn [ctx]
 				(def comm_id (:id ((vec (select db/comm (fields :id) (where {:email (get-in ctx [:request :body :mail])}))) 0)))
@@ -43,7 +43,7 @@
 	)
 
 (defresource forgot-password-reset [request username]
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:handle-created (fn [ctx]
 				(if (= (get-in ctx [:request :body :pass]) (get-in ctx [:request :body :pass_confirm]))
@@ -69,7 +69,7 @@
 		(authenticate (get-in ctx [:request :params]))))
 
 (defresource add-account
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
 		(do
@@ -100,7 +100,7 @@
 			))
 
 (defresource add-account-google
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(do
@@ -115,7 +115,7 @@
 			))
 
 (defresource add-account-linkedin
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(do

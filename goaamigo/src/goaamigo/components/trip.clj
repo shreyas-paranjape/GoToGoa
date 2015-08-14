@@ -16,7 +16,7 @@
 (defn child-events [p] (vec (j/query db/db ["SELECT DISTINCT Child.id, Child.name FROM event as Child, event as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
 
 (defresource create-trip
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
 		(insert db/trip (values (get-in ctx [:request :params "trip"])))
@@ -32,7 +32,7 @@
 	)
 
 (defresource get-events
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 		; Filtering not added as filtering params are not yet decided
@@ -53,28 +53,28 @@
 	)
 
 (defresource get-event-categories
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(json/getval))
 	)
 
 (defresource get-event-details
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(select db/event (where {:id (get-in ctx [:request :body :id])})))
 	)
 
 (defresource add-events-to-trip
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
 		(insert db/trip_event (get-in ctx [:request :body])))
 	)
 
 (defresource get-child-events
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(child-events (get-in ctx [:request :body :event :lft])))
