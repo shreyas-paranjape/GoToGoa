@@ -94,6 +94,14 @@
 	:post! (fn [ctx]
 		(insert db/trip_event (get-in ctx [:request :body])))
 	)
+	
+(defresource get-trip
+	:available-media-types ["application/json"]
+	:allowed-methods [:post]
+	:handle-ok (fn [ctx]
+			(select db/trip (where (get-in ctx [:request :body :condition])))
+			)
+	)
 
 ;(defresource get-child-events
 ;	:available-media-types ["application/json"]
@@ -105,6 +113,7 @@
 (defroutes trip-routes
 	(ANY "/create-trip" request (create-trip request))
 	(ANY "/get-events" request (get-events request))
+	(ANY "/get-trip" request (get-trip request))
 	(ANY "/get-root-immediate-children" request (get-root-immediate-children request))
 	(ANY "/get-event-categories" request (get-event-categories request))
 	(ANY "/get-event-details" request (get-event-details request))
