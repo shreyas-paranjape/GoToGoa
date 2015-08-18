@@ -13,6 +13,10 @@
 
 (timbre/refer-timbre)
 
+(defn all-children-particular-parent [x y]
+	(vec (j/query db/db ["select event.* from event_category as node, event_category as parent,event where node.lft between parent.lft and parent.rgt and node.id!=? and parent.id=? and event.event_category_id=node.id order by node.lft" x y]))
+	)
+
 (defn child-events [p] (vec (j/query db/db ["SELECT DISTINCT Child.id, Child.name FROM event as Child, event as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
 
 (defresource create-trip
@@ -31,7 +35,7 @@
 		)
 	)
 
-(defresource get-events
+;(defresource get-events
 	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
@@ -50,13 +54,31 @@
 				(select db/event)
 				)
 			)
-	)
+;	)
 
 (defresource get-event-categories
 	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(json/getval))
+	)
+
+(defresource get-root-immediate-children
+	:available-media-types ["application/json"]
+	:allowed-methods [:get]
+	:handle-ok (fn [ctx]
+			(child-events 1)
+			)
+	)
+
+(defresource get-events
+	:available-media-types ["application/json"]
+	:allowed-methods [:get]
+	:handle-ok (fn [ctx]
+			(let [x (get-in ctx [:request :body :parent])]
+				(all-children-particular-parent x x)
+				)
+			)
 	)
 
 (defresource get-event-details
@@ -73,17 +95,18 @@
 		(insert db/trip_event (get-in ctx [:request :body])))
 	)
 
-(defresource get-child-events
-	:available-media-types ["application/json"]
-	:allowed-methods [:get]
-	:handle-ok (fn [ctx]
-			(child-events (get-in ctx [:request :body :event :lft])))
-	)
+;(defresource get-child-events
+;	:available-media-types ["application/json"]
+;	:allowed-methods [:get]
+;	:handle-ok (fn [ctx]
+;			(child-events (get-in ctx [:request :body :event :lft])))
+;	)
 
 (defroutes trip-routes
 	(ANY "/create-trip" request (create-trip request))
 	(ANY "/get-events" request (get-events request))
+	(ANY "/get-root-immediate-children" request (get-root-immediate-children request))
 	(ANY "/get-event-categories" request (get-event-categories request))
 	(ANY "/get-event-details" request (get-event-details request))
 	(ANY "/add-events" request (add-events-to-trip request))
-	(ANY "/get-child-events" request (get-child-events request)))
+	(ANY "/get-child-events" request (get-events request)))
