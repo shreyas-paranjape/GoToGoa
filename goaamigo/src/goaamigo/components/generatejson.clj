@@ -6,13 +6,13 @@
 
 (def c (atom []))
 
-(defn find_events [x] (vec (j/query db/db ["SELECT name FROM event WHERE event_category_id=?" x])))
+(defn find_events [x] (vec (j/query db/db ["SELECT name FROM item WHERE item_category_id=?" x])))
 
-(def parent (vec (j/query db/db ["SELECT * FROM event_category WHERE rgt <> lft + 1 order by lft desc"])))
+(def parent (vec (j/query db/db ["SELECT * FROM item_category WHERE rgt <> lft + 1 order by lft desc"])))
 
-(defn child_initial [p] (vec (j/query db/db ["SELECT DISTINCT Child.* FROM event_category as Child, event_category as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
+(defn child_initial [p] (vec (j/query db/db ["SELECT DISTINCT Child.* FROM item_category as Child, item_category as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
 
-(defn child_rest [p q] (vec (j/query db/db ["SELECT DISTINCT Child.* FROM event_category as Child, event_category as Parent WHERE Child.lft <> ? and Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p q])))
+(defn child_rest [p q] (vec (j/query db/db ["SELECT DISTINCT Child.* FROM item_category as Child, item_category as Parent WHERE Child.lft <> ? and Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p q])))
 
 (defn genjson []
 (dorun

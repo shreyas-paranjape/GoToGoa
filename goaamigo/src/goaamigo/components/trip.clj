@@ -14,46 +14,46 @@
 (timbre/refer-timbre)
 
 (defn all-children-particular-parent [x y]
-	(vec (j/query db/db ["select event.* from event_category as node, event_category as parent,event where node.lft between parent.lft and parent.rgt and node.id!=? and parent.id=? and event.event_category_id=node.id order by node.lft" x y]))
+	(vec (j/query db/db ["select item.* from item_category as node, item_category as parent,item where node.lft between parent.lft and parent.rgt and node.id!=? and parent.id=? and item.item_category_id=node.id order by node.lft" x y]))
 	)
 
-(defn child-events [p] (vec (j/query db/db ["SELECT DISTINCT Child.id, Child.name FROM event as Child, event as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
+(defn child-events [p] (vec (j/query db/db ["SELECT DISTINCT Child.id, Child.name FROM item as Child, item as Parent WHERE Parent.lft < Child.lft AND Parent.rgt > Child.rgt GROUP BY Child.name, Child.lft, Child.rgt HAVING max(Parent.lft)=?" p])))
 
 (defresource create-trip
 	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
 		(insert db/trip (values (get-in ctx [:request :params "trip"])))
-		(if (empty? (select db/trip_event (where {:trip_id (get-in ctx [:request :params "trip_event" :trip_id])})))
+		(if (empty? (select db/trip_item (where {:trip_id (get-in ctx [:request :params "trip_item" :trip_id])})))
 			; If empty then obviously insert
-			(insert db/trip_event (values (get-in ctx [:request :params "trip_event"])))
+			(insert db/trip_item (values (get-in ctx [:request :params "trip_item"])))
 			; If not empty then update
-			(update db/trip_event 
-				(set-fields (get-in ctx [:request :params "trip_event"]))
-				(where {:trip_id (get-in ctx [:request :params "trip_event" :trip_id])}))
+			(update db/trip_item 
+				(set-fields (get-in ctx [:request :params "trip_item"]))
+				(where {:trip_id (get-in ctx [:request :params "trip_item" :trip_id])}))
 			)
 		)
 	)
 
 ;(defresource get-events
-	:available-media-types ["application/json"]
-	:allowed-methods [:get]
-	:handle-ok (fn [ctx]
+	;:available-media-types ["application/json"]
+	;:allowed-methods [:get]
+	;:handle-ok (fn [ctx]
 		; Filtering not added as filtering params are not yet decided
 			; If the user provides ordering
-			(if (get-in ctx [:request :params "event" :order])
+	;		(if (get-in ctx [:request :params "item" :order])
 				; :order will store a map with the field to order by as the key and asc or desc as the value (0 is ASC and 1 is DESC)
-				(let [a (get-in ctx [:request :params "event" :order])]
-					(if (= ((vec (vals a)) 0) 0)
-						(select db/event (fields :id :name) (order ((vec (keys a)) 0) :ASC))
-						(select db/event (fields :id :name) (order ((vec (keys a)) 0) :DESC))
-						)
-					)
-				)
-			(if (nil? (get-in ctx [:request :params "event"]))
-				(select db/event)
-				)
-			)
+	;			(let [a (get-in ctx [:request :params "item" :order])]
+	;				(if (= ((vec (vals a)) 0) 0)
+	;					(select db/item (fields :id :name) (order ((vec (keys a)) 0) :ASC))
+	;					(select db/item (fields :id :name) (order ((vec (keys a)) 0) :DESC))
+	;					)
+	;				)
+	;			)
+	;		(if (nil? (get-in ctx [:request :params "item"]))
+	;			(select db/item)
+	;			)
+	;		)
 ;	)
 
 (defresource get-event-categories
@@ -85,14 +85,14 @@
 	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
-			(select db/event (where {:id (get-in ctx [:request :body :id])})))
+			(select db/item (where {:id (get-in ctx [:request :body :id])})))
 	)
 
 (defresource add-events-to-trip
 	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
-		(insert db/trip_event (get-in ctx [:request :body])))
+		(insert db/trip_item (get-in ctx [:request :body])))
 	)
 	
 (defresource get-trip
@@ -107,7 +107,7 @@
 ;	:available-media-types ["application/json"]
 ;	:allowed-methods [:get]
 ;	:handle-ok (fn [ctx]
-;			(child-events (get-in ctx [:request :body :event :lft])))
+;			(child-events (get-in ctx [:request :body :item :lft])))
 ;	)
 
 (defroutes trip-routes
