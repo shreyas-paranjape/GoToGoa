@@ -13,7 +13,7 @@
 
 (timbre/refer-timbre)
 
-(defn children-particular-parent [x y]
+(defn all-children-particular-parent [x y]
 	(vec (j/query db/db ["select event.* from event_category as node, event_category as parent,event where node.lft between parent.lft and parent.rgt and node.id!=? and parent.id=? and event.event_category_id=node.id order by node.lft" x y]))
 	)
 
@@ -76,7 +76,7 @@
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(let [x (get-in ctx [:request :body :parent])]
-				(children-particular-parent x x)
+				(all-children-particular-parent x x)
 				)
 			)
 	)
