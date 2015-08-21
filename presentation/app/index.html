@@ -9,9 +9,12 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.tmp) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css"/>
+    <link rel="stylesheet" href="styles/font-awesome-4.4.0/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css" />
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
     <!-- endbuild -->
-   
+
 </head>
 
 <body>
@@ -24,11 +27,11 @@
         <div class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="navbar-header">
-                    <a class="navbar-brand" ui-sref="hotel">Go To Goa</a>
+                    <a class="navbar-brand" ui-sref="hotel">GoAmigo</a>
                 </div>
                 <nav class="nav navbar-nav">
                     <li>
-                        <a ui-sref="planner.hotel.list" >Trip planner</a>
+                        <a ui-sref="planner.hotel.list">Trip planner</a>
                     </li>
                     <li>
                         <a ui-sref="details">Trip itenarary</a>
@@ -39,16 +42,19 @@
                     <li>
                         <a ui-sref="calendar">Calendar</a>
                     </li>
+                    <li>
+                        <a ui-sref="map">Map</a>
+                    </li>
                 </nav>
             </div>
         </div>
     </header>
-    
+
     <div class="container">
-        <!--<div ncy-breadcrumb></div>-->
+        <div ncy-breadcrumb></div>
         <div ui-view></div>
     </div>
-    
+
     <footer class="footer">
         <div class="container" style="padding-top:50px;">
             Footer :
@@ -65,14 +71,19 @@
     <script src="bower_components/angular-touch/angular-touch.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
-    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/lodash/lodash.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
     <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
     <script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
     <script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
+    <script src="bower_components/angular-google-maps/dist/angular-google-maps.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
+    <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="bower_components/accountingjs/accounting.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="module/hotel/script/base.js"></script>

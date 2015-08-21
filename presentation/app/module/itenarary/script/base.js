@@ -47,5 +47,17 @@ angular.module('itenarary', [
                 },
                 controller: 'ItenararyDetailController'
                 
+            })
+            .state('map', {
+                url: '/map',
+                templateUrl: 'module/itenarary/view/map.html',
+                ncyBreadcrumb: {
+                    label: 'map'
+                },
+                params: {
+                    data: ['default', 'list', 'of', 'things']
+                },
+                controller: 'ItenararyDetailController'
+                
             });
     });
