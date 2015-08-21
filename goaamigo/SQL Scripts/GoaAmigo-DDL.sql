@@ -95,49 +95,49 @@ create table trip_tag_map (
 	foreign key (trip_id) references trip (id)
 );
 
-create table event_category (
+create table item_category (
 	id int not null primary key auto_increment,
 	name varchar(20) not null,
 	lft int,
 	rgt int
 );
 
-create table event (
+create table item (
 	id int not null primary key auto_increment,
 	title varchar(30),
-	start datetime,
-	end datetime,
+	tstart datetime,
+	tend datetime,
 	lft int,
 	rgt int,
-	event_category_id int,
-	foreign key (event_category_id) references event_category (id)
+	item_category_id int,
+	foreign key (item_category_id) references item_category (id)
 );
 
-create table event_tag (
+create table item_tag (
 	id int not null primary key auto_increment,
 	tag text not null
 );
 
-create table event_tag_map (
+create table item_tag_map (
 	id int not null primary key auto_increment,
-	event_tag_id int,
-	event_id int,
-	foreign key (event_tag_id) references event_tag (id),
-	foreign key (event_id) references event (id)
+	item_tag_id int,
+	item_id int,
+	foreign key (item_tag_id) references item_tag (id),
+	foreign key (item_id) references item (id)
 );
 
-create table trip_event (
+create table trip_item (
 	id int not null primary key auto_increment,
 	trip_id int,
-	event_id int,
+	item_id int,
 	foreign key (trip_id) references trip (id),
-	foreign key (event_id) references event (id)
+	foreign key (item_id) references item (id)
 );
 
 /*create table trip_schedule (
 	id int not null primary key auto_increment,
-	event_id int,
-	foreign key (event_id) references event (id),
+	item_id int,
+	foreign key (item_id) references item (id),
 	day int,
 	start_time datetime,
 	end_time datetime
