@@ -6,6 +6,7 @@
 		[goaamigo.process.sendmail :as mail]
 		[korma.core :refer :all]
 		[cheshire.core :refer :all]
+		[noir.session :as session]
 		[crypto.password.scrypt :as password]
 		[goaamigo.process.facebook :as fb]
 		[goaamigo.process.google :as goo]
@@ -31,18 +32,18 @@
 	)
 
 (defresource forgot-password
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:handle-created (fn [ctx]
-				(def comm_id (:id ((vec (select comm (fields :id) (where {:email (get-in ctx [:request :body :mail])}))) 0)))
-				(def username (:username ((vec (select tourist (fields :username) (where {:comm_id comm_id}))) 0)))
+				(def comm_id (:id ((vec (select db/comm (fields :id) (where {:email (get-in ctx [:request :body :mail])}))) 0)))
+				(def username (:username ((vec (select db/tourist (fields :username) (where {:comm_id comm_id}))) 0)))
 				(mail/forgot-password-mail (get-in ctx [:request :body :mail]) (password/encrypt username) username)
 				(generate-string {:status "Please check your e-mail inbox for steps to reset your account's password"})
 				)
 	)
 
 (defresource forgot-password-reset [request username]
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:handle-created (fn [ctx]
 				(if (= (get-in ctx [:request :body :pass]) (get-in ctx [:request :body :pass_confirm]))
@@ -68,7 +69,7 @@
 		(authenticate (get-in ctx [:request :params]))))
 
 (defresource add-account
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:post]
 	:post! (fn [ctx]
 		(do
@@ -76,9 +77,9 @@
 			(insert db/tourist (values (get-in ctx [:request :params "tourist"])))
 			(let [username (get-in ctx [:request :params "tourist-userdata" :username])
 				pass (get-in ctx [:request :params "tourist-userdata" :pass])]
-				(update tourist (set-fields {:username username :pass (password/encrypt pass)}) (where {:id (max :id)}))
+				(update db/tourist (set-fields {:username username :pass (password/encrypt pass)}) (where {:id (max :id)}))
 				)
-			(update tourist (set-fields {:comm_id (get-in ctx [:request :params "comm" :comm_id])}) (where {:id (max :id)}))
+			(update db/tourist (set-fields {:comm_id (get-in ctx [:request :params "comm" :comm_id])}) (where {:id (max :id)}))
 			)
 		)
 	)
@@ -90,7 +91,7 @@
 			(do
 				(client/get "https://localhost:8443/facebook")
 				(session/put! :username (:social_id @fb/facebook-user))
-				(if (empty? (select social (where {:social_id (:social_id @fb/facebook-user)})))
+				(if (empty? (select db/social (where {:social_id (:social_id @fb/facebook-user)})))
 					(insert db/social
 						(values @fb/facebook-user)))
 				; render the home page
@@ -99,13 +100,13 @@
 			))
 
 (defresource add-account-google
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(do
 				(client/get "https://localhost:8443/google")
 				(session/put! :username (:social_id @goo/google-user))
-				(if (empty? (select social (where {:social_id (:social_id @goo/google-user)})))
+				(if (empty? (select db/social (where {:social_id (:social_id @goo/google-user)})))
 					(insert db/social
 						(values @goo/google-user)))
 				; render the home page
@@ -114,13 +115,13 @@
 			))
 
 (defresource add-account-linkedin
-	:available-media-types ["application/json" "text/html"]
+	:available-media-types ["application/json"]
 	:allowed-methods [:get]
 	:handle-ok (fn [ctx]
 			(do
 				(client/get "https://localhost:8443/linkedin")
 				(session/put! :username (:social_id @li/lIn-user))
-				(if (empty? (select social (where {:social_id (:social_id @li/lIn-user)})))
+				(if (empty? (select db/social (where {:social_id (:social_id @li/lIn-user)})))
 					(insert db/social
 						(values @li/lIn-user)))
 				; render the home page

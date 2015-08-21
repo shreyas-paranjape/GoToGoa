@@ -14,27 +14,27 @@
 
 (defdb goaamigo db)
 
-(declare comm event event_category event_tag 
-	event_tag_map feedback hotel hotel_room
-	location site tourist trip trip_event trip_schedule
+(declare comm item item_category item_tag 
+	item_tag_map feedback hotel hotel_room
+	location site tourist trip trip_item trip_schedule
 	trip_tag trip_tag_map)
 
 (defentity comm
 	(has-one site)
 	(has-one tourist))
 
-(defentity event
-	(has-many trip_event)
+(defentity item
+	(has-many trip_item)
 	;(has-many trip_schedule)
-	(has-many event_tag_map))
+	(has-many item_tag_map))
 
-(defentity event_category
-	(has-many event))
+(defentity item_category
+	(has-many item))
 
-(defentity event_tag
-	(has-many event_tag_map))
+(defentity item_tag
+	(has-many item_tag_map))
 
-(defentity event_tag_map)
+(defentity item_tag_map)
 
 (defentity feedback)
 
@@ -53,10 +53,10 @@
 	(has-many trip))
 
 (defentity trip
-	(has-many trip_event)
+	(has-many trip_item)
 	(has-many trip_tag_map))
 
-(defentity trip_event)
+(defentity trip_item)
 
 (defentity trip_schedule)
 
