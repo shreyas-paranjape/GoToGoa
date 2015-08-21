@@ -2,27 +2,66 @@
 <!--<div>{{ items }}</div>-->
 <div class="row">
     <aside class="filters col-sm-2 col-md-2 col-lg-2">
-        Filter : </br>
+        <i class="fa fa-filter fa-lg"></i>Filter : </br>
         <input type="checkbox" ng-click="includeLocation('A')" /> A</br>
         <input type="checkbox" ng-click="includeLocation('B')" /> B </br>
     </aside>
-    
-    <div class="col-sm-9 col-md-9 col-lg-9">
-        <aside class="sorts">
-            Sort :
-            <a href="" ng-click="reverse=!reverse;order('id', reverse)">Id</a>
-            <a href="" ng-click="reverse=!reverse;order('name', reverse)">Name</a>
-            <a href="" ng-click="reverse=!reverse;order('location', reverse)">Location</a>
-            <a href="" ng-click="reverse=!reverse;order('stars', reverse)">Stars</a> </br>
-            </br>
+
+    <div class="col-sm-9 col-md-9 col-lg-9 no-padding">
+        <aside class="row sorts" style="width:95%;">
+            <h4 class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">Sort :</h4>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('id', reverse)">Id</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('name', reverse)">Name</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('location', reverse)">Location</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('stars', reverse)">Stars</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('price', reverse)">Price</a>
         </aside>
-        <section class="items">
+        <section class="items" style="width:80%;background-color:#f7f0df;">
             <div ng-repeat="hotel in hotels | filter: items.keyword | filter: locationFilter">
-                <ul>
-                    <li><a ui-sref="planner.hotel.detail">{{hotel.name}}</a></li>
-                    <li>{{hotel.location}}</li>
-                    <li>{{hotel.stars}}</li>
+                <ul class="row" style="padding:12px;">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                        <li>
+                            <a ui-sref="planner.hotel.detail({data:hotel})"><img src="{{hotel.url}}" /></a>
+                        </li>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 title">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <li><a ui-sref="planner.hotel.detail({data:hotel})"><h3>{{hotel.name}}</h3></a>
+                                </li>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <li style="text-align:right;font-weight:bolder;">{{hotel.price}}</li>
+                            </div>
+                        </div>
+                        <div class="row no-margin" style="padding:5px;">
+                            <i class="fa fa-star fa-lg"></i><i class="fa fa-star fa-lg"></i><i class="fa fa-star fa-lg"></i><i class="fa fa-star fa-lg"></i>
+                        </div>
+                        <div class="row no-margin" style="padding:8px;">
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Hooray!"><i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-wifi fa-lg"></i></a>
+                            <i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-glass fa-lg"></i>
+                            <i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-cutlery fa-lg"></i>
+                            <i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-coffee fa-lg"></i>
+                        </div>
+                        <div class="row no-margin">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+<!--                                <a href="#"></a>-->
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+                                <button type="button" ui-sref="planner.hotel.detail({data:hotel})" class="btn btn-primary" style="float:right;">Book Now</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+
                 </ul>
+                <button type="button" class="btn btn-default" 
+                                        ng-click="isCollapsed = !isCollapsed">view details</button>
+                                <hr>
+                                <div collapse="isCollapsed">
+                                    <div class="well well-lg">Some content</div>
+                                </div>
+                <hr>
             </div>
         </section>
     </div>

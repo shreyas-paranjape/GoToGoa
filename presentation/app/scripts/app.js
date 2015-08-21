@@ -23,10 +23,17 @@ angular.element(document).ready(function () {
             'gridster',
             'hotel',
             'rental',
-            'itenarary'
+            'itenarary',
+            'uiGmapgoogle-maps',
+            'ui.calendar'
         ])
-        .config(function ($urlRouterProvider) {
+        .config(function ($urlRouterProvider,uiGmapGoogleMapApiProvider) {
             $urlRouterProvider.otherwise('/trip');
+            uiGmapGoogleMapApiProvider.configure({
+                key: 'AIzaSyAjLbaCSVxU0PYubJL_ZL2ey4mIxMu0GaM',
+                v: '3.17',
+                libraries: 'weather,geometry,visualization'
+            });
         });
     
     angular.bootstrap(document, ['gotogoa']);
