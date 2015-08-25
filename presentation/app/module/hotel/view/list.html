@@ -7,7 +7,7 @@
         <input type="checkbox" ng-click="includeLocation('B')" /> B </br>
     </aside>
 
-    <div class="col-sm-9 col-md-9 col-lg-9 no-padding">
+    <div class="col-sm-7 col-md-7 col-lg-7 no-padding">
         <aside class="row sorts" style="width:95%;">
             <h4 class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">Sort :</h4>
             <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('id', reverse)">Id</a>
@@ -45,24 +45,30 @@
                         </div>
                         <div class="row no-margin">
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-<!--                                <a href="#"></a>-->
+                                <!--                                <a href="#"></a>-->
                             </div>
                             <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-                                <button type="button" ui-sref="planner.hotel.detail({data:hotel})" class="btn btn-primary" style="float:right;">Book Now</button>
+                                <button type="button" ng-click="isCollapsed = !isCollapsed" class="btn btn-primary" style="float:right;">Book Now</button>
                             </div>
                         </div>
-                        
+
                     </div>
 
                 </ul>
-                <button type="button" class="btn btn-default" 
-                                        ng-click="isCollapsed = !isCollapsed">view details</button>
-                                <hr>
-                                <div collapse="isCollapsed">
-                                    <div class="well well-lg">Some content</div>
-                                </div>
+                <!--                <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">view details</button>-->
+
+                <div collapse="isCollapsed">
+                    <div class="well well-lg">
+                        <button type="button" ng-click="addEvent(hotel.name)">Add to trip</button>
+                    </div>
+                </div>
                 <hr>
             </div>
         </section>
+    </div>
+    <div class="col-sm-3 col-md-3 col-lg-3 no-padding">
+        <div ui-calendar="uiConfig.calendar" class="calendar" ng-model="eventSources"></div>
+
+
     </div>
 </div>

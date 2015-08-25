@@ -66,9 +66,13 @@ ul {
         }
     }
 }
-.responsive {
+.tabbar {
     background-color: white;
-    width: 80%;
+    height: auto;
+    //width: 80%;
+    .nav-tabs {
+        border-bottom: 0px;
+    }
     .nav-tabs > li >a {
         font-size: 18px;
         color: #FA8C00;
@@ -96,17 +100,16 @@ ul {
     }
 }
 #caption {
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0, 0, 0, 0.9);
     z-index: -1;
-    width:300px;
+    width: 300px;
     text-align: center;
     display: none;
     a {
-        
         text-decoration: none;
         color: white;
         font-weight: bold;
-        font-size:20px;
+        font-size: 20px;
     }
 }
 .para {
@@ -252,13 +255,20 @@ hr {
         }
     }
 }
-//celendar.html
+//calendar.html
 .time {
     //width: 5%;
     text-align: center;
     font-weight: bold;
     font-size: 15px;
 }
-.angular-google-map-container {
-    height: 400px;
+#panel {
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    margin-left: -180px;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
 }

@@ -14,7 +14,6 @@
     "angular-bootstrap": "~0.12.1",
     "angular-breadcrumb": "~0.3.3",
     "angular-gridster": "~0.13.5",
-    "angular-google-maps": "~2.1.5",
     "angular-ui-calendar": "~1.0.1",
     "accountingjs": "~0.4.1"
   },
