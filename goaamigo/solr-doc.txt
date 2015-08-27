@@ -36,6 +36,7 @@ NOTE: Make sure that JAVA is installed.
       			<str name="config">data-config.xml</str>
     		</lst>
   		</requestHandler>
+  		
   	c. create a file data-config.xml in the config-path and paste the following code in it:
   		<dataConfig>
 		<dataSource type="JdbcDataSource" 
