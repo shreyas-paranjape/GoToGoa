@@ -1,10 +1,10 @@
 /*global angular:false */
-angular.module('itenarary')
-    .controller('ItenararyPlannerController', ['$scope',
+angular.module('itinerary')
+    .controller('itineraryPlannerController', ['$scope',
     function ($scope) {
             'use strict';
     }])
-    .controller('ItenararyDetailController', ['$scope',
+    .controller('itineraryDetailController', ['$scope',
     function ($scope, $compile, uiCalendarConfig) {
             'use strict';
             //map

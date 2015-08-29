@@ -1,0 +1,78 @@
+<div class="row no-margin">
+    <aside class="filters col-sm-2 col-md-2 col-lg-2 no-padding">
+        <i class="fa fa-filter fa-lg"></i>Filter : </br>
+        <h5>Location:</h5>
+        <input type="checkbox" ng-click="includeLocation('A')" /> A</br>
+        <input type="checkbox" ng-click="includeLocation('B')" /> B </br>
+    </aside>
+
+    <div class="col-sm-10 col-md-10 col-lg-10 no-padding no-margin">
+        <aside class="row sorts well" style="width:95%;">
+            <h4 class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-margin">Sort :</h4>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('id', reverse)">Id</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('name', reverse)">Name</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('location', reverse)">Location</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('stars', reverse)">Stars</a>
+            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('price', reverse)">Price</a>
+        </aside>
+        <section class="items" style="width:80%;background-color:#f7f0df;">
+            <div ng-repeat="hotel in hotels | filter: items.keyword | filter: locationFilter" style="border: 1px solid grey;">
+                <ul class="row" style="padding:12px;">
+                    <!--
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+    <li>
+        <a ui-sref="planner.hotel.detail({data:hotel})"><img src="{{hotel.url}}" /></a>
+    </li>
+</div>
+-->
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <li><a href="#"><h3>{{hotel.name}}</h3></a>
+                                </li>
+                            </div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                <li style="text-align:right;font-weight:bolder;">{{hotel.price}}</li>
+                            </div>
+                        </div>
+                        <!--
+                        <div class="row no-margin" style="padding:5px;">
+    <i class="fa fa-star fa-lg"></i><i class="fa fa-star fa-lg"></i><i class="fa fa-star fa-lg"></i><i class="fa fa-star fa-lg"></i>
+    <rating ng-model="rate" max="max" readonly="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']"></rating>
+    <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">{{percent}}%</span>
+</div>
+
+-->
+                        <br>
+                        <br>
+                        <!--
+                        <div class="row no-margin" style="padding:8px;">
+    <a href="#" tooltip="wifi" tooltip-placement="top"><i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-wifi fa-lg"></i></a>
+    <i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-glass fa-lg"></i>
+    <i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-cutlery fa-lg"></i>
+    <i class="col-xs-1 col-sm-1 col-md-1 col-lg-1 fa fa-coffee fa-lg"></i>
+</div>
+-->
+
+                    </div>
+
+                </ul>
+                <div class="row">
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button style="margin:10px;" type="button" ui-sref="trip.detail({data:hotel})" class="btn btn-primary">View Details</button>
+                    </div>
+                    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        <button style="margin:10px;" type="button" ui-sref="trip.edit.calendar({data:hotel})" class="btn btn-primary">Edit</button>
+                    </div>
+                </div>
+                <br>
+
+                <!--                <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">view details</button>-->
+
+
+
+            </div>
+        </section>
+    </div>
+
+</div>

@@ -23,12 +23,18 @@ angular.element(document).ready(function () {
             'gridster',
             'hotel',
             'rental',
-            'itenarary',
+            'trip',
             'ngMap',
             'ui.calendar'
         ])
+        .config(function ($breadcrumbProvider) {
+            $breadcrumbProvider.setOptions({
+                prefixStateName: 'trip.list',
+                template: 'bootstrap2'
+            });
+        })
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/trip');
+            $urlRouterProvider.otherwise('/trips');
 
         });
 
