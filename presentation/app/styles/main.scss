@@ -276,3 +276,43 @@ hr {
     padding: 5px;
     border: 1px solid #999;
 }
+//list.html
+.list {
+    h4 {
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        text-align: center
+    }
+    h5 {
+        color: white;
+        //text-align: right;
+        font-weight: bold;
+    }
+    .days {
+        background-color: white;
+        color: #00B46D;
+        width: 70px;
+        border-radius: 5px;
+    }
+}
+.box {
+    color: white;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 200px;
+    position: absolute;
+    top: 20px;
+    font-weight: bold;
+    margin-left: 10px;
+    text-align: center;
+}
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+}
+.partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+}

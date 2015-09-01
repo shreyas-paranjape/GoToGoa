@@ -25,7 +25,8 @@ angular.element(document).ready(function () {
             'rental',
             'trip',
             'ngMap',
-            'ui.calendar'
+            'ui.calendar',
+        'datePicker'
         ])
         .config(function ($breadcrumbProvider) {
             $breadcrumbProvider.setOptions({

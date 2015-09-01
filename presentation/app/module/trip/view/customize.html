@@ -12,7 +12,11 @@
     </div>
     <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 no-padding">
         <div class="row">
-            sorts
+            <aside class="row sorts well" style="width:95%;">
+                <h4 class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-margin">Sort :</h4>
+                <a class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding" href="" ng-click="reverse=!reverse;order('name', reverse)">Name</a>
+                <a class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding" href="" ng-click="reverse=!reverse;order('price', reverse)">Price</a>
+            </aside>
         </div>
         <div class="row">
             <section class="items" style="width:80%;background-color:#f7f0df;">
