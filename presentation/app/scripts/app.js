@@ -23,18 +23,21 @@ angular.element(document).ready(function () {
             'gridster',
             'hotel',
             'rental',
-            'itenarary',
-            'uiGmapgoogle-maps',
-            'ui.calendar'
+            'trip',
+            'ngMap',
+            'ui.calendar',
+        'datePicker'
         ])
-        .config(function ($urlRouterProvider,uiGmapGoogleMapApiProvider) {
-            $urlRouterProvider.otherwise('/trip');
-            uiGmapGoogleMapApiProvider.configure({
-                key: 'AIzaSyAjLbaCSVxU0PYubJL_ZL2ey4mIxMu0GaM',
-                v: '3.17',
-                libraries: 'weather,geometry,visualization'
+        .config(function ($breadcrumbProvider) {
+            $breadcrumbProvider.setOptions({
+                prefixStateName: 'trip.list',
+                template: 'bootstrap2'
             });
+        })
+        .config(function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/trips');
+
         });
-    
+
     angular.bootstrap(document, ['gotogoa']);
 });

@@ -1,12 +1,85 @@
 /*global angular:false */
-angular.module('itenarary')
-    .controller('ItenararyPlannerController', ['$scope',
+angular.module('itinerary')
+    .controller('itineraryPlannerController', ['$scope',
     function ($scope) {
             'use strict';
     }])
-    .controller('ItenararyDetailController', ['$scope', 'uiGmapGoogleMapApi',
-    function ($scope, uiGmapGoogleMapApi,$compile,uiCalendarConfig) {
+    .controller('itineraryDetailController', ['$scope',
+    function ($scope, $compile, uiCalendarConfig) {
             'use strict';
+            //map
+            $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
+            $scope.toggleBounce = function () {
+                if (this.getAnimation() != null) {
+                    this.setAnimation(null);
+                } else {
+                    this.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            }
+            $scope.beachPosition = [
+                {
+                    lat: 15.517384,
+                    lng: 73.762864,
+                    name: "Candolim"
+                },
+                {
+                    lat: 15.480674,
+                    lng: 73.807338,
+                    name: "Miramar"
+                }
+            ];
+
+            $scope.eatPosition = [
+                {
+                    lat: 15.469899,
+                    lng: 73.807289,
+                    name: "Martins beach corner"
+                },
+                {
+                    lat: 15.464948,
+                    lng: 73.806733,
+                    name: "peeps kitchen"
+                }
+            ];
+
+            $scope.positions = [
+
+               /* {
+                    lat: 15.48656,
+                    lng: 73.81814
+                },
+                {
+                    lat: 15.482677,
+                    lng: 73.807459
+                },
+                {
+                    lat: 15.517280,
+                    lng: 73.762879
+                }*/
+            ];
+            $scope.addMarker = function (event) {
+                var ll = event.latLng;
+                $scope.positions.push({
+                    lat: ll.lat(),
+                    lng: ll.lng()
+                });
+            }
+            $scope.beaches = function () {
+                $scope.positions = $scope.beachPosition;
+            };
+            $scope.eat = function () {
+                $scope.positions = $scope.eatPosition;
+                /* for (var key in $scope.map.markers) {
+                     $scope.map.markers[key].setMap($scope.map);
+                 };*/
+            };
+            $scope.hideMarkers = function () {
+                for (var key in $scope.map.markers) {
+                    $scope.map.markers[key].setMap(null);
+                };
+            };
+
+
             $scope.details = [
                 {
                     "time": "10am",
@@ -101,11 +174,11 @@ angular.module('itenarary')
             var m = date.getMonth();
             var y = date.getFullYear();
 
-//            $scope.changeTo = 'Hungarian';
+            //            $scope.changeTo = 'Hungarian';
             /* event source that pulls from google.com */
             $scope.eventSource = {
                 url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-                className: 'gcal-event', // an option!
+                //                className: 'gcal-event', // an option!
                 //currentTimezone: 'America/Chicago' // an option!
             };
             /* event source that contains custom events on the scope */
@@ -145,21 +218,21 @@ angular.module('itenarary')
                 },
                 {
                     title: 'breakfast',
-                    start: new Date(y, m, d,8,0),
-                    end: new Date(y, m, d,9,0),
-                    
+                    start: new Date(y, m, d, 8, 0),
+                    end: new Date(y, m, d, 9, 0),
+
                 },
                 {
                     title: 'beach',
-                    start: new Date(y, m, d,10,0),
-                    end: new Date(y, m, d,15,30),
-                    
+                    start: new Date(y, m, d, 10, 0),
+                    end: new Date(y, m, d, 15, 30),
+
                 },
                 {
                     title: 'lunch',
-                    start: new Date(y, m, d,12,0),
-//                    end: new Date(y, m, d,15,30),
-                    
+                    start: new Date(y, m, d, 12, 0),
+                    //                    end: new Date(y, m, d,15,30),
+
                 }
     ];
             /* event source that calls a function on every view switch */
@@ -177,33 +250,6 @@ angular.module('itenarary')
                 callback(events);
             };
 
-//            $scope.calEventsExt = {
-//                color: '#f00',
-//                textColor: 'yellow',
-//                events: [
-//                    {
-//                        type: 'party',
-//                        title: 'Lunch',
-//                        start: new Date(y, m, d, 12, 0),
-//                        end: new Date(y, m, d, 14, 0),
-//                        allDay: false
-//                    },
-//                    {
-//                        type: 'party',
-//                        title: 'Lunch 2',
-//                        start: new Date(y, m, d, 12, 0),
-//                        end: new Date(y, m, d, 14, 0),
-//                        allDay: false
-//                    },
-//                    {
-//                        type: 'party',
-//                        title: 'Click for Google',
-//                        start: new Date(y, m, 28),
-//                        end: new Date(y, m, 29),
-//                        url: 'http://google.com/'
-//                    }
-//        ]
-//            };
             /* alert on eventClick */
             $scope.alertOnEventClick = function (date, jsEvent, view) {
                 $scope.alertMessage = (date.title + ' was clicked ');
@@ -275,65 +321,12 @@ angular.module('itenarary')
                     eventResize: $scope.alertOnResize
                 }
             };
-
-            //map
-            /* event sources array*/
             $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
             $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
-            $scope.map = {
-                center: {
-                    latitude: 15.4989,
-                    longitude: 73.8278
-                },
-                zoom: 18,
-                bounds: {}
-            };
 
-            $scope.options = {
-                scrollwheel: true
-            };
-            var createRandomMarker = function (i, bounds, idKey) {
-                var lat_min = bounds.southwest.latitude,
-                    lat_range = bounds.northeast.latitude - lat_min,
-                    lng_min = bounds.southwest.longitude,
-                    lng_range = bounds.northeast.longitude - lng_min;
 
-                if (idKey == null) {
-                    idKey = "id";
-                }
 
-                var latitude = lat_min + (Math.random() * lat_range);
-                var longitude = lng_min + (Math.random() * lng_range);
-                var ret = {
-                    latitude: latitude,
-                    longitude: longitude,
-                    title: 'm' + i,
-                    show: false
-                };
-                ret.onClick = function () {
-                    console.log("Clicked!");
-                    ret.show = !ret.show;
-                };
-                ret[idKey] = i;
-                return ret;
-            };
-            $scope.randomMarkers = [];
-            // Get the bounds from the map once it's loaded
-            $scope.$watch(function () {
-                return $scope.map.bounds;
-            }, function (nv, ov) {
-                // Only need to regenerate once
-                if (!ov.southwest && nv.southwest) {
-                    var markers = [];
-                    for (var i = 0; i < 10; i++) {
-                        markers.push(createRandomMarker(i, $scope.map.bounds))
-                    }
-                    $scope.randomMarkers = markers;
-                }
-            }, true);
+            /* event sources array*/
 
-            uiGmapGoogleMapApi.then(function (maps) {
-
-            });
 
     }]);

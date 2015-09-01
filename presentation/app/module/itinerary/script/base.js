@@ -1,5 +1,5 @@
 /*global angular:false */
-angular.module('itenarary', [
+angular.module('itinerary', [
     'ui.router'
 ])
     .config(function ($stateProvider) {
@@ -7,57 +7,57 @@ angular.module('itenarary', [
         $stateProvider
             .state('planner', {
                 url: '/trip',
-                templateUrl: 'module/itenarary/view/planner.html',
+                templateUrl: 'module/itinerary/view/planner.html',
                 ncyBreadcrumb: {
                     label: 'Trip-Planner'
                 },
-                controller: 'ItenararyPlannerController',
+                controller: 'itineraryPlannerController',
                 abstract: true
             })
             .state('details', {
-                url: '/itenarary',
-                templateUrl: 'module/itenarary/view/detail.html',
+                url: '/itinerary',
+                templateUrl: 'module/itinerary/view/detail.html',
                 ncyBreadcrumb: {
                     label: 'Hotels-list'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'ItenararyDetailController'
+                controller: 'itineraryDetailController'
             })
             .state('grid', {
                 url: '/gridster',
-                templateUrl: 'module/itenarary/view/grid.html',
+                templateUrl: 'module/itinerary/view/grid.html',
                 ncyBreadcrumb: {
                     label: 'random'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'ItenararyDetailController'
+                controller: 'itineraryDetailController'
             })
             .state('calendar', {
                 url: '/calendar',
-                templateUrl: 'module/itenarary/view/calendar.html',
+                templateUrl: 'module/itinerary/view/calendar.html',
                 ncyBreadcrumb: {
                     label: 'calendar'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'ItenararyDetailController'
-                
+                controller: 'itineraryDetailController'
+
             })
             .state('map', {
                 url: '/map',
-                templateUrl: 'module/itenarary/view/map.html',
+                templateUrl: 'module/itinerary/view/map.html',
                 ncyBreadcrumb: {
                     label: 'map'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'ItenararyDetailController'
-                
+                controller: 'itineraryDetailController'
+
             });
     });

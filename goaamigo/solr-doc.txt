@@ -1,0 +1,67 @@
+NOTE: Make sure that JAVA is installed.
+
+1. Download the Solr tar or zip file.
+	Just google 'apache solr' and download the latest version.
+
+2. Extract the file whereever you like and then cd into that folder.
+
+3. To start the solr jetty server, here is the command:
+	'bin/solr start -e cloud -noprompt'
+
+4. bin/post -c gettingstarted docs/
+	This command will add all the text files inside the docs folder to the 'gettingstarted' collection.
+
+5. bin/post -c gettingstarted example/exampledocs/*.xml
+	This command will add all the xml files to the 'gettingstarted' collection.
+
+6. bin/post -c gettingstarted example/exampledocs/books.json
+	This command will add books.json file to the 'gettingstarted' collection.
+
+7. To connect to a database, follow these steps:
+	
+	NOTE: I have modified the default 'gettingstarted' collection and the path to all the config files of this collection is 'solr-x.x.x/server/solr/configsets/data_driven_schema_configs/conf which I'll call config-path just for simplicity.
+
+	a. First, Download the latest MySQL JDBC Connector and copy the connector JAR file to solr-x.x.x/contrib/dataimporthandler
+	
+	b. Edit the config-path/solrconfig.xml and paste the following code:
+		
+		<lib dir="${solr.install.dir:../../../..}/contrib/dataimporthandler/" regex=".*\.jar" />
+  		<lib dir="${solr.install.dir:../../../..}/dist/" regex="solr-dataimporthandler-.*\.jar" />
+  		
+  		<!--
+    		DataBase Handler
+  		-->
+  		<requestHandler name="/dataimport" class="org.apache.solr.handler.dataimport.DataImportHandler">
+    		<lst name="defaults">
+      			<str name="config">data-config.xml</str>
+    		</lst>
+  		</requestHandler>
+  		
+  	c. create a file data-config.xml in the config-path and paste the following code in it:
+  		<dataConfig>
+		<dataSource type="JdbcDataSource" 
+            		driver="com.mysql.jdbc.Driver"
+            		url="jdbc:mysql://localhost:3306/f" 
+            		user="root" 
+            		password="root"/>
+		<document>
+  			<entity name="q"  
+    			pk="id"
+    			query="select * from q"
+    			deltaImportQuery="SELECT * from q WHERE id='${dih.delta.id}'"
+    			deltaQuery="SELECT id FROM q  WHERE updated_at > '${dih.last_index_time}'"
+    			>
+     			<field column="id" name="id"/>
+     			<field column="conn_id" name="conn_id"/>
+     			<!-- <field column="read_date" name="read_date"/>
+     			<field column="updated_at" name="updated_at"/> -->       
+  			</entity>
+		</document>
+		</dataConfig>
+		
+	d. Now edit the config-path/managed_schema file to add the all the columns which are there in data-config.xml file:
+		
+		<field name="id" type="int"/>
+    		<field name="conn_id" type="int"/>
+    		
+8. Now fire up the solr server using the command 'bin/solr start -e cloud -noprompt' and run a full-import using 'http://localhost:8983/solr/gettingstarted/dataimport?command=full-import' 
