@@ -1,0 +1,482 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"ac",
+				"activity"
+			],
+			[
+				"av",
+				"activity_attr"
+			],
+			[
+				"de",
+				"defentity"
+			],
+			[
+				"veh",
+				"vehicle_type"
+			],
+			[
+				"busi",
+				"business_vehicle"
+			],
+			[
+				"bus",
+				"business_type"
+			],
+			[
+				"vehi",
+				"vehicle_type"
+			],
+			[
+				"has",
+				"has-one"
+			],
+			[
+				"com",
+				"comm"
+			],
+			[
+				"data",
+				"data-collector"
+			],
+			[
+				"get-events",
+				"get-events-normal"
+			],
+			[
+				"chil",
+				"children-particular-parent"
+			],
+			[
+				"an",
+				"ANY"
+			],
+			[
+				"get",
+				"get-children"
+			],
+			[
+				"ch",
+				"child-events"
+			],
+			[
+				"add",
+				"add-events-to-trip"
+			],
+			[
+				"pass",
+				"password"
+			],
+			[
+				"ge",
+				"generate-string"
+			],
+			[
+				"pa",
+				"params"
+			],
+			[
+				"pas",
+				"password"
+			],
+			[
+				"to",
+				"tourist"
+			],
+			[
+				"user",
+				"username"
+			],
+			[
+				"co",
+				"comm_id"
+			],
+			[
+				"Comm",
+				"comm_id"
+			],
+			[
+				"se",
+				"set-fields"
+			],
+			[
+				"u",
+				"update"
+			],
+			[
+				"d",
+				"def"
+			],
+			[
+				"han",
+				"handle-created"
+			],
+			[
+				"all",
+				"allowed-methods"
+			],
+			[
+				"trip",
+				"trip_event"
+			],
+			[
+				"c",
+				"customer"
+			],
+			[
+				"do",
+				"do"
+			],
+			[
+				"g",
+				"get"
+			],
+			[
+				"ad",
+				"add-account-fb"
+			],
+			[
+				"a",
+				"add-account-fb"
+			],
+			[
+				"def",
+				"defentity"
+			],
+			[
+				"defre",
+				"defresource"
+			],
+			[
+				"tri",
+				"trip_tag_map"
+			],
+			[
+				"tr",
+				"trip_tag_map"
+			],
+			[
+				"h",
+				"has-one"
+			],
+			[
+				"ho",
+				"hotel-room"
+			],
+			[
+				"ev",
+				"event_tag_map"
+			],
+			[
+				"eve",
+				"event_tag_map"
+			],
+			[
+				"we",
+				"welcome"
+			],
+			[
+				"lin",
+				"linkedin"
+			],
+			[
+				"au",
+				"auth_linkedin"
+			],
+			[
+				"l",
+				"lIn-user"
+			],
+			[
+				"AP",
+				"API_KEY"
+			],
+			[
+				"us",
+				"user-details"
+			],
+			[
+				"fa",
+				"facebook-user"
+			],
+			[
+				"googl",
+				"google-user"
+			],
+			[
+				"oa",
+				"oauth2callback"
+			],
+			[
+				"lo",
+				"login-page"
+			],
+			[
+				"re",
+				"request"
+			],
+			[
+				"on",
+				"onclick	Attr"
+			],
+			[
+				"chi",
+				"child_rest"
+			],
+			[
+				"as",
+				"assoc"
+			],
+			[
+				"i",
+				"i"
+			],
+			[
+				"q",
+				"query"
+			]
+		]
+	},
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/home/punit/GoToGoa/planner-service/src/planner/domain/activity.clj",
+		"/home/punit/DeliverySystem/srv/src/srv/infra/web.clj",
+		"/home/punit/GoToGoa/goaamigo/src/goaamigo/process/facebook.clj",
+		"/home/punit/GoToGoa/goaamigo/src/goaamigo/web/combinedroutes.clj",
+		"/home/punit/DeliverySystem/srv/src/srv/domain/customer.clj",
+		"/home/punit/GoToGoa/goaamigo/src/goaamigo/process/db.clj",
+		"/home/punit/GoToGoa/service/src/gotogoa/web/resource.clj",
+		"/home/punit/Desktop/mailer/src/mailer/service/auth.clj",
+		"/home/punit/GoToGoa/service/src/gotogoa/data/hotel.clj",
+		"/home/punit/GoToGoa/service/src/gotogoa/data/site.clj",
+		"/home/punit/GoToGoa/goaamigo/src/goaamigo/components/generatejson.clj",
+		"/home/punit/Desktop/mailer/src/mailer/web/resource.clj",
+		"/home/punit/Desktop/mailer/src/mailer/web/route.clj",
+		"/home/punit/Desktop/mailer/project.clj",
+		"/home/punit/Desktop/mailer/src/mailer/service/getall.clj",
+		"/home/punit/Desktop/mailer/src/mailer/service/sendmail.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/customer.clj",
+		"/home/punit/mailer/src/mailer/service/auth.clj",
+		"/home/punit/GoToGoa/goaamigo/src/goaamigo/components/tourist.clj",
+		"/home/punit/mailer/src/mailer/service/getall.clj",
+		"/home/punit/mailer/src/mailer/web/route.clj",
+		"/home/punit/mailer/project.clj",
+		"/home/punit/mailer/src/mailer/web/resource.clj",
+		"/home/punit/DeliverySystem/service/project.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/hash.clj",
+		"/home/punit/GoToGoa/goaamigo/src/goaamigo/process/linkedin.clj",
+		"/home/punit/DeliverySystem/srv/src/srv/infra/db.clj",
+		"/home/punit/GoToGoa/service/project.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/delivery.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/ts.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/site.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/product.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/orders.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/sendmail.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/sendsms.clj",
+		"/home/punit/GoToGoa/service/src/gotogoa/web/route.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/generatejson.clj",
+		"/home/punit/Desktop/generate-json.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/web/route.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/send-mail.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/generate-json1.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/generate-json.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/domain/timestamps.clj",
+		"/home/punit/DeliverySystem/service/src/delivery/service/db.clj",
+		"/home/punit/Desktop/code",
+		"/home/punit/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+		"/home/punit/GoToGoa/service/src/gotogoa/web/handler.clj",
+		"/home/punit/Desktop/sql",
+		"/home/punit/Desktop/new.clj",
+		"/home/punit/ResumeParser/ANNIEGazetterFiles/accomplishments.lst",
+		"/home/punit/korma-test/project.clj",
+		"/home/punit/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings"
+	],
+	"find":
+	{
+		"height": 35.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"routes",
+			"distance",
+			"res",
+			"proprietor",
+			"available-methods",
+			"delete",
+			"values",
+			"insert",
+			";",
+			"child_rest",
+			"mail",
+			"sendma",
+			"Pass",
+			"products",
+			"event_category_id",
+			"scope",
+			"resp",
+			"request-access",
+			"access-token",
+			"oauth2",
+			"code",
+			"red",
+			"json",
+			"localhost",
+			"access_token",
+			"params",
+			"clj",
+			"http",
+			"db",
+			"nested",
+			"login",
+			"do",
+			"name"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"proprieter",
+			"allowed-methods",
+			"update",
+			"where",
+			"delete",
+			",",
+			"events",
+			"db/db",
+			"product",
+			"->"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"replace":
+	{
+		"height": 64.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": false,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
