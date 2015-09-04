@@ -26,7 +26,9 @@
                  ;; Mail
                  [clojurewerkz/mailer "1.2.0"]
                  ;; Http Client
-                 [http-kit "2.1.19"]]
+                 [http-kit "2.1.19"]
+                 ;; JSON Parsing
+                 ;[cheshire "5.4.0"]]
   :plugins [[lein-ring "0.9.6"]
             [lein-environ "1.0.0"]]
   :ring {:handler planner.infra.web/app}
