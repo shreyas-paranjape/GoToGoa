@@ -92,8 +92,9 @@
 				(get-activity (get-in ctx [:request :body :activity]))))
 	:delete! (fn [ctx]
 			(delete-activity (get-in ctx [:request :body :activity])))
-	:handle-created (fn [ctx]
-				(insert-activity (get-in ctx [:request :body :activity])))
+	:post! (fn [ctx]
+		(insert-activity (get-in ctx [:request :body :activity])))
+	:handle-created (generate-string {:status 1}) 
 	:put! (fn [ctx]
 		(update-activity (get-in ctx [:request :body :activity])))
 	)
@@ -105,9 +106,9 @@
 			(if (nil?  (get-in ctx [:request :body :activity_attr]))
 				(get-activity_attr-all)
 				(get-activity_attr (get-in ctx [:request :body :activity_attr]))))
-	:handle-created (fn [ctx]
-				(insert-activity_attr (get-in ctx [:request :body :activity_attr]))
-				(generate-string {:status 1}))
+	:post! (fn [ctx]
+		(insert-activity_attr (get-in ctx [:request :body :activity_attr])))
+	:handle-created (generate-string {:status 1})
 	:delete! (fn [ctx]
 			(delete-activity_attr (get-in ctx [:request :body :activity_attr])))
 	:put! (fn [ctx]

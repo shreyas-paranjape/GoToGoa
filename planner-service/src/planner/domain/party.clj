@@ -98,9 +98,9 @@
 		(update-party (get-in ctx [:request :body :party])))
 	:delete! (fn [ctx]
 			(delete-party (get-in ctx [:request :body :party])))
-	:handle-created (fn [ctx]
-				(insert-party (get-in ctx [:request :body :party]))
-				(generate-string {:status 1}))
+	:post! (fn [ctx]
+		(insert-party (get-in ctx [:request :body :party])))
+	:handle-created	(generate-string {:status 1})
 	)
 
 (defresource party_attr-res
@@ -114,9 +114,9 @@
 		(update-party_attr (get-in ctx [:request :body :party_attr])))
 	:delete! (fn [ctx]
 			(delete-party_attr (get-in ctx [:request :body :party_attr])))
-	:handle-created (fn [ctx]
-				(insert-party_attr (get-in ctx [:request :body :party_attr]))
-				(generate-string {:status 1}))
+	:post! (fn [ctx]
+				(insert-party_attr (get-in ctx [:request :body :party_attr])))
+	:handle-created (generate-string {:status 1})
 	)
 
 (defresource party_address-res
@@ -130,8 +130,9 @@
 			(delete-party_address (get-in ctx [:request :body :party_address])))
 	:put! (fn [ctx]
 		(update-party_address (get-in ctx [:request :body :party_address])))
-	:handle-created (fn [ctx]
+	:post! (fn [ctx]
 				(insert-party_address (get-in ctx [:request :body :party_address])))
+	:handle-created (generate-string {:status 1})
 	)
 
 (defresource party-attr-address-res
