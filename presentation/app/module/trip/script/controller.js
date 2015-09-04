@@ -4,8 +4,10 @@ angular.module('trip')
         $scope.store = $stateParams.data;
     }])
     .controller('TripEditController', ['$scope', '$stateParams', '$state',
-                                       function ($scope, $stateParams, $state, $compile, uiCalendarConfig) {
+                                       function ($scope, $stateParams, $state, $compile, uiCalendarConfig, $document) {
             'use strict';
+
+
 
             console.log('params' + $stateParams.data);
             //map

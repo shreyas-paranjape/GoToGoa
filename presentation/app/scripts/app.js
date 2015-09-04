@@ -1,16 +1,8 @@
 /*global angular:false */
 angular.element(document).ready(function () {
     'use strict';
-    /**
-     * @ngdoc overview
-     * @name todoApp
-     * @description
-     * # todoApp
-     *
-     * Main module of the application.
-     */
     angular
-        .module('gotogoa', [
+        .module('goaAmigo', [
             'ngAnimate',
             'ngCookies',
             'restangular',
@@ -21,23 +13,17 @@ angular.element(document).ready(function () {
             'ngTouch',
             'ui.bootstrap',
             'gridster',
-            'hotel',
-            'rental',
             'trip',
-            'ngMap',
-            'ui.calendar',
-        'datePicker'
+            //'ngMap',
+            'ui.calendar'
         ])
-        .config(function ($breadcrumbProvider) {
+        .config(function ($breadcrumbProvider,$urlRouterProvider) {
             $breadcrumbProvider.setOptions({
                 prefixStateName: 'trip.list',
                 template: 'bootstrap2'
             });
-        })
-        .config(function ($urlRouterProvider) {
             $urlRouterProvider.otherwise('/trips');
-
         });
 
-    angular.bootstrap(document, ['gotogoa']);
+    angular.bootstrap(document, ['goaAmigo']);
 });

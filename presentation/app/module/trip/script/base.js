@@ -1,6 +1,7 @@
 /*global angular:false */
 angular.module('trip', [
-    'ui.router'
+    'ui.router',
+    'duScroll'
 ])
     .config(function ($stateProvider) {
         'use strict';
