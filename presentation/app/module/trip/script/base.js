@@ -37,7 +37,7 @@ angular.module('trip', [
                 controller: 'TripDetailController'
             })
             .state('trip.edit', {
-                url: '/edit',
+                url: '',
                 templateUrl: 'module/trip/view/edit.html',
                 ncyBreadcrumb: {
                     label: 'Edit'
@@ -49,7 +49,7 @@ angular.module('trip', [
                 controller: 'TripEditController'
             })
             .state('trip.edit.calendar', {
-                url: '',
+                url: '/calendar',
                 templateUrl: 'module/trip/view/calendar.html',
                 ncyBreadcrumb: {
                     label: 'Calendar'

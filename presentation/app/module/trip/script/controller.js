@@ -3,13 +3,23 @@ angular.module('trip')
         'use strict';
         $scope.store = $stateParams.data;
     }])
-    .controller('TripEditController', ['$scope', '$stateParams', '$state',
-                                       function ($scope, $stateParams, $state, $compile, uiCalendarConfig, $document) {
+    .controller('TripEditController', ['$scope', '$stateParams', '$state', '$document','$timeout',
+                                       function ($scope, $stateParams, $state, $document, $timeout, $compile, uiCalendarConfig) {
             'use strict';
 
+            $scope.tabs = [ {id:0,title:'Day 1',active:false} ,
+                            {id:10,title:'Day 2',active:true} ,
+                            {id:20,title:'Day 3',active:false}
+                          ];
 
+            $scope.gotoEvent = function(event_id){
+              var tabId = Math.floor(event_id / 10);
+              $scope.tabs[tabId].active = true;
+              $timeout(function(){$document.scrollToElement($('#'+ event_id),0,1000)},1000);
+            }
 
             console.log('params' + $stateParams.data);
+            
             //map
             $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
             $scope.toggleBounce = function () {
