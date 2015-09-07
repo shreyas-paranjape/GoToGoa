@@ -4,7 +4,7 @@
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre])
-  (:use [korma.core] [cheshire.core]))
+  (:use [korma.core]))
 
 (timbre/refer-timbre)
 (timbre/set-level! :debug)
@@ -100,7 +100,7 @@
 			(delete-party (get-in ctx [:request :body :party])))
 	:post! (fn [ctx]
 		(insert-party (get-in ctx [:request :body :party])))
-	:handle-created	(generate-string {:status 1})
+	:handle-created	{:status 1}
 	)
 
 (defresource party_attr-res
@@ -116,7 +116,7 @@
 			(delete-party_attr (get-in ctx [:request :body :party_attr])))
 	:post! (fn [ctx]
 				(insert-party_attr (get-in ctx [:request :body :party_attr])))
-	:handle-created (generate-string {:status 1})
+	:handle-created {:status 1}
 	)
 
 (defresource party_address-res
@@ -132,7 +132,7 @@
 		(update-party_address (get-in ctx [:request :body :party_address])))
 	:post! (fn [ctx]
 				(insert-party_address (get-in ctx [:request :body :party_address])))
-	:handle-created (generate-string {:status 1})
+	:handle-created {:status 1}
 	)
 
 (defresource party-attr-address-res

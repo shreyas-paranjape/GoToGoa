@@ -3,7 +3,7 @@
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre])
-  (:use [korma.core] [cheshire.core]))
+  (:use [korma.core]))
 
 (timbre/refer-timbre)
 (timbre/set-level! :debug)
@@ -69,7 +69,7 @@
 				(get-site (get-in ctx [:request :body :site]))))
 	:post! (fn [ctx]
 		(Insert-site (get-in ctx [:request :body :site])))
-	:handle-created (generate-string {:status 1})
+	:handle-created {:status 1}
 	:put! (fn [ctx]
 		(update-site (get-in ctx [:request :body :site])))
 	:delete! (fn [ctx]
@@ -85,7 +85,7 @@
 				(get-site_attr (get-in ctx [:request :body :site_attr]))))
 	:post! (fn [ctx]
 		(Insert-site_attr (get-in ctx [:request :body :site_attr])))
-	:handle-created (generate-string {:status 1})
+	:handle-created {:status 1}
 	:put! (fn [ctx]
 		(update-site_attr (get-in ctx [:request :body :site_attr])))
 	:delete! (fn [ctx]

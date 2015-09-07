@@ -1,6 +1,7 @@
 (ns planner.domain.activity
   (:require [planner.domain.common :as common]
             [planner.infra.db :as db]
+            [planner.domain.itinerary :as itinerary]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre])
@@ -13,7 +14,8 @@
 (declare activity activity_attr)
 
 (defentity activity
-	(has-many activity_attr))
+	(has-many activity_attr)
+	(has-many itinerary/event))
 (defentity activity_attr
 	(belongs-to activity))
 
@@ -94,7 +96,7 @@
 			(delete-activity (get-in ctx [:request :body :activity])))
 	:post! (fn [ctx]
 		(insert-activity (get-in ctx [:request :body :activity])))
-	:handle-created (generate-string {:status 1}) 
+	:handle-created {:status 1}
 	:put! (fn [ctx]
 		(update-activity (get-in ctx [:request :body :activity])))
 	)
@@ -108,7 +110,7 @@
 				(get-activity_attr (get-in ctx [:request :body :activity_attr]))))
 	:post! (fn [ctx]
 		(insert-activity_attr (get-in ctx [:request :body :activity_attr])))
-	:handle-created (generate-string {:status 1})
+	:handle-created {:status 1}
 	:delete! (fn [ctx]
 			(delete-activity_attr (get-in ctx [:request :body :activity_attr])))
 	:put! (fn [ctx]
