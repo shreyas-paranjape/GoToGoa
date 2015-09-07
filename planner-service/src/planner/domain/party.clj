@@ -79,12 +79,15 @@
 (defn get-party-attr-address-all [_]
 	(select party
 		(with party_attr)
-		(with party_address)))
+		(with party_address
+			(with common/address)
+			(with common/address_type))))
 (defn get-party-attr-address [request]
 	(select party
 		(with party_attr)
-		(with party_address)
-		(where request)
+		(with party_address
+			(with common/address)
+			(with common/address_type))
 		(where request)))
 
 (defresource party-res

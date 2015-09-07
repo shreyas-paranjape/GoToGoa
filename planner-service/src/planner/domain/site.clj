@@ -54,9 +54,11 @@
 ; Select site-site_attr
 (defn get-site-site_attr-all [_]
 	(select site
+		(with common/address)
 		(with site_attr)))
 (defn get-site-site_attr [request]
 	(select site
+		(with common/address)
 		(with site_attr)
 		(where request)))
 

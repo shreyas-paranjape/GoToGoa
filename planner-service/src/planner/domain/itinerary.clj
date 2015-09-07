@@ -11,10 +11,12 @@
 
 (declare itinerary itinerary_day day day_event event trip)
 (defentity trip
+	(belongs-to common/recurrence_rule)
 	(belongs-to itinerary)
 	(belongs-to stay/stay)
 	(belongs-to travel/travel))
 (defentity itinerary
+	(belongs-to common/recurrence_rule)
 	(has-many itinerary_day)
 	(has-many trip))
 (defentity itinerary_day
@@ -27,6 +29,7 @@
 	(belongs-to day)
 	(belongs-to event))
 (defentity event
+	(belongs-to common/recurrence_rule)
 	(has-many day_event)
 	(belongs-to site/site)
 	(belongs-to activity/activity))
@@ -149,6 +152,7 @@
 (defn get-t-i-i_d-d-d_e-e [request]
 	(if (nil? request)
 		(select trip
+			(with common/recurrence_rule)
 			(with stay/stay)
 			(with travel/travel)
 			(with itinerary
@@ -159,6 +163,7 @@
 								(with site/site)
 								(with activity/activity)))))))
 		(select trip
+			(with common/recurrence_rule)
 			(with stay/stay)
 			(with travel/travel)
 			(with itinerary
