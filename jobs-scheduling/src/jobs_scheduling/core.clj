@@ -1,10 +1,12 @@
-(ns jobs-scheduling.core (:require [clojurewerkz.quartzite.scheduler :as qs]
+(ns jobs-scheduling.core
+  (:require [clojurewerkz.quartzite.scheduler :as qs]
             [clojurewerkz.quartzite.triggers :as t]
             [clojurewerkz.quartzite.jobs :as j]
-        [clojurewerkz.quartzite.jobs :refer [defjob]]
-            [clojurewerkz.quartzite.schedule.daily-interval :refer [schedule monday-through-friday
-                                                                    starting-daily-at time-of-day ending-daily-at
-                                                                    with-interval-in-minutes]]))
+            [clojurewerkz.quartzite.jobs :refer [defjob]]
+            [clojurewerkz.quartzite.schedule.daily-interval
+             :refer [schedule monday-through-friday
+                     starting-daily-at time-of-day ending-daily-at
+                     with-interval-in-minutes]]))
 
 
 ;; The "job" which does your defined tasks

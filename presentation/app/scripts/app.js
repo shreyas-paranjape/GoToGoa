@@ -20,14 +20,24 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
-
+            'gridster',
             'hotel',
             'rental',
-            'itenarary'
+            'trip',
+            'ngMap',
+            'ui.calendar',
+        'datePicker'
         ])
+        .config(function ($breadcrumbProvider) {
+            $breadcrumbProvider.setOptions({
+                prefixStateName: 'trip.list',
+                template: 'bootstrap2'
+            });
+        })
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/trip');
+            $urlRouterProvider.otherwise('/trips');
+
         });
-    
+
     angular.bootstrap(document, ['gotogoa']);
 });

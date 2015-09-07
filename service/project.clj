@@ -19,16 +19,17 @@
                            [mysql/mysql-connector-java "5.1.25"]
                            [lib-noir "0.9.5"]
                            [nginx-clojure "0.3.0"]
+                           [com.novemberain/monger "2.1.0"]
                            [http-kit "2.1.16"]]
             :plugins [[lein-ring "0.8.13"]
                       [lein-environ "1.0.0"]]
             :ring {:handler gotogoa.web.handler/app
-                      ;;:port 1234
-                        ;;:join? false
-                        ;;:ssl? true
-                        ;;:ssl-port 443
-                        ;;:keystore "/home/gts1/GoToGoa/service/server.jks"
-                        ;;:key-password "changeme"
+                      :port 3000
+                        :join? false
+                        :ssl? true
+                        :ssl-port 8443
+                        :keystore "/home/punit/keystore.jks"
+                        :key-password "qwerty"
                      }
             :profiles
             {:dev {:dependencies [[javax.servlet/servlet-api "2.5"]
