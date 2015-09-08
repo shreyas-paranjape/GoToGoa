@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "title": "Day",
+  "description": "A day in a trip schedule",
+  "type": "object",
+  "properties": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "start-time": {
+      "type": "string"
+    },
+    "events": {
+      "type": "array",
+      "description": "Array of event objects. No specific order"
+    },
+    "starts": {
+      "type": "object",
+      "description": "Specifies the recurrence rule",
+      "properties": {
+        "frequency": {
+          "type":"integer",
+          "description": "Allowed values: daily=1,weekly=7,monthly=30,yearly=365"
+        },
+        "offset": {
+          "type" "object",
+          "description": "Start identifier within a given period in the frequency"
+          "properties": {
+            "kind":{
+              "type": "integer",
+              "description": "day_of_week=0,day_of_month=1 etc etc"
+            }
+            "value": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    }
+  }
