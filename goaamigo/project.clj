@@ -11,7 +11,7 @@
 		       [crypto-password "0.1.3"]
 		       [selmer "0.8.7"]
                           [environ "1.0.0"]
-                           
+                           [clj-time "0.11.0"]
                            [korma "0.4.0"]
                            [com.draines/postal "1.11.3"]
                            [commons-codec/commons-codec "1.10"]

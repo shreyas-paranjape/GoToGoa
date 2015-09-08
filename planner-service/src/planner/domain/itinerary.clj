@@ -34,6 +34,21 @@
 	(belongs-to site/site)
 	(belongs-to activity/activity))
 
+; Adding minutes to time
+(defn add-time [start-time interval]
+	(do
+		(def parts (clojure.string/split start-time #":"))
+		(def hour (atom (read-string (parts 0))))
+		(def minutes (atom (read-string (parts 1))))
+		(swap! minutes + interval)
+		(def remainder (rem @minutes 60))
+		(def quotient (quot @minutes 60))
+		(swap! hour + quotient)
+		(reset! minutes remainder)
+		(str @hour":"@minutes":00")
+		)
+	)
+
 ; Insert trip
 (defn insert-trip [request]
 	(insert trip
@@ -48,8 +63,23 @@
 		(values request)))
 ; Insert day
 (defn insert-day [request]
-	(insert day
-		(values request)))
+	(do
+		(def x (common/insert-recurrence-rule
+			(values (get-in request [:starts]))))
+		(def r (conj (apply dissoc request [:events :starts]) (:recurrence_rule_id (:generated_key x))))
+		(def y (insert day
+			(values r)))
+		(dorun
+			(for [i (get-in request [:events])]
+				(do
+					(def z (insert day_event
+						(values (conj {:day_id (:generated_key y)} i))))
+					(def duration (:duration ((vec (select event (fields :duration) (where {:id (:event_id i)}))) 0)))
+					(def from_stamp (:from_stamp ((vec (select day_event (fields :from_stamp) (where i))) 0)))
+					(def to_stamp (duration+to_stamp))
+					(update day_event
+						(set-fields {:to_stamp to_stamp})
+						(where {:id (generated_key z)})))))))
 ; Insert day_event
 (defn insert-day_event [request]
 	(insert day_event
@@ -133,7 +163,7 @@
 ; Select day
 (defn get-day [request]
 	(if (nil? request)
-		(select dady)
+		(select day)
 		(select day
 			(where request))))
 ; Select day_event
