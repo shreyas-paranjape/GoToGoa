@@ -3,6 +3,13 @@
             [compojure.route :as route]
             [ring.middleware.defaults :refer
              [wrap-defaults site-defaults]]
+            [planner.domain.activity :as activity]
+            [planner.domain.common :as common]
+            [planner.domain.itinerary :as itinerary]
+            [planner.domain.party :as party]
+            [planner.domain.site :as site]
+            [planner.domain.stay :as stay]
+            [planner.domain.travel :as travel]
             [ring.middleware.json :refer
              [wrap-json-response wrap-json-body wrap-json-params]]
             [ring.middleware.params :refer
@@ -17,6 +24,13 @@
 (def app-routes
   (route
    home
+   activity/activity-routes
+   common/common-routes
+   itinerary/itinerary-routes
+   party/party-routes
+   site/site-routes
+   stay/stay-routes
+   travel/travel-routes
    not-found))
 
 ;; APPLICATION

@@ -159,6 +159,26 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
+-- Table `goaamigo`.`recurrence_rule`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `goaamigo`.`recurrence_rule` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `recurrence_frequency` ENUM('HOURLY', 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY') NOT NULL COMMENT '',
+  `by_minute` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_hour` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_day_of_the_week` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_day_of_the_month` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_day_of_the_year` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_week_of_the_month` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_week_of_the_year` TEXT NULL DEFAULT NULL COMMENT '',
+  `by_month_of_the_year` TEXT NULL DEFAULT NULL COMMENT '',
+  `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
+  `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
 -- Table `goaamigo`.`event`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `goaamigo`.`event` (
@@ -170,9 +190,11 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`event` (
   `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `title` VARCHAR(200) NOT NULL COMMENT '',
   `description` TEXT NOT NULL COMMENT '',
+  `recurrence_rule_id` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_event_site1_idx` (`site_id` ASC)  COMMENT '',
   INDEX `fk_event_activity1_idx` (`activity_id` ASC)  COMMENT '',
+  INDEX `fk_event_recurrence_rule1_idx` (`recurrence_rule_id` ASC)  COMMENT '',
   CONSTRAINT `fk_event_site1`
     FOREIGN KEY (`site_id`)
     REFERENCES `goaamigo`.`site` (`id`)
@@ -181,6 +203,11 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`event` (
   CONSTRAINT `fk_event_activity1`
     FOREIGN KEY (`activity_id`)
     REFERENCES `goaamigo`.`activity` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_event_recurrence_rule1`
+    FOREIGN KEY (`recurrence_rule_id`)
+    REFERENCES `goaamigo`.`recurrence_rule` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -220,7 +247,14 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`itinerary` (
   `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
   `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
+  `recurrence_rule_id` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `fk_itinerary_recurrence_rule1_idx` (`recurrence_rule_id` ASC)  COMMENT '',
+  CONSTRAINT `fk_itinerary_recurrence_rule1`
+    FOREIGN KEY (`recurrence_rule_id`)
+    REFERENCES `goaamigo`.`recurrence_rule` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -328,10 +362,12 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`trip` (
   `travel_id` INT NOT NULL COMMENT '',
   `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
+  `recurrence_rule_id` INT NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_trip_itinerary1_idx` (`itinerary_id` ASC)  COMMENT '',
   INDEX `fk_trip_stay1_idx` (`stay_id` ASC)  COMMENT '',
   INDEX `fk_trip_travel1_idx` (`travel_id` ASC)  COMMENT '',
+  INDEX `fk_trip_recurrence_rule1_idx` (`recurrence_rule_id` ASC)  COMMENT '',
   CONSTRAINT `fk_trip_itinerary1`
     FOREIGN KEY (`itinerary_id`)
     REFERENCES `goaamigo`.`itinerary` (`id`)
@@ -346,27 +382,12 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`trip` (
     FOREIGN KEY (`travel_id`)
     REFERENCES `goaamigo`.`travel` (`id`)
     ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_trip_recurrence_rule1`
+    FOREIGN KEY (`recurrence_rule_id`)
+    REFERENCES `goaamigo`.`recurrence_rule` (`id`)
+    ON DELETE NO ACTION
     ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
--- Table `goaamigo`.`recurrence_rule`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `goaamigo`.`recurrence_rule` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `recurrence_frequency` ENUM('HOURLY', 'DAILY', 'WEEKLY', 'MONTHLY', 'YEARLY') NOT NULL COMMENT '',
-  `by_minute` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_hour` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_day_of_the_week` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_day_of_the_month` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_day_of_the_year` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_week_of_the_month` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_week_of_the_year` TEXT NULL DEFAULT NULL COMMENT '',
-  `by_month_of_the_year` TEXT NULL DEFAULT NULL COMMENT '',
-  `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
-  `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
 ENGINE = InnoDB;
 
 
