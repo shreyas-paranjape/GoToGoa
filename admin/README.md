@@ -1,12 +1,10 @@
-# admin
+Installation : 	Install Nodejs,npm using apt-get.
+		Install yo, bower, grunt-cli using npm.
+		clone [https://github.com/glenpike/npm-g_nosudo.git].
+		Run the script in the repo.
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.11.0.
+Preview : 	grunt serve.
 
-## Build & development
+Test : 		grunt test.
 
-Run `grunt` for building and `grunt serve` for preview.
-
-## Testing
-
-Running `grunt test` will run the unit tests with karma.
+Test : 		grunt test.

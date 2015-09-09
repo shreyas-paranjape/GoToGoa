@@ -1,0 +1,38 @@
+<!--
+<map center="15.48656,73.81814" zoom="16">
+    <marker position="15.48656,73.81814" on-click="toggleBounce()" animation="DROP" draggable="false"></marker>
+
+    <marker position="15.482677,73.807201" on-click="toggleBounce()" animation="DROP" draggable="false"></marker>
+
+</map>
+-->
+<div id="panel">
+    <!--    <input ng-click="hideMarkers()" value="Hide Markers" type="button">-->
+    <input ng-click="eat()" value="Eat" type="button">
+    <input ng-click="beaches()" value="Beaches" type="button">
+</div>
+<map center="15.490962, 73.827259" zoom="10">
+    <marker position="15.498889,73.827778" on-click="showInfoWindow(event, 'bar')"></marker>
+    <info-window id="bar" max-width="200">
+        <div ng-non-bindable="">
+            <div id="siteNotice"></div>
+            <h3 id="firstHeading" class="firstHeading">Panjim</h3>
+
+        </div>
+    </info-window>
+    <marker ng-repeat="pos in positions" position="{{pos.lat}}, {{pos.lng}}" on-click="showInfoWindow(event, 'bar')">
+        <info-window id="bar" max-width="200">
+            <div ng-non-bindable="">
+                <div id="siteNotice"></div>
+                <h3 id="firstHeading" class="firstHeading">{{pos.name}}</h3>
+                <!--
+                <div id="bodyContent">
+
+    <p>Attribution: Uluru, <a href="//en.wikipedia.org/w/index.php?title=Uluru&amp;oldid=297882194"> http://en.wikipedia.org/w/index.php?title=Uluru</a> (last visited June 22, 2009).</p>
+</div>
+-->
+            </div>
+        </info-window>
+
+    </marker>
+</map>
