@@ -20,13 +20,15 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
+        'angularjs-dropdown-multiselect',
+        'ng.bs.dropdown',
             'gridster',
             'hotel',
             'rental',
             'trip',
             'ngMap',
-            'ui.calendar',
-        'datePicker'
+            'ui.calendar'
+
         ])
         .config(function ($breadcrumbProvider) {
             $breadcrumbProvider.setOptions({

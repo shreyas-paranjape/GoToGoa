@@ -138,6 +138,10 @@ ul {
         //        /text-transform: uppercase;
     }
 }
+//.container {
+//    width: 50%;
+//    margin: 0 auto;
+//}
 .container1 {
     width: 75%;
     height: auto;
@@ -277,6 +281,9 @@ hr {
     border: 1px solid #999;
 }
 //list.html
+.map {
+    height: auto;
+}
 .list {
     h4 {
         color: white;
@@ -315,4 +322,11 @@ hr {
     background-color: orange;
     border-radius: 32px;
     color: black;
+}
+.refine_filter {
+    width: 90%;
+    margin-left: 30px;
+    span {
+        font-size: 20px;
+    }
 }

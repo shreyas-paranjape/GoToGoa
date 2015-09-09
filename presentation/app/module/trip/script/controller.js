@@ -258,6 +258,171 @@ angular.module('trip')
                 this.setAnimation(google.maps.Animation.BOUNCE);
             }
         }
+        $scope.years = [
+            "2015",
+            "2014",
+            "2013",
+            "2012",
+            "2011",
+            "2010"
+        ];
+        $scope.selectYear = []; //current select item
+
+        /*changeYear function will be called if dropdown change*/
+        //        $scope.changeYear = function () {
+        //            console.log("YearController say... " + $scope.selectYear);
+        //        }
+        $scope.adults = [
+            "2 adults",
+            "4 adults",
+            "6 adults",
+            "7 adults",
+            "40 adults"
+        ];
+        $scope.selectAdults = [];
+        $scope.budgets = [
+
+            accounting.formatMoney(25000, "₹", 0),
+            accounting.formatMoney(105000, "₹", 0),
+            accounting.formatMoney(6000, "₹", 0),
+            accounting.formatMoney(35000, "₹", 0)
+        ];
+        $scope.selectBudgets = [];
+        $scope.interests = [
+            "activities",
+            "relaxation",
+            "family time",
+            "party",
+            "beaches",
+            "business"
+        ];
+        $scope.selectinterests = [];
+        $scope.example13model = [];
+        $scope.example13data = [
+            {
+                id: 1,
+                label: "activities"
+            },
+            {
+                id: 2,
+                label: "relaxation"
+            },
+            {
+                id: 3,
+                label: "family time"
+            },
+            {
+                id: 4,
+                label: "party"
+            },
+            {
+                id: 5,
+                label: "beaches"
+            },
+            {
+                id: 6,
+                label: "business"
+            }];
+        $scope.example13settings = {
+            smartButtonMaxItems: 3,
+            //            smartButtonTextConverter: function (itemText, originalItem) {
+            //                if (itemText === 'Jhon') {
+            //                    return 'Jhonny!';
+            //                }
+            //
+            //                return itemText;
+            //            }
+        };
+        $scope.type_trips = [
+            "comfortable",
+            "adventurous",
+            "business",
+            "bjhjhv"
+        ];
+        $scope.selecttype_trips = [];
+        $scope.companion = [
+            "family",
+            "friends",
+            "office collegaues"
+
+        ];
+        $scope.selectcompanion = [];
+        $scope.places = [
+            "miramar",
+            "margao",
+            "arpora",
+            "candolim",
+            "calangute"
+
+        ];
+        $scope.selectplaces = [];
+        //datepicker
+        //datepicker
+        $scope.today = function () {
+            $scope.dt = new Date();
+        };
+        $scope.today();
+
+        $scope.clear = function () {
+            $scope.dt = null;
+        };
+
+        // Disable weekend selection
+        $scope.disabled = function (date, mode) {
+            return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+        };
+
+        $scope.toggleMin = function () {
+            $scope.minDate = $scope.minDate ? null : new Date();
+        };
+        $scope.toggleMin();
+
+        $scope.open = function ($event) {
+            $scope.status.opened = true;
+        };
+
+        $scope.dateOptions = {
+            formatYear: 'yy',
+            startingDay: 1
+        };
+
+        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+        $scope.format = $scope.formats[0];
+
+        $scope.status = {
+            opened: false
+        };
+
+        var tomorrow = new Date();
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        var afterTomorrow = new Date();
+        afterTomorrow.setDate(tomorrow.getDate() + 2);
+        $scope.events1 = [
+            {
+                date: tomorrow,
+                status: 'full'
+      },
+            {
+                date: afterTomorrow,
+                status: 'partially'
+      }
+    ];
+
+        $scope.getDayClass = function (date, mode) {
+            if (mode === 'day') {
+                var dayToCheck = new Date(date).setHours(0, 0, 0, 0);
+
+                for (var i = 0; i < $scope.events.length; i++) {
+                    var currentDay = new Date($scope.events[i].date).setHours(0, 0, 0, 0);
+
+                    if (dayToCheck === currentDay) {
+                        return $scope.events[i].status;
+                    }
+                }
+            }
+
+            return '';
+        };
 
         //dropdown
         $scope.items = [
@@ -496,7 +661,7 @@ angular.module('trip')
         $scope.uiConfig = {
             calendar: {
                 //                width: 200,
-                height: 250,
+                height: 242,
                 editable: true,
                 header: false,
                 //                header: {
@@ -684,6 +849,14 @@ angular.module('trip')
             });
 
         };
+
+        $scope.alertDefaultEventOnClick = function (date, jsEvent, view) {
+            //            $scope.alertMessage = (date.title + ' was clicked ');
+            //$('.week-cal').fullCalendar('changeView', 'agendaDay');
+            //$('.week-cal').fullCalendar('gotoDate', date);
+            $scope.addDefaultEvent(date);
+
+        };
         /* alert on Drop */
         $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
             $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
@@ -705,12 +878,20 @@ angular.module('trip')
                 sources.push(source);
             }
         };
+        $scope.addDefaultEvent = function (date) {
+            $scope.events.push({
+                title: 'Add Event',
+                start: date,
+                end: date,
+                className: ['openSesame']
+            });
+        };
         /* add custom event*/
-        $scope.addEvent = function (hotelName, h, e) {
+        $scope.addEvent = function (hotelName) {
             $scope.events.push({
                 title: hotelName,
-                start: $stateParams.data.add(parseInt(h), 'h'),
-                end: $stateParams.data.add(parseInt(e), 'h'),
+                start: new Date(y, m, d, 9, 0),
+                end: new Date(y, m, d, 10, 0),
                 className: ['openSesame']
             });
         };
@@ -750,7 +931,8 @@ angular.module('trip')
                     right: 'today prev,next'
                 },
                 //header: false,
-                dayClick: $scope.alertEventOnClick,
+                dayClick: $scope.alertDefaultEventOnClick,
+
                 //eventClick: $scope.alertEventOnClick,
                 eventDrop: $scope.alertOnDrop,
                 eventResize: $scope.alertOnResize

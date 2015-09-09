@@ -1,0 +1,225 @@
+                        $icon-font-path: "fonts/bootstrap/";
+                        @import "../app/styles/stylesheets/_bootstrap.scss";
+                        @import "../app/styles/stylesheets/bourbon/bourbon";
+                        @import "../app/styles/stylesheets/neat/neat";
+                        /************************ Colour *************************************/
+                        
+                        $primary-color: #413f98;
+                        $secondary-color: #0fb0cf;
+                        $shadow-color: #000000;
+                        /************************ Fonts *************************************/
+                        
+                        @font-face {
+                            font-family: 'BrandonGrotReg';
+                            src: url('fonts/Brandon_reg.otf');
+                        }
+                        @font-face {
+                            font-family: 'BrandonGrotBold';
+                            src: url('fonts/Brandon_bld.otf');
+                        }
+                        @font-face {
+                            font-family: 'BrandonGrotLight';
+                            src: url('fonts/Brandon_light.otf');
+                        }
+                        @mixin border-radius($radius) {
+                            @include border-top-radius( $radius);
+                            @include border-bottom-radius( $radius);
+                        }
+                        body {
+                            font-family: 'BrandonGrotReg';
+                            p {
+                                line-height: 113%;
+                            }
+                        }
+                        .navbar {
+                            margin: 0;
+                        }
+                        .title {
+                            background-color: #003580;
+                            .bottom-border {
+                                border-bottom: 5px solid #2b9cd4;
+                            }
+                        }
+                        .logo {
+                            padding-left: 50px;
+                            h1 {
+                                //font-family: 'Passion One', cursive;
+                                font-family: 'Nunito', sans-serif;
+                                font-weight: 400;
+                                color: white;
+                            }
+                        }
+                        .nav-tabs {
+                            padding-top: 50px;
+                            border-bottom: 0px;
+                        }
+                        .nav-tabs > li > a {
+                            border-radius: 0px 0px 0 0;
+                        }
+                        .nav-tabs > li >a:hover {
+                            background-color: #2B9CD4;
+                            color: white;
+                            outline: 0;
+                        }
+                        .image-wrapper {
+                            position: relative;
+                            
+                            h1 {
+                                position: relative;
+                                top: -600px;
+                                left: 60px;
+                                padding: 10px;
+                                // border: 1px solid #FFF;
+                                //width: 218px;
+                                font-family: 'Montserrat', sans-serif;
+                                color: white;
+                                text-transform: uppercase;
+                                font-weight: bolder;
+                                font-size: 55px;
+                                //margin: 5px;
+                            }
+                            .checkbox-level {
+                                top: 1px;
+                            }
+                            .radio {
+                                //font-weight: bold;
+                                font-size: 16px;
+                                margin-top: 0px;
+                                margin-bottom: 0px;
+                                text-transform: lowercase;
+                            }
+                            .block {
+                                background-color: rgba(255, 255, 255, 0.4);
+                                border-radius: 10px;
+                                //background-color: rgba(255,187,57,0.4);
+                                //width: 400px;
+                                //height: 460px;
+                                //position: absolute;
+                                top: -550px;
+                                h2 {
+                                    text-align: center;
+                                    font-family: 'BrandonGrotBold';
+                                    font-size: 20px;
+                                }
+                                .block-title {
+                                    font-weight: bold;
+                                    font-size: 13px;
+                                    margin-bottom: 5px;
+                                }
+                                .input-group {
+                                    border-radius: 0px;
+                                    left: 0px;
+                                    .form-control {
+                                        box-shadow: 3px 1px 5px 0 #c7c7c7 inset;
+                                        background: #f0f0f0 none repeat scroll 0 0;
+                                    }
+                                }
+                                ::-webkit-input-placeholder {
+                                    color: #848484;
+                                    font-style: italic;
+                                    font-weight: 550;
+                                }
+                                ::-moz-placeholder {
+                                    color: #848484;
+                                    font-style: italic;
+                                    font-weight: 550;
+                                }
+                                /* firefox 19+ */
+                                :-ms-input-placeholder {
+                                    color: #848484;
+                                    font-style: italic;
+                                    font-weight: 550;
+                                }
+                                /* ie */
+                                input:-moz-placeholder {
+                                    color: #848484;
+                                    font-style: italic;
+                                    font-weight: 550;
+                                }
+                            }
+                            .cover {
+                                position: absolute;
+                                //background-color: rgba(33, 98, 124, 0.5);
+                                background-color: #2B9CD4;
+                                top: 360px;
+                                width: 100%;
+                                padding: 30px;
+                            }
+                            .input-group {
+                                left: 400px;
+                            }
+                            .form-control {
+                                height: 43px;
+                                border-radius: 100px;
+                            }
+                            .btn-default {
+                                background-color: #2B9CD4;
+                                //border-color: #ccc;
+                                color: white;
+                                font-size: 20px;
+                                border-radius: 100px;
+                            }
+                        }
+                        a {
+                            color: white;
+                            font-size: 18px;
+                            font-weight: 100;
+                            text-decoration: none;
+                            font-family: 'Montserrat', sans-serif;
+                            outline: 0;
+                        }
+                        .nav-tabs > li.active > a,
+                        .nav-tabs > li.active > a:hover,
+                        .nav-tabs > li.active > a:focus {
+                            background-color: #2B9CD4;
+                            border-color: #2B9CD4 #2B9CD4 transparent;
+                            //border-image: none;
+                            //    border-style: solid;
+                            //    border-width: 1px;
+                            color: white;
+                            outline: 0;
+                            //cursor: default;
+                        }
+                        .footer {
+                            position: relative;
+                            top: 28px;
+                            background-color: #003580;
+                            p {
+                                font-size: 20px;
+                                color: white;
+                                //padding: 20 20 20 20;
+                            }
+                        }
+                        //expandable
+                        .expander {
+                            a {
+                                text-decoration: none;
+                                position: relative;
+                                top: -35px;
+                                left: 80px;
+                                //margin-left: 50px;
+                                //            margin-top: 4px;
+                                outline: none;
+                            }
+                            .expander-trigger {
+                                display: block;
+                                &:before {
+                                    content: "\25B2";
+                                    //font-size: 15px;
+                                    text-decoration: none;
+                                    color: black;
+                                    //margin-right: 0.5em;
+                                }
+                            }
+                            .expander-hidden {
+                                &:before {
+                                    content: "\25BC";
+                                    //font-size: 15px;
+                                    text-decoration: none;
+                                    color: black;
+                                }
+                            }
+                            .expander-hidden + .expander-content {
+                                display: none;
+                            }
+                        }

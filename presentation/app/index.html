@@ -13,12 +13,12 @@
 
     <!--    <link rel="stylesheet" href="bower_components/angular-gridster/dist/angular-gridster.min.css" />-->
     <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
-    <!--    <link rel="stylesheet" type="text/css" href="src/css/angular-datepicker.css" />-->
+
     <!-- endbuild -->
 
 </head>
 
-<body>
+<body style="width: 80%;margin: 0 auto;">
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. 
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
@@ -51,7 +51,7 @@
         </div>
     </header>
 
-    <div class="container">
+    <div>
         <div ncy-breadcrumb></div>
         <div ui-view></div>
     </div>
@@ -70,16 +70,15 @@
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-    <script src="bower_components/moment/moment.js"></script>
-    <script src="bower_components/angular-moment/angular-moment.js"></script>
-    <script src="bower_components/angular-datepicker/dist/index.js"></script>
     <script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
     <script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
     <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/moment/moment.js"></script>
     <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
     <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
+    <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
@@ -88,12 +87,14 @@
     <script src="bower_components/accountingjs/accounting.js"></script>
     <script src="//maps.google.com/maps/api/js"></script>
     <script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
-
+    <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
+    <script src="bower_components/angular-bootstrap-dropdown/dist/bsDropdown.min.js"></script>
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src=" module/hotel/script/base.js "></script>
     <script src="module/hotel/script/controller.js "></script>
     <script src="module/rental/script/base.js "></script>
     <script src="module/rental/script/controller.js "></script>
+
     <!--    <script src="module/itinerary/script/base.js "></script>-->
     <!--    <script src="module/itinerary/script/controller.js "></script>-->
     <script src="module/trip/script/base.js"></script>
