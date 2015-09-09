@@ -1,0 +1,17 @@
+{
+  "title": "Itinerary1",
+  "description": "A schedule for a trip",
+  "starts":{
+  "recurrence_frequency":"DAILY",
+  "by_hour":"11:00"
+  },
+  "days": [1,2],
+  "inclusions": {
+  "type": "array",
+  "description": "services included in the itinerary. eg. meals, travel"
+  },
+  "exclusions": {
+  "type": "array",
+  "description": "services excluded in the itinerary. eg. meals, travel"
+  }
+}

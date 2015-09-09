@@ -1,14 +1,42 @@
-<aside class="module-nav">
-    <nav class="nav navbar-nav">
-        <div>
-            <a ui-sref="trip.edit.calendar">Calendar</a>
-        </div>
-        <div>
-            <a ui-sref="trip.edit.map">Maps</a>
-        </div>
+<div>
+  <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 tripItem">
+    <tabset>
+      <tab ng-repeat="tab in tabs" heading="{{tab.title}}" active="tab.active">
+        <section id="{{i + tab.id}}" class="event" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">
+          <div class="start-time">8AM</div>
+          <div class="end-time">9AM</div>
+          <div class="event-card">
+            <div class="row">
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="background-color:yellow;">&nbsp;</div>
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{i + tab.id}}</div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+                <div class="row">
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
+                  <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Bottom content</div>
+              <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8" style="background-color:yellow;">&nbsp;</div>
+            </div>
+          </div>
+        </section>
+      </tab>
+    </tabset>
+  </div>
 
+  <aside class="col-xs-4 col-sm-4 col-md-4 col-lg-4 tripSummary" >
+    <nav>
+      <ul>
+        <li><a href="#" ng-click="gotoEvent(2)">Event 1</a></li>
+        <li><a href="#" ng-click="gotoEvent(19)">Event 10</a></li>
+        <li><a href="#" ng-click="gotoEvent(24)">Event 20</a></li>
+      </ul>
     </nav>
-</aside>
-<section class="module-wrapper">
-    <div ui-view></div>
-</section>
+  </aside>
+
+</div>

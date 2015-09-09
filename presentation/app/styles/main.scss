@@ -1,19 +1,19 @@
 $icon-font-path: "fonts/bootstrap/";
-@import "../app/styles/stylesheets/_bootstrap.scss";
+@import "stylesheets/_bootstrap.scss";
 
 /* Fonts */
 
 @font-face {
     font-family: 'BrandonGrotReg';
-    src: url('/styles/fonts/Brandon_Grot/Brandon_reg.otf');
+    src: url('fonts/Brandon_Grot/Brandon_reg.otf');
 }
 @font-face {
     font-family: 'BrandonGrotBold';
-    src: url('/styles/fonts/Brandon_Grot/Brandon_bld.otf');
+    src: url('fonts/Brandon_Grot/Brandon_bld.otf');
 }
 @font-face {
     font-family: 'BrandonGrotLight';
-    src: url('/styles/fonts/Brandon_Grot/Brandon_light.otf');
+    src: url('fonts/Brandon_Grot/Brandon_light.otf');
 }
 body {
     font-family: 'BrandonGrotReg'
@@ -21,7 +21,15 @@ body {
 .navbar-brand {
     font-family: 'BrandonGrotBold'
 }
-body > .container {
+
+.group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+/*body > .container {
     position: relative;
     aside.module-nav {
         font-family: 'BrandonGrotBold';
@@ -33,7 +41,63 @@ body > .container {
         left: 10%;
         position: relative;
     }
+}*/
+.tripTimeLine {
+  background-color: blue;
 }
+.tripSummary {
+  position:fixed;
+  top: 72px;
+  right: 0px;
+  background-color: orange;
+}
+.tripItem {
+  background-color: yellow;
+}
+
+.row{
+  margin: 0px;
+}
+
+.event {
+  position: relative;
+  padding: 2em 0;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+
+.event::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50px;
+  height: 100%;
+  width: 4px;
+  background: #d7e4ed;
+}
+
+.start-time{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+}
+
+.end-time{
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+}
+
+
+.event-card{
+  margin-left: 60px;
+  color: white;
+  background-color:#343434;
+}
+
+
+
+
 //ruchita
 .no-padding {
     padding: 0;
