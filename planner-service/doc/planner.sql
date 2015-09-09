@@ -257,6 +257,8 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`itinerary` (
   `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `recurrence_rule_id` INT NOT NULL COMMENT '',
+  `title` VARCHAR(100) NOT NULL COMMENT '',
+  `description` TEXT NOT NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_itinerary_recurrence_rule1_idx` (`recurrence_rule_id` ASC)  COMMENT '',
   CONSTRAINT `fk_itinerary_recurrence_rule1`

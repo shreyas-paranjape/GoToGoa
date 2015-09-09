@@ -1,6 +1,6 @@
 {
-	"title":"Title1",
-	"description":"A nice description",
+	"title":"Day1",
+	"description":"A day in a particular trip",
 	"events":[{"event_id": 1,
 		     "from_stamp": "12:00"
 		    },

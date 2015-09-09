@@ -1,53 +1,17 @@
 {
-  "$schema": "http://json-schema.org/draft-04/schema#",
-  "title": "Itinerary",
+  "title": "Itinerary1",
   "description": "A schedule for a trip",
-  "type": "object",
-  "properties": {
-    "title": {
-      "type": "string"
-    },
-    "description": {
-      "type": "string"
-    },
-    "no_of_days": {
-      "type": "integer",
-      "minimum": 1
-    }
-    "starts": {
-      "type": "object",
-      "description": "Specifies the recurrence rule",
-      "properties": {
-        "frequency": {
-          "type":"integer",
-          "description": "Allowed values: daily=1,weekly=7,monthly=30,yearly=365"
-        },
-        "offset": {
-          "type" "object",
-          "description": "Start identifier within a given period in the frequency"
-          "properties": {
-            "kind":{
-              "type": "integer",
-              "description": "day_of_week=0,day_of_month=1 etc etc"
-            }
-            "value": {
-              "type": "integer"
-            }
-          }
-        }
-      }
-    },
-    "days": {
-      "type": "array",
-      "description": "holds references to days(day_id)"
-    },
-    "inclusions": {
-      "type": "array",
-      "description": "services included in the itinerary. eg. meals, travel"
-    },
-    "exclusions": {
-      "type": "array",
-      "description": "services excluded in the itinerary. eg. meals, travel"
-    }
+  "starts":{
+  "recurrence_frequency":"DAILY",
+  "by_hour":"11:00"
+  },
+  "days": [1,2],
+  "inclusions": {
+  "type": "array",
+  "description": "services included in the itinerary. eg. meals, travel"
+  },
+  "exclusions": {
+  "type": "array",
+  "description": "services excluded in the itinerary. eg. meals, travel"
   }
 }

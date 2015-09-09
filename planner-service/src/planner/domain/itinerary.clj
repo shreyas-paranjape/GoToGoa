@@ -67,8 +67,8 @@
 (defn insert-day [request]
 	(insert day
 		(values request)))
-; Insert events
-(defn insert-day [request]
+; Insert recurrence_rule, day, day_event together
+(defn insert-rr-d-de [request]
 	(do
 		(def x (common/insert-recurrence-rule
 			(values (get-in request [:starts]))))
@@ -85,6 +85,27 @@
 					(update day_event
 						(set-fields {:to_stamp (add-time from_stamp duration)})
 						(where {:id (generated_key z)})))))))
+
+; Insert recurrence_rule, event together
+(defn insert-rr-e [request]
+	(do
+		(def x (common/insert-recurrence-rule
+			(values (get-in request [:starts]))))
+		(def r (conj (apply dissoc request [:starts]) (:recurrence_rule_id (:generated_key x))))
+		(insert event
+			(values r))))
+; Insert recurrence_rule, itinerary together
+(defn insert-rr-i [request]
+	(do
+		(def x (common/insert-recurrence-rule
+			(values (get-in request [:starts]))))
+		(def r (conj (apply dissoc request [:events :starts]) (:recurrence_rule_id (:generated_key x))))
+		(def y (insert itinerary
+			(values r)))
+		(dorun
+			(for [i (get-in request [:days])]
+				(insert itinerary_day
+					(values (conj {:day_id i} {:itinerary_id (:generated_key y)})))))))
 ; Insert day_event
 (defn insert-day_event [request]
 	(insert day_event
