@@ -148,17 +148,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `goaamigo`.`day`
--- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `goaamigo`.`day` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
-  `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '')
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `goaamigo`.`recurrence_rule`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `goaamigo`.`recurrence_rule` (
@@ -175,6 +164,26 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`recurrence_rule` (
   `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '')
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `goaamigo`.`day`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `goaamigo`.`day` (
+  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
+  `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
+  `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
+  `title` VARCHAR(100) NOT NULL COMMENT '',
+  `description` TEXT NOT NULL COMMENT '',
+  `recurrence_rule_id` INT NOT NULL COMMENT '',
+  PRIMARY KEY (`id`)  COMMENT '',
+  INDEX `fk_day_recurrence_rule1_idx` (`recurrence_rule_id` ASC)  COMMENT '',
+  CONSTRAINT `fk_day_recurrence_rule1`
+    FOREIGN KEY (`recurrence_rule_id`)
+    REFERENCES `goaamigo`.`recurrence_rule` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
@@ -222,8 +231,8 @@ CREATE TABLE IF NOT EXISTS `goaamigo`.`day_event` (
   `event_id` INT NOT NULL COMMENT '',
   `created` DATETIME NOT NULL DEFAULT now() COMMENT '',
   `updated` DATETIME NOT NULL DEFAULT now() COMMENT '',
-  `from_stamp` TIME NOT NULL COMMENT '',
-  `to_stamp` TIME NOT NULL COMMENT '',
+  `from_stamp` TIME NULL COMMENT '',
+  `to_stamp` TIME NULL COMMENT '',
   PRIMARY KEY (`id`)  COMMENT '',
   INDEX `fk_day_event_day1_idx` (`day_id` ASC)  COMMENT '',
   INDEX `fk_day_event_event1_idx` (`event_id` ASC)  COMMENT '',

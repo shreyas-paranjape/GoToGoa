@@ -44,8 +44,10 @@
 		(def remainder (rem @minutes 60))
 		(def quotient (quot @minutes 60))
 		(swap! hour + quotient)
+		(if (> @hour 12)
+			(swap! hour - 12))
 		(reset! minutes remainder)
-		(str @hour":"@minutes":00")
+		(str (format "%02d" @hour)":"(format "%02d" @minutes))
 		)
 	)
 
@@ -63,6 +65,10 @@
 		(values request)))
 ; Insert day
 (defn insert-day [request]
+	(insert day
+		(values request)))
+; Insert events
+(defn insert-day [request]
 	(do
 		(def x (common/insert-recurrence-rule
 			(values (get-in request [:starts]))))
@@ -76,9 +82,8 @@
 						(values (conj {:day_id (:generated_key y)} i))))
 					(def duration (:duration ((vec (select event (fields :duration) (where {:id (:event_id i)}))) 0)))
 					(def from_stamp (:from_stamp ((vec (select day_event (fields :from_stamp) (where i))) 0)))
-					(def to_stamp (duration+to_stamp))
 					(update day_event
-						(set-fields {:to_stamp to_stamp})
+						(set-fields {:to_stamp (add-time from_stamp duration)})
 						(where {:id (generated_key z)})))))))
 ; Insert day_event
 (defn insert-day_event [request]
