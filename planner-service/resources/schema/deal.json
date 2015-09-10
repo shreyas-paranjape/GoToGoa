@@ -23,24 +23,38 @@
 }
 
 /* UI component spec */
+
 {
   "title": "text field",
   "description": "text area",
   "type": "select",
   "value" "text field"
   "Eligibility":
-    {
-      "criteria_component_id": "select",
-      "relationship": "select",
-      "comparator": "select",
-      "value": "text field"
-    },
+    [
+      {
+        "criteria_component_id": "select",
+        "relationship": "select",
+        "comparator": "select",
+        "value": "text field"
+      }
+    ],
   "Event":
-    {
-      "criteria_component_id": "select",
-      "relationship": "select",
-      "comparator": "select",
-      "value": "text field"
-    },
-
+    [
+      {
+        "criteria_component_id": "select",
+        "relationship": "select",
+        "comparator": "select",
+        "value": "text field"
+      }
+    ],
+  "Notification":
+    [
+      {
+        "title": "text field",
+        "description": "text area",
+        "frequency": "select",
+        "start_at" : "select",
+        "value": "text field"
+      }
+    ]
 }
