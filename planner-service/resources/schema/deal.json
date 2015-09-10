@@ -6,11 +6,11 @@
   "starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"},
   "eligibility_criteria_component":
     [
-      {"criteria_component_id":1,"relationship":"AND","comparator":"<=","value":"customer"}
-    ],
+      {"criteria_component_id":2,"relationship":"AND","comparator":"<=","value":"customer"}
+    ]
   "event_criteria_component":
     [
-      {"criteria_component_id":1,"relationship":"OR","comparator":">","value":"customer"}
+      {"criteria_component_id":2,"relationship":"OR","comparator":">","value":"customer"}
     ],
   "notification":
     [
