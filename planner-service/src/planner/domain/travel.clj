@@ -1,5 +1,5 @@
 (ns planner.domain.travel
-  (:require [planner.domain.common :as common]
+  (:require [planner.infra.db :as db]
             [liberator.core :refer [defresource]]
             [planner.domain.itinerary :as itinerary]
             [compojure.core :refer [ANY defroutes]]
@@ -10,60 +10,60 @@
 (timbre/set-level! :debug)
 
 ;; Entities
-(declare travel travel_attr)
+(comment (declare travel travel_attr)
 (defentity travel
 	(has-many itinerary/trip)
 	(has-many travel_attr))
 (defentity travel_attr
-	(belongs-to travel))
+	(belongs-to travel)))
 
 ; Select travel
 (defn get-travel [request]
 	(if (nil? request)
-		(select travel)
-		(select travel
+		(select db/travel)
+		(select db/travel
 			(where request))))
 ; Select travel_attr
 (defn get-travel_attr [request]
 	(if (nil? request)
-		(select travel_attr)
-		(select travel_attr
+		(select db/travel_attr)
+		(select db/travel_attr
 			(where request))))
 ; Select travel,travel_attr
 (defn get-travel-travel_attr [request]
 	(if (nil? request)
-		(select travel
-			(with itinerary/trip)
-			(with travel_attr))
-		(select travel
-			(with itinerary/trip)
-			(with travel_attr)
+		(select db/travel
+			(with db/trip)
+			(with db/travel_attr))
+		(select db/travel
+			(with db/trip)
+			(with db/travel_attr)
 			(where request))))
 ; Insert travel
 (defn insert-travel [request]
-	(insert travel
+	(insert db/travel
 		(values request)))
 ; Insert travel_attr
 (defn insert-travel_attr [request]
-	(insert travel_attr
+	(insert db/travel_attr
 		(values request)))
 ; Update travel
 (defn update-travel [request]
-	(update travel
+	(update db/travel
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update travel_attr
 (defn update-travel_attr [request]
-	(update travel_attr
+	(update db/travel_attr
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Delete travel
 (defn delete-travel [request]
-	(delete travel
+	(delete db/travel
 		(where request)))
 ; Delete travel_attr
 (defn delete-travel_attr [request]
-	(delete travel_attr
+	(delete db/travel_attr
 		(where request)))
 
 (defresource travel-res

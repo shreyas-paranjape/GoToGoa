@@ -1,15 +1,12 @@
 (ns planner.domain.itinerary
    (:require [planner.domain.common :as common]
-            [planner.domain.site :as site]
-            [planner.domain.stay :as stay]
-            [planner.domain.travel :as travel]
-            [planner.domain.activity :as activity]
+            [planner.infra.db :as db]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre])
   (:use [korma.core]))
 
-(declare itinerary itinerary_day day day_event event trip)
+(comment (declare itinerary itinerary_day day day_event event trip)
 (defentity trip
 	(belongs-to common/recurrence_rule)
 	(belongs-to itinerary)
@@ -32,7 +29,10 @@
 	(belongs-to common/recurrence_rule)
 	(has-many day_event)
 	(belongs-to site/site)
-	(belongs-to activity/activity))
+	(belongs-to activity/activity)))
+
+(timbre/refer-timbre)
+;(timbre/merge-config! {:level :debug})
 
 ; Adding minutes to time
 (defn add-time [start-time interval]
@@ -53,182 +53,179 @@
 
 ; Insert trip
 (defn insert-trip [request]
-	(insert trip
+	(insert db/trip
 		(values request)))
 ; Insert itinerary
 (defn insert-itinerary [request]
-	(insert itinerary
+	(insert db/itinerary
 		(values request)))
 ; Insert itinerary_day
 (defn insert-itinerary_day [request]
-	(insert itinerary_day
+	(insert db/itinerary_day
 		(values request)))
 ; Insert day
 (defn insert-day [request]
-	(insert day
+	(insert db/day
 		(values request)))
 ; Insert recurrence_rule, day, day_event together
 (defn insert-rr-d-de [request]
 	(do
-		(def x (common/insert-recurrence-rule
-			(values (get-in request [:starts]))))
+		(def x (common/insert-recurrence_rule (get-in request [:starts])))
 		(def r (conj (apply dissoc request [:events :starts]) {:recurrence_rule_id (:generated_key x)}))
-		(def y (insert day
+		(def y (insert db/day
 			(values r)))
 		(dorun
 			(for [i (get-in request [:events])]
 				(do
-					(def z (insert day_event
+					(def z (insert db/day_event
 						(values (conj {:day_id (:generated_key y)} i))))
-					(def duration (:duration ((vec (select event (fields :duration) (where {:id (:event_id i)}))) 0)))
-					(def from_stamp (:from_stamp ((vec (select day_event (fields :from_stamp) (where i))) 0)))
-					(update day_event
+					(def duration (:duration ((vec (select db/event (fields :duration) (where {:id (:event_id i)}))) 0)))
+					(def from_stamp (:from_stamp ((vec (select db/day_event (fields :from_stamp) (where i))) 0)))
+					(update db/day_event
 						(set-fields {:to_stamp (add-time from_stamp duration)})
-						(where {:id (generated_key z)})))))))
+						(where {:id (:generated_key z)})))))))
 
 ; Insert recurrence_rule, event together
 (defn insert-rr-e [request]
 	(do
-		(def x (common/insert-recurrence-rule
-			(values (get-in request [:starts]))))
+		(def x (common/insert-recurrence_rule (get-in request [:starts])))
 		(def r (conj (apply dissoc request [:starts]) {:recurrence_rule_id (:generated_key x)}))
-		(insert event
+		(insert db/event
 			(values r))))
 ; Insert recurrence_rule, itinerary together
 (defn insert-rr-i [request]
 	(do
-		(def x (common/insert-recurrence-rule
-			(values (get-in request [:starts]))))
+		(def x (common/insert-recurrence_rule (get-in request [:starts])))
 		(def r (conj (apply dissoc request [:events :starts]) {:recurrence_rule_id (:generated_key x)}))
-		(def y (insert itinerary
+		(def y (insert db/itinerary
 			(values r)))
 		(dorun
 			(for [i (get-in request [:days])]
-				(insert itinerary_day
+				(insert db/itinerary_day
 					(values (conj {:day_id i} {:itinerary_id (:generated_key y)})))))))
 ; Insert day_event
 (defn insert-day_event [request]
-	(insert day_event
+	(insert db/day_event
 		(values request)))
 ; Insert event
 (defn insert-event [request]
-	(insert event
+	(insert db/event
 		(values request)))
 ; Update trip
 (defn update-trip [request]
-	(update trip
+	(update db/trip
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update itinerary
 (defn update-itinerary [request]
-	(update itinerary
+	(update db/itinerary
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update itinerary_day
 (defn update-itinerary_day [request]
-	(update itinerary_day
+	(update db/itinerary_day
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update day
 (defn update-day [request]
-	(update day
+	(update db/day
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update day_event
 (defn update-day_event [request]
-	(update day_event
+	(update db/day_event
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update event
 (defn update-event [request]
-	(update event
+	(update db/event
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Delete trip
 (defn delete-trip [request]
-	(delete trip
+	(delete db/trip
 		(where request)))
 ; Delete itinerary
 (defn delete-itinerary [request]
-	(delete itinerary
+	(delete db/itinerary
 		(where request)))
 ; Delete itinerary_day
 (defn delete-itinerary_day [request]
-	(delete itinerary_day
+	(delete db/itinerary_day
 		(where request)))
 ; Delete day
 (defn delete-day [request]
-	(delete day
+	(delete db/day
 		(where request)))
 ; Delete day_event
 (defn delete-day_event [request]
-	(delete day_event
+	(delete db/day_event
 		(where request)))
 ; Delete event
 (defn delete-event [request]
-	(delete event
+	(delete db/event
 		(where request)))
 ; Select trip
 (defn get-trip [request]
 	(if (nil? request)
-		(select trip)
-		(select trip
+		(select db/trip)
+		(select db/trip
 			(where request))))
 ; Select itinerary
 (defn get-itinerary [request]
 	(if (nil? request)
-		(select itinerary)
-		(select itinerary
+		(select db/itinerary)
+		(select db/itinerary
 			(where request))))
 ; Select itinerary_day
 (defn get-itinerary_day [request]
 	(if (nil? request)
-		(select itinerary_day)
-		(select itinerary_day
+		(select db/itinerary_day)
+		(select db/itinerary_day
 			(where request))))
 ; Select day
 (defn get-day [request]
 	(if (nil? request)
-		(select day)
-		(select day
+		(select db/day)
+		(select db/day
 			(where request))))
 ; Select day_event
 (defn get-day_event [request]
 	(if (nil? request)
-		(select day_event)
-		(select day_event
+		(select db/day_event)
+		(select db/day_event
 			(where request))))
 ; Select event
 (defn get-event [request]
 	(if (nil? request)
-		(select event)
-		(select event
+		(select db/event)
+		(select db/event
 			(where request))))
 ; Select itinerary,itinerary_day,day,day_event,event
 (defn get-t-i-i_d-d-d_e-e [request]
 	(if (nil? request)
-		(select trip
-			(with common/recurrence_rule)
-			(with stay/stay)
-			(with travel/travel)
-			(with itinerary
-				(with itinerary_day
-					(with day
-						(with day_event
-							(with event
-								(with site/site)
-								(with activity/activity)))))))
-		(select trip
-			(with common/recurrence_rule)
-			(with stay/stay)
-			(with travel/travel)
-			(with itinerary
-				(with itinerary_day
-					(with day
-						(with day_event
-							(with event
-								(with site/site)
-								(with activity/activity))))))
+		(select db/trip
+			(with db/recurrence_rule)
+			(with db/stay)
+			(with db/travel)
+			(with db/itinerary
+				(with db/itinerary_day
+					(with db/day
+						(with db/day_event
+							(with db/event
+								(with db/site)
+								(with db/activity)))))))
+		(select db/trip
+			(with db/recurrence_rule)
+			(with db/stay)
+			(with db/travel)
+			(with db/itinerary
+				(with db/itinerary_day
+					(with db/day
+						(with db/day_event
+							(with db/event
+								(with db/site)
+								(with db/activity))))))
 			(where request))))
 
 (defresource trip-res
@@ -281,6 +278,7 @@
 	:put! (fn [ctx]
 		(update-day (get-in ctx [:request :body :day])))
 	:post! (fn [ctx]
+		(info (get-in ctx [:request :body :day]))
 		(insert-rr-d-de (get-in ctx [:request :body :day])))
 	:delete! (fn [ctx]
 			(delete-day (get-in ctx [:request :body :day])))

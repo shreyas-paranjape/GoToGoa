@@ -1,6 +1,5 @@
 (ns planner.domain.party
-  (:require [planner.domain.common :as common]
-            [planner.domain.site :as site]
+  (:require [planner.infra.db :as db]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre])
@@ -10,7 +9,7 @@
 (timbre/set-level! :debug)
 
 ;; Entities
-(declare party party_attr party_address)
+(comment (declare party party_attr party_address)
 
 (defentity party
 	(has-many party_attr)
@@ -22,72 +21,72 @@
 (defentity party_address
 	(belongs-to party)
 	(belongs-to common/address)
-	(belongs-to common/address_type))
+	(belongs-to common/address_type)))
 
 ; Insert party
 (defn insert-party [request]
-	(insert party (values request)))
+	(insert db/party (values request)))
 ; Insert party_attr
 (defn insert-party_attr [request]
-	(insert party_attr (values request)))
+	(insert db/party_attr (values request)))
 ; Insert party_address
 (defn insert-party_address [request]
-	(insert party_address (values request)))
+	(insert db/party_address (values request)))
 ; Delete party
 (defn delete-party [request]
-	(delete party (where request)))
+	(delete db/party (where request)))
 ; Delete party_attr
 (defn delete-party_attr [request]
-	(delete party_attr (where request)))
+	(delete db/party_attr (where request)))
 ; Delete party_address
 (defn delete-party_address [request]
-	(delete party_address (wher request)))
+	(delete db/party_address (where request)))
 ; Update party
 (defn update-party [request]
-	(update party
+	(update db/party
 		(set-fields request)
 		(where {:id (:id (:id request))})))
 ; Update party_attr
 (defn update-party_attr [request]
-	(update party_attr
+	(update db/party_attr
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update party_address
 (defn update-party_address [request]
-	(update party_address
+	(update db/party_address
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Select party
-(defn get-party-all [_]
-	(select party))
+(defn get-party-all []
+	(select db/party))
 (defn get-party [request]
-	(select party
+	(select db/party
 		(where request)))
 ; Select party_attr
-(defn get-party_attr-all [_]
-	(select party_attr))
+(defn get-party_attr-all []
+	(select db/party_attr))
 (defn get-party_attr [request]
-	(select party_attr
+	(select db/party_attr
 		(where request)))
 ; Select party_address
-(defn get-party_address-all [_]
-	(select party_address))
+(defn get-party_address-all []
+	(select db/party_address))
 (defn get-party_address [request]
-	(select party_address
+	(select db/party_address
 		(where request)))
 ; Select party-party_attr-party_address
-(defn get-party-attr-address-all [_]
-	(select party
-		(with party_attr)
-		(with party_address
-			(with common/address)
-			(with common/address_type))))
+(defn get-party-attr-address-all []
+	(select db/party
+		(with db/party_attr)
+		(with db/party_address
+			(with db/address)
+			(with db/address_type))))
 (defn get-party-attr-address [request]
-	(select party
-		(with party_attr)
-		(with party_address
-			(with common/address)
-			(with common/address_type))
+	(select db/party
+		(with db/party_attr)
+		(with db/party_address
+			(with db/address)
+			(with db/address_type))
 		(where request)))
 
 (defresource party-res
