@@ -1,24 +1,20 @@
-/* Schema */
-
-
-/*  Example JSON  */
 {
-  "title": "",
-  "description": "",
-  "deal_type_id": "",
-  "value": "",
+  "title": "Deal1",
+  "description": "A nice deal",
+  "deal_type_id": "%",
+  "value": 10,
   "starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"},
-  "eligibility_criteria":
+  "eligibility_criteria_component":
     [
-      {"criteria_component_id":"","relationship":"","comparator":"","value":""}
+      {"criteria_component_id":1,"relationship":"AND","comparator":"<=","value":"customer"}
     ],
-  "event_criteria":
+  "event_criteria_component":
     [
-      {"criteria_component_id":"","relationship":"","comparator":"","value":""}
+      {"criteria_component_id":1,"relationship":"OR","comparator":">","value":"customer"}
     ],
   "notification":
     [
-      {"title":"","description":"","starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"}}
+      {"title":"Notification1","description":"A nice notification","starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"}}
     ]
 }
 
