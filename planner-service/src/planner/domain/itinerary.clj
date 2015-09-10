@@ -72,7 +72,7 @@
 	(do
 		(def x (common/insert-recurrence-rule
 			(values (get-in request [:starts]))))
-		(def r (conj (apply dissoc request [:events :starts]) (:recurrence_rule_id (:generated_key x))))
+		(def r (conj (apply dissoc request [:events :starts]) {:recurrence_rule_id (:generated_key x)}))
 		(def y (insert day
 			(values r)))
 		(dorun
@@ -91,7 +91,7 @@
 	(do
 		(def x (common/insert-recurrence-rule
 			(values (get-in request [:starts]))))
-		(def r (conj (apply dissoc request [:starts]) (:recurrence_rule_id (:generated_key x))))
+		(def r (conj (apply dissoc request [:starts]) {:recurrence_rule_id (:generated_key x)}))
 		(insert event
 			(values r))))
 ; Insert recurrence_rule, itinerary together
@@ -99,7 +99,7 @@
 	(do
 		(def x (common/insert-recurrence-rule
 			(values (get-in request [:starts]))))
-		(def r (conj (apply dissoc request [:events :starts]) (:recurrence_rule_id (:generated_key x))))
+		(def r (conj (apply dissoc request [:events :starts]) {:recurrence_rule_id (:generated_key x)}))
 		(def y (insert itinerary
 			(values r)))
 		(dorun
@@ -253,25 +253,25 @@
 	:put! (fn [ctx]
 		(update-itinerary (get-in ctx [:request :body :itinerary])))
 	:post! (fn [ctx]
-		(insert-itinerary (get-in ctx [:request :body :itinerary])))
+		(insert-rr-i (get-in ctx [:request :body :itinerary])))
 	:delete! (fn [ctx]
 			(delete-itinerary (get-in ctx [:request :body :itinerary])))
 	:handle-created {:status 1}
 	)
 
-(defresource itinerary_day-res
-	:available-media-types ["application/json"]
-	:allowed-methods [:get :post :put :delete]
-	:handle-ok (fn [ctx]
-			(get-itinerary_day (get-in ctx [:request :body :itinerary_day])))
-	:put! (fn [ctx]
-		(update-itinerary_day (get-in ctx [:request :body :itinerary_day])))
-	:post! (fn [ctx]
-		(insert-itinerary_day (get-in ctx [:request :body :itinerary_day])))
-	:delete! (fn [ctx]
-			(delete-itinerary_day (get-in ctx [:request :body :itinerary_day])))
-	:handle-created {:status 1}
-	)
+;(defresource itinerary_day-res
+;	:available-media-types ["application/json"]
+;	:allowed-methods [:get :post :put :delete]
+;	:handle-ok (fn [ctx]
+;			(get-itinerary_day (get-in ctx [:request :body :itinerary_day])))
+;	:put! (fn [ctx]
+;		(update-itinerary_day (get-in ctx [:request :body :itinerary_day])))
+;	:post! (fn [ctx]
+;		(insert-itinerary_day (get-in ctx [:request :body :itinerary_day])))
+;	:delete! (fn [ctx]
+;			(delete-itinerary_day (get-in ctx [:request :body :itinerary_day])))
+;	:handle-created {:status 1}
+;	)
 
 (defresource day-res
 	:available-media-types ["application/json"]
@@ -281,25 +281,25 @@
 	:put! (fn [ctx]
 		(update-day (get-in ctx [:request :body :day])))
 	:post! (fn [ctx]
-		(insert-day (get-in ctx [:request :body :day])))
+		(insert-rr-d-de (get-in ctx [:request :body :day])))
 	:delete! (fn [ctx]
 			(delete-day (get-in ctx [:request :body :day])))
 	:handle-created {:status 1}
 	)
 
-(defresource day_event-res
-	:available-media-types ["application/json"]
-	:allowed-methods [:get :post :put :delete]
-	:handle-ok (fn [ctx]
-			(get-day_event (get-in ctx [:request :body :day_event])))
-	:put! (fn [ctx]
-		(update-day_event (get-in ctx [:request :body :day_event])))
-	:post! (fn [ctx]
-		(insert-day_event (get-in ctx [:request :body :day_event])))
-	:delete! (fn [ctx]
-			(delete-day_event (get-in ctx [:request :body :day_event])))
-	:handle-created {:status 1}
-	)
+;(defresource day_event-res
+;	:available-media-types ["application/json"]
+;	:allowed-methods [:get :post :put :delete]
+;	:handle-ok (fn [ctx]
+;			(get-day_event (get-in ctx [:request :body :day_event])))
+;	:put! (fn [ctx]
+;		(update-day_event (get-in ctx [:request :body :day_event])))
+;	:post! (fn [ctx]
+;		(insert-day_event (get-in ctx [:request :body :day_event])))
+;	:delete! (fn [ctx]
+;			(delete-day_event (get-in ctx [:request :body :day_event])))
+;	:handle-created {:status 1}
+;	)
 
 (defresource event-res
 	:available-media-types ["application/json"]
@@ -309,7 +309,7 @@
 	:put! (fn [ctx]
 		(update-event (get-in ctx [:request :body :event])))
 	:post! (fn [ctx]
-		(insert-event (get-in ctx [:request :body :event])))
+		(insert-rr-e (get-in ctx [:request :body :event])))
 	:delete! (fn [ctx]
 			(delete-event (get-in ctx [:request :body :event])))
 	:handle-created {:status 1}
@@ -325,9 +325,9 @@
 (defroutes itinerary-routes
 	(ANY "/trip" request (trip-res request))
 	(ANY "/itinerary" request (itinerary-res request))
-	(ANY "/itinerary_day" request (itinerary_day-res request))
+	;(ANY "/itinerary_day" request (itinerary_day-res request))
 	(ANY "/day" request (day-res request))
-	(ANY "/day_event" request (day_event-res request))
+	;(ANY "/day_event" request (day_event-res request))
 	(ANY "/event" request (event-res request))
 	(ANY "/t-i-i_d-d-d_e-e" request (t-i-i_d-d-d_e-e-res request))
 	)
