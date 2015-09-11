@@ -24,10 +24,13 @@ angular.element(document).ready(function () {
             'ng.bs.dropdown',
             'gridster',
             'ui.grid',
+            'trip',
             'vendors',
+            'place',
             'ngMap',
             'ui.calendar',
             'ui.grid.edit',
+            'ui.grid.selection',
             'angularModalService',
             'schemaForm'
 

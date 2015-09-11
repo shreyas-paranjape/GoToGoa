@@ -93,56 +93,13 @@ angular.module('vendors')
 
     }])
 
-.controller('VendorsListController', ['$scope', '$filter', '$stateParams', 'ModalService','RowEditor',
-        function ($scope, $filter, $stateParams, ModalService,RowEditor, $stateProvider, $urlRouterProvider, $compile, uiCalendarConfig) {
+.controller('VendorsListController', ['$scope', '$filter', '$stateParams', '$modal',
+        function ($scope, $filter, $stateParams, $modal, $stateProvider, $urlRouterProvider, $compile, uiCalendarConfig) {
             'use strict';
             //TODO Here we use the data passed from the form to lookup the hotels
             $scope.items = $stateParams.data;
             $scope.isCollapsed = true;
-//            $scope.schema = {
-//                "type": "object",
-//                "title": "Comment",
-//                "properties": {
-//                    "name": {
-//                        "title": "Name",
-//                        "type": "string"
-//                    },
-//                    "email": {
-//                        "title": "Email",
-//                        "type": "string",
-//                        "pattern": "^\\S+@\\S+$",
-//                        //                        "description": "Email will be used for evil."
-//                    },
-//                    "comment": {
-//                        "title": "Comment",
-//                        "type": "string",
-//                        "maxLength": 20,
-//                        "validationMessage": "Don't be greedy!"
-//                    }
-//                },
-//                "required": [
-//                    "name",
-//    "email",
-//    "comment"
-//  ]
-//            }
-//
-//            $scope.form = [
-//                    "name",
-//                    "email",
-//                {
-//                    "key": "comment",
-//                    "type": "textarea",
-//                    "placeholder": "Make a comment"
-//  },
-//                {
-//                    "type": "submit",
-//                    "style": "btn-info",
-//                    "title": "OK"
-//  }
-//];
 
-//            $scope.model = {};
 
             //console.log($stateParams.data);
             $scope.swapData = function () {
@@ -179,114 +136,117 @@ angular.module('vendors')
                 $scope.gridOpts.data = data1;
                 $scope.gridOpts.columnDefs = columnDefs1;
             }
-            $.editRow = RowEditor.editRow;
 
-            var columnDefs1 = [
-                {
-                    field: 'id',
-                    name: '',
-                    cellTemplate: 'module/vendors/view/edit-button.html',
-                    width: 40
-                },
-                {
-                    name: 'firstName'
-                },
-                {
-                    name: 'lastName'
-                },
-                {
-                    name: 'company'
-                },
-                {
-                    name: 'gender'
-                }
-  ];
 
-            var data1 = [
-                {
-                    "firstName": "Cox",
-                    "lastName": "Carney",
-                    "company": "Enormo",
-                    "gender": "male"
-    },
-                {
-                    "firstName": "Lorraine",
-                    "lastName": "Wise",
-                    "company": "Comveyer",
-                    "gender": "female"
-    },
-                {
-                    "firstName": "Nancy",
-                    "lastName": "Waters",
-                    "company": "Fuelton",
-                    "gender": "female"
-    },
-                {
-                    "firstName": "Misty",
-                    "lastName": "Oneill",
-                    "company": "Letpro",
-                    "gender": "female"
-    }
-  ];
+            //            var columnDefs1 = [
+            //                {
+            //                    field: 'id',
+            //                    name: '',
+            //                    cellTemplate: 'module/vendors/view/edit-button.html',
+            //                    width: 40
+            //                },
+            //                {
+            //                    name: 'firstName'
+            //                },
+            //                {
+            //                    name: 'lastName'
+            //                },
+            //                {
+            //                    name: 'company'
+            //                },
+            //                {
+            //                    name: 'gender'
+            //                }
+            //  ];
+            //
+            //            var data1 = [
+            //                {
+            //                    "firstName": "Cox",
+            //                    "lastName": "Carney",
+            //                    "company": "Enormo",
+            //                    "gender": "male"
+            //    },
+            //                {
+            //                    "firstName": "Lorraine",
+            //                    "lastName": "Wise",
+            //                    "company": "Comveyer",
+            //                    "gender": "female"
+            //    },
+            //                {
+            //                    "firstName": "Nancy",
+            //                    "lastName": "Waters",
+            //                    "company": "Fuelton",
+            //                    "gender": "female"
+            //    },
+            //                {
+            //                    "firstName": "Misty",
+            //                    "lastName": "Oneill",
+            //                    "company": "Letpro",
+            //                    "gender": "female"
+            //    }
+            //  ];
+            //
+            //            var origdata1 = angular.copy(data1);
+            //            $scope.gridOpts = {
+            //                columnDefs: columnDefs1,
+            //                data: data1
+            //            };
 
-            var origdata1 = angular.copy(data1);
-            $scope.gridOpts = {
-                columnDefs: columnDefs1,
-                data: data1
-            };
-
-//            function RowEditor($rootScope, $modal) {
-//                var service = {};
-//                service.editRow = editRow;
-//
-//                function editRow(grid, row) {
-//                    $modal.open({
-//                        templateUrl: 'module/vendors/view/edit-modal.html',
-//                        controller: ['$modalInstance', 'grid', 'row'],
-//                        controllerAs: 'vm',
-//                        resolve: {
-//                            grid: function () {
-//                                return grid;
-//                            },
-//                            row: function () {
-//                                return row;
-//                            }
-//                        }
-//                    });
-//                }
-//                return service;
-//            }
-
+            //            function RowEditor($rootScope, $modal) {
+            //                var service = {};
+            //                service.editRow = editRow;
+            //
+            //                function editRow(grid, row) {
+            //                    $modal.open({
+            //                        templateUrl: 'module/vendors/view/edit-modal.html',
+            //                        controller: ['$modalInstance', 'grid', 'row'],
+            //                        controllerAs: 'vm',
+            //                        resolve: {
+            //                            grid: function () {
+            //                                return grid;
+            //                            },
+            //                            row: function () {
+            //                                return row;
+            //                            }
+            //                        }
+            //                    });
+            //                }
+            //                return service;
+            //            }
             function RowEditCtrl($modalInstance, grid, row) {
                 var vm = this;
 
                 vm.schema = {
-                    "type": "object",
-                    "title": "Comment",
-                    "properties": {
-                        "FirstName": {
-                            "title": "FirstName",
-                            "type": "string"
+                    type: 'object',
+                    properties: {
+                        name: {
+                            type: 'string',
+                            title: 'Name'
                         },
-                        "LastName": {
-                            "title": "LastName",
-                            "type": "string"
-                            //                        "description": "Email will be used for evil."
+                        company: {
+                            type: 'string',
+                            title: 'Company'
                         },
-                        "Company": {
-                            "title": "Company",
-                            "type": "string"
+                        phone: {
+                            type: 'string',
+                            title: 'Phone'
+                        },
+                        'address.city': {
+                            type: 'string',
+                            title: 'City'
                         }
-                    },
-                    "required": [
-                    "name", "email", "comment"
-                    ]
-                }
+                    }
+                };
                 vm.entity = angular.copy(row.entity);
                 vm.form = [
-                    'FirstName','LastName','Company',
-                    
-  ];
+            'name',
+            'company',
+            'phone',
+                    {
+                        'key': 'address.city',
+                        'title': 'City'
+            },
+          ];
 
                 vm.save = save;
 
@@ -295,63 +255,63 @@ angular.module('vendors')
                     row.entity = angular.extend(row.entity, vm.entity);
                     $modalInstance.close(row.entity);
                 }
-            }
+            };
 
-            var columnDefs2 = [
-                {
-                    name: 'firstName'
-                },
-                {
-                    name: 'lastName'
-                },
-                {
-                    name: 'company'
-                },
-                {
-                    name: 'employed'
-                }
-  ];
 
-            var data2 = [
-                {
-                    "firstName": "Waters",
-                    "lastName": "Shepherd",
-                    "company": "Kongene",
-                    "employed": true
-    },
-                {
-                    "firstName": "Hopper",
-                    "lastName": "Zamora",
-                    "company": "Acium",
-                    "employed": true
-    },
-                {
-                    "firstName": "Marcy",
-                    "lastName": "Mclean",
-                    "company": "Zomboid",
-                    "employed": true
-    },
-                {
-                    "firstName": "Tania",
-                    "lastName": "Cruz",
-                    "company": "Marqet",
-                    "employed": true
-    },
-                {
-                    "firstName": "Kramer",
-                    "lastName": "Cline",
-                    "company": "Parleynet",
-                    "employed": false
-    },
-                {
-                    "firstName": "Bond",
-                    "lastName": "Pickett",
-                    "company": "Brainquil",
-                    "employed": false
-    }
-  ];
+            $scope.editRow = function (grid, row) {
+                $modal.open({
+                    templateUrl: 'module/place/view/edit-modal.html',
+                    controller: ['$modalInstance', 'grid', 'row', RowEditCtrl],
+                    controllerAs: 'vm',
+                    resolve: {
+                        grid: function () {
+                            return grid;
+                        },
+                        row: function () {
+                            return row;
+                        }
+                    }
+                });
+            };
 
-            var origdata2 = angular.copy(data2);
+
+
+            $scope.gridOpts = {
+                columnDefs: [
+                    {
+                        field: 'id',
+                        name: '',
+                        cellTemplate: 'module/place/view/edit-button.html',
+                        width: 40
+                },
+                    {
+                        name: 'name'
+                    },
+                    {
+                        name: 'company'
+                    },
+                    {
+                        name: 'phone'
+                    },
+                    {
+                        name: 'City',
+                        field: 'address.city'
+                    }
+              ],
+                data: [
+                    {
+                        "name": "Cox",
+                        "phone": "Carney",
+                        "company": "Enormo",
+                        "address": {
+                            "city": "xyz"
+                        }
+                  }
+
+
+                ]
+            };
+
 
 
             //modal

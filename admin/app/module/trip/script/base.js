@@ -13,27 +13,27 @@ angular.module('trip', [
                 },
                 abstract: true
             })
-            .state('trip.list', {
-                url: '',
-                templateUrl: 'module/trip/view/list.html',
+            .state('trip.activity', {
+                url: '/activity',
+                templateUrl: 'module/trip/view/acti.html',
                 ncyBreadcrumb: {
-                    label: 'Home'
+                    label: 'Activity'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'TripListController'
+                controller: 'TripActiController'
             })
-            .state('trip.detail', {
-                url: '/detail',
-                templateUrl: 'module/trip/view/detail.html',
+            .state('trip.day', {
+                url: '/day',
+                templateUrl: 'module/trip/view/day.html',
                 ncyBreadcrumb: {
-                    label: 'View'
+                    label: 'Day'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'TripDetailController
+                controller: 'TripDetailController'
             })
             .state('trip.edit', {
                 url: '/edit',
@@ -51,7 +51,7 @@ angular.module('trip', [
                 url: '',
                 templateUrl: 'module/trip/view/calendar.html',
                 ncyBreadcrumb: {
-                    label: 'Calendar'
+                    label: 'EditCalendar'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']

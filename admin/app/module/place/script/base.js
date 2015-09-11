@@ -8,8 +8,8 @@ angular.module('place', [
                 url: '/place',
                 templateUrl: 'module/place/view/home.html',
                 ncyBreadcrumb: {
-                    label: 'trips'
+                    label: 'Places'
                 },
                 controller: 'PlacesController'
             })
-          });
+    });
