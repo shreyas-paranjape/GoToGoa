@@ -1,5 +1,5 @@
 (ns planner.domain.site
-  (:require [planner.domain.common :as common]
+  (:require [planner.infra.db :as db]
             [liberator.core :refer [defresource]]
             [compojure.core :refer [ANY defroutes]]
             [taoensso.timbre :as timbre])
@@ -9,57 +9,57 @@
 (timbre/set-level! :debug)
 
 ;; Entities
-(declare site site_attr)
+(comment (declare site site_attr)
 
 (defentity site
 	(belongs-to common/address)
 	(has-many site_attr))
 (defentity site_attr
-	(belongs-to site))
+	(belongs-to site)))
 
 ; Insert site
 (defn Insert-site [request]
-	(insert site (values request)))
+	(insert db/site (values request)))
 ; Insert site_attr
 (defn Insert-site_attr [request]
-	(insert site_attr (values request)))
+	(insert db/site_attr (values request)))
 ; Delete site
 (defn delete-site [request]
-	(delete site (where request)))
+	(delete db/site (where request)))
 ; Delete site_attr
 (defn delete-site_attr [request]
-	(delete site_attr (where request)))
+	(delete db/site_attr (where request)))
 ; Update site
 (defn update-site [request]
-	(update site
+	(update db/site
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update site_attr
 (defn update-site_attr [request]
-	(update site_attr
+	(update db/site_attr
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Select site
-(defn get-site-all [_]
-	(select site))
+(defn get-site-all []
+	(select db/site))
 (defn get-site [request]
-	(select site
+	(select db/site
 		(where request)))
 ; Select site_attr
-(defn get-site_attr-all [_]
-	(select site_attr))
+(defn get-site_attr-all []
+	(select db/site_attr))
 (defn get-site_attr [request]
-	(select site_attr
+	(select db/site_attr
 		(where request)))
 ; Select site-site_attr
-(defn get-site-site_attr-all [_]
-	(select site
-		(with common/address)
-		(with site_attr)))
+(defn get-site-site_attr-all []
+	(select db/site
+		(with db/address)
+		(with db/site_attr)))
 (defn get-site-site_attr [request]
-	(select site
-		(with common/address)
-		(with site_attr)
+	(select db/site
+		(with db/address)
+		(with db/site_attr)
 		(where request)))
 
 (defresource site-res

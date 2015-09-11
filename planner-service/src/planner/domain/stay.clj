@@ -1,5 +1,5 @@
 (ns planner.domain.stay
-  (:require [planner.domain.common :as common]
+  (:require [planner.infra.db :as db]
             [liberator.core :refer [defresource]]
             [planner.domain.itinerary :as itinerary]
             [compojure.core :refer [ANY defroutes]]
@@ -10,60 +10,60 @@
 (timbre/set-level! :debug)
 
 ;; Entities
-(declare stay stay_attr)
+(comment (declare stay stay_attr)
 (defentity stay
 	(has-many stay_attr)
 	(has-many itinerary/trip))
 (defentity stay_attr
-	(belongs-to stay))
+	(belongs-to stay)))
 
 ; Insert stay
 (defn insert-stay [request]
-	(insert stay
+	(insert db/stay
 		(values request)))
 ; Insert stay_attr
 (defn insert-stay_attr [request]
-	(insert stay_attr
+	(insert db/stay_attr
 		(values request)))
 ; Update stay
 (defn update-stay [request]
-	(update stay
+	(update db/stay
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Update stay_attr
 (defn update-stay_attr [request]
-	(update stay_attr
+	(update db/stay_attr
 		(set-fields request)
 		(where {:id (:id request)})))
 ; Delete stay
 (defn delete-stay [request]
-	(delete stay
+	(delete db/stay
 		(where request)))
 ; Delete stay_attr
 (defn delete-stay_attr [request]
-	(delete stay_attr
+	(delete db/stay_attr
 		(where request)))
 ; Select stay
 (defn get-stay [request]
 	(if (nil? request)
-		(select stay)
-		(select stay
+		(select db/stay)
+		(select db/stay
 			(where request))))
 ; Select stay_attr
 (defn get-stay_attr [request]
 	(if (nil? request)
-		(select stay_attr)
-		(select stay_attr
+		(select db/stay_attr)
+		(select db/stay_attr
 			(where request))))
 ; Select stay-stay_attr
 (defn get-stay-stay_attr [request]
 	(if (nil? request)
-		(select stay
-			(with stay_attr)
-			(with itinerary/trip))
-		(select stay
-			(with stay_attr)
-			(with itinerary/trip)
+		(select db/stay
+			(with db/stay_attr)
+			(with db/trip))
+		(select db/stay
+			(with db/stay_attr)
+			(with db/trip)
 			(where request))))
 
 (defresource stay-res

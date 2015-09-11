@@ -11,59 +11,59 @@
 (timbre/set-level! :debug)
 
 ;; Entities
-(declare activity activity_attr)
+;(declare activity activity_attr)
 
-(defentity activity
-	(has-many activity_attr)
-	(has-many itinerary/event))
-(defentity activity_attr
-	(belongs-to activity))
+;(defentity activity
+;	(has-many activity_attr)
+;	(has-many itinerary/event))
+;(defentity activity_attr
+;	(belongs-to activity))
 
 ; Insert new activity
 (defn insert-activity [request]
-	(insert activity (values request)))
+	(insert db/activity (values request)))
 
 ; Insert activity_attr
 (defn insert-activity_attr [request]
-	(insert activity_attr (values request)))
+	(insert db/activity_attr (values request)))
 
 ; Update activity
 (defn update-activity [request]
-	(update activity
+	(update db/activity
 		(set-fields request)
 		(where {:id (:id request)})))
 
 ; Update activity_attr
 (defn update-activity_attr [request]
-	(update activity_attr
+	(update db/activity_attr
 		(set-fields request)
 		(where {:id (:id request)})))
 
 ; delete activity
 (defn delete-activity [request]
-	(delete activity
+	(delete db/activity
 		(where {:id (:id request)})))
 
 ; delete activity_attr
 (defn delete-activity_attr [request]
-	(delete activity_attr
+	(delete db/activity_attr
 		(where {:id (:id request)})))
 
 ; Select activity
-(defn get-activity-all [_]
-	(select activity))
+(defn get-activity-all []
+	(select db/activity))
 
 ;(defn get-activity-OR [request]
 ;	(select activity
 ;		(where (or {:id (:id request)} {:created (:created request)} {:updated (:updated request)}))))
 
 (defn get-activity [request]
-	(select activity
+	(select db/activity
 		(where request)))
 
 ; Select activity_attr
-(defn get-activity_attr-all [_]
-	(select activity_attr))
+(defn get-activity_attr-all []
+	(select db/activity_attr))
 
 ;(defn get-activity_attr-OR [request]
 ;	(select activity_attr
@@ -72,17 +72,17 @@
 ;			      {:from_stamp (:from_stamp request)} {:to_stamp (:to_stamp request)}))))
 
 (defn get-activity_attr [request]
-	(select activity_attr
+	(select db/activity_attr
 		(where request)))
 
 ; Select activity and activity_attr
-(defn get-activity-activity_attr-all [_]
-	(select activity
-		(with activity_attr)))
+(defn get-activity-activity_attr-all []
+	(select db/activity
+		(with db/activity_attr)))
 
 (defn get-activity-activity_attr [request]
-	(select activity
-		(with activity_attr)
+	(select db/activity
+		(with db/activity_attr)
 		(where request)))
 
 (defresource activity-res
