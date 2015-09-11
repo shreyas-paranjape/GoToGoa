@@ -20,16 +20,13 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
-            'angularjs-dropdown-multiselect',
-            'ng.bs.dropdown',
-            'gridster',
             'ui.grid',
-            'vendors',
-            'ngMap',
             'ui.calendar',
             'ui.grid.edit',
             'angularModalService',
-            'schemaForm'
+            'schemaForm',
+            'vendors',
+            'place'
 
         ])
         .config(function ($breadcrumbProvider) {
@@ -39,7 +36,7 @@ angular.element(document).ready(function () {
             });
         })
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/vendors');
+            $urlRouterProvider.otherwise('/place');
 
         });
 

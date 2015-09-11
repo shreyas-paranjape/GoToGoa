@@ -6,8 +6,8 @@
   "starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"},
   "eligibility_criteria_component":
     [
-      {"criteria_component_id":2,"relationship":"AND","comparator":"<=","value":"customer"}
-    ]
+      {"criteria_component_id":5,"relationship":"AND","comparator":"<=","value":"customer"}
+    ],
   "event_criteria_component":
     [
       {"criteria_component_id":2,"relationship":"OR","comparator":">","value":"customer"}
@@ -19,7 +19,6 @@
 }
 
 /* UI component spec */
-
 {
   "title": "text field",
   "description": "text area",

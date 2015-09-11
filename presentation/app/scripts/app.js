@@ -7,23 +7,18 @@ angular.element(document).ready(function () {
             'ngCookies',
             'restangular',
             'ui.router',
-            'ncy-angular-breadcrumb',
             'permission',
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
-        'angularjs-dropdown-multiselect',
-        'ng.bs.dropdown',
-            'gridster',
             'trip',
-            'ngMap',
-            'ui.calendar'
+            // 'angularjs-dropdown-multiselect',
+            // 'ng.bs.dropdown',
+            // 'gridster',
+            // 'ngMap',
+            // 'ui.calendar'
         ])
-        .config(function ($breadcrumbProvider,$urlRouterProvider) {
-            $breadcrumbProvider.setOptions({
-                prefixStateName: 'trip.list',
-                template: 'bootstrap2'
-            });
+        .config(function ($urlRouterProvider) {
             $urlRouterProvider.otherwise('/trips');
         });
 

@@ -4,3 +4,4 @@
 *.metadata
 *.bak
 local/
+*.orig
