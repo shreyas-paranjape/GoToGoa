@@ -1,233 +1,51 @@
-<div class="row">
-    <div class="row refine_filter no-margin">
-
-        <span>I'd like to visit Goa from To as</span>
-        <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="adults" ng-model="selectAdults" style="display:inline-block;"></div>
-        <span>. My Budget is</span>
-        <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="budgets" ng-model="selectBudgets" style="display:inline-block;"></div>
-        <span>and I'm interested in</span>
-        <!--        <div style="display:inline;" ng-dropdown-multiselect="" options="example13data" selected-model="example13model" checkboxes="true" extra-settings="example13settings"></div>-->
-        <div bs-dropdown bs-dropdown-multi bs-dropdown-display="Select" bs-dropdown-items="interests" ng-model="selectinterests" style="display:inline-block;"></div>
-        <span>and i want it to be a</span>
-        <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="type_trips" ng-model="selecttype_trips" style="display:inline-block;"></div>
-        <span>. I am going with my</span>
-        <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="companion" ng-model="selectcompanion" style="display:inline-block;"></div>
-        <span> and want to definately see</span>
-        <div bs-dropdown bs-dropdown-multi bs-dropdown-display="Select" bs-dropdown-items="places" ng-model="selectplaces" style="display:inline-block;"></div>
-        <div style="padding:5px;">
-            <button type="button" class="btn btn-primary" style="background-color:#FC573B;border-color:#FC573B;border-radius: 0;"><strong>REFINE SEARCH</strong></button>
-        </div>
-        <!--
-        <div class="dropdown" style="display:inline;">
-    <select ng-model="type_trip" ng-options="i.id as i.label for i in type_trips">
-        <option>--</option>
-    </select>
+<div class="row refine_filter no-margin">
+    <span>I'd like to visit Goa from To as</span>
+    <div bs-dropdown bs-dropdown-display="Select"
+      bs-dropdown-items="adults" ng-model="selectAdults" style="display:inline-block;">
+    </div>
+    <span>. My Budget is</span>
+    <div bs-dropdown bs-dropdown-display="Select"
+      bs-dropdown-items="budgets" ng-model="selectBudgets" style="display:inline-block;">
+    </div>
+    <span>and I'm interested in</span>
+    <div bs-dropdown bs-dropdown-multi
+      bs-dropdown-display="Select" bs-dropdown-items="interests" ng-model="selectinterests" style="display:inline-block;">
+    </div>
+    <span>and i want it to be a</span>
+    <div bs-dropdown bs-dropdown-display="Select"
+      bs-dropdown-items="type_trips" ng-model="selecttype_trips" style="display:inline-block;">
+    </div>
+    <span>. I am going with my</span>
+    <div bs-dropdown bs-dropdown-display="Select"
+      bs-dropdown-items="companion" ng-model="selectcompanion" style="display:inline-block;">
+    </div>
+    <span> and want to definately see</span>
+    <div bs-dropdown bs-dropdown-multi bs-dropdown-display="Select"
+      bs-dropdown-items="places" ng-model="selectplaces" style="display:inline-block;">
+    </div>
+    <div style="padding:5px;">
+        <button type="button" class="btn btn-primary btn-refine-search" style="">REFINE SEARCH</button>
+    </div>
 </div>
--->
+
+<div class="event-card-list" ng-repeat="i in [1,2,3]">
+  <div class="row">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Top content</div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+      <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+      </div>
     </div>
-    <div>
-        <div class="row">
-
-            <div class=" list no-padding">
-                <div class="row no-margin">
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color:#343434;">
-                        <h4 style="">Sunny side of the beach</h4>
-                    </div>
-                    <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color:#343434;">
-                        <h4 style="">&#8377; 15,000/- per head</h4>
-                    </div>
-                </div>
-                <div style="background-color:#343434;">
-                    <div class="row no-margin" style="background-color:white; margin-top:10px">
-                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
-
-                            <img style="position:relative;width:100%;height:100%;" src="../../../images/b.jpg">
-                        <img style="position:relative;" src="images/b.jpg">
-
-                        <div class="row no-margin box">
-                            <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="border-right: 1px solid white;">
-                                <h3>5 days</h3>
-                            </div>
-                            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                <ul>
-                                    <li>hi</li>
-                                    <li>hi</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                        <map center="15.490962, 73.827259" zoom="13" style="height:250px;">
-                            <marker position="15.498889,73.827778" on-click="showInfoWindow(event, 'bar')"></marker>
-                            <info-window id="bar">
-                                <div ng-non-bindable="">
-                                    <div id="siteNotice"></div>
-                                    <h3 id="firstHeading" class="firstHeading">Panjim</h3>
-
-                            <div class="row no-margin box">
-                                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5" style="border-right: 1px solid white;">
-                                    <h3>5 days</h3>
-                                </div>
-                                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                                    <ul>
-                                        <li>hi</li>
-                                        <li>hi</li>
-                                    </ul>
-                                </div>
-                            </info-window>
-                        </map>
-                    </div>
-                </div>
-                <div class="row no-margin" style="margin-bottom:10px;">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="background-color:#297EC1;height:300px;">
-                        <img src="images/hotel.jpg" style="padding-top:15px;">
-                        <div style="position:absolute;top:140px;">
-                            <h4 style="font-size:18px;">&#8377; 1,000/- per night</h4>
-                        </div>
-                        <div class="row no-margin" style="padding:10px;">
-                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
-                                <h4 class="no-margin" style="font-size:25px;text-align:left;">Casa Candolim</h4>
-                            </div>
-                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                                <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                            </div>
-                        </div>
-                        <h4 style="text-align:left;padding:10px;">Candolim, Goa</h4>
-                    </div>
-                    <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="background-color:#EF4F59;height:300px;">
-                        <center><i class="fa fa-car" style="color:white;font-size:150px;"></i></center>
-                        <h4 style="padding:10px;">Rented Car</h4>
-                        <h5 style="text-align:center;">Mode Of Transport</h5>
-                    </div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="background-color:#00B46D;height:300px; ">
-                        <div class="row" style="padding-top:10px;">
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-                            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 days">
-                                <h5 style="color: #00B46D;text-align:center;">Day 1</h5>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                            <map center="15.490962, 73.827259" zoom="13">
-                                <marker position="15.498889,73.827778" on-click="showInfoWindow(event, 'bar')"></marker>
-                                <info-window id="bar">
-                                    <div ng-non-bindable="">
-                                        <div id="siteNotice"></div>
-                                        <h3 id="firstHeading" class="firstHeading">Panjim</h3>
-
-                                    </div>
-                                </info-window>
-                            </map>
-                        </div>
-                    </div>
-                    <div class="row no-margin" style="margin-bottom:10px;">
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="background-color:#297EC1;height:auto;">
-                            <img src="../../../images/hotel.jpg" style="padding-top:15px;width:100%;height:100%;">
-                            <div style="position:absolute;top:140px;">
-                                <h4 style="font-size:18px;">&#8377; 1,000/- per night</h4>
-                            </div>
-                            <div class="row no-margin" style="padding:10px;">
-                                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 no-padding">
-                                    <h4 class="no-margin" style="font-size:25px;text-align:left;">Casa Candolim</h4>
-                                </div>
-                                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                                    <i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
-                                </div>
-                            </div>
-                            <h4 style="text-align:left;padding:10px;">Candolim, Goa</h4>
-                        </div>
-                        <div class=" col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="background-color:#EF4F59;height:auto;">
-                            <center><i class="fa fa-car" style="color:white;font-size:150px;"></i></center>
-                            <h4 style="padding:10px;">Rented Car</h4>
-                            <h5 style="text-align:center;">Mode Of Transport</h5>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 " style="background-color:#00B46D;">
-                            <div class="row" style="padding-top:10px;">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 days">
-                                    <h5 style="color: #00B46D;text-align:center;">Day 1</h5>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <h5 style="text-align:right;">08:00</h5>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <i style="color:white;padding-left:22px;" class="fa fa-arrow-circle-o-down fa-2x"></i>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-                                    <h5 style="font-size:15px;">Visit to candolim Beach</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <h5 style="text-align:right;">09:00</h5>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <i style="color:white;padding-left:22px;" class="fa fa-arrow-circle-o-down fa-2x"></i>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-                                    <h5 style="font-size:15px;">Water Sports</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <h5 style="text-align:right;">11:00</h5>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <i style="color:white;padding-left:22px;" class="fa fa-arrow-circle-o-down fa-2x"></i>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-                                    <h5 style="font-size:15px;">Lunch at beach shack</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <h5 style="text-align:right;">13:00</h5>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <i style="color:white;padding-left:22px;" class="fa fa-arrow-circle-o-down fa-2x"></i>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-                                    <h5 style="font-size:15px;">Visit to Goa Fort</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <h5 style="text-align:right;">18:00</h5>
-                                </div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 no-padding">
-                                    <i style="color:white;padding-left:22px;" class="fa fa-arrow-circle-o-down fa-2x"></i>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-                                    <h5 style="font-size:15px;">Relaxing at the beach</h5>
-                                </div>
-                            </div>
-                            <i style="color:white;padding-left:103px;" class="fa fa-arrow-circle-o-down fa-2x"></i>
-                            <div class="row">
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"></div>
-                                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 days">
-                                    <h5 style="text-align:center;color: #00B46D;">Day 2</h5>
-                                </div>
-                                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                    <a ui-sref="trip.edit.calendar"><h5 style="color:white; font-size:14px;">View itenary in detail>></h5></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row no-margin">
-                    <a ui-sref="trip.edit.calendar">
-                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3" style="background-color:#343434;">
-                            <h4 style="">BOOK TRIP NOW<i class="fa fa-long-arrow-right fa-1g"></i></h4>
-                        </div>
-                    </a>
-                    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
-                    </div>
-                </div>
-            </div>
-        </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+      <a href="" ui-sref="trip.edit">Edit</a>
     </div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+  </div>
 </div>

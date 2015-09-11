@@ -20,19 +20,21 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
-            'angularjs-dropdown-multiselect',
-            'ng.bs.dropdown',
-            'gridster',
             'ui.grid',
+<<<<<<< HEAD
             'trip',
             'vendors',
             'place',
             'ngMap',
+=======
+>>>>>>> bcc28919b5362eda06861d73ef7d2d04f5db8abc
             'ui.calendar',
             'ui.grid.edit',
             'ui.grid.selection',
             'angularModalService',
-            'schemaForm'
+            'schemaForm',
+            'vendors',
+            'place'
 
         ])
         .config(function ($breadcrumbProvider) {
@@ -42,7 +44,7 @@ angular.element(document).ready(function () {
             });
         })
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/vendors');
+            $urlRouterProvider.otherwise('/place');
 
         });
 

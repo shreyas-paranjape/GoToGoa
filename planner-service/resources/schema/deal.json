@@ -10,7 +10,7 @@
     ],
   "event_criteria_component":
     [
-      {"criteria_component_id":5,"relationship":"OR","comparator":">","value":"customer"}
+      {"criteria_component_id":2,"relationship":"OR","comparator":">","value":"customer"}
     ],
   "notification":
     [
@@ -25,18 +25,31 @@
   "type": "select",
   "value" "text field"
   "Eligibility":
-    {
-      "criteria_component_id": "select",
-      "relationship": "select",
-      "comparator": "select",
-      "value": "text field"
-    },
+    [
+      {
+        "criteria_component_id": "select",
+        "relationship": "select",
+        "comparator": "select",
+        "value": "text field"
+      }
+    ],
   "Event":
-    {
-      "criteria_component_id": "select",
-      "relationship": "select",
-      "comparator": "select",
-      "value": "text field"
-    },
-
+    [
+      {
+        "criteria_component_id": "select",
+        "relationship": "select",
+        "comparator": "select",
+        "value": "text field"
+      }
+    ],
+  "Notification":
+    [
+      {
+        "title": "text field",
+        "description": "text area",
+        "frequency": "select",
+        "start_at" : "select",
+        "value": "text field"
+      }
+    ]
 }
