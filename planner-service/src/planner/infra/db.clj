@@ -15,14 +15,73 @@
 
 (db/defdb goaamigo db)
 
-(declare activity activity_attr address_type address recurrence_rule travel travel_attr stay stay_attr site site_attr party party_attr party_address itinerary itinerary_day day day_event event trip deal notification eligibility_criteria_component event_criteria_component criteria_component )
+(declare stay_type stay_stay_type travel_type travel_travel_type trip_comments trip_rating trip_review stay_comments stay_rating stay_review travel_comments travel_rating travel_review activity_comments activity_rating activity_review comments rating review activity_type activity_activity_type activity activity_attr address_type address recurrence_rule travel travel_attr stay stay_attr site site_attr party party_attr party_address itinerary itinerary_day day day_event event trip deal notification eligibility_criteria_component event_criteria_component criteria_component )
+(defentity travel_type
+	(has-many travel_travel_type))
+(defentity travel_travel_type
+	(belongs-to travel)
+	(belongs-to travel_type))
+(defentity stay_type
+	(has-many stay_stay_type))
+(defentity stay_stay_type
+	(belongs-to stay)
+	(belongs-to stay_type))
+(defentity trip_comments
+	(belongs-to trip)
+	(belongs-to comments))
+(defentity trip_review
+	(belongs-to trip)
+	(belongs-to review))
+(defentity trip_rating
+	(belongs-to trip)
+	(belongs-to rating))
+(defentity stay_comments
+	(belongs-to stay)
+	(belongs-to comments))
+(defentity stay_review
+	(belongs-to stay)
+	(belongs-to review))
+(defentity stay_rating
+	(belongs-to stay)
+	(belongs-to rating))
+(defentity travel_comments
+	(belongs-to travel)
+	(belongs-to comments))
+(defentity travel_review
+	(belongs-to travel)
+	(belongs-to review))
+(defentity travel_rating
+	(belongs-to travel)
+	(belongs-to rating))
+(defentity activity_comments
+	(belongs-to activity)
+	(belongs-to comments))
+(defentity activity_review
+	(belongs-to activity)
+	(belongs-to review))
+(defentity activity_rating
+	(belongs-to activity)
+	(belongs-to rating))
+(defentity activity_type
+	(has-many activity_activity_type))
+(defentity activity_activity_type
+	(belongs-to activity_type)
+	(belongs-to activity))
 (defentity travel
+	(has-many travel_travel_type)
+	(has-many travel_review)
+	(has-many travel_rating)
+	(has-many travel_comments)
 	(has-many trip)
 	(has-many travel_attr))
 (defentity travel_attr
 	(belongs-to travel))
 ;(declare stay stay_attr)
 (defentity stay
+	(has-many stay_stay_type)
+	(has-many stay_review)
+	(has-many stay_comments)
+	(has-many stay_rating)
 	(has-many stay_attr)
 	(has-many trip))
 (defentity stay_attr
@@ -45,6 +104,9 @@
 	(belongs-to address_type))
 ;(declare itinerary itinerary_day day day_event event trip)
 (defentity trip
+	(has-many trip_comments)
+	(has-many travel_rating)
+	(has-many travel_review)
 	(belongs-to recurrence_rule)
 	(belongs-to itinerary)
 	(belongs-to stay)
@@ -97,6 +159,10 @@
 	(has-many event))
 ;(declare activity activity_attr)
 (defentity activity
+	(has-many activity_rating)
+	(has-many activity_review)
+	(has-many activity_comments)
+	(has-many activity_activity_type)
 	(has-many activity_attr)
 	(has-many event))
 (defentity activity_attr
