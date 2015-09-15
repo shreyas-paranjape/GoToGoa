@@ -21,12 +21,17 @@ angular.element(document).ready(function () {
             'ngTouch',
             'ui.bootstrap',
             'ui.grid',
+            'trip',
+            'vendors',
+            'place',
+//            'ngMap',
             'ui.calendar',
             'ui.grid.edit',
+            'ui.grid.selection',
             'angularModalService',
             'schemaForm',
             'vendors',
-            'place'
+            'deals'
 
         ])
         .config(function ($breadcrumbProvider) {

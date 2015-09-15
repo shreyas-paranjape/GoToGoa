@@ -36,7 +36,7 @@
                         <a ui-sref="vendors.detail">Vendors</a>
                     </li>
                     <li>
-                        <a ui-sref="details">Place</a>
+                        <a ui-sref="place">Place</a>
                     </li>
                     <li>
                         <a ui-sref="grid">Activity</a>
@@ -45,10 +45,10 @@
                         <a ui-sref="calendar">Stay</a>
                     </li>
                     <li>
-                        <a ui-sref="map">Trip</a>
+                        <a ui-sref="trip.activity">Trip</a>
                     </li>
                     <li>
-                        <a ui-sref="map">Deals</a>
+                        <a ui-sref="deals.list">Deals</a>
                     </li>
                 </ul>
 
@@ -65,11 +65,13 @@
         <div ui-view></div>
     </div>
 
+    <!--
     <footer class="footer">
-        <div class="container" style="padding-top:50px;">
-            Footer :
-        </div>
-    </footer>
+    <div class="container" style="padding-top:50px;">
+        Footer :
+    </div>
+</footer>
+-->
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -105,11 +107,18 @@
     <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="module/trip/script/base.js"></script>
+    <script src="module/trip/script/controller.js"></script>
+    <script src=" module/vendors/script/base.js "></script>
+    <script src="module/vendors/script/controller.js "></script>
+    <!--    <script src="module/vendors/script/service.js"></script>-->
+    <script src=" module/place/script/base.js "></script>
+    <script src="module/place/script/controller.js"></script>
     <script src="module/vendors/script/base.js "></script>
     <script src="module/vendors/script/service.js"></script>
     <script src="module/vendors/script/controller.js "></script>
-    <script src="module/place/script/base.js "></script>
-    <script src="module/place/script/controller.js "></script>
+    <script src="module/deals/script/base.js "></script>
+    <script src="module/deals/script/controller.js "></script>
     <script src="scripts/app.js "></script>
     <!-- endbuild -->
 

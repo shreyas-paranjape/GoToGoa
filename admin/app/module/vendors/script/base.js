@@ -17,7 +17,7 @@ angular.module('vendors', [
                 url: '',
                 templateUrl: 'module/vendors/view/list.html',
                 ncyBreadcrumb: {
-                    label: 'Vendors-list'
+                    label: 'Vendors-HomePage'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
