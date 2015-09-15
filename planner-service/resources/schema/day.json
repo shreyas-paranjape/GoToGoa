@@ -1,15 +1,45 @@
 {
 	"title":"Day1",
 	"description":"A day in a particular trip",
-	"events":[{"event_id": 1,
-		     "from_stamp": "12:00"
-		    },
-		   {"event_id": 2,
-		     "from_stamp": "1:00"
-		   }
-		  ],
-	"starts":{
-		"recurrence_frequency":"DAILY",
-		"by_hour":"11:00"
-	}
+	"events":[
+						{ "event_id": 1,
+		     			"from_stamp": "12:00"
+		    		},
+		   			{	"event_id": 2,
+		     			"from_stamp": "1:00"
+		   			}
+		  		],
+	"starts":
+		{
+			"recurrence_frequency":"DAILY",
+			"by_hour":"11:00"
+		}
+}
+
+
+/* UI component spec */
+{
+	"title": "text field",
+	"description": "text area",
+	"recurrence rule" :
+		{
+	  	"frequency": "select",
+	  		[
+					{
+						"at_field": "select",
+	  				"at_value": "text field"
+					}
+				]
+		},
+	"events":
+		[
+			{
+				"activity": "auto complete search box",
+				"destination": "auto complete search box",
+				"start time": "time picker",
+				"end time": "time picker",
+			}
+		],
+
+
 }

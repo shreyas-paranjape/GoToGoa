@@ -1,0 +1,12 @@
+{
+	"title":"Day1",
+	"description":"A day in a particular trip",
+  "stay_type_id": "123"
+}
+
+/* UI component spec */
+{
+	"title": "text field",
+	"description": "text area",
+  "stay_type": "multi select"
+}

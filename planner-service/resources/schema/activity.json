@@ -1,0 +1,26 @@
+{
+	"title":"Day1",
+	"description":"A day in a particular trip",
+  "activity_type_id": "123"
+	"starts":{
+		"recurrence_frequency":"DAILY",
+		"by_hour":"11:00"
+	}
+}
+
+/* UI component spec */
+{
+	"title": "text field",
+	"description": "text area",
+  "activity_type": "multi select",
+  "recurrence rule" :
+		{
+	  	"frequency": "select",
+	  		[
+					{
+						"at_field": "select",
+	  				"at_value": "text field"
+					}
+				]
+		},
+}
