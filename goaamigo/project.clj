@@ -10,6 +10,7 @@
                            [friend-oauth2 "0.1.1"]
 		       [crypto-password "0.1.3"]
 		       [selmer "0.8.7"]
+                          [twitter-api "0.7.8"]
                           [environ "1.0.0"]
                            [clj-time "0.11.0"]
                            [korma "0.4.0"]
