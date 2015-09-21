@@ -33,10 +33,10 @@
                 </div>
                 <ul class="nav navbar-nav">
                     <li>
-                        <a ui-sref="vendors.detail">Vendors</a>
+                        <a ui-sref="vendors.detail">Contact</a>
                     </li>
                     <li>
-                        <a ui-sref="place">Place</a>
+                        <a ui-sref="place">Destination</a>
                     </li>
                     <li>
                         <a ui-sref="grid">Activity</a>
@@ -45,7 +45,10 @@
                         <a ui-sref="calendar">Stay</a>
                     </li>
                     <li>
-                        <a ui-sref="trip.activity">Trip</a>
+                        <a ui-sref="travel">Travel</a>
+                    </li>
+                    <li>
+                        <a ui-sref="trip.day.grid">Trip</a>
                     </li>
                     <li>
                         <a ui-sref="deals.list">Deals</a>
@@ -87,8 +90,6 @@
     <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
     <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
-    <script src="bower_components/tv4/tv4.js"></script>
-    <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
     <script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
     <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
     <script src="bower_components/angular-touch/angular-touch.js"></script>
@@ -105,6 +106,14 @@
     <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
     <script src="bower_components/angular-bootstrap-dropdown/dist/bsDropdown.min.js"></script>
     <script src="bower_components/angular-modal-service/dst/angular-modal-service.min.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.min.js"></script>
+    <script src='bower_components/angular-strap/dist/angular-strap.min.js'></script>
+    <script src='bower_components/angular-strap/dist/angular-strap.tpl.min.js'></script>
+    <script src="bower_components/tv4/tv4.js"></script>
+    <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script src="bower_components/angular-schema-form/dist/schema-form.min.js"></script>
+    <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.min.js"></script>
+    <script src="bower_components/schema-form-datetimepicker/schema-form-date-time-picker.min.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="module/trip/script/base.js"></script>
