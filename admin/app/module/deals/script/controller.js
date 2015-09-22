@@ -341,6 +341,10 @@ angular.module('deals')
                                 items: {
                                     type: "object",
                                     properties: {
+                                        time_repeat: {
+                                            type: "string",
+                                            enum: ['Hour', 'Day', 'Week', 'Month']
+                                        },
                                         at: {
                                             title: "at",
                                             type: "number"
@@ -436,6 +440,10 @@ angular.module('deals')
                                         items: {
                                             type: "object",
                                             properties: {
+                                                time_repeat: {
+                                                    type: "string",
+                                                    enum: ['Hour', 'Day', 'Week', 'Month']
+                                                },
                                                 at: {
                                                     title: "at",
                                                     type: "number"
@@ -647,6 +655,10 @@ angular.module('deals')
                                 items: {
                                     type: "object",
                                     properties: {
+                                        time_repeat: {
+                                            type: "string",
+                                            enum: ['Hour', 'Day', 'Week', 'Month']
+                                        },
                                         at: {
                                             title: "at",
                                             type: "number"
@@ -742,6 +754,10 @@ angular.module('deals')
                                         items: {
                                             type: "object",
                                             properties: {
+                                                time_repeat: {
+                                                    type: "string",
+                                                    enum: ['Hour', 'Day', 'Week', 'Month']
+                                                },
                                                 at: {
                                                     title: "at",
                                                     type: "number"

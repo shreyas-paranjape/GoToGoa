@@ -19,8 +19,9 @@
 
 ; Insert stay
 (defn insert-stay [request]
-	(insert db/stay
-		(values request)))
+	(def stay_id (insert db/stay (values (apply dissoc request [:stay_type_id]))))
+	(insert db/stay_stay_type (values {:stay_id stay_id :stay_type_id (:stay_type_id request)}))
+	)
 ; Insert stay_attr
 (defn insert-stay_attr [request]
 	(insert db/stay_attr

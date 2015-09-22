@@ -22,7 +22,7 @@
 ;; IN MEMORY
 ;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-(def lIn-user (atom {:social_id "" :fullname "" :type ""}))
+(def linkedin-user (atom {:social_id "" :fullname "" :type ""}))
 
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -62,10 +62,9 @@
                              "&format=json"))
             :body
             (parse/parse-string))]
-    (swap! lIn-user #(assoc % :social_id %2 :fullname %2 :type %3) id (str firstName " " lastName) "linkedin")
-    (info @lIn-user)
-    ;(resp/redirect "/welcome")
-    ))
+    (swap! linkedin-user #(assoc % :social_id %2 :fullname %3 :type %4) id (str firstName " " lastName) "linkedin")
+    (info linkedin-user)
+    (resp/redirect "/welcome")))
 
 (defn- pull-details
   "Login view, if we get back some query params from
@@ -86,4 +85,4 @@
 (defroutes linkedin-routes
   (GET "/linkedin" [] (resp/redirect init))
   (GET "/auth_linkedin" {params :query-params} (pull-details params))
-  (GET "/welcome" [] (str "Hello there buddy, your name is " (:first_name @lIn-user) " " (:last_name @lIn-user))))
+  (GET "/welcome" [] (str "Hello there buddy, your name is " (:fullname @linkedin-user))))

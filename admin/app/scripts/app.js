@@ -30,6 +30,9 @@ angular.element(document).ready(function () {
             'ui.grid.selection',
             'angularModalService',
             'schemaForm',
+             'schemaForm-datepicker',
+        'schemaForm-timepicker',
+        'schemaForm-datetimepicker',
             'vendors',
             'deals'
 

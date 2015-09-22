@@ -21,7 +21,10 @@
 
 ; Insert new activity
 (defn insert-activity [request]
-	(insert db/activity (values request)))
+	(def recur_id (insert db/recurrence_rule (values (:starts request))))
+	(def act_id (insert db/activity (values (conj (apply dissoc request [:starts :activity_type_id]) {:recurrence_rule_id recur_id}))))
+	(insert db/activity_activity_type (values {:activity_id act_id :activity_type (:activity_type request)}))
+	)
 
 ; Insert activity_attr
 (defn insert-activity_attr [request]

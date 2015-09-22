@@ -1,7 +1,7 @@
 {
 	"title":"Day1",
-	"description":"A day in a particular trip",
-  "activity_type_id": "123"
+	"description":"A day in a particular activity",
+  "activity_type_id": 123,
 	"starts":{
 		"recurrence_frequency":"DAILY",
 		"by_hour":"11:00"

@@ -1,7 +1,32 @@
 {
 	"title":"Day1",
 	"description":"A day in a particular trip",
-  "stay_type_id": "123"
+  "stay_type_id": "123",
+	"email": "",
+	"phone": "",
+	"address": "",
+	"no_of_section": 123,
+	"no_of_rooms": 123,
+	"check_in_time": "",
+	"check_out_time": "",
+	"stay_feature" : [],
+	"stay_room":
+		[
+			{
+				"title":"Day1",
+				"description":"A day in a particular trip",
+				"area": 123.45,
+				"type": "",
+				"section_no": 123,
+				"no_of_beds": 123,
+				"occupancy": "",
+				"extra_bed_cost": 123.23,
+				"breakfast_charges": 123.12,
+				"lunch_charges":	123.23,
+				"dinner_charges": 123.12,
+				"stay_room_feature": []
+			}
+		]
 }
 
 /* UI component spec */

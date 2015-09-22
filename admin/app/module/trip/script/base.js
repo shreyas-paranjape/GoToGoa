@@ -30,10 +30,33 @@ angular.module('trip', [
                 ncyBreadcrumb: {
                     label: 'Day'
                 },
+                abstract: true,
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'TripDetailController'
+                controller: 'TripDayController'
+            })
+            .state('trip.day.grid', {
+                url: '/day_grid',
+                templateUrl: 'module/trip/view/day_grid.html',
+                ncyBreadcrumb: {
+                    label: 'Day_grid'
+                },
+                params: {
+                    data: ['default', 'list', 'of', 'things']
+                },
+                controller: 'TripDayController'
+            })
+            .state('trip.day.form', {
+                url: '/day_form',
+                templateUrl: 'module/trip/view/day_form.html',
+                ncyBreadcrumb: {
+                    label: 'Day_form'
+                },
+                params: {
+                    data: ['default', 'list', 'of', 'things']
+                },
+                controller: 'TripDayController'
             })
             .state('trip.edit', {
                 url: '/edit',

@@ -568,233 +568,643 @@ angular.module('trip')
 
 
 .controller('TripCustomController', ['$scope', '$filter', '$stateParams', function ($scope, $filter, $stateParams, uiCalendarConfig) {
-    'use strict';
-    //$scope.info_date = $stateParams.data;
-    $scope.hotels = [
-        {
-            "id": 1,
-            "name": "Mandovi",
-            "url": "http://res.cloudinary.com/fomentotravel-com/image/upload/v1439968738/h1_hfgowt.jpg",
-            "price": accounting.formatMoney(3000, "₹", 0)
+        'use strict';
+        //$scope.info_date = $stateParams.data;
+        $scope.hotels = [
+            {
+                "id": 1,
+                "name": "Mandovi",
+                "url": "http://res.cloudinary.com/fomentotravel-com/image/upload/v1439968738/h1_hfgowt.jpg",
+                "price": accounting.formatMoney(3000, "₹", 0)
                 },
-        {
-            "id": 2,
-            "name": "Deltin Palms",
-            "url": "http://res.cloudinary.com/fomentotravel-com/image/upload/v1439969053/h2_fqzsot.jpg",
-            "price": accounting.formatMoney(11000, "₹", 0)
+            {
+                "id": 2,
+                "name": "Deltin Palms",
+                "url": "http://res.cloudinary.com/fomentotravel-com/image/upload/v1439969053/h2_fqzsot.jpg",
+                "price": accounting.formatMoney(11000, "₹", 0)
                 },
-        {
-            "id": 3,
-            "name": "Cidade Goa",
-            "url": "http://res.cloudinary.com/fomentotravel-com/image/upload/v1439969097/h3_aucqi5.jpg",
-            "price": accounting.formatMoney(10000, "₹", 0)
+            {
+                "id": 3,
+                "name": "Cidade Goa",
+                "url": "http://res.cloudinary.com/fomentotravel-com/image/upload/v1439969097/h3_aucqi5.jpg",
+                "price": accounting.formatMoney(10000, "₹", 0)
                 }
 
         ];
-    var orderBy = $filter('orderBy');
-    $scope.order = function (predicate, reverse) {
-        $scope.hotels = orderBy($scope.hotels, predicate, reverse);
-    };
-    $scope.locationIncludes = [];
-    $scope.includeLocation = function (location) {
-        var i = $.inArray(location, $scope.locationIncludes);
-        if (i > -1) {
-            $scope.locationIncludes.splice(i, 1);
-        } else {
-            $stateParams
-            $scope.locationIncludes.push(location);
+        var orderBy = $filter('orderBy');
+        $scope.order = function (predicate, reverse) {
+            $scope.hotels = orderBy($scope.hotels, predicate, reverse);
+        };
+        $scope.locationIncludes = [];
+        $scope.includeLocation = function (location) {
+            var i = $.inArray(location, $scope.locationIncludes);
+            if (i > -1) {
+                $scope.locationIncludes.splice(i, 1);
+            } else {
+                $stateParams
+                $scope.locationIncludes.push(location);
+            }
         }
-    }
-    $scope.locationFilter = function (hotels) {
-        if ($scope.locationIncludes.length > 0) {
-            if ($.inArray(hotels.location, $scope.locationIncludes) < 0)
-                return;
+        $scope.locationFilter = function (hotels) {
+            if ($scope.locationIncludes.length > 0) {
+                if ($.inArray(hotels.location, $scope.locationIncludes) < 0)
+                    return;
+            }
+
+            return hotels;
         }
 
-        return hotels;
-    }
 
+        //calendar
+        var date = new Date();
+        var d = date.getDate();
+        var m = date.getMonth();
+        var y = date.getFullYear();
 
-    //calendar
-    var date = new Date();
-    var d = date.getDate();
-    var m = date.getMonth();
-    var y = date.getFullYear();
-
-    //            $scope.changeTo = 'Hungarian';
-    /* event source that pulls from google.com */
-    $scope.eventSource = {
-        url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
-        //                className: 'gcal-event', // an option!
-        //currentTimezone: 'America/Chicago' // an option!
-    };
-    /* event source that contains custom events on the scope */
-    $scope.events = [
-        {
-            title: 'All Day Event',
-            start: new Date(y, m, 1)
+        //            $scope.changeTo = 'Hungarian';
+        /* event source that pulls from google.com */
+        $scope.eventSource = {
+            url: "http://www.google.com/calendar/feeds/usa__en%40holiday.calendar.google.com/public/basic",
+            //                className: 'gcal-event', // an option!
+            //currentTimezone: 'America/Chicago' // an option!
+        };
+        /* event source that contains custom events on the scope */
+        $scope.events = [
+            {
+                title: 'All Day Event',
+                start: new Date(y, m, 1)
                 },
-        {
-            title: 'Long Event',
-            //                start: $stateParams.data.add(parseInt(9), 'h'),
-            //                end: $stateParams.data.add(parseInt(11), 'h'),
-            start: moment()
-                //                end: moment().add(parseInt(1), 'h')
+            {
+                title: 'Long Event',
+                //                start: $stateParams.data.add(parseInt(9), 'h'),
+                //                end: $stateParams.data.add(parseInt(11), 'h'),
+                start: moment()
+                    //                end: moment().add(parseInt(1), 'h')
                     },
-        {
-            id: 999,
-            title: 'Repeating Event',
-            start: new Date(y, m, d - 3, 16, 0),
-            allDay: false
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: new Date(y, m, d - 3, 16, 0),
+                allDay: false
                     },
-        {
-            id: 999,
-            title: 'Repeating Event',
-            start: new Date(y, m, d + 4, 16, 0),
-            allDay: false
+            {
+                id: 999,
+                title: 'Repeating Event',
+                start: new Date(y, m, d + 4, 16, 0),
+                allDay: false
                     },
-        {
-            title: 'Birthday Party',
-            start: new Date(y, m, d + 1, 19, 0),
-            end: new Date(y, m, d + 1, 22, 30),
-            allDay: false
+            {
+                title: 'Birthday Party',
+                start: new Date(y, m, d + 1, 19, 0),
+                end: new Date(y, m, d + 1, 22, 30),
+                allDay: false
                     },
 
-        {
-            title: 'breakfast',
-            start: new Date(y, m, d, 8, 0),
-            end: new Date(y, m, d, 9, 0)
+            {
+                title: 'breakfast',
+                start: new Date(y, m, d, 8, 0),
+                end: new Date(y, m, d, 9, 0)
 
 
                     },
-        {
-            title: 'beach',
-            start: new Date(y, m, d, 10, 0),
-            end: new Date(y, m, d, 15, 30)
+            {
+                title: 'beach',
+                start: new Date(y, m, d, 10, 0),
+                end: new Date(y, m, d, 15, 30)
 
                     },
-        {
-            title: 'lunch',
-            start: new Date(y, m, d, 12, 0)
-                //                    end: new Date(y, m, d,15,30),
+            {
+                title: 'lunch',
+                start: new Date(y, m, d, 12, 0)
+                    //                    end: new Date(y, m, d,15,30),
 
                     }
                     ];
-    /* event source that calls a function on every view switch */
-    $scope.eventsF = function (start, end, timezone, callback) {
-        var s = new Date(start).getTime() / 1000;
-        var e = new Date(end).getTime() / 1000;
-        var m = new Date(start).getMonth();
-        var events = [{
-            title: 'Feed Me ' + m,
-            start: s + (50000),
-            end: s + (100000),
-            allDay: false,
-            className: ['customFeed']
+        /* event source that calls a function on every view switch */
+        $scope.eventsF = function (start, end, timezone, callback) {
+            var s = new Date(start).getTime() / 1000;
+            var e = new Date(end).getTime() / 1000;
+            var m = new Date(start).getMonth();
+            var events = [{
+                title: 'Feed Me ' + m,
+                start: s + (50000),
+                end: s + (100000),
+                allDay: false,
+                className: ['customFeed']
                 }];
-        callback(events);
-    };
+            callback(events);
+        };
 
-    /* alert on eventClick */
-    $scope.alertEventOnClick = function (date, jsEvent, view) {
-        //            $scope.alertMessage = (date.title + ' was clicked ');
-        //$('.week-cal').fullCalendar('changeView', 'agendaDay');
-        //$('.week-cal').fullCalendar('gotoDate', date);
-        $state.go('trip.customize', {
-            data: date
-        });
+        /* alert on eventClick */
+        $scope.alertEventOnClick = function (date, jsEvent, view) {
+            //            $scope.alertMessage = (date.title + ' was clicked ');
+            //$('.week-cal').fullCalendar('changeView', 'agendaDay');
+            //$('.week-cal').fullCalendar('gotoDate', date);
+            $state.go('trip.customize', {
+                data: date
+            });
 
-    };
+        };
 
-    $scope.alertDefaultEventOnClick = function (date, jsEvent, view) {
-        //            $scope.alertMessage = (date.title + ' was clicked ');
-        //$('.week-cal').fullCalendar('changeView', 'agendaDay');
-        //$('.week-cal').fullCalendar('gotoDate', date);
-        $scope.addDefaultEvent(date);
+        $scope.alertDefaultEventOnClick = function (date, jsEvent, view) {
+            //            $scope.alertMessage = (date.title + ' was clicked ');
+            //$('.week-cal').fullCalendar('changeView', 'agendaDay');
+            //$('.week-cal').fullCalendar('gotoDate', date);
+            $scope.addDefaultEvent(date);
 
-    };
-    /* alert on Drop */
-    $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
-        $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
-    };
-    /* alert on Resize */
-    $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
-        $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
-    };
-    /* add and removes an event source of choice */
-    $scope.addRemoveEventSource = function (sources, source) {
-        var canAdd = 0;
-        angular.forEach(sources, function (value, key) {
-            if (sources[key] === source) {
-                sources.splice(key, 1);
-                canAdd = 1;
+        };
+        /* alert on Drop */
+        $scope.alertOnDrop = function (event, delta, revertFunc, jsEvent, ui, view) {
+            $scope.alertMessage = ('Event Droped to make dayDelta ' + delta);
+        };
+        /* alert on Resize */
+        $scope.alertOnResize = function (event, delta, revertFunc, jsEvent, ui, view) {
+            $scope.alertMessage = ('Event Resized to make dayDelta ' + delta);
+        };
+        /* add and removes an event source of choice */
+        $scope.addRemoveEventSource = function (sources, source) {
+            var canAdd = 0;
+            angular.forEach(sources, function (value, key) {
+                if (sources[key] === source) {
+                    sources.splice(key, 1);
+                    canAdd = 1;
+                }
+            });
+            if (canAdd === 0) {
+                sources.push(source);
             }
-        });
-        if (canAdd === 0) {
-            sources.push(source);
-        }
-    };
-    $scope.addDefaultEvent = function (date) {
-        $scope.events.push({
-            title: 'Add Event',
-            start: date,
-            end: date,
-            className: ['openSesame']
-        });
-    };
-    /* add custom event*/
-    $scope.addEvent = function (hotelName) {
-        $scope.events.push({
-            title: hotelName,
-            start: new Date(y, m, d, 9, 0),
-            end: new Date(y, m, d, 10, 0),
-            className: ['openSesame']
-        });
-    };
-    /* remove event */
-    $scope.remove = function (index) {
-        $scope.events.splice(index, 1);
-    };
-    /* Change View */
-    $scope.changeView = function (view, calendar) {
-        uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
-    };
-    /* Change View */
-    $scope.renderCalender = function (calendar) {
-        if (uiCalendarConfig.calendars[calendar]) {
-            uiCalendarConfig.calendars[calendar].fullCalendar('render');
-        }
-    };
-    /* Render Tooltip */
-    $scope.eventRender = function (event, element, view) {
-        element.attr({
-            'tooltip': event.title,
-            'tooltip-append-to-body': true
-        });
-        $compile(element)($scope);
-    };
-    /* config object */
-    $scope.uiConfig = {
-        calendar: {
-            //                width: 200,
-            height: 600,
-            editable: true,
-            defaultView: 'agendaDay',
-            defaultDate: $stateParams.data,
-            header: {
-                left: '',
-                center: 'title',
-                right: 'today prev,next'
+        };
+        $scope.addDefaultEvent = function (date) {
+            $scope.events.push({
+                title: 'Add Event',
+                start: date,
+                end: date,
+                className: ['openSesame']
+            });
+        };
+        /* add custom event*/
+        $scope.addEvent = function (hotelName) {
+            $scope.events.push({
+                title: hotelName,
+                start: new Date(y, m, d, 9, 0),
+                end: new Date(y, m, d, 10, 0),
+                className: ['openSesame']
+            });
+        };
+        /* remove event */
+        $scope.remove = function (index) {
+            $scope.events.splice(index, 1);
+        };
+        /* Change View */
+        $scope.changeView = function (view, calendar) {
+            uiCalendarConfig.calendars[calendar].fullCalendar('changeView', view);
+        };
+        /* Change View */
+        $scope.renderCalender = function (calendar) {
+            if (uiCalendarConfig.calendars[calendar]) {
+                uiCalendarConfig.calendars[calendar].fullCalendar('render');
+            }
+        };
+        /* Render Tooltip */
+        $scope.eventRender = function (event, element, view) {
+            element.attr({
+                'tooltip': event.title,
+                'tooltip-append-to-body': true
+            });
+            $compile(element)($scope);
+        };
+        /* config object */
+        $scope.uiConfig = {
+            calendar: {
+                //                width: 200,
+                height: 600,
+                editable: true,
+                defaultView: 'agendaDay',
+                defaultDate: $stateParams.data,
+                header: {
+                    left: '',
+                    center: 'title',
+                    right: 'today prev,next'
+                },
+                //header: false,
+                dayClick: $scope.alertDefaultEventOnClick,
+
+                //eventClick: $scope.alertEventOnClick,
+                eventDrop: $scope.alertOnDrop,
+                eventResize: $scope.alertOnResize
+            }
+        };
+        $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
+        $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+
+            }])
+    .controller('TripDayController', ['$scope', '$filter', '$stateParams', '$state', '$modal', '$http', 'uiGridConstants', function ($scope, $filter, $stateParams, $state, $modal, $http, uiGridConstants, $stateProvider, $urlRouterProvider, $compile, uiCalendarConfig) {
+        'use strict';
+
+        function RowEditCtrl($modalInstance, grid, row) {
+            var vm = this;
+
+            vm.schema = {
+                type: 'object',
+                properties: {
+                    name: {
+                        type: 'string',
+                        title: 'Name'
+                    },
+                    desc: {
+                        type: 'string',
+                        title: 'Description'
+                    },
+                    phone: {
+                        type: 'string',
+                        title: 'Phone'
+                    },
+                    'address.city': {
+                        type: 'string',
+                        title: 'City'
+                    }
+                }
+            };
+            vm.entity = angular.copy(row.entity);
+            vm.form = [
+            'name',
+            'company',
+            'phone',
+                {
+                    'key': 'address.city',
+                    'title': 'City'
             },
-            //header: false,
-            dayClick: $scope.alertDefaultEventOnClick,
+          ];
 
-            //eventClick: $scope.alertEventOnClick,
-            eventDrop: $scope.alertOnDrop,
-            eventResize: $scope.alertOnResize
+            vm.save = save;
+
+            function save() {
+                // Copy row values over
+                row.entity = angular.extend(row.entity, vm.entity);
+                $modalInstance.close(row.entity);
+            }
+        };
+
+        function RowAddCtrl($modalInstance) {
+            var vm = this;
+
+
+
+            vm.save = save;
+            vm.entity = {};
+
+            function save() {
+                // Copy row values over
+                //                row.entity = angular.extend(row.entity, vm.entity);
+                $scope.gridOpts.data.push(vm.entity);
+                $modalInstance.close();
+            }
+        };
+
+
+        $scope.schema = {
+            type: "object",
+            properties: {
+                name: {
+                    type: "string",
+                    title: "Name"
+                },
+                desc: {
+                    type: "string",
+                    title: "Description",
+                    maxLength: 20
+                },
+                start: {
+                    title: "Starts",
+                    type: "object",
+                    properties: {
+                        recr_freq: {
+                            title: "Recurrence frequency",
+                            type: "string",
+                            enum: ['Daily', 'Weekly', 'Monthly', 'Yearly']
+                        },
+                        time: {
+                            type: "array",
+                            items: {
+                                type: "object",
+                                properties: {
+                                    time_repeat: {
+                                        type: "string",
+                                        enum: ['Hour', 'Day', 'Week', 'Month']
+                                    },
+                                    at: {
+                                        title: "at",
+                                        type: "number"
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                },
+                events: {
+                    type: "array",
+                    //title: "Event Eligibility",
+                    items: {
+                        type: "object",
+                        properties: {
+                            acti: {
+                                title: "Activity",
+                                type: "string"
+                            },
+                            dest: {
+                                title: "Destination",
+                                type: "string"
+                            },
+                            strt: {
+                                title: "Start time",
+                                type: "string",
+                                "format": "timepicker"
+                            },
+                            end: {
+                                title: "End time",
+                                type: "string",
+                                "format": "timepicker"
+                            }
+                        }
+                    }
+
+                }
+            }
+        };
+
+        $scope.form = [
+            "name",
+            {
+                "key": "desc",
+                "type": "textarea",
+                "placeholder": "Enter the deal description"
+            },
+            {
+                "type": "section",
+                "key": "start",
+                "htmlClass": "row",
+                "items": [
+                    "start.recr_freq"
+                ]
+            },
+            {
+                "type": "section",
+                "htmlClass": "row",
+                "items": [
+                    {
+                        "key": "start.time",
+                        title: "Recurrence rule",
+                        "add": "New",
+                        "style": {
+                            "add": "btn-success"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "section",
+                "htmlClass": "row",
+                "items": [
+                    {
+                        "type": "section",
+                        "htmlClass": "row",
+                        "items": [
+                            {
+                                "key": "events",
+                                "timeOptions": {
+                                    "minuteStep": 15,
+                                    "autoclose": 1
+                                },
+                                title: "Events",
+                                "add": "New",
+                                "style": {
+                                    "add": "btn-success"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            }
+        ];
+        $scope.model = {};
+
+        $scope.save = function () {
+            // Copy row values over
+            //                row.entity = angular.extend(row.entity, vm.entity);
+            $scope.gridOpts.data.push($scope.model);
+//            close();
         }
-    };
-    $scope.eventSources = [$scope.events, $scope.eventSource, $scope.eventsF];
-    $scope.eventSources2 = [$scope.calEventsExt, $scope.eventsF, $scope.events];
+        $scope.editRow = function (grid, row) {
+            $modal.open({
+                templateUrl: 'module/deals/view/edit-modal.html',
+                controller: ['$modalInstance', 'grid', 'row', RowEditCtrl],
+                controllerAs: 'vm',
+                resolve: {
+                    grid: function () {
+                        return grid;
+                    },
+                    row: function () {
+                        return row;
+                    }
+                }
+            });
+        };
 
+        $scope.addRow = function () {
+            //            $modal.open({
+            //                templateUrl: 'module/deals/view/edit-modal.html',
+            //                controller: ['$modalInstance', RowAddCtrl],
+            //                controllerAs: 'vm',
+            //
+            //            });
+            $state.go('trip.day.form');
+
+        };
+
+        $scope.gridOpts = {
+            columnDefs: [
+                {
+                    field: 'id',
+                    name: '',
+                    cellTemplate: 'module/place/view/edit-button.html',
+                    width: 40
+                },
+                {
+                    name: 'name'
+                    },
+                {
+                    name: 'desc',
+                    title: 'Description'
+                    },
+                {
+                    name: 'recr_freq'
+                },
+                {
+                    name: 'at'
+                },
+                {
+                    name: 'acti'
+                },
+                {
+                    name: 'dest'
+                },
+                {
+                    name: 'strt'
+                },
+                {
+                    name: 'end'
+                }
+              ],
+            data: [
+                {
+                    "name": "Cox",
+                    "desc": "Carney",
+                    "recr_freq": "Daily",
+                    "at": "12.30 am",
+                    "acti": "Skydiving",
+                    "dest": "Margao",
+                    "strt": "12.00 pm",
+                    "end": "5.00 pm"
+                  }
+
+
+                ]
+        };
+    }])
+    .controller('TripDayFormController', ['$scope', '$filter', '$stateParams', '$modal', '$http', 'uiGridConstants', function ($scope, $filter, $stateParams, $modal, $http, uiGridConstants, $stateProvider, $urlRouterProvider, $compile, uiCalendarConfig) {
+        'use strict';
+        $scope.schema = {
+            type: "object",
+            properties: {
+                name: {
+                    type: "string",
+                    title: "Name"
+                },
+                desc: {
+                    type: "string",
+                    title: "Description",
+                    maxLength: 20
+                },
+                start: {
+                    title: "Starts",
+                    type: "object",
+                    properties: {
+                        recr_freq: {
+                            title: "Recurrence frequency",
+                            type: "string",
+                            enum: ['Daily', 'Weekly', 'Monthly', 'Yearly']
+                        },
+                        time: {
+                            type: "array",
+                            items: {
+                                type: "object",
+                                properties: {
+                                    time_repeat: {
+                                        type: "string",
+                                        enum: ['Hour', 'Day', 'Week', 'Month']
+                                    },
+                                    at: {
+                                        title: "at",
+                                        type: "number"
+                                    }
+                                }
+                            }
+
+                        }
+                    }
+
+                },
+                events: {
+                    type: "array",
+                    //title: "Event Eligibility",
+                    items: {
+                        type: "object",
+                        properties: {
+                            acti: {
+                                title: "Activity",
+                                type: "string"
+                            },
+                            dest: {
+                                title: "Destination",
+                                type: "string"
+                            },
+                            strt: {
+                                title: "Start time",
+                                type: "string",
+                                "format": "timepicker"
+                            },
+                            end: {
+                                title: "End time",
+                                type: "string",
+                                "format": "timepicker"
+                            }
+                        }
+                    }
+
+                }
+            }
+        };
+
+        $scope.form = [
+            "name",
+            {
+                "key": "desc",
+                "type": "textarea",
+                "placeholder": "Enter the deal description"
+            },
+            {
+                "type": "section",
+                "key": "start",
+                "htmlClass": "row",
+                "items": [
+                    "start.recr_freq"
+                ]
+            },
+            {
+                "type": "section",
+                "htmlClass": "row",
+                "items": [
+                    {
+                        "key": "start.time",
+                        title: "Recurrence rule",
+                        "add": "New",
+                        "style": {
+                            "add": "btn-success"
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "section",
+                "htmlClass": "row",
+                "items": [
+                    {
+                        "type": "section",
+                        "htmlClass": "row",
+                        "items": [
+                            {
+                                "key": "events",
+                                "timeOptions": {
+                                    "minuteStep": 15,
+                                    "autoclose": 1
+                                },
+                                title: "Events",
+                                "add": "New",
+                                "style": {
+                                    "add": "btn-success"
+                                }
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                type: "submit",
+                title: "Save"
+                    }
+        ];
+
+        $scope.model = {};
             }]);
