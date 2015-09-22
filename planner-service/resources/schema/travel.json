@@ -18,7 +18,7 @@
           ]
       }
     ],
-  "stay_party":
+  "travel_party":
 		[
 			{
                           "title" : "party 1",
@@ -27,7 +27,7 @@
 				"email": "",
 				"phone": "",
 				"designation": "",
-				"stay_role_id": 1234
+				"travel_role_id": 1234
 			}
 		]
 }
