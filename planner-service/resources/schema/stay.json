@@ -33,5 +33,40 @@
 {
 	"title": "text field",
 	"description": "text area",
-  "stay_type": "multi select"
+  "stay_type": "multi select",
+	"email": "text field",
+	"mobile": "text field",
+	"address": "text area",
+	"no_of_section": "text field",
+	"no_of_rooms": "text field",
+	"check_in_time": "time picker",
+	"check_out_time": "time picker",
+	"stay feature":
+		[
+			{
+				"feature": "select",
+				"value": "text field"
+			}
+		],
+	"stay_room":
+		[
+			"title": "text field",
+			"description": "text area",
+		  "stay_room_type": "select",
+			"section_no": "text field",
+			"no_of_beds": "text field",
+			"occupancy": "select",
+			"extra_bed_cost": "text field",
+			"breakfast_charges": "text field",
+			"lunch_charges":	"text field",
+			"dinner_charges": "text field",
+			"stay_room_feature":
+				[
+					{
+						"feature": "select",
+						"value": "text field"
+					}
+				]
+		]
+
 }
