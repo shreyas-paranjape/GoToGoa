@@ -26,6 +26,16 @@
 				"dinner_charges": 123.12,
 				"stay_room_feature": []
 			}
+		],
+	"stay_party":
+		[
+			{
+				"name": "",
+				"email": "",
+				"phone": "",
+				"designation": "",
+				"stay_party_role_id": ""
+			}
 		]
 }
 
@@ -67,6 +77,15 @@
 						"value": "text field"
 					}
 				]
-		]
-
+		],
+		"stay_party":
+			[
+				{
+					"name": "text field",
+					"email": "text field",
+					"phone": "text field",
+					"designation_id": "select",
+					"stay_party_role_id": "select"
+				}
+			]
 }
