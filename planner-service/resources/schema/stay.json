@@ -9,7 +9,20 @@
 	"no_of_rooms": 123,
 	"check_in_time": "",
 	"check_out_time": "",
-	"stay_feature" : [],
+	"min_stay_period": "",
+	"payment_method":
+		[
+			{
+				"payment_method_id": 1234
+			}
+		],
+	"stay_feature" :
+		[
+			{
+				"feature_id": 12314,
+				"value": ""
+			}
+		],
 	"stay_room":
 		[
 			{
@@ -24,7 +37,13 @@
 				"breakfast_charges": 123.12,
 				"lunch_charges":	123.23,
 				"dinner_charges": 123.12,
-				"stay_room_feature": []
+				"stay_room_feature":
+					[
+						{
+							"feature_id": 12314,
+							"value": ""
+						}
+					]
 			}
 		],
 	"stay_party":
@@ -51,10 +70,17 @@
 	"no_of_rooms": "text field",
 	"check_in_time": "time picker",
 	"check_out_time": "time picker",
+	"min_stay_period": "text field",
+	"payment_method":
+		[
+			{
+				"payment_method_id": "text field"
+			}
+		],
 	"stay feature":
 		[
 			{
-				"feature": "select",
+				"feature_id": "select",
 				"value": "text field"
 			}
 		],
@@ -73,7 +99,7 @@
 			"stay_room_feature":
 				[
 					{
-						"feature": "select",
+						"feature_id": "select",
 						"value": "text field"
 					}
 				]
