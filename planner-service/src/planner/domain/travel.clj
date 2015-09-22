@@ -41,8 +41,19 @@
 			(where request))))
 ; Insert travel
 (defn insert-travel [request]
-	(insert db/travel
-		(values request)))
+	(do
+		(def travel_id (insert db/travel (values (apply dissoc [:travel_type_id :vehicle_model :stay_party]))))
+		(insert db/travel_travel_type (values {:travel_id travel_id :travel_type_id (get-in request [:travel_type_id])}))
+		(dorun
+			(for [i vehicle_model]
+				(do
+					(def vehicle_model_id (insert db/vehicle_model (values {:title (:title i) :no_of_seats (:no_of_seats i) :vehicle_class_id (:vehicle_class_id i)})))
+					(insert db/travel_vehicle (values {:travel_id travel_id :vehicle_model_id vehicle_model_id :no_of_vehicles (:no_of_vehicles i)}))
+					(def vehicle_model_features (get-in i [:vehicle_model_feature]))
+					(dorun
+						(for [j travel_vehicle_features]
+							(insert db/vehicle_model_feature (values (conj {:vehicle_model_id vehicle_model_id} j)))))
+					)))))
 ; Insert travel_attr
 (defn insert-travel_attr [request]
 	(insert db/travel_attr
