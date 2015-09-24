@@ -24,15 +24,18 @@ angular.element(document).ready(function () {
             'trip',
             'vendors',
             'place',
+            'stay',
+            'travel',
 //            'ngMap',
             'ui.calendar',
             'ui.grid.edit',
             'ui.grid.selection',
             'angularModalService',
             'schemaForm',
-             'schemaForm-datepicker',
-        'schemaForm-timepicker',
-        'schemaForm-datetimepicker',
+            'mgcrea.ngStrap',
+            'schemaForm-datepicker',
+            'schemaForm-timepicker',
+            'schemaForm-datetimepicker',
             'vendors',
             'deals'
 
@@ -44,7 +47,7 @@ angular.element(document).ready(function () {
             });
         })
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/place');
+            $urlRouterProvider.otherwise('/place.list');
 
         });
 

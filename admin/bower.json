@@ -20,7 +20,9 @@
     "angular-ui-router": "~0.2.13",
     "angularjs-datepicker": "~0.2.9",
     "bootstrap": "^3.2.0",
-    "restangular": "~1.4.0"
+    "objectpath": "~1.2.1",
+    "restangular": "~1.4.0",
+    "tv4": "~1.2.7"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0"

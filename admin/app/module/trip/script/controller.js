@@ -994,7 +994,7 @@ angular.module('trip')
             // Copy row values over
             //                row.entity = angular.extend(row.entity, vm.entity);
             $scope.gridOpts.data.push($scope.model);
-//            close();
+            //            close();
         }
         $scope.editRow = function (grid, row) {
             $modal.open({
@@ -1168,7 +1168,7 @@ angular.module('trip')
                 "items": [
                     {
                         "key": "start.time",
-                        title: "Recurrence rule",
+                        title: "Stay type",
                         "add": "New",
                         "style": {
                             "add": "btn-success"
