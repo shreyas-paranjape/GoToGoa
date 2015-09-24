@@ -1,28 +1,33 @@
 {
 	"title":"Day1",
 	"description":"A day in a particular trip",
-  "travel_type_id": "123",
-	"travel_vehicle":
+      "travel_type_id": "123",
+	"vehicle_model":
     [
       {
-        "model": "",
+        "title": "",
         "vehicle_class_id": 1234,
         "no_of_seats": 123,
-        "travel_vehicle_feature":
+        "no_of_vehicles": 10,
+        "vehicle_model_feature":
           [
-            "feature_id": 131234,
-            "value": ""
+            {
+              "vehicle_model_feature_type_id": 131234,
+              "value": ""
+            }
           ]
       }
     ],
-  "stay_party":
+  "travel_party":
 		[
 			{
+                          "title" : "party 1",
+                          "description" : "a nice party description",
 				"name": "",
 				"email": "",
 				"phone": "",
-				"designation_id": 1234,
-				"stay_party_role_id": 1234
+				"designation": "",
+				"travel_role_id": 1234
 			}
 		]
 }

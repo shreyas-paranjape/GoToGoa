@@ -1,11 +1,11 @@
 {
 	"title":"Day1",
 	"description":"A day in a particular trip",
-  "stay_type_id": "123",
+  	"stay_type_id": "123",
 	"email": "",
 	"phone": "",
 	"address": "",
-	"no_of_section": 123,
+	"no_of_sections": 123,
 	"no_of_rooms": 123,
 	"check_in_time": "",
 	"check_out_time": "",
@@ -19,7 +19,7 @@
 	"stay_feature" :
 		[
 			{
-				"feature_id": 12314,
+				"stay_feature_type_id": 12314,
 				"value": ""
 			}
 		],
@@ -40,7 +40,7 @@
 				"stay_room_feature":
 					[
 						{
-							"feature_id": 12314,
+							"stay_feature_type_id": 12314,
 							"value": ""
 						}
 					]
@@ -49,11 +49,13 @@
 	"stay_party":
 		[
 			{
+				"title" : "party 1",
+				"description" : "a nice party description",
 				"name": "",
 				"email": "",
 				"phone": "",
 				"designation": "",
-				"stay_party_role_id": ""
+				"stay_role_id": ""
 			}
 		]
 }

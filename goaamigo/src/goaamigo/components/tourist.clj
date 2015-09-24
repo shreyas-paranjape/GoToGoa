@@ -120,10 +120,10 @@
 	:handle-ok (fn [ctx]
 			(do
 				(client/get "https://localhost:8443/linkedin")
-				(session/put! :username (:social_id @li/lIn-user))
-				(if (empty? (select db/social (where {:social_id (:social_id @li/lIn-user)})))
+				(session/put! :username (:social_id @li/linkedin-user))
+				(if (empty? (select db/social (where {:social_id (:social_id @li/linkedin-user)})))
 					(insert db/social
-						(values @li/lIn-user)))
+						(values @li/linkedin-user)))
 				; render the home page
 				(generate-string {:status "You are logged in"})
 				)

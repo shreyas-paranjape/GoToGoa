@@ -19,8 +19,34 @@
 
 ; Insert stay
 (defn insert-stay [request]
-	(def stay_id (insert db/stay (values (apply dissoc request [:stay_type_id]))))
-	(insert db/stay_stay_type (values {:stay_id stay_id :stay_type_id (:stay_type_id request)}))
+	(do
+		(def stay_id (insert db/stay (values (apply dissoc request [:stay_type_id :payment_method :stay_feature :stay_room :stay_party]))))
+		(insert db/stay_stay_type (values {:stay_id stay_id :stay_type_id (:stay_type_id request)}))
+		(def payment_methods (get-in request [:payment_method]))
+		(dorun
+			(for [i payment_methods]
+				(insert db/stay_payment_method (values (conj i {:stay_id stay_id})))))
+		(def stay_features (get-in request [:stay_feature]))
+		(dorun
+			(for [i stay_features]
+				(insert db/stay_feature (values (conj {:stay_id stay_id} i)))))
+		(def stay_rooms (get-in request [:stay_room]))
+		(dorun
+			(for [i stay_rooms]
+				(do
+					(def stay_room_id (insert db/stay_room (values (conj {:stay_id stay_id} (apply dissoc i [:stay_room_feature])))))
+					(def stay_room_features (get-in i [:stay_room_feature]))
+					(dorun
+						(for [j stay_room_features]
+							(insert db/stay_room_feature (values (conj j {:stay_room_id stay_room_id}))))))))
+		(def stay_parties (get-in request [:stay_party]))
+		(dorun
+			(for [i stay_parties]
+				(do
+					(def stay_role_id (get-in i [:stay_role_id]))
+					(def party_id (insert db/party (values (apply dissoc i [:stay_role_id]))))
+					(insert db/stay_party (values {:party_id party_id :stay_id stay_id :stay_role_id stay_role_id})))))
+		)
 	)
 ; Insert stay_attr
 (defn insert-stay_attr [request]
