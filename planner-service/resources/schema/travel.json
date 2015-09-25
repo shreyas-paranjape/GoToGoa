@@ -1,64 +1,48 @@
 {
-	"title":"Day1",
-	"description":"A day in a particular trip",
-      "travel_type_id": "123",
-	"vehicle_model":
-    [
-      {
-        "title": "",
-        "vehicle_class_id": 1234,
-        "no_of_seats": 123,
-        "no_of_vehicles": 10,
-        "vehicle_model_feature":
-          [
-            {
-              "vehicle_model_feature_type_id": 131234,
-              "value": ""
-            }
-          ]
-      }
-    ],
-  "travel_party":
-		[
-			{
-                          "title" : "party 1",
-                          "description" : "a nice party description",
-				"name": "",
-				"email": "",
-				"phone": "",
-				"designation": "",
-				"travel_role_id": 1234
-			}
-		]
+  "title": "Day1",
+  "description": "A day in a particular trip",
+  "travel_type_id": "123",
+  "vehicle_model": [{
+    "title": "",
+    "vehicle_class_id": 1234,
+    "no_of_seats": 123,
+    "no_of_vehicles": 10,
+    "vehicle_model_feature": [{
+      "vehicle_model_feature_type_id": 131234,
+      "value": ""
+    }]
+  }],
+  "travel_party": [{
+    "title": "party 1",
+    "description": "a nice party description",
+    "name": "",
+    "email": "",
+    "phone": "",
+    "designation": "",
+    "travel_role_id": 1234
+  }]
 }
 
 
 /* UI component spec */
 {
-	"title":"text field",
-	"description":"text area",
+  "title": "text field",
+  "description": "text area",
   "travel_type_id": "select",
-	"travel_vehicle":
-    [
-      {
-        "model_id": "select",
-        "vehicle_class_id": "select",
-        "no_of_seats": "text field",
-        "travel_vehicle_feature":
-          [
-            "feature_id": "select",
-            "value": "text field"
-          ]
-      }
-    ],
-  "stay_party":
-		[
-			{
-				"name": "text field",
-				"email": "text field",
-				"phone": "text field",
-				"designation_id": "select",
-				"stay_party_role_id": "select"
-			}
-		]
+  "travel_vehicle": [{
+    "model_id": "select",
+    "vehicle_class_id": "select",
+    "no_of_seats": "text field",
+    "travel_vehicle_feature": [
+      "feature_id": "select",
+      "value": "text field"
+    ]
+  }],
+  "stay_party": [{
+    "name": "text field",
+    "email": "text field",
+    "phone": "text field",
+    "designation_id": "select",
+    "stay_party_role_id": "select"
+  }]
 }

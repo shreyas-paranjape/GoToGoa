@@ -1,34 +1,31 @@
 {
   "title": "Itinerary1",
   "description": "A schedule for a trip",
-  "starts":{
-  "recurrence_frequency":"DAILY",
-  "by_hour":"11:00"
+  "starts": {
+    "recurrence_frequency": "DAILY",
+    "by_hour": "11:00"
   },
-  "days": [1,2],
+  "days": [1, 2],
   "inclusions": {
-  "type": "array",
-  "description": "services included in the itinerary. eg. meals, travel"
+    "type": "array",
+    "description": "services included in the itinerary. eg. meals, travel"
   },
   "exclusions": {
-  "type": "array",
-  "description": "services excluded in the itinerary. eg. meals, travel"
+    "type": "array",
+    "description": "services excluded in the itinerary. eg. meals, travel"
   }
 }
 
 /* UI component spec */
 {
-	"title": "text field",
-	"description": "text area",
+  "title": "text field",
+  "description": "text area",
   "activity_type": "multi select",
-  "recurrence rule" :
-		{
-	  	"frequency": "select",
-	  		[
-					{
-						"at_field": "select",
-	  				"at_value": "text field"
-					}
-				]
-		},
+  "recurrence rule": {
+    "frequency": "select",
+    [{
+      "at_field": "select",
+      "at_value": "text field"
+    }]
+  },
 }

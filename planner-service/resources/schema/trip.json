@@ -1,0 +1,49 @@
+/*            NOTES
+
+  Travel mode: taxi, rental car, rental bike, self
+  Time unit: second, minute, hour, day, week, month, year
+  frequency: none, every_minute, hourly, daily, weekly, monthly, yearly
+  at: defines the exact time instant within a single period at which the thing begins
+
+*/
+
+{
+  "title": "",
+  "description": "",
+  "trip_start": {
+    "frequency": "",
+    "at": [{
+      "unit_id": 1234
+    }]
+  },
+  "stay": {
+    "title": "",
+    "description": "",
+  },
+  "travel": {
+    "mode": ""
+  },
+  "itinerary": {
+    "title": "",
+    "description": "",
+    "events": [{
+      "title": "Event1",
+      "description": "An event on a particular day in a trip",
+      "activity": {
+
+      },
+      "site": {
+
+      },
+      "duration": {
+        "unit_id": "value"
+      },
+      "event_start": {
+        "frequency": "",
+        "at": [{
+          "unit_id": "value"
+        }]
+      }
+    }],
+  }
+}

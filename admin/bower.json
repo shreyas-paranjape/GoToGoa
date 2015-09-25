@@ -13,16 +13,18 @@
     "angular-modal-service": "~0.6.7",
     "angular-permission": "~0.1.7",
     "angular-sanitize": "^1.3.0",
-    "angular-schema-form": "~0.8.8",
+    "angular-schema-form": "~0.8.9",
+    "angular-schema-form-datepicker": "~0.4.0",
+    "angular-strap": "~2.3.2",
     "angular-touch": "^1.3.0",
     "angular-ui-calendar": "~1.0.1",
     "angular-ui-grid": "~3.0.6",
     "angular-ui-router": "~0.2.13",
     "angularjs-datepicker": "~0.2.9",
     "bootstrap": "^3.2.0",
-    "objectpath": "~1.2.1",
     "restangular": "~1.4.0",
-    "tv4": "~1.2.7"
+    "schema-form-datetimepicker": "chengz/schema-form-datetimepicker",
+    "schema-form-uiselect": "chengz/schema-form-uiselect"
   },
   "devDependencies": {
     "angular-mocks": "^1.3.0"
