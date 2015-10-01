@@ -11,6 +11,7 @@
 		       [crypto-password "0.1.3"]
 		       [selmer "0.8.7"]
                           [twitter-api "0.7.8"]
+                          [dk.ative/docjure "1.7.0"]
                           [environ "1.0.0"]
                            [clj-time "0.11.0"]
                            [korma "0.4.0"]

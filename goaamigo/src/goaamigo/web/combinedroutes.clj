@@ -6,6 +6,7 @@
 	    [goaamigo.components.tourist :as tourist]
 	    [goaamigo.components.trip :as trip]
 	    [goaamigo.process.linkedin :as l]
+	    [goaamigo.components.importexport :as ie]
                  [compojure.route :as routes]
                  [taoensso.timbre :as timbre]
                  [goaamigo.web.resource :as res]
@@ -17,6 +18,7 @@
 		tourist/tourist-routes
 		trip/trip-routes
 		f/facebook-routes
+		ie/import-export-routes
 		g/google-routes
 		l/linkedin-routes
 		(routes/not-found "Not Found")
