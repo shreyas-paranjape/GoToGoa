@@ -83,8 +83,19 @@
 							)
 						)
 
-					(insert db/distances (values [{:lat_a (:lat cur-event-loc) :long_a (:long cur-event-loc) :lat_b (:lat prev-event-loc) :long_b (:long prev-event-loc) :dist cur-prev-dist}
-								        {:lat_a (:lat cur-event-loc) :long_a (:long cur-event-loc) :lat_b (:lat next-event-loc) :long_b (:long next-event-loc) :dist cur-next-dist}]))
+					(if (and
+						(empty?
+							(select db/distances
+								(where {:lat_a (:lat cur-event-loc) :long_a (:long cur-event-loc) :lat_b (:lat prev-event-loc) :long_b (:long prev-event-loc)})))
+						(not (zero? cur-prev-dist)))
+						(insert db/distances (values {:lat_a (:lat cur-event-loc) :long_a (:long cur-event-loc) :lat_b (:lat prev-event-loc) :long_b (:long prev-event-loc) :dist cur-prev-dist})))
+
+					(if (and
+						(empty?
+							(select db/distances
+								(where {:lat_a (:lat cur-event-loc) :long_a (:long cur-event-loc) :lat_b (:lat next-event-loc) :long_b (:long next-event-loc)})))
+						(not (zero? cur-next-dist)))
+						(insert db/distances (values {:lat_a (:lat cur-event-loc) :long_a (:long cur-event-loc) :lat_b (:lat next-event-loc) :long_b (:long next-event-loc) :dist cur-next-dist})))
 
 					(def duration (:event.duration i))
 					(def distances (into distances [{:duration duration :cur-prev-dist cur-prev-dist :cur-next-dist cur-next-dist :x+y (+ cur-prev-dist cur-next-dist)}]))
