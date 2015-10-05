@@ -1,4 +1,4 @@
-angular.module('deals')
+angular.module('deal')
   .factory('dealRepository', ['$log',
     function($log) {
       var dealRepository = {};

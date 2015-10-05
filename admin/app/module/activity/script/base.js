@@ -1,27 +1,27 @@
-angular.module('place', [
+angular.module('activity', [
     'ui.router'
 ])
     .config(function ($stateProvider) {
         'use strict';
         $stateProvider
-            .state('place', {
-                url: '/place',
-                templateUrl: 'module/place/view/home.html',
+            .state('activity', {
+                url: '/activity',
+                templateUrl: 'module/activity/view/home.html',
                 ncyBreadcrumb: {
-                    label: 'Places'
+                    label: 'Activity'
                 },
-                controller: 'PlacesController'
+                controller: 'ActivityController'
             })
-            .state('place.list', {
-                url: '/place_list',
-                templateUrl: 'module/place/view/list.html',
+            .state('activity.list', {
+                url: '/activity_list',
+                templateUrl: 'module/activity/view/list.html',
                 ncyBreadcrumb: {
-                    label: 'Place-list'
+                    label: 'Activity-list'
                 },
                 params: {
                     data: ['default', 'list', 'of', 'things']
                 },
-                controller: 'PlacesListController'
+                controller: 'ActivityListController'
             });
 
     });

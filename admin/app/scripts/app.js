@@ -10,26 +10,14 @@ angular.element(document).ready(function() {
       'ncy-angular-breadcrumb',
       'permission',
       'ngSanitize',
-      'ngTouch',
       'ui.bootstrap',
       'ui.grid',
-      'trip',
-      'vendors',
-      'place',
+      'schemaForm',
       'stay',
       'travel',
-      'ui.calendar',
-      'ui.grid.edit',
-      'ui.grid.selection',
-      'angularModalService',
-      'schemaForm',
-      'mgcrea.ngStrap',
-      'schemaForm-datepicker',
-      'schemaForm-timepicker',
-      'schemaForm-datetimepicker',
-      'vendors',
-      'deals'
-
+      'activity',
+      'trip',
+      'deal',
     ])
     .config(function($breadcrumbProvider) {
       $breadcrumbProvider.setOptions({
@@ -38,7 +26,7 @@ angular.element(document).ready(function() {
       });
     })
     .config(function($urlRouterProvider) {
-      $urlRouterProvider.otherwise('/deals');
+      $urlRouterProvider.otherwise('/deal');
 
     });
 
