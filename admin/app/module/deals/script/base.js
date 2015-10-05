@@ -55,7 +55,7 @@ angular.module('deals', [
         title: "Name"
       }
     }
-  }).value('gridColumnDef', [{
+  }).value('dealGridColumnDef', [{
     field: 'id',
     name: '',
     cellTemplate: 'module/deals/view/buttons.html',

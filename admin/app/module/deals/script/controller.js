@@ -1,9 +1,9 @@
 angular.module('deals')
   .controller('DealListController', [
-    '$scope', '$log', '$state', '$stateParams', 'dealRepository', 'gridColumnDef',
-    function($scope, $log, $state, $stateParams, dealRepository, gridColumnDef) {
+    '$scope', '$log', '$state', '$stateParams', 'dealRepository', 'dealGridColumnDef',
+    function($scope, $log, $state, $stateParams, dealRepository, dealGridColumnDef) {
       $scope.gridOpts = {
-        columnDefs: gridColumnDef,
+        columnDefs: dealGridColumnDef,
         data: dealRepository.get()
       }
       $scope.edit = function(row){

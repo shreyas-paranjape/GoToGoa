@@ -3,19 +3,36 @@
   "description": "A nice deal",
   "deal_type_id": "%",
   "value": 10,
-  "starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"},
-  "eligibility_criteria_component":
-    [
-      {"criteria_component_id":5,"relationship":"AND","comparator":"<=","value":"customer"}
-    ],
-  "event_criteria_component":
-    [
-      {"criteria_component_id":2,"relationship":"OR","comparator":">","value":"customer"}
-    ],
-  "notification":
-    [
-      {"title":"Notification1","description":"A nice notification","starts":{ "recurrence_frequency":"DAILY","by_hour":"11:00"}}
-    ]
+  "schedule": {
+    "recurrence_frequency": "Monthly",
+    "at": [{
+      "time_division": "DAY",
+      "value": ["2", "10", "20"]
+    }]
+  },
+  "eligibility_criteria_component": [{
+    "criteria_component_id": 5,
+    "relationship": "AND",
+    "comparator": "<=",
+    "value": "customer"
+  }],
+  "event_criteria_component": [{
+    "criteria_component_id": 2,
+    "relationship": "OR",
+    "comparator": ">",
+    "value": "customer"
+  }],
+  "notification": [{
+    "title": "Notification1",
+    "description": "A nice notification",
+    "schedule": {
+      "recurrence_frequency": "DAILY",
+      "at": [{
+        "time_division": "HOUR",
+        "value": ["9", "2", "7"]
+      }]
+    }
+  }]
 }
 
 /* UI component spec */
@@ -23,33 +40,35 @@
   "title": "text field",
   "description": "text area",
   "type": "select",
-  "value" "text field"
-  "Eligibility":
-    [
-      {
-        "criteria_component_id": "select",
-        "relationship": "select",
-        "comparator": "select",
-        "value": "text field"
-      }
-    ],
-  "Event":
-    [
-      {
-        "criteria_component_id": "select",
-        "relationship": "select",
-        "comparator": "select",
-        "value": "text field"
-      }
-    ],
-  "Notification":
-    [
-      {
-        "title": "text field",
-        "description": "text area",
-        "frequency": "select",
-        "start_at" : "select",
-        "value": "text field"
-      }
-    ]
+  "value": "text field",
+  "schedule": {
+    "recurrence_frequency": "select",
+    "start at": [{
+      "time_division": "select",
+      "value": "multi valued select"
+    }]
+  },
+  "eligibility": [{
+    "criteria_component_id": "select",
+    "relationship": "select",
+    "comparator": "select",
+    "value": "text field"
+  }],
+  "event": [{
+    "criteria_component_id": "select",
+    "relationship": "select",
+    "comparator": "select",
+    "value": "text field"
+  }],
+  "notification": [{
+    "title": "text field",
+    "description": "text area",
+    "schedule": {
+      "recurrence_frequency": "select",
+      "start at": [{
+        "time_division": "select",
+        "value": "multi valued select"
+      }]
+    }
+  }]
 }
