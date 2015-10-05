@@ -7,42 +7,30 @@ angular.module('deal', [
     $stateProvider
       .state('deal', {
         url: '/deal',
-        templateUrl: 'module/deal/view/home.html',
-        ncyBreadcrumb: {
-          label: 'deals'
-        },
+        template: '<div ui-view></div>',
         abstract: true
       })
       .state('deal.list', {
         url: '',
         templateUrl: 'module/deal/view/list.html',
-        ncyBreadcrumb: {
-          label: 'Deal'
-        },
         params: {
-          data: ['default', 'list', 'of', 'things']
+          data: []
         },
         controller: 'DealListController'
       })
       .state('deal.add', {
         url: '/add',
         templateUrl: 'module/deal/view/add.html',
-        ncyBreadcrumb: {
-          label: 'Deal'
-        },
         params: {
-          data: ['default', 'list', 'of', 'things']
+          data: []
         },
         controller: 'DealAddController'
       })
       .state('deal.edit', {
         url: '/edit',
         templateUrl: 'module/deal/view/edit.html',
-        ncyBreadcrumb: {
-          label: 'Deals'
-        },
         params: {
-          data: ['default', 'list', 'of', 'things']
+          data: []
         },
         controller: 'DealEditController'
       });
@@ -63,16 +51,4 @@ angular.module('deal', [
   }, {
     name: 'name',
     width: 100
-  }/*, {
-    name: 'description',
-    width: 300
-  }, {
-    name: 'eligibility',
-    width: 300
-  }, {
-    name: 'product',
-    width: 300
-  }, {
-    name: 'notification',
-    width: 300
-  }*/]).value('dealForm', ["name"]);
+  }]).value('dealForm', ["name"]);

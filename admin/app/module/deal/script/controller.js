@@ -19,7 +19,6 @@ angular.module('deal')
     function($scope, $log, $state, $stateParams, dealRepository, dealSchema, dealForm) {
       $scope.schema = dealSchema;
       $scope.form = dealForm;
-      $log.log($stateParams.data);
       $scope.entity = {};
       $scope.save = function() {
         dealRepository.add($scope.entity);
