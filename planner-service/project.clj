@@ -33,6 +33,7 @@
   :plugins [[lein-ring "0.9.6"]
             [lein-environ "1.0.0"]]
   :ring {:handler planner.infra.web/app}
+  :main delivery.infra.server
   :profiles
   {:uberjar {:aot :all}
    :production
