@@ -1,13 +1,13 @@
-angular.module('deals')
+angular.module('deal')
   .controller('DealListController', [
-    '$scope', '$log', '$state', '$stateParams', 'dealRepository', 'gridColumnDef',
-    function($scope, $log, $state, $stateParams, dealRepository, gridColumnDef) {
+    '$scope', '$log', '$state', '$stateParams', 'dealRepository', 'dealGridColumnDef',
+    function($scope, $log, $state, $stateParams, dealRepository, dealGridColumnDef) {
       $scope.gridOpts = {
-        columnDefs: gridColumnDef,
+        columnDefs: dealGridColumnDef,
         data: dealRepository.get()
       }
       $scope.edit = function(row){
-        $state.go('deals.edit',{"data":row});
+        $state.go('deal.edit',{"data":row});
       }
       $scope.delete = function(row){
         dealRepository.delete(row);
@@ -19,11 +19,10 @@ angular.module('deals')
     function($scope, $log, $state, $stateParams, dealRepository, dealSchema, dealForm) {
       $scope.schema = dealSchema;
       $scope.form = dealForm;
-      $log.log($stateParams.data);
       $scope.entity = {};
       $scope.save = function() {
         dealRepository.add($scope.entity);
-        $state.go('deals.list');
+        $state.go('deal.list');
       };
     }
   ]).controller('DealEditController', [
@@ -34,7 +33,7 @@ angular.module('deals')
       $scope.entity = $stateParams.data;
       $scope.save = function() {
         dealRepository.edit($scope.entity);
-        $state.go('deals.list');
+        $state.go('deal.list');
       };
     }
   ]);

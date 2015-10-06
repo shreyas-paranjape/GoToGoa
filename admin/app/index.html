@@ -11,8 +11,6 @@
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/font-awesome-4.4.0/css/font-awesome.min.css">
   <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
-  <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
-
   <!-- endbuild -->
 
 </head>
@@ -31,37 +29,30 @@
         </div>
         <ul class="nav navbar-nav">
           <li>
-            <a ui-sref="vendors.detail">Contact</a>
-          </li>
-          <li>
-            <a ui-sref="place.list">Destination</a>
-          </li>
-          <li>
-            <a ui-sref="grid">Activity</a>
-          </li>
-          <li>
             <a ui-sref="stay.list">Stay</a>
           </li>
           <li>
             <a ui-sref="travel.list">Travel</a>
           </li>
           <li>
+            <a ui-sref="activity">Activity</a>
+          </li>
+          <li>
             <a ui-sref="trip.day.grid">Trip</a>
           </li>
           <li>
-            <a ui-sref="deals.list">Deals</a>
+            <a ui-sref="deal.list">Deal</a>
           </li>
-
         </ul>
 
         <ul class="nav navbar-nav navbar-right">
           <li>
             <a href="#">
-              <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+              <span class="glyphicon glyphicon-user"></span>Sign Up</a>
           </li>
           <li>
             <a href="#">
-              <span class="glyphicon glyphicon-log-in"></span> Login</a>
+              <span class="glyphicon glyphicon-log-in"></span>Login</a>
           </li>
         </ul>
       </div>
@@ -75,11 +66,12 @@
 
   <!--
     <footer class="footer">
-    <div class="container" style="padding-top:50px;">
-        Footer :
-    </div>
-</footer>
--->
+      <div class="container" style="padding-top:50px;">
+          Footer :
+      </div>
+    </footer>
+  -->
+  
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -91,55 +83,44 @@
   <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
   <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
   <script src="bower_components/angular-cookies/angular-cookies.js"></script>
-  <script src="bower_components/javascript-detect-element-resize/detect-element-resize.js"></script>
-  <script src="bower_components/angular-gridster/src/angular-gridster.js"></script>
-  <script src="bower_components/angular-modal-service/dst/angular-modal-service.js"></script>
   <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
   <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
   <script src="bower_components/tv4/tv4.js"></script>
   <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
   <script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
   <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
-  <script src="bower_components/pickadate/lib/picker.js"></script>
-  <script src="bower_components/pickadate/lib/picker.date.js"></script>
-  <script src="bower_components/pickadate/lib/picker.time.js"></script>
-  <script src="bower_components/angular-schema-form-datepicker/bootstrap-datepicker.min.js"></script>
-  <script src="bower_components/angular-strap/dist/angular-strap.js"></script>
-  <script src="bower_components/angular-strap/dist/angular-strap.tpl.js"></script>
-  <script src="bower_components/angular-touch/angular-touch.js"></script>
-  <script src="bower_components/moment/moment.js"></script>
-  <script src="bower_components/fullcalendar/dist/fullcalendar.js"></script>
-  <script src="bower_components/angular-ui-calendar/src/calendar.js"></script>
   <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
-  <script src="bower_components/angularjs-datepicker/dist/angular-datepicker.min.js"></script>
   <script src="bower_components/lodash/dist/lodash.compat.js"></script>
   <script src="bower_components/restangular/dist/restangular.js"></script>
-  <script src="bower_components/angular-ui-select/dist/select.js"></script>
-  <script src="bower_components/angular-translate/angular-translate.js"></script>
-  <script src="bower_components/underscore/underscore.js"></script>
-  <script src="bower_components/schema-form-uiselect/schema-form-uiselect.min.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
 
 
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
-  <script src="bower_components/schema-form-datetimepicker/schema-form-date-time-picker.min.js"></script>
   <script src="bower_components/accountingjs/accounting.js"></script>
-  <script src="module/trip/script/base.js"></script>
-  <script src="module/trip/script/controller.js"></script>
-  <script src=" module/vendors/script/base.js "></script>
-  <script src="module/vendors/script/controller.js "></script>
-  <!--    <script src="module/vendors/script/service.js"></script>-->
-  <script src=" module/place/script/base.js "></script>
-  <script src="module/place/script/controller.js"></script>
+
+  <!-- Stay -->
   <script src="module/stay/script/base.js "></script>
   <script src="module/stay/script/controller.js"></script>
-  <script src="module/vendors/script/controller.js "></script>
-  <script src="module/deals/script/base.js "></script>
-  <script src="module/deals/script/service.js "></script>
-  <script src="module/deals/script/controller.js "></script>
+
+  <!-- Travel -->
   <script src="module/travel/script/base.js "></script>
   <script src="module/travel/script/controller.js "></script>
+
+  <!-- Activity -->
+  <script src="module/activity/script/base.js "></script>
+  <script src="module/activity/script/controller.js"></script>
+
+  <!-- Deals -->
+  <script src="module/deal/script/base.js "></script>
+  <script src="module/deal/script/service.js "></script>
+  <script src="module/deal/script/controller.js "></script>
+
+  <!-- Trip -->
+  <script src="module/trip/script/base.js"></script>
+  <script src="module/trip/script/controller.js"></script>
+
+  <!-- Application -->
   <script src="scripts/app.js "></script>
   <!-- endbuild -->
 

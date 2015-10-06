@@ -2,9 +2,24 @@
 	"title":"Day1",
 	"description":"A day in a particular activity",
   "activity_type_id": 123,
-	"starts":{
-		"recurrence_frequency":"DAILY",
-		"by_hour":"11:00"
+	"schedule": {
+    "recurrence_frequency": "Monthly",
+    "at": [{
+      "time_division": "DAY",
+      "value": ["2", "10", "20"]
+    }]
+  },
+	"address": {
+		"add_line_one": "",
+		"add_line_two": "",
+		"city": "",
+		"taluka": "",
+		"district": "",
+		"pincode": "",
+		"location": {
+			"latitude": "",
+			"longitude": ""
+		}
 	}
 }
 
@@ -12,15 +27,12 @@
 {
 	"title": "text field",
 	"description": "text area",
-  "activity_type": "multi select",
-  "recurrence rule" :
-		{
-	  	"frequency": "select",
-	  		[
-					{
-						"at_field": "select",
-	  				"at_value": "text field"
-					}
-				]
-		},
+  "activity_type": "select",
+	"schedule": {
+		"recurrence_frequency": "select",
+		"start at": [{
+			"time_division": "select",
+			"value": "multi valued select"
+		}]
+	}
 }

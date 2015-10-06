@@ -11,6 +11,7 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
+            'directives',
             'trip',
             // 'angularjs-dropdown-multiselect',
             // 'ng.bs.dropdown',
