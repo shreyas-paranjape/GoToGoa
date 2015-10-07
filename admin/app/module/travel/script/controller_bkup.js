@@ -1,53 +1,9 @@
 /*global angular:false */
-angular.module('travel', [
-    'ui.router'
-  ])
-    .config(function ($stateProvider) {
-        'use strict';
-        $stateProvider
-            .state('travel', {
-                url: '/travel',
-                templateUrl: 'module/travel/view/home.html',
-                ncyBreadcrumb: {
-                    label: 'travel'
-                },
-                abstract: true
-            })
-            .state('travel.list', {
-                url: '',
-                templateUrl: 'module/travel/view/list.html',
-                ncyBreadcrumb: {
-                    label: 'Travel'
-                },
-                params: {
-                    data: ['default', 'list', 'of', 'things']
-                },
-                controller: 'TravelListController'
-            })
-            .state('travel.add', {
-                url: '/add',
-                templateUrl: 'module/travel/view/add.html',
-                ncyBreadcrumb: {
-                    label: 'Travel'
-                },
-                params: {
-                    data: ['default', 'list', 'of', 'things']
-                },
-                controller: 'TravelAddController'
-            })
-            .state('travel.edit', {
-                url: '/edit',
-                templateUrl: 'module/travel/view/edit.html',
-                ncyBreadcrumb: {
-                    label: 'Travel'
-                },
-                params: {
-                    data: ['default', 'list', 'of', 'things']
-                },
-                controller: 'TravelEditController'
-            });
-    })
-    .value('travelSchema', {
+angular.module('travel')
+
+.controller('TravelListController', ['$scope', '$filter', '$stateParams', '$modal', '$http', 'uiGridConstants', function ($scope, $filter, $stateParams, $modal, $http, uiGridConstants, $stateProvider, $urlRouterProvider, $compile, uiCalendarConfig) {
+    'use strict';
+    $scope.schema = {
         type: "object",
         properties: {
             name: {
@@ -135,30 +91,8 @@ angular.module('travel', [
                 }
             }
         }
-    })
-    .value('travelGridColumnDef', [{
-            field: 'id',
-            name: '',
-            cellTemplate: 'module/travel/view/buttons.html',
-            width: 80
-  }, {
-            name: 'name',
-            width: 100
-  }
-        , {
-            name: 'description',
-            width: 300
-          }, {
-            name: 'eligibility',
-            width: 300
-          }, {
-            name: 'product',
-            width: 300
-          }, {
-            name: 'notification',
-            width: 300
-          }
-        ]).value('travelForm', [
+    };
+    $scope.form = [
         "name",
         {
             "key": "desc",
@@ -318,4 +252,6 @@ angular.module('travel', [
                     }
                 ]
 }
-    ]);
+    ];
+    $scope.model = {};
+            }]);
