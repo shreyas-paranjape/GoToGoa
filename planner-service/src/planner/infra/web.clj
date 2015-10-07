@@ -6,6 +6,7 @@
             [planner.domain.activity :as activity]
             [planner.domain.common :as common]
             [planner.domain.itinerary :as itinerary]
+            [planner.domain.importexport :as ie]
             [planner.domain.party :as party]
             [planner.domain.site :as site]
             [planner.domain.stay :as stay]
@@ -32,6 +33,7 @@
    party/party-routes
    site/site-routes
    stay/stay-routes
+   ie/import-export-routes
    travel/travel-routes
    not-found))
 

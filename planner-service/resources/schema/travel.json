@@ -1,6 +1,6 @@
 {
-  "title": "Day1",
-  "description": "A day in a particular trip",
+  "title": "",
+  "description": "",
   "travel_type_id": "123",
   "vehicle_model": [{
     "title": "",
@@ -14,15 +14,16 @@
   }],
   "travel_party": [{
     "title": "party 1",
-    "description": "a nice party description",
+    "description": "a nice description",
     "name": "",
-    "email": "",
-    "phone": "",
+    "comm": {
+      "email": "",
+      "phone": "",
+    },
     "designation": "",
     "travel_role_id": 1234
   }]
 }
-
 
 /* UI component spec */
 {

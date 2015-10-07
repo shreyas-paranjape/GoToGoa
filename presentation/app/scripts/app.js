@@ -11,8 +11,12 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
+<<<<<<< HEAD
             'app',
             'ncy-angular-breadcrumb',
+=======
+            'directives',
+>>>>>>> 1f6f7c58a49bff17bb6e16ad40be9f8a17253e7a
             'trip',
             'activity',
             'stay',

@@ -21,11 +21,11 @@
   "title": "text field",
   "description": "text area",
   "activity_type": "multi select",
-  "recurrence rule": {
-    "frequency": "select",
-    [{
-      "at_field": "select",
-      "at_value": "text field"
+  "schedule": {
+    "recurrence_frequency": "Monthly",
+    "at": [{
+      "time_division": "DAY",
+      "value": ["2", "10", "20"]
     }]
-  },
+  }
 }
