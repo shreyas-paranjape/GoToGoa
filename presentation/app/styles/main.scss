@@ -1,6 +1,5 @@
 $icon-font-path: "fonts/bootstrap/";
 @import "stylesheets/_bootstrap.scss";
-
 @font-face {
     font-family: 'BrandonGrotReg';
     src: url('fonts/Brandon_Grot/Brandon_reg.otf');
@@ -13,7 +12,6 @@ $icon-font-path: "fonts/bootstrap/";
     font-family: 'BrandonGrotLight';
     src: url('fonts/Brandon_Grot/Brandon_light.otf');
 }
-
 body {
     font-family: 'BrandonGrotReg';
     width: 90%;
@@ -22,72 +20,107 @@ body {
 .navbar-brand {
     font-family: 'BrandonGrotBold'
 }
-
 .group:after {
-  content: "";
-  display: table;
-  clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
-
 .tripSummary {
-  position:fixed;
-  top: 72px;
-  right: 0px;
+    position: fixed;
+    top: 72px;
+    right: 0px;
 }
-.tripItem {
+.tripItem {}
+.row {
+    margin: 0px;
 }
-
-.row{
-  margin: 0px;
-}
-
 .event {
-  position: relative;
-  padding: 2em 0;
-  margin-top: 2em;
-  margin-bottom: 2em;
+    position: relative;
+    padding: 2em 0;
+    margin-top: 2em;
+    margin-bottom: 2em;
 }
-
 .event::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50px;
-  height: 100%;
-  width: 4px;
-  background: #d7e4ed;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50px;
+    height: 100%;
+    width: 4px;
+    background: #d7e4ed;
 }
-
-.start-time{
-  position: absolute;
-  top: 0px;
-  left: 0px;
+.start-time {
+    position: absolute;
+    top: 0px;
+    left: 0px;
 }
-
-.end-time{
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
+.end-time {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
 }
-
-
-.event-card{
-  margin-left: 60px;
-  color: white;
-  background-color:#343434;
+.event-card {
+    margin-left: 60px;
+    color: white;
+    background-color: #343434;
 }
-
-.event-card-list{
-  color: white;
-  background-color:#343434;
+.event-card-list {
+    color: white;
+    background-color: #343434;
 }
-
 .blank-col {
-  background-color: white;
+    background-color: white;
 }
-
 .btn-refine-search {
-  background-color:#FC573B;
-  border-color:#FC573B;
-  border-radius: 0;
+    background-color: #FC573B;
+    border-color: #FC573B;
+    border-radius: 0;
+}
+.title {
+    font-weight: 200;
+    font-size: 18px;
+}
+.edit {
+    color: white;
+    font-size: 13px;
+    font-weight: bold;
+    text-decoration: none;
+}
+.rect {
+    height: 150px;
+    border: 2px solid white;
+    padding-top: 0px;
+    margin: 10px 0px;
+    h4 {
+        text-align: center;
+        text-transform: uppercase;
+        font-weight: bolder;
+    }
+}
+.carousel-control.left,
+.carousel-control.right {
+    background-image: none !important;
+    color: black;
+    font-size: 40px;
+    width: 200px;
+}
+.full button span {
+    background-color: limegreen;
+    border-radius: 32px;
+    color: black;
+}
+.partially button span {
+    background-color: orange;
+    border-radius: 32px;
+    color: black;
+}
+.custom {
+    background-color: white;
+    border-color: #ccc;
+    color: #333;
+}
+.custom:hover {
+    background-color: #e6e6e6;
+    border-color: #ccc;
+    color: #333;
 }

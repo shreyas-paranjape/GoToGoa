@@ -1,0 +1,46 @@
+<div class="row refine_filter no-margin">
+    <span>I'd like a</span>
+    <div ng-dropdown-multiselect="" options="exampledata" selected-model="examplemodel" extra-settings="examplesettings" style="display:inline-block;"></div>
+    <div class="row" style="display:inline-block;margin-bottom: -23px;">
+        <div class="col-md-6">
+            <p class="input-group">
+                <input type="text" placeholder="From" class="form-control" datepicker-popup="{{format}}" ng-model="from" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+        <div class="col-md-6">
+            <p class="input-group">
+                <input type="text" placeholder="To" class="form-control" datepicker-popup="{{format}}" ng-model="to" is-open="status.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+              </span>
+            </p>
+        </div>
+    </div>
+    <span> near</span>
+    <div ng-dropdown-multiselect="" options="placesdata" selected-model="places" extra-settings="examplesettings2" checkboxes="true" style="display:inline-block;"></div>
+    <span>.</span>
+</div>
+<div class="event-card-list" ng-repeat="i in [1,2,3]">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Top content</div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <a href="" ui-sref="trip.edit">Edit</a>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+    </div>
+</div>
