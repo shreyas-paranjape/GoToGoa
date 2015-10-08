@@ -2,6 +2,42 @@ angular.module('activity')
     .controller('ActivityListController', ['$scope', '$filter', '$stateParams', '$timeout',
     function ($scope, $filter, $stateParams, $timeout) {
             'use strict';
+            $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
+            var marker, map;
+            $scope.$on('mapInitialized', function (evt, evtMap) {
+                map = evtMap;
+                marker = map.markers[0];
+            });
+            $scope.centerChanged = function (event) {
+                $timeout(function () {
+                    map.panTo(marker.getPosition());
+                }, 3000);
+            }
+            $scope.click = function (event) {
+                map.setZoom(8);
+                map.setCenter(marker.getPosition());
+            }
+            $scope.neighborhoods = [new google.maps.LatLng(52.511467, 13.447179), new google.maps.LatLng(52.549061, 13.422975), new google.maps.LatLng(52.497622, 13.396110), new google.maps.LatLng(52.517683, 13.394393)];
+            $scope.toggleBounce = function () {
+                if (this.getAnimation() != null) {
+                    this.setAnimation(null);
+                } else {
+                    this.setAnimation(google.maps.Animation.BOUNCE);
+                }
+            };
+            var iterator = 0;
+            $scope.addMarker = function () {
+                for (var i = 0; i < $scope.neighborhoods.length; i++) {
+                    $timeout(function () { // add a marker this way does not sync. marker with <marker> tag
+                        new google.maps.Marker({
+                            position: $scope.neighborhoods[iterator++],
+                            map: $scope.map,
+                            draggable: false,
+                            animation: google.maps.Animation.DROP
+                        });
+                    }, i * 200);
+                }
+            }
             $scope.examplemodel = [];
             $scope.exampledata = [
                 {
@@ -180,8 +216,7 @@ angular.module('activity')
                 $event.stopPropagation();
                 $scope.status.isopen = !$scope.status.isopen;
             };
-    }
-  ])
+                            }])
     .controller('ActivityEditController', [
     '$scope', '$stateParams', '$timeout', '$document',
     function ($scope, $stateParams, $timeout, $document) {

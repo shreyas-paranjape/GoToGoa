@@ -6,7 +6,7 @@ angular.module('trip', [
     .config(function ($stateProvider) {
         'use strict';
         $stateProvider
-            .state('trip', {
+            .state('app.trip', {
                 url: '/trips',
                 templateUrl: 'module/trip/view/home.html',
                 ncyBreadcrumb: {
@@ -14,7 +14,7 @@ angular.module('trip', [
                 },
                 abstract: true
             })
-            .state('trip.list', {
+            .state('app.trip.list', {
                 url: '',
                 templateUrl: 'module/trip/view/list.html',
                 ncyBreadcrumb: {
@@ -25,7 +25,7 @@ angular.module('trip', [
                 },
                 controller: 'TripListController'
             })
-            .state('trip.edit', {
+            .state('app.trip.edit', {
                 url: '/edit',
                 templateUrl: 'module/trip/view/edit.html',
                 ncyBreadcrumb: {

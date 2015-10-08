@@ -23,24 +23,35 @@
     <div ng-dropdown-multiselect="" options="placesdata" selected-model="places" extra-settings="examplesettings2" checkboxes="true" style="display:inline-block;"></div>
     <span>.</span>
 </div>
-<div class="event-card-list" ng-repeat="i in [1,2,3]">
-    <div class="row">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Top content</div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+<div class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 event-card-list">
+        <div ng-repeat="i in [1,2,3]">
             <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Top content</div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+                    <div class="row">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="" ui-sref="app.trip.edit">Edit</a>
+                    <a href="" id="drop" ng-click="addMarker()">Drop Markers</a>
+                </div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <a href="" ui-sref="trip.edit">Edit</a>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+        <div id="panel">
+            <button id="drop" ng-click="addMarker()">Drop Markers</button>
         </div>
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+        <map center="52.520816, 13.410186" zoom="12"> </map>
     </div>
 </div>
