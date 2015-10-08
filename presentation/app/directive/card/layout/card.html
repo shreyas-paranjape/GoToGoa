@@ -1,9 +1,11 @@
 <div>
   <div class="row">
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Top content</div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+      Top content
+    </div>
   </div>
-  <div class="animate-switch-container" ng-switch on="selection">
+  <div class="animate-switch-container" ng-switch on="currentState">
     <div class="row" ng-switch-when="category">
       <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
         <div class="row">
@@ -22,9 +24,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-      <a class="btn" ng-click="change()">Change</a>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+      <a style="cursor:pointer;" ng-click="change()">Change</a>
     </div>
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
   </div>
 </div>

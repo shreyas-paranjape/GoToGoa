@@ -7,33 +7,18 @@ angular.module('trip', [
         'use strict';
         $stateProvider
             .state('app.trip', {
-                url: '/trips',
+                url: '/trip',
                 templateUrl: 'module/trip/view/home.html',
-                ncyBreadcrumb: {
-                    label: 'trips'
-                },
                 abstract: true
             })
             .state('app.trip.list', {
                 url: '',
                 templateUrl: 'module/trip/view/list.html',
-                ncyBreadcrumb: {
-                    label: 'Home'
-                },
-                params: {
-                    data: ['default', 'list', 'of', 'things']
-                },
                 controller: 'TripListController'
             })
             .state('app.trip.edit', {
                 url: '/edit',
                 templateUrl: 'module/trip/view/edit.html',
-                ncyBreadcrumb: {
-                    label: 'Edit'
-                },
-                params: {
-                    data: ['default', 'list', 'of', 'things']
-                },
                 controller: 'TripEditController'
             });
     });

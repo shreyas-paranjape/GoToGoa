@@ -11,25 +11,16 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
-            'app',
-            'ncy-angular-breadcrumb',
+            'angularjs-dropdown-multiselect',
             'directives',
+            'app',
             'trip',
             'activity',
             'stay',
-            'travel',
-            'angularjs-dropdown-multiselect',
-            // 'ng.bs.dropdown',
-            // 'gridster',
-             'ngMap',
-            // 'ui.calendar'
+            'travel'
         ])
-        .config(function ($urlRouterProvider, $breadcrumbProvider) {
-            $urlRouterProvider.otherwise('/apps');
-            $breadcrumbProvider.setOptions({
-                prefixStateName: 'app',
-                template: 'bootstrap2'
-            });
+        .config(function ($urlRouterProvider) {
+            $urlRouterProvider.otherwise('/apps/trip');
         });
     angular.bootstrap(document, ['goaAmigo']);
 });
