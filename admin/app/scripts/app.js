@@ -13,11 +13,15 @@ angular.element(document).ready(function() {
       'ui.bootstrap',
       'ui.grid',
       'schemaForm',
+      'mgcrea.ngStrap',
       'stay',
       'travel',
       'activity',
       'trip',
-      'deal',
+      'deal'
+      //'schemaForm-datepicker',
+      //'schemaForm-timepicker',
+      //'schemaForm-datetimepicker'
     ])
     .config(function($breadcrumbProvider) {
       $breadcrumbProvider.setOptions({

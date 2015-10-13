@@ -12,6 +12,9 @@ angular.module('deal')
       $scope.delete = function(row){
         dealRepository.delete(row);
       }
+      $scope.add = function(){
+        $state.go('deal.add');
+      }
     }
   ])
   .controller('DealAddController', [
