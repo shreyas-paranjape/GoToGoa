@@ -1,0 +1,62 @@
+<header class="header">
+  <div class="navbar navbar-default" role="navigation">
+    <div>
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Goa Amigo</a>
+      </div>
+      <div>
+        <ul class="nav navbar-nav" >
+          <li style="margin-left: 20px;">
+            <button class="btn btn-primary" ui-sref="app.trip.list">Trip</button>
+          </li>
+          <li class="active" style="margin-left: 20px;">
+            <span dropdown on-toggle="toggled(open)">
+              <div class="btn-group" dropdown is-open="status.isopen">
+                <button class="btn btn-primary" dropdown-toggle id="single-button"
+                    ng-disabled="disabled" type="button"> Activity
+                  <span class="caret"></span>
+                </button>
+                <ul aria-labelledby="simple-dropdown" class="dropdown-menu">
+                  <li ng-repeat="choice in act_items">
+                    <a ui-sref="app.activity.list">{{choice}}</a>
+                  </li>
+                </ul>
+              </div>
+            </span>
+          </li>
+          <li style="margin-left: 20px;">
+            <span dropdown on-toggle="toggled(open)">
+              <div class="btn-group" dropdown >
+                <button class="btn btn-primary" dropdown-toggle id="single-button"
+                    ng-disabled="disabled" type="button">Stay
+                  <span class="caret"></span>
+                </button>
+                <ul aria-labelledby="simple-dropdown" class="dropdown-menu">
+                  <li ng-repeat="choice in stay_items">
+                    <a ui-sref="app.stay.list">{{choice}}</a>
+                  </li>
+                </ul>
+              </div>
+            </span>
+          </li>
+          <li style="margin-left: 20px;">
+            <span dropdown on-toggle="toggled(open)">
+              <div class="btn-group" dropdown >
+                <button class="btn btn-primary" dropdown-toggle id="single-button"
+                    ng-disabled="disabled" type="button">Travel
+                  <span class="caret"></span>
+                </button>
+                <ul aria-labelledby="simple-dropdown" class="dropdown-menu">
+                  <li ng-repeat="choice in travel_items">
+                    <a ui-sref="app.travel.list">{{choice}}</a>
+                  </li>
+                </ul>
+              </div>
+            </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</header>
+<div ui-view></div>

@@ -20,7 +20,7 @@
 ; Insert stay
 (defn insert-stay [request]
 	(do
-		(def stay_id (insert db/stay (values (apply dissoc request [:stay_type_id :payment_method :stay_feature :stay_room :stay_party]))))
+		(def stay_id (:generated_key (insert db/stay (values (apply dissoc request [:stay_type_id :payment_method :stay_feature :stay_room :stay_party])))))
 		(insert db/stay_stay_type (values {:stay_id stay_id :stay_type_id (:stay_type_id request)}))
 		(def payment_methods (get-in request [:payment_method]))
 		(dorun

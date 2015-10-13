@@ -23,5 +23,6 @@ angular.module('travel')
         $log.log('entity to delete'+ travel);
       };
       return travelRepository;
+
     }
   ]);

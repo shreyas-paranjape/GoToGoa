@@ -1,6 +1,6 @@
 (defproject goaamigo "0.1.0-SNAPSHOT"
             :dependencies [[org.clojure/clojure "1.6.0"]
-            		 [liberator "0.13"]
+                          [liberator "0.13"]
             	       [stuarth/clj-oauth2 "0.3.2"]
                           [compojure "1.3.2"]
                            [ring/ring-defaults "0.1.4"]
@@ -14,6 +14,7 @@
                           [dk.ative/docjure "1.7.0"]
                           [environ "1.0.0"]
                            [clj-time "0.11.0"]
+		              [lib-noir "0.9.5"]
                            [korma "0.4.0"]
                            [com.draines/postal "1.11.3"]
                            [commons-codec/commons-codec "1.10"]
@@ -24,7 +25,6 @@
                            [cheshire "5.4.0"]
                            [org.clojure/java.jdbc "0.3.5"]
                            [mysql/mysql-connector-java "5.1.25"]
-                           [lib-noir "0.9.5"]
                            [nginx-clojure "0.3.0"]
                            [clj-http "2.0.0"]
                            ]

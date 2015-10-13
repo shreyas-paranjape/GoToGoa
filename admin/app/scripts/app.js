@@ -18,10 +18,10 @@ angular.element(document).ready(function() {
       'travel',
       'activity',
       'trip',
-      'deal'
-      //'schemaForm-datepicker',
-      //'schemaForm-timepicker',
-      //'schemaForm-datetimepicker'
+      'deal',
+      'schemaForm-datepicker',
+      'schemaForm-timepicker',
+      'schemaForm-datetimepicker'
     ])
     .config(function($breadcrumbProvider) {
       $breadcrumbProvider.setOptions({

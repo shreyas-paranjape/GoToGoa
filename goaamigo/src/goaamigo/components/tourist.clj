@@ -7,12 +7,15 @@
 		[korma.core :refer :all]
 		[cheshire.core :refer :all]
 		[noir.session :as session]
+		[taoensso.timbre :as timbre]
 		[crypto.password.scrypt :as password]
 		[goaamigo.process.facebook :as fb]
 		[goaamigo.process.google :as goo]
 		[goaamigo.process.linkedin :as li]
 		[selmer.parser :refer :all]
 		[goaamigo.process.db :as db]))
+
+(timbre/refer-timbre)
 
 (defn authenticate [request]
 	(do
@@ -60,6 +63,8 @@
 	:available-media-types ["application/json" "text/html"]
 	:allowed-methods [:get :post]
 	:handle-ok (fn [ctx]
+		(info (get-in ctx [:request]))
+		(info (session/get :username))
 			(if (get-in ctx [:request :session :noir :username])
 				; render the home page
 				(generate-string {:status "You are logged in"})

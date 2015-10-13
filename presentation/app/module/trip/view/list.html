@@ -1,34 +1,21 @@
 <div class="row refine_filter no-margin">
-    <span>I'd like to visit Goa from To as</span>
-    <div bs-dropdown bs-dropdown-display="Select"
-      bs-dropdown-items="adults" ng-model="selectAdults" style="display:inline-block;">
-    </div>
-    <span>. My Budget is</span>
-    <div bs-dropdown bs-dropdown-display="Select"
-      bs-dropdown-items="budgets" ng-model="selectBudgets" style="display:inline-block;">
-    </div>
-    <span>and I'm interested in</span>
-    <div bs-dropdown bs-dropdown-multi
-      bs-dropdown-display="Select" bs-dropdown-items="interests" ng-model="selectinterests" style="display:inline-block;">
-    </div>
-    <span>and i want it to be a</span>
-    <div bs-dropdown bs-dropdown-display="Select"
-      bs-dropdown-items="type_trips" ng-model="selecttype_trips" style="display:inline-block;">
-    </div>
-    <span>. I am going with my</span>
-    <div bs-dropdown bs-dropdown-display="Select"
-      bs-dropdown-items="companion" ng-model="selectcompanion" style="display:inline-block;">
-    </div>
-    <span> and want to definately see</span>
-    <div bs-dropdown bs-dropdown-multi bs-dropdown-display="Select"
-      bs-dropdown-items="places" ng-model="selectplaces" style="display:inline-block;">
-    </div>
-    <div style="padding:5px;">
-        <button type="button" class="btn btn-primary btn-refine-search" style="">REFINE SEARCH</button>
-    </div>
+  <span>I'd like to visit Goa from To as</span>
+  <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="adults" ng-model="selectAdults" style="display:inline-block;"></div>
+  <span>. My Budget is</span>
+  <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="budgets" ng-model="selectBudgets" style="display:inline-block;"></div>
+  <span>and I'm interested in</span>
+  <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="interests" bs-dropdown-multi ng-model="selectinterests" style="display:inline-block;"></div>
+  <span>and i want it to be a</span>
+  <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="type_trips" ng-model="selecttype_trips" style="display:inline-block;"></div>
+  <span>. I am going with my</span>
+  <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="companion" ng-model="selectcompanion" style="display:inline-block;"></div>
+  <span>
+    and want to definately see</span>
+  <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="places" bs-dropdown-multi ng-model="selectplaces" style="display:inline-block;"></div>
+  <div style="padding:5px;">
+    <button class="btn btn-primary btn-refine-search" style="" type="button">REFINE SEARCH</button>
+  </div>
 </div>
-
-
-<div class="event-card-list" ng-repeat="i in [1, 2, 3, 4, 5]" >
+<div ng-repeat="i in [1, 2, 3]">
   <div card></card>
 </div>

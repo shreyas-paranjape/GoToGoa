@@ -7,8 +7,6 @@ angular.module('deal')
       }, {
         "name": "Deal 2"
       }];
-      var currentEdit = {};
-
       dealRepository.get = function() {
         return deals;
       };
@@ -19,7 +17,7 @@ angular.module('deal')
         $log.log('entity to edit' + deal);
       };
       dealRepository.delete = function(deal) {
-        $log.log('entity to delete'+ deal);
+        $log.log('entity to delete' + deal);
       };
       return dealRepository;
     }

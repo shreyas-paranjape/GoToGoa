@@ -11,17 +11,16 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
             'ui.bootstrap',
+            'angularjs-dropdown-multiselect',
             'directives',
+            'app',
             'trip',
-            // 'angularjs-dropdown-multiselect',
-            // 'ng.bs.dropdown',
-            // 'gridster',
-            // 'ngMap',
-            // 'ui.calendar'
+            'activity',
+            'stay',
+            'travel'
         ])
         .config(function ($urlRouterProvider) {
-            $urlRouterProvider.otherwise('/trips');
+            $urlRouterProvider.otherwise('/apps/trip');
         });
-
     angular.bootstrap(document, ['goaAmigo']);
 });

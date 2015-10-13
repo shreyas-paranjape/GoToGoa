@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="row refine_filter no-margin">
+      <span>I'd like a</span>
+      <div extra-settings="examplesettings" ng-dropdown-multiselect="" options="exampledata" selected-model="examplemodel" style="display:inline-block;"></div>
+      <div class="row" style="display:inline-block;margin-bottom: -23px;">
+        <div class="col-md-6">
+          <p class="input-group">
+            <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" placeholder="From" type="text"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="open($event)" type="button">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+        </div>
+        <div class="col-md-6">
+          <p class="input-group">
+            <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" placeholder="To" type="text"/>
+            <span class="input-group-btn">
+              <button class="btn btn-default" ng-click="open($event)" type="button">
+                <i class="glyphicon glyphicon-calendar"></i>
+              </button>
+            </span>
+          </p>
+        </div>
+      </div>
+      <span>
+        as
+      </span>
+      <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+      <span>
+        near</span>
+      <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
+      <span>. My budget is between</span>
+      <div checkboxes="true" extra-settings="examplesettings3" ng-dropdown-multiselect="" options="amtdata" selected-model="amt" style="display:inline-block;"></div>
+      <span>
+        and I am travelling with my</span>
+      <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
+      <span>
+        . I definately need</span>
+      <div checkboxes="true" extra-settings="examplesettings5" ng-dropdown-multiselect="" options="amenitiesdata" selected-model="amenities" style="display:inline-block;"></div>
+      <span>.</span>
+    </div>
+    <div ng-repeat="i in [1, 2, 3]">
+      <div card></div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+      <div>Map of Goa</div>
+    </div>
+  </div>
+</div>

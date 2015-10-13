@@ -78,12 +78,14 @@ angular.module('stay', [
       },
       check_in_time: {
         title: "Check-In Time",
-        type: "string"
+        type: "string",
+        format: "timepicker"
       },
       check_out_time: {
         title: "Check-Out Time",
         type: "string",
-        format: "time picker"
+        format: "timepicker"
+
       },
       min_stay_period: {
         title: "Min. Stay Period",
@@ -261,19 +263,17 @@ angular.module('stay', [
       type: "textarea"
     }, "no_of_section",
     "no_of_rooms", {
-      key: "check_in_time"
-      //,
-      // "dateOptions": {
-      //   "minuteStep": 15,
-      //   "autoclose": 1
-      // }
+      key: "check_in_time",
+      "dateOptions": {
+        "minuteStep": 15,
+        "autoclose": 1
+      }
     }, {
-      key: "check_out_time"
-      //,
-      // "dateOptions": {
-      //   "minuteStep": 15,
-      //   "autoclose": 1
-      // }
+      key: "check_out_time",
+      "dateOptions": {
+        "minuteStep": 15,
+        "autoclose": 1
+      }
     }, "min_stay_period", {
       key: "payment_method",
       add: "New",
