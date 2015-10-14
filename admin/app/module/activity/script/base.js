@@ -2,8 +2,11 @@
 angular.module('activity', [
     'ui.router'
   ])
-  .config(function($stateProvider) {
+  .config(function($stateProvider, RestangularProvider) {
     'use strict';
+    RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Origin': "*"});
+    RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Methods': "POST, GET, OPTIONS"});
+    RestangularProvider.setBaseUrl("http://localhost/api/");
     $stateProvider
       .state('activity', {
         url: '/activity',
@@ -99,10 +102,10 @@ angular.module('activity', [
     cellTemplate: '/view/buttons.html',
     width: 80
   }, {
-    name: 'name',
+    name: 'title',
     width: 100
   }, {
-    name: 'gender',
+    name: 'description',
     width: 100
   }]).value('activityForm', [
     "title", {

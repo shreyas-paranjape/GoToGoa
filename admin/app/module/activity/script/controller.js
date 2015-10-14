@@ -29,6 +29,9 @@ function($scope, $log, $state, $stateParams, activityRepository, activityGridCol
       activityRepository.add($scope.entity);
       $state.go('activity.list');
     };
+    $scope.back = function() {
+      $state.go('activity.list');
+    };
   }
 ]).controller('ActivityEditController', [
   '$scope', '$log', '$state', '$stateParams', 'activityRepository', 'activitySchema', 'activityForm',

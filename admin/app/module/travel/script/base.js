@@ -2,7 +2,7 @@
 angular.module('travel', [
     'ui.router'
   ])
-  .config(function($stateProvider,RestangularProvider) {
+  .config(function($stateProvider, RestangularProvider) {
     'use strict';
     RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Origin': "*"});
     RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Methods': "POST, GET, OPTIONS"});

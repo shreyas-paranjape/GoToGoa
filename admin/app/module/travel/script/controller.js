@@ -27,6 +27,9 @@ angular.module('travel')
         travelRepository.add($scope.entity);
         $state.go('travel.list');
       };
+      $scope.back = function() {
+        $state.go('travel.list');
+      };
     }
   ]).controller('TravelEditController', [
     '$scope', '$log', '$state', '$stateParams', 'travelRepository', 'travelSchema', 'travelForm',

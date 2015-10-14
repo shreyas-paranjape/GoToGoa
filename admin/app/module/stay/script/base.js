@@ -2,8 +2,11 @@
 angular.module('stay', [
     'ui.router'
   ])
-  .config(function($stateProvider) {
+  .config(function($stateProvider, RestangularProvider) {
     'use strict';
+    RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Origin': "*"});
+    RestangularProvider.setDefaultHeaders({'Access-Control-Allow-Methods': "POST, GET, OPTIONS"});
+    RestangularProvider.setBaseUrl("http://localhost/api/");
     $stateProvider
       .state('stay', {
         url: '/stay',
@@ -249,7 +252,7 @@ angular.module('stay', [
     cellTemplate: '/view/buttons.html',
     width: 80
   }, {
-    name: 'name',
+    name: 'title',
     width: 100
   }]).value('stayForm', ["title", {
       key: "description",

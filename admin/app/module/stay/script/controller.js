@@ -27,6 +27,9 @@ angular.module('stay')
         stayRepository.add($scope.entity);
         $state.go('stay.list');
       };
+      $scope.back = function() {
+        $state.go('stay.list');
+      };
     }
   ]).controller('StayEditController', [
     '$scope', '$log', '$state', '$stateParams', 'stayRepository', 'staySchema', 'stayForm',

@@ -27,6 +27,9 @@ angular.module('deal')
         dealRepository.add($scope.entity);
         $state.go('deal.list');
       };
+      $scope.back = function() {
+        $state.go('deal.list');
+      };
     }
   ]).controller('DealEditController', [
     '$scope', '$log', '$state', '$stateParams', 'dealRepository', 'dealSchema', 'dealForm',
