@@ -2,13 +2,16 @@
 	"title":"Day1",
 	"description":"A day in a particular activity",
   "activity_type_id": 123,
+  "activity_role_id" : 12,
+  "party_id" : 23,
+  "site_id" : 1,
 	"schedule": {
     "recurrence_frequency": "Monthly",
     "at": [{
-      "time_division": "DAY",
-      "value": ["2", "10", "20"]
+      "time_division_id": 4,
+      "value": [2, 10, 20]
     }]
-  },
+  }/*,
 	"address": {
 		"add_line_one": "",
 		"add_line_two": "",
@@ -20,7 +23,7 @@
 			"latitude": "",
 			"longitude": ""
 		}
-	}
+	}*/
 }
 
 /* UI component spec */

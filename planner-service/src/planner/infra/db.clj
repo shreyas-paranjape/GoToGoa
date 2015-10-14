@@ -15,9 +15,17 @@
 
 (db/defdb goaamigo db)
 
-(declare activity activity_activity_type activity_attr activity_comment activity_party activity_rating activity_review activity_role activity_type address address_type criteria_component day day_event deal distances eligibility_criteria_component event event_criteria_component itinerary itinerary_day notification party party_address party_attr recurrence_rule site site_attr stay stay_attr stay_comment stay_feature stay_feature_type stay_party stay_rating stay_review stay_role stay_room stay_room_feature stay_stay_type stay_type travel travel_attr travel_comment travel_party travel_rating travel_review travel_role travel_travel_type travel_type travel_vehicle trip trip_comment trip_rating trip_review vehicle_class vehicle_model vehicle_model_feature vehicle_model_feature_type)
+(declare time_division schedule_start activity activity_activity_type activity_attr activity_comment activity_party activity_rating activity_review activity_role activity_type address address_type criteria_component day day_event deal distances eligibility_criteria_component event event_criteria_component itinerary itinerary_day notification party party_address party_attr schedule site site_attr stay stay_attr stay_comment stay_feature stay_feature_type stay_party stay_rating stay_review stay_role stay_room stay_room_feature stay_stay_type stay_type travel travel_attr travel_comment travel_party travel_rating travel_review travel_role travel_travel_type travel_type travel_vehicle trip trip_comment trip_rating trip_review vehicle_class vehicle_model vehicle_model_feature vehicle_model_feature_type)
+
+(defentity time_division
+	(has-many schedule_start))
+
+(defentity schedule_start
+	(belongs-to time_division)
+	(belongs-to schedule))
 
 (defentity activity
+	(belongs-to site)
 	(has-many event)
 	(has-many activity_attr)
 	(has-many activity_comment)
@@ -70,7 +78,7 @@
 (defentity day
 	(has-many day_event)
 	(has-many itinerary_day)
-	(belongs-to recurrence_rule))
+	(belongs-to schedule))
 
 (defentity day_event
 	(belongs-to event)
@@ -80,7 +88,7 @@
 	(has-many notification)
 	(has-many event_criteria_component)
 	(has-many eligibility_criteria_component)
-	(belongs-to recurrence_rule))
+	(belongs-to schedule))
 
 (defentity distances)
 
@@ -92,7 +100,7 @@
 	(has-many day_event)
 	(belongs-to site)
 	(belongs-to activity)
-	(belongs-to recurrence_rule))
+	(belongs-to schedule))
 
 (defentity event_criteria_component
 	(belongs-to deal)
@@ -101,7 +109,7 @@
 (defentity itinerary
 	(has-many itinerary_day)
 	(has-many trip)
-	(belongs-to recurrence_rule))
+	(belongs-to schedule))
 
 (defentity itinerary_day
 	(belongs-to day)
@@ -109,7 +117,7 @@
 
 (defentity notification
 	(belongs-to deal)
-	(belongs-to recurrence_rule))
+	(belongs-to schedule))
 
 (defentity party
 	(has-many party_address)
@@ -138,15 +146,17 @@
 (defentity party_attr
 	(belongs-to party))
 
-(defentity recurrence_rule
+(defentity schedule
 	(has-many day)
 	(has-many event)
 	(has-many itinerary)
 	(has-many trip)
 	(has-many deal)
+	(has-many schedule_start)
 	(has-many notification))
 
 (defentity site
+	(has-many activity)
 	(has-many event)
 	(has-many site_attr)
 	(belongs-to address))
@@ -260,7 +270,7 @@
 	(belongs-to itinerary)
 	(belongs-to stay)
 	(belongs-to travel)
-	(belongs-to recurrence_rule))
+	(belongs-to schedule))
 
 (defentity trip_comment
 	(belongs-to trip)
