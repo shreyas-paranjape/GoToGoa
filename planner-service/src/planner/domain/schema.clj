@@ -5,6 +5,21 @@
 	(:use [planner.info.util])
 	)
 
+(def Party
+	:struct	{
+			:title clType/Str
+			:description clType/Str
+		}
+	)
+
+(def Comm
+	:struct	{
+			:name clType/Str
+			:email clType/Str
+			:phone clType/Str
+		}
+	)
+
 (def Activity
 	{
 		:struct
@@ -50,5 +65,50 @@
 (def Insert-Activity
 	{
 		:struct (conj (:struct Activity) (:struct Schedule-Start))
+	}
+	)
+
+(def Vehicle-Model-Feature
+	:struct
+		{
+			:vechicle_model_feature_type_id clType/Str
+			:value clType/Str
+		}
+	)
+
+(def Travel-Vehicle
+	:struct
+		{
+			:no_of_vehicles clType/Int
+		}
+	)
+
+(def Vehicle-Model
+	:struct
+		{
+			:title clType/Str
+			:vechicle_class_id clType/Int
+			:no_of_seats clType/Int
+		}
+	)
+
+(def Insert-Travel
+	{
+		:struct
+			(conj
+			{
+				:title clType/Str
+				:description clType/Str
+				:travel_type_id clType/Int
+			}
+			{
+				:vehicle_model
+					[(conj (:struct Vehicle-Model) (:struct Travel-Vehicle) {:vehicle_model_feature [(:struct Vehicle-Model-Feature)]})]
+			}
+			{
+				:travel_party
+					[(conj (:struct Party) {:comm (:struct Comm)} :travel_role_id clType/Int)]
+			}
+			)
 	}
 	)
