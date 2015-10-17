@@ -22,22 +22,26 @@
 ; Insert new activity
 (defn insert-activity [request]
 	(do
-	(def schedule_id (:generated_key (insert db/schedule (values (:recurrence_frequency (:schedule request))))))
+	(def activity_id (:generated_key (insert db/activity (values {:title (:title request) :description (:description request) :site_id (:site_id request)}))))
+	(def schedule_id (:generated_key (insert db/schedule (values (dissoc (:schedule request) :at)))))
+
+	(insert db/acitivity_schedules (values (conj {:priority (:priority (:schedule request))} :schedule_id schedule_id :activity_id activity_id)))
 	(dorun
 		(for [i (:at (:schedule request))]
 			(do
+				(def price_id (:price_id i))
 				(def time_division_id (:time_division_id i))
 				(dorun
 					(for [j (:value i)]
 						(do
-							(insert db/schedule_start (values {:time_division_id time_division_id :schedule_id schedule_id :value j}))
+							(insert db/occurence (values {:time_division_id time_division_id :schedule_id schedule_id :value j :price_id price_id}))
 							)
 						)
 					)
 				)
 			)
 		)
-	(def activity_id (:generated_key (insert db/activity (values {:title (:title request) :description (:description request) :site_id (:site_id request)}))))
+	
 	(insert db/activity_activity_type (values {:activity_id activity_id :activity_type_id (:activity_type_id request)}))
 	(insert db/activity_party (values {:activity_id activity_id :activity_role_id (:activity_role_id request) :party_id (:party_id request)}))
 	)
