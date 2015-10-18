@@ -10,17 +10,42 @@
 (timbre/refer-timbre)
 (timbre/set-level! :debug)
 
+;; Entities
+;(declare activity activity_attr)
+
+;(defentity activity
+;	(has-many activity_attr)
+;	(has-many itinerary/event))
+;(defentity activity_attr
+;	(belongs-to activity))
+
 ; Insert new activity
 (defn insert-activity [request]
-  (def recur_id
-    (:generated_key
-     (insert db/recurrence_rule (values (:starts request)))))
-  (def act_id
-    (:generated_key
-     (insert db/activity
-             (values
-              (conj (apply dissoc request [:starts :activity_type_id]) {:recurrence_rule_id recur_id})))))
-  (insert db/activity_activity_type (values {:activity_id act_id :activity_type (:activity_type request)})))
+	(do
+	(def activity_id (:generated_key (insert db/activity (values {:title (:title request) :description (:description request) :site_id (:site_id request)}))))
+	(def schedule_id (:generated_key (insert db/schedule (values (dissoc (:schedule request) :at)))))
+
+	(insert db/acitivity_schedules (values (conj {:priority (:priority (:schedule request))} :schedule_id schedule_id :activity_id activity_id)))
+	(dorun
+		(for [i (:at (:schedule request))]
+			(do
+				(def price_id (:price_id i))
+				(def time_division_id (:time_division_id i))
+				(dorun
+					(for [j (:value i)]
+						(do
+							(insert db/occurence (values {:time_division_id time_division_id :schedule_id schedule_id :value j :price_id price_id}))
+							)
+						)
+					)
+				)
+			)
+		)
+	
+	(insert db/activity_activity_type (values {:activity_id activity_id :activity_type_id (:activity_type_id request)}))
+	(insert db/activity_party (values {:activity_id activity_id :activity_role_id (:activity_role_id request) :party_id (:party_id request)}))
+	)
+	)
 
 ; Insert activity_attr
 (defn insert-activity_attr [request]

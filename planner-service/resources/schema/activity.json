@@ -2,13 +2,21 @@
 	"title":"Day1",
 	"description":"A day in a particular activity",
   "activity_type_id": 123,
+  "activity_role_id" : 12,
+  "party_id" : 23,
+  "site_id" : 1,
 	"schedule": {
-    "recurrence_frequency": "Monthly",
+    "frequency_id": 1,
+    "priority": 2,
+    "description": "whatever",
+    "start_stamp" : "2013-10-23 23:23:23",
+    "end_stamp" : "2013-10-23 23:23:23",
     "at": [{
-      "time_division": "DAY",
-      "value": ["2", "10", "20"]
+      "price_id": 1, //need not be present
+      "time_division_id": 1,
+      "value": [2, 10, 20]
     }]
-  },
+  }/*,
 	"address": {
 		"add_line_one": "",
 		"add_line_two": "",
@@ -20,7 +28,7 @@
 			"latitude": "",
 			"longitude": ""
 		}
-	}
+	}*/
 }
 
 /* UI component spec */

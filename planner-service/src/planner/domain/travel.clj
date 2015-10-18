@@ -57,9 +57,11 @@
 					(dorun
 						(for [i travel_parties]
 							(do
-								(def travel_role_id (get-in i [:stay_role_id]))
-								(def party_id (:generated_key (insert db/party (values (apply dissoc i [:stay_role_id]))))
-								(insert db/travel_party (values {:party_id party_id :travel_id travel_id :travel_role_id travel_role_id}))))))
+								(def comm_id (:generated_key (insert db/comm (values (:comm i)))))
+								(def travel_role_id (get-in i [:travel_role_id]))
+								(def party_id (:generated_key (insert db/party (values (apply dissoc i [:travel_role_id :comm]))))
+								(insert db/travel_party (values {:party_id party_id :travel_id travel_id :travel_role_id travel_role_id}))
+								(insert db/party_comm (values {:party_id party_id :comm_id comm_id}))))))
 					)))))
 ; Insert travel_attr
 (defn insert-travel_attr [request]
