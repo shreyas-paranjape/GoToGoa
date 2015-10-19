@@ -14,38 +14,31 @@
 ;(declare activity activity_attr)
 
 ;(defentity activity
-;	(has-many activity_attr)
-;	(has-many itinerary/event))
+;(has-many activity_attr)
+;(has-many itinerary/event))
 ;(defentity activity_attr
-;	(belongs-to activity))
+;(belongs-to activity))
 
 ; Insert new activity
 (defn insert-activity [request]
-	(do
-	(def activity_id (:generated_key (insert db/activity (values {:title (:title request) :description (:description request) :site_id (:site_id request)}))))
-	(def schedule_id (:generated_key (insert db/schedule (values (dissoc (:schedule request) :at)))))
+  (let [activity_id
+        (:generated_key
+         (insert db/activity (values (select-keys request [:title :description :site_id]))))
+        schedule_id
+        (:generated_key
+         (insert db/schedule (values (select-keys (:schedule request) [:description :start_stamp :end_stamp :frequency_id]))))]
+    (map insert-schedule (:schedules request) (repeat activity_id))
+    (insert db/activity_activity_type (values {:activity_id activity_id :activity_type_id (:activity_type_id request)}))
+    (insert db/activity_party (values {:activity_id activity_id :activity_role_id (:activity_role_id request) :party_id (:party_id request)}))))
 
-	(insert db/acitivity_schedules (values (conj {:priority (:priority (:schedule request))} :schedule_id schedule_id :activity_id activity_id)))
-	(dorun
-		(for [i (:at (:schedule request))]
-			(do
-				(def price_id (:price_id i))
-				(def time_division_id (:time_division_id i))
-				(dorun
-					(for [j (:value i)]
-						(do
-							(insert db/occurence (values {:time_division_id time_division_id :schedule_id schedule_id :value j :price_id price_id}))
-							)
-						)
-					)
-				)
-			)
-		)
-	
-	(insert db/activity_activity_type (values {:activity_id activity_id :activity_type_id (:activity_type_id request)}))
-	(insert db/activity_party (values {:activity_id activity_id :activity_role_id (:activity_role_id request) :party_id (:party_id request)}))
-	)
-	)
+(defn insert-schedule [sch activity_id]
+  (let [schedule_id (:generated_key (insert db/schedule (select-keys sch [:frequency_id :description :start_stamp :end_stamp])))]
+    (insert (db/activity_schedules (values {:activity_id activity_id :schedule_id schedule_id :priority (:priority sch)})))
+    (map insert-occurence (map #(conj {:schedule_id schedule_id} %) (:occurences sch)))))
+
+(defn- insert-occurence [occ]
+  (let [price_id (:generated_key (insert db/price (values (:price_id occ))))]
+    (insert db/occurence (values (select-keys occ [:time_division_id :schedule_id :value :price_id])))))
 
 ; Insert activity_attr
 (defn insert-activity_attr [request]
@@ -110,20 +103,19 @@
 		(where request)))
 
 (defresource activity-res
-	:available-media-types ["application/json"]
-	:allowed-methods [:get :post :delete :put]
-	:handle-ok (fn [ctx]
-			(if (nil? (get-in ctx [:request :body :activity]))
-				(get-activity-all)
-				(get-activity (get-in ctx [:request :body :activity]))))
-	:delete! (fn [ctx]
-			(delete-activity (get-in ctx [:request :body :activity])))
-	:post! (fn [ctx]
-		(insert-activity (get-in ctx [:request :body :activity])))
-	:handle-created {:status 1}
-	:put! (fn [ctx]
-		(update-activity (get-in ctx [:request :body :activity])))
-	)
+  :available-media-types ["application/json"]
+  :allowed-methods [:get :post :delete :put]
+  :handle-ok (fn [ctx]
+               (if (nil? (get-in ctx [:request :body :activity]))
+                 (get-activity-all)
+                 (get-activity (get-in ctx [:request :body :activity]))))
+  :delete! (fn [ctx]
+             (delete-activity (get-in ctx [:request :body :activity])))
+  :post! (fn [ctx]
+           (insert-activity (get-in ctx [:request :body :activity])))
+  :handle-created {:status 1}
+  :put! (fn [ctx]
+          (update-activity (get-in ctx [:request :body :activity]))))
 
 (defresource activity_attr-res
 	:available-media-types ["application/json"]
