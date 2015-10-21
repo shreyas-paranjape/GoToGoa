@@ -1,54 +1,64 @@
 <div class="row">
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    <div class="row refine_filter no-margin">
-      <span>I'd like a</span>
-      <div extra-settings="examplesettings" ng-dropdown-multiselect="" options="exampledata" selected-model="examplemodel" style="display:inline-block;"></div>
-      <div class="row" style="display:inline-block;margin-bottom: -23px;">
-        <div class="col-md-6">
-          <p class="input-group">
-            <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" placeholder="From" type="text"/>
-            <span class="input-group-btn">
-              <button class="btn btn-default" ng-click="open($event)" type="button">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </button>
-            </span>
-          </p>
+
+
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
+                <h4>Dates</h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p class="input-group">
+                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" placeholder="From" type="text" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)" type="button">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p class="input-group">
+                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" placeholder="To" type="text" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)" type="button">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+            </div>
         </div>
-        <div class="col-md-6">
-          <p class="input-group">
-            <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" placeholder="To" type="text"/>
-            <span class="input-group-btn">
-              <button class="btn btn-default" ng-click="open($event)" type="button">
-                <i class="glyphicon glyphicon-calendar"></i>
-              </button>
-            </span>
-          </p>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+                <h4 style="display:inline-block;">Type: </h4>
+                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 style="display:inline-block;">Places: </h4>
+                <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 style="display:inline-block;">Companion: </h4>
+                <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
+            </div>
         </div>
-      </div>
-      <span>
-        as
-      </span>
-      <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
-      <span>
-        near</span>
-      <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
-      <span>. My budget is between</span>
-      <div checkboxes="true" extra-settings="examplesettings3" ng-dropdown-multiselect="" options="amtdata" selected-model="amt" style="display:inline-block;"></div>
-      <span>
-        and I am travelling with my</span>
-      <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
-      <span>
-        . I definately need</span>
-      <div checkboxes="true" extra-settings="examplesettings5" ng-dropdown-multiselect="" options="amenitiesdata" selected-model="amenities" style="display:inline-block;"></div>
-      <span>.</span>
+        <div class="row">
+            <h4>Price Range</h4>
+            <div range-slider min="0" max="100" model-min="min" model-max="max"></div>
+        </div>
+
+        <div ng-repeat="i in [1, 2, 3]">
+            <div card ng-mouseover="cardMouseOver()"></div>
+        </div>
+
     </div>
-    <div ng-repeat="i in [1, 2, 3]">
-      <div card></div>
-    </div>
-  </div>
-  <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-      <div>Map of Goa</div>
+        <!--        <div id='map'></div>-->
+        <!--        <mapbox map-id="ruchita.cifi6c65vbkhpsukn9f7udjj9" lat="47.603569" lng="-122.329453"></mapbox>-->
+        <!--        <button id='open-popup' class='ui-control'>open popup</button>-->
+        <leaflet center="goa" markers="markers" height="480px" width="100%"></leaflet>
     </div>
-  </div>
+
 </div>
