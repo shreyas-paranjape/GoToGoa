@@ -1,27 +1,36 @@
 angular.module('travel')
-    .factory('travelRepository', ['$log',
-    function ($log) {
-            var travelRepository = {};
-            var travel_data = [{
-                "name": "Deal1",
-                "description": "yo yo yo"
-                     }, {
-                "name": "Deal2",
-                "description": "yo yoy oy o"
-                     }];
+  .factory('travelRepository', ['$log', 'Restangular',
+    function($log, Restangular) {
+      var travelRepository = {};
+      var travels = [];
+      var travelRes = Restangular.all('travel');
 
-            travelRepository.get = function () {
-                return travel_data;
-            };
-            travelRepository.add = function (travel) {
-                travel_data.push(travel);
-            };
-            travelRepository.edit = function (travel) {
-                $log.log('entity to edit' + travel);
-            };
-            travelRepository.delete = function (travel) {
-                $log.log('entity to delete' + travel);
-            };
-            return travelRepository;
+      travelRepository.get = function() {
+        if (travels.length == 0) {
+          travelRes.getList().then(function(travelList) {
+            angular.forEach(travelList, function(value, key) {
+              travels.push(value);
+            });
+          });
+        }
+        return travels;
+      };
+      travelRepository.add = function(travel) {
+        console.log("travel : " + travel);
+        var res = travelRes.post(travel).then(function(res) {
+          console.log("res : " + res);
+          if (res.success) {
+            travels.push(travel);
+          }
+        });
+      };
+      travelRepository.edit = function(travel) {
+        $log.log('entity to edit' + travel);
+      };
+      travelRepository.delete = function(travel) {
+        $log.log('entity to delete' + travel);
+      };
+      return travelRepository;
+
     }
   ]);

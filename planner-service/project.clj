@@ -27,6 +27,10 @@
                  [clojurewerkz/mailer "1.2.0"]
                  ;; Http Client
                  [http-kit "2.1.19"]
+                 ;; validation
+                 [prismatic/schema "1.0.1"]
+                 ;; DB schema creator
+                 [lobos "1.0.0-beta3"]
                  [lib-noir "0.9.5"]]
                  ;; JSON Parsing
                  ;[cheshire "5.4.0"]]

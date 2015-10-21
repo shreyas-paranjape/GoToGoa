@@ -15,12 +15,11 @@
   "travel_party": [{
     "title": "party 1",
     "description": "a nice description",
-    "name": "",
     "comm": {
+      "name": "",
       "email": "",
       "phone": "",
     },
-    "designation": "",
     "travel_role_id": 1234
   }]
 }
@@ -34,9 +33,9 @@
     "model_id": "select",
     "vehicle_class_id": "select",
     "no_of_seats": "text field",
-    "travel_vehicle_feature": [
+    "travel_vehicle_feature": [{
       "feature_id": "select",
-      "value": "text field"
+      "value": "text field"}
     ]
   }],
   "stay_party": [{
