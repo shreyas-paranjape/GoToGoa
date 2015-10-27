@@ -1,4 +1,2 @@
-Installation: Install JDK,Leinengen
-
-Preview : lein ring server-headless
+Server for Goa Amigo
 
