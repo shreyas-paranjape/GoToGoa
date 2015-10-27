@@ -2,6 +2,19 @@
 <html class="no-js">
 
 <head>
+<<<<<<< HEAD
+    <meta charset="utf-8">
+    <title>GoaAmigo:admin</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/font-awesome-4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/angular-ui-grid/ui-grid.min.css">
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
+
+=======
   <meta charset="utf-8">
   <title>GoaAmigo:admin</title>
   <meta name="description" content="">
@@ -14,6 +27,7 @@
   <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.css" />
 
   <!-- endbuild -->
+>>>>>>> f5ccb9e0c7b2da1b1c428affb33ed88a37ffbb35
 
 
 </head>
@@ -23,6 +37,54 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser.
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+<<<<<<< HEAD
+    <!-- Add your site or application content here -->
+    <header class="header">
+        <div class="navbar navbar-default" role="navigation">
+            <div class="">
+                <div class="navbar-header">
+                    <a class="navbar-brand" ui-sref="hotel">GoAmigo:Admin</a>
+                </div>
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a ui-sref="vendors.detail">Contact</a>
+                    </li>
+                    <li>
+                        <a ui-sref="place.list">Destination</a>
+                    </li>
+                    <li>
+                        <a ui-sref="grid">Activity</a>
+                    </li>
+                    <li>
+                        <a ui-sref="stay.list">Stay</a>
+                    </li>
+                    <li>
+                        <a ui-sref="travel.list">Travel</a>
+                    </li>
+                    <li>
+                        <a ui-sref="trip.day.grid">Trip</a>
+                    </li>
+                    <li>
+                        <a ui-sref="deals.list">Deals</a>
+                    </li>
+
+                </ul>
+
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <span class="glyphicon glyphicon-log-in"></span> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </header>
+    <!-- Add your site or application content here -->
+=======
   <!-- Add your site or application content here -->
   <header class="header">
     <div class="navbar navbar-default" role="navigation">
@@ -62,6 +124,7 @@
       </div>
     </div>
   </header>
+>>>>>>> f5ccb9e0c7b2da1b1c428affb33ed88a37ffbb35
 
 
   <div>
@@ -76,6 +139,57 @@
     </div>
 </footer>
 -->
+<<<<<<< HEAD
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap-dropdown/dist/bsDropdown.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/tv4/tv4.js"></script>
+    <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
+    <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="bower_components/schema-form-datetimepicker/schema-form-date-time-picker.min.js"></script>
+    <script src="bower_components/accountingjs/accounting.js"></script>
+    <script src="module/trip/script/base.js"></script>
+    <script src="module/trip/script/controller.js"></script>
+    <script src=" module/vendors/script/base.js "></script>
+    <script src="module/vendors/script/controller.js "></script>
+    <!--    <script src="module/vendors/script/service.js"></script>-->
+    <script src=" module/place/script/base.js "></script>
+    <script src="module/place/script/controller.js"></script>
+    <script src="module/stay/script/base.js "></script>
+    <script src="module/stay/script/controller.js"></script>
+    <script src="module/stay/script/service.js"></script>
+    <script src="module/vendors/script/controller.js "></script>
+    <script src="module/deals/script/base.js "></script>
+    <script src="module/deals/script/service.js "></script>
+    <script src="module/deals/script/controller.js "></script>
+    <script src="module/travel/script/base.js "></script>
+    <script src="module/travel/script/controller.js "></script>
+    <script src="module/travel/script/service.js "></script>
+    <script src="scripts/app.js "></script>
+    <!-- endbuild -->
+    <div class="container" style="padding-top:50px;">
+    </div>
+    </footer>
+=======
   <!-- build:js(.) scripts/vendor.js -->
   <!-- bower:js -->
   <script src="bower_components/jquery/dist/jquery.js"></script>
@@ -102,8 +216,61 @@
   <script src="bower_components/restangular/dist/restangular.js"></script>
   <!-- endbower -->
   <!-- endbuild -->
+>>>>>>> f5ccb9e0c7b2da1b1c428affb33ed88a37ffbb35
 
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-bootstrap-dropdown/dist/bsDropdown.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-permission/dist/angular-permission.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/tv4/tv4.js"></script>
+    <script src="bower_components/objectpath/lib/ObjectPath.js"></script>
+    <script src="bower_components/angular-schema-form/dist/schema-form.js"></script>
+    <script src="bower_components/angular-schema-form/dist/bootstrap-decorator.js"></script>
+    <script src="bower_components/angular-ui-grid/ui-grid.js"></script>
+    <script src="bower_components/lodash/dist/lodash.compat.js"></script>
+    <script src="bower_components/restangular/dist/restangular.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
 
+<<<<<<< HEAD
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="bower_components/accountingjs/accounting.js"></script>
+
+    <!-- Stay -->
+    <script src="module/stay/script/base.js "></script>
+    <script src="module/stay/script/controller.js"></script>
+
+    <!-- Travel -->
+    <script src="module/travel/script/base.js "></script>
+    <script src="module/travel/script/controller.js "></script>
+
+    <!-- Activity -->
+    <script src="module/activity/script/base.js "></script>
+    <script src="module/activity/script/controller.js"></script>
+
+    <!-- Deals -->
+    <script src="module/deal/script/base.js "></script>
+    <script src="module/deal/script/service.js "></script>
+    <script src="module/deal/script/controller.js "></script>
+
+    <!-- Trip -->
+    <script src="module/trip/script/base.js"></script>
+    <script src="module/trip/script/controller.js"></script>
+
+    <!-- Application -->
+    <script src="scripts/app.js "></script>
+    <!-- endbuild -->
+=======
   <!-- build:js({.tmp,app}) scripts/scripts.js -->
   <script src="bower_components/schema-form-datetimepicker/schema-form-date-time-picker.min.js"></script>
   <script src="bower_components/accountingjs/accounting.js"></script>
@@ -124,6 +291,7 @@
   <script src="scripts/app.js "></script>
   <!-- endbuild -->
 
+>>>>>>> f5ccb9e0c7b2da1b1c428affb33ed88a37ffbb35
 
 </body>
 

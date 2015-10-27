@@ -9,6 +9,11 @@
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css({.tmp,dist}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
+    <!--    <link rel="stylesheet" href="bower_components/angular-rangeslider/angular.rangeSlider.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/mapbox.js/mapbox.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/angular-mapbox/examples/lib/MarkerCluster.css">-->
+    <!--    <link rel="stylesheet" href="bower_components/angular-mapbox/examples/lib/MarkerCluster.Default.css">-->
     <!-- endbuild -->
 
 </head>
@@ -17,9 +22,14 @@
     <!--[if lt IE 8]><p class="browsehappy">You are using an <strong>outdated</strong> browser.
         Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <div ui-view></div>
+    <!--    <div ncy-breadcrumb></div>-->
+
+
+
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -33,10 +43,19 @@
     <script src="bower_components/lodash/dist/lodash.compat.js"></script>
     <script src="bower_components/restangular/dist/restangular.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
+    <script src="bower_components/mapbox.js/mapbox.js"></script>
+    <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
+    <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
+    <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <!--    <script src="bower_components/angular-mapbox/examples/lib/leaflet.markercluster.js"></script>-->
+    <!--    <script src="bower_components/angular-mapbox/dist/angular-mapbox.js"></script>-->
+    <!--    <script src="bower_components/angular-rangeslider/angular.rangeSlider.js"></script>-->
+    <!--    <script src="bower_components/ngmap//build/scripts/ng-map.min.js"></script>-->
+    <script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
     <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
     <script src="bower_components/accountingjs/accounting.js"></script>
     <script src="directive/base.js"></script>
@@ -51,9 +70,14 @@
     <script src="module/stay/script/controller.js "></script>
     <script src="module/activity/script/base.js "></script>
     <script src="module/activity/script/controller.js "></script>
+
+    <script src="directive/base.js"></script>
+    <script src="directive/card/base.js"></script>
     <script src="module/trip/script/base.js"></script>
     <script src="module/trip/script/controller.js"></script>
     <script src="scripts/app.js "></script>
+    <!--    <script src="//maps.google.com/maps/api/js"></script>-->
+
     <!-- endbuild -->
 
 </body>

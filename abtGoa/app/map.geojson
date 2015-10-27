@@ -1,0 +1,166 @@
+{
+        "type": "FeatureCollection",
+        "features": [{
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.9581, 15.2736]
+            },
+            "properties": {
+                "title": "Margao",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "monument",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [74.0200, 15.4000]
+            },
+            "properties": {
+                "title": "Ponda",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.8200, 15.6000]
+            },
+            "properties": {
+                "title": "Mapusa",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.992020, 15.286328]
+            },
+            "properties": {
+                "title": "Margao area 1",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.986630, 15.282405]
+            },
+            "properties": {
+                "title": "Margao area 2",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.980148, 15.422662]
+            },
+            "properties": {
+                "title": "Gec",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [74.005880, 15.389137]
+            },
+            "properties": {
+                "title": "Ponda 1",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.812592, 15.594817]
+            },
+            "properties": {
+                "title": "Mapusa area 1",
+                "marker-color": "#fc4353",
+                "marker-size": "large",
+                "marker-symbol": "harbor",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }, {
+            "type": "Feature",
+            "geometry": {
+                "type": "Point",
+                "coordinates": [73.808268, 15.597938]
+            },
+            "properties": {
+                "title": "Xaviers",
+                "marker-color": "#fc4353",
+                "marker-symbol": "harbor",
+                "marker-size": "large",
+                "images": [
+          ["<iframe src='http://www.youtube.com/embed/jRXaQC0jKcg?autoplay=0' width='301' height='205' frameborder='0' webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe> ", "2nd video"],
+          ["https://i.imgur.com/exemdwr.png", "Peter Minuit is credited with the purchase of the island of Manhattan in 1626."],
+          ["https://i.imgur.com/LHNDBpf.jpg", "During the mid-19th Century, Broadway was extended the length of Manhattan."],
+          ["https://i.imgur.com/Pk3DYH1.jpg", "Times Square has the highest annual attendance rate of any tourist attraction in the world."]
+        ]
+            }
+        }]
+    }
