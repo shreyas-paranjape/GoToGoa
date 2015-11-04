@@ -11,7 +11,6 @@ angular.element(document).ready(function () {
             'ngSanitize',
             'ngTouch',
 //            'ngMap',
-//            'ui-rangeSlider',
             'ui.bootstrap',
             'angularjs-dropdown-multiselect',
             'nemLogging',
@@ -21,7 +20,9 @@ angular.element(document).ready(function () {
             'trip',
             'activity',
             'stay',
-            'travel'
+            'travel',
+            'abtgoa',
+            'rzModule'
         ])
         .config(function ($urlRouterProvider) {
             $urlRouterProvider.otherwise('/apps/trip');

@@ -1,6 +1,5 @@
 <div class="row">
 
-
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
         <div class="row">
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
@@ -8,7 +7,7 @@
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <p class="input-group">
-                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" placeholder="From" type="text" />
+                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" ng-click="open($event)" placeholder="From" type="text" />
                     <span class="input-group-btn">
                         <button class="btn btn-default" ng-click="open($event)" type="button">
                             <i class="glyphicon glyphicon-calendar"></i>
@@ -18,9 +17,9 @@
             </div>
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
                 <p class="input-group">
-                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" placeholder="To" type="text" />
+                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions1" datepicker-popup="{{format}}" is-open="status1.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" ng-click="open1($event1)" placeholder="To" type="text" />
                     <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open($event)" type="button">
+                        <button class="btn btn-default" ng-click="open1($event1)" type="button">
                             <i class="glyphicon glyphicon-calendar"></i>
                         </button>
                     </span>
@@ -46,19 +45,18 @@
         </div>
         <div class="row">
             <h4>Price Range</h4>
-            <div range-slider min="0" max="100" model-min="min" model-max="max"></div>
+            <div>
+                <rzslider rz-slider-floor="priceSlider.floor" rz-slider-ceil="priceSlider.ceil" rz-slider-model="priceSlider.min" rz-slider-high="priceSlider.max" rz-slider-translate="translate" rz-slider-on-change="onSliderChange()" rz-slider-show-ticks="true"></rzslider>
+            </div>
         </div>
 
         <div ng-repeat="i in [1, 2, 3]">
-            <div card ng-mouseover="cardMouseOver()"></div>
+            <div card ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
 
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <!--        <div id='map'></div>-->
-        <!--        <mapbox map-id="ruchita.cifi6c65vbkhpsukn9f7udjj9" lat="47.603569" lng="-122.329453"></mapbox>-->
-        <!--        <button id='open-popup' class='ui-control'>open popup</button>-->
-        <leaflet center="goa" markers="markers" height="480px" width="100%"></leaflet>
+        <leaflet center="goa" defaults="defaults" markers="markers" height="480px" width="100%"></leaflet>
     </div>
 
 </div>

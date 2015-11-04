@@ -3,8 +3,8 @@ angular.module('travel')
         'use strict';
         $scope.pageHeader = "Travel";
   }])
-    .controller('TravelListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData',
-    function ($scope, $filter, $stateParams, $timeout, $log, leafletData) {
+    .controller('TravelListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
+    function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
             //            $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
             //            var marker, map;
@@ -41,25 +41,91 @@ angular.module('travel')
                         draggable: false
                     }
 
+                },
+                defaults: {
+                    scrollWheelZoom: false
+                },
+                paths: {
+
                 }
             });
             $scope.addMarkers = function (location) {
                 angular.extend($scope, {
-                    markers: location
-
+                    markers: {
+                        m2: {
+                            lat: 15.2736,
+                            lng: 73.9581,
+                            focus: true,
+                            message: "<div ng-controller='TravelListController' ng-include src=\"'module/travel/view/template.html'\"></div>",
+                            draggable: false
+                        }
+                    }
                 });
             };
 
-            $scope.cardMouseOver = function () {
-                $scope.addMarkers({
-                    m2: {
-                        lat: 15.282517,
-                        lng: 73.993368,
-                        focus: false,
-                        message: "Margao",
-                        draggable: false
+            //            $scope.openMarker = function () {
+            //                console.log("open marker function 1");
+            //
+            //                $state.go('app.trip.edit');
+            //            }
+
+
+
+            $scope.addPath = function (pathName, path) {
+                angular.extend($scope, {
+                    paths: {
+                        pathName: path
                     }
                 });
+            };
+
+            $scope.clearPaths = function () {
+                angular.extend($scope, {
+                    paths: {}
+                });
+            };
+            $scope.clearMarkers = function () {
+                angular.extend($scope, {
+                    markers: {}
+                });
+            };
+
+
+
+
+
+            $scope.cardMouseEnter = function (i) {
+                $scope.clearPaths();
+                $scope.clearMarkers();
+                //                $scope.addPath("p" + i, {
+                //                    color: 'red',
+                //                    weight: 3,
+                //                    latlngs: [
+                //                        {
+                //                            lat: 15.4989,
+                //                            lng: 73.8278
+                //                                            },
+                //                        {
+                //                            lat: 15.4000,
+                //                            lng: 74.0200
+                //                                            },
+                //                        {
+                //                            lat: 15.2736,
+                //                            lng: 73.9581
+                //                                            }
+                //                            ],
+                //                    message: "<div ng-controller='TripListController' ng-include src=\"'module/trip/view/template.html'\"></div>"
+                //
+                //                });
+                $scope.addMarkers({});
+
+            };
+            $scope.openMarker = function () {
+                console.log("open marker function");
+                $state.go('app.trip.edit');
+            }
+            $scope.cardMouseLeave = function () {
+
             }
 
 
@@ -132,6 +198,21 @@ angular.module('travel')
             myLayer.on('mouseout', function (e) {
                 e.layer.closePopup();
             });*/
+            $scope.priceSlider = {
+                min: 500,
+                max: 15000,
+                ceil: 20000,
+                floor: 0
+            };
+
+            $scope.translate = function (value) {
+                return '₹' + value;
+            }
+
+            $scope.onSliderChange = function () {
+                console.log('changed', $scope.priceSlider);
+            }
+
 
             $scope.items = [
         'The first choice!',
@@ -307,6 +388,33 @@ angular.module('travel')
                 $event.preventDefault();
                 $event.stopPropagation();
                 $scope.status.isopen = !$scope.status.isopen;
+            };
+
+            //second clanedar
+            $scope.status1 = {
+                opened: false
+            };
+            $scope.open1 = function () {
+                $timeout(function () {
+                    $scope.status1.opened = true;
+                });
+            };
+
+            $scope.dateOptions1 = {
+                formatYear: 'yy',
+                startingDay: 1
+            };
+
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+            $scope.format = $scope.formats[0];
+            $scope.status1 = {
+                isopen: false
+            };
+
+            $scope.toggleDropdown = function ($event1) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.status1.isopen = !$scope.status1.isopen;
             };
     }
   ])
