@@ -32,4 +32,6 @@ pom.xml.asc
 *.iml
 .lein-env
 
+*.*~
+
 
