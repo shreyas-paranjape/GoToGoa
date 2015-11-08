@@ -1,0 +1,30 @@
+<div style="width:800px;">
+    <carousel interval="myInterval" no-wrap="noWrapSlides">
+        <slide ng-repeat="slide in slides" active="slide.active">
+            <div class="event-card-list">
+                <div class="row">
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{slide.title}} , {{slide.price}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#84D6D6;">
+                        <div class="row">
+                            <img ng-src="{{slide.url}}">
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{slide.descr}},{{slide.location}}</div>
+                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">ratings</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row event-card-list">
+                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
+                        <span class="edit">Edit</span>
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+                </div>
+            </div>
+        </slide>
+    </carousel>
+</div>

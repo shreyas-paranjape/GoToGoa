@@ -1,10 +1,9 @@
-angular.module('activity')
-    .controller('ActivityController', ['$scope',
-    function ($scope) {
-            $scope.pageHeader = "Activity";
-    }
-  ])
-    .controller('ActivityListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
+angular.module('abtgoa')
+    .controller('AbtGoaController', ['$scope', function ($scope) {
+        'use strict';
+        $scope.pageHeader = "About Goa";
+  }])
+    .controller('AbtGoaListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
             leafletData.getMap().then(function (map) {
@@ -41,7 +40,7 @@ angular.module('activity')
                             lat: 15.2736,
                             lng: 73.9581,
                             focus: true,
-                            message: "<div ng-controller='ActivityListController' ng-include src=\"'module/activity/view/template.html'\"></div>",
+                            message: "<div ng-controller='StayListController' ng-include src=\"'module/stay/view/template.html'\"></div>",
                             draggable: false
                         }
                     }
@@ -157,24 +156,19 @@ angular.module('activity')
             };
 
             $scope.adults = [];
-            $scope.adultsdata = [
-                {
-                    id: 1,
-                    label: "2 adults"
-                },
-                {
-                    id: 2,
-                    label: "3 adults"
-                },
-                {
-                    id: 3,
-                    label: "4 adults"
-                },
-                {
-                    id: 4,
-                    label: "5 adults"
-                }
-            ];
+            $scope.adultsdata = [{
+                id: 1,
+                label: "2 adults"
+      }, {
+                id: 2,
+                label: "3 adults"
+      }, {
+                id: 3,
+                label: "4 adults"
+      }, {
+                id: 4,
+                label: "5 adults"
+      }];
 
             $scope.examplesettings1 = {
                 smartButtonMaxItems: 1,
@@ -182,24 +176,19 @@ angular.module('activity')
             };
 
             $scope.places = [];
-            $scope.placesdata = [
-                {
-                    id: 1,
-                    label: "Panjim"
-                },
-                {
-                    id: 2,
-                    label: "Margao"
-                },
-                {
-                    id: 3,
-                    label: "Candolim"
-                },
-                {
-                    id: 4,
-                    label: "Mapusa"
-                }
-            ];
+            $scope.placesdata = [{
+                id: 1,
+                label: "Panjim"
+      }, {
+                id: 2,
+                label: "Margao"
+      }, {
+                id: 3,
+                label: "Candolim"
+      }, {
+                id: 4,
+                label: "Mapusa"
+      }];
 
             $scope.examplesettings2 = {
                 smartButtonMaxItems: 1,
@@ -207,64 +196,51 @@ angular.module('activity')
             };
 
             $scope.amt = [];
-            $scope.amtdata = [
-                {
-                    id: 1,
-                    label: "Rs.1000-Rs.2000"
-                },
-                {
-                    id: 2,
-                    label: "Rs.2000-Rs.5000"
-                },
-                {
-                    id: 3,
-                    label: "Rs.5000-Rs.7500"
-                },
-                {
-                    id: 4,
-                    label: "Rs.8000-Rs.10000"
-                }
-            ];
+            $scope.amtdata = [{
+                id: 1,
+                label: "Rs.1000-Rs.2000"
+      }, {
+                id: 2,
+                label: "Rs.2000-Rs.5000"
+      }, {
+                id: 3,
+                label: "Rs.5000-Rs.7500"
+      }, {
+                id: 4,
+                label: "Rs.8000-Rs.10000"
+      }];
 
             $scope.examplesettings3 = {
                 smartButtonMaxItems: 1,
                 selectionLimit: 1
             };
             $scope.companion = [];
-            $scope.companiondata = [
-                {
-                    id: 1,
-                    label: "Family"
-                },
-                {
-                    id: 2,
-                    label: "Friends"
-                },
-                {
-                    id: 3,
-                    label: "Colleagues"
-                }
-            ];
+            $scope.companiondata = [{
+                id: 1,
+                label: "Family"
+      }, {
+                id: 2,
+                label: "Friends"
+      }, {
+                id: 3,
+                label: "Colleagues"
+      }];
 
             $scope.examplesettings4 = {
                 smartButtonMaxItems: 1,
                 selectionLimit: 1
             };
             $scope.amenities = [];
-            $scope.amenitiesdata = [
-                {
-                    id: 1,
-                    label: "ac"
-                },
-                {
-                    id: 2,
-                    label: "wifi"
-                },
-                {
-                    id: 3,
-                    label: "beaches"
-                }
-            ];
+            $scope.amenitiesdata = [{
+                id: 1,
+                label: "ac"
+      }, {
+                id: 2,
+                label: "wifi"
+      }, {
+                id: 3,
+                label: "beaches"
+      }];
 
             $scope.examplesettings5 = {
                 smartButtonMaxItems: 3,
@@ -330,26 +306,10 @@ angular.module('activity')
 
     }
   ])
-    .controller('ActivityEditController', ['$scope', 'Restangular', '$stateParams', '$timeout', '$document', 'leafletData',
-    function ($scope, Restangular, $stateParams, $timeout, $document, leafletData) {
+    .controller('AbtGoaEditController', [
+    '$scope', '$stateParams', '$timeout', '$document',
+    function ($scope, $stateParams, $timeout, $document) {
             'use strict';
-            $scope.activity = [];
-
-            // Define resource 
-            //defines the url name
-            var actiRes = Restangular.all('activities');
-
-            // CALL POST
-            actiRes.post({
-                "data": "ping"
-            });
-
-            // CALL GET
-            actiRes.getList().then(function (actiList) {
-                angular.forEach(actiList, function (value, key) {
-                    $scope.activity.push(value);
-                });
-            });
 
             $scope.tabs = [{
                 id: 0,
@@ -366,7 +326,31 @@ angular.module('activity')
       }];
 
 
+            $scope.events = [{
+                id: '1',
+                title: 'Trek',
+                descr: 'Starts early morning at 6 am',
+                rating: '3.5',
+                location: 'Chorla Ghat',
+                url: '../../../images/trek.jpg',
+                //                    price: accounting.formatMoney(500, "₹"),
+                x: '15.4000',
+                y: '74.0200'
+      }, {
+                id: '2',
+                title: 'Miramar Beach',
+                descr: 'beach beach beach beach',
+                rating: '4',
+                location: 'Panjim',
+                url: '../../../images/beach.jpg',
+                //                    price: accounting.formatMoney(800, "₹"),
+                x: '15.482490',
+                y: '73.807244'
+      }];
 
+            $scope.category = [
+
+      ];
             $scope.gotoEvent = function (event_id) {
                 var tabId = Math.floor(event_id / 10);
                 $scope.tabs[tabId].active = true;
@@ -393,52 +377,47 @@ angular.module('activity')
                 //carousel
             $scope.myInterval = 5000;
             $scope.noWrapSlides = false;
-            var slides = $scope.slides = [
-                {
-                    id: '1',
-                    title: 'Trek',
-                    descr: 'Starts early morning at 6 am',
-                    rating: '3.5',
-                    location: 'Chorla Ghat',
-                    url: '../../../images/b2.jpg',
-                    //                    price: accounting.formatMoney(500, "₹"),
-                    x: '15.4000',
-                    y: '74.0200'
-                },
-                {
-                    id: '2',
-                    title: 'Miramar Beach',
-                    descr: 'beach beach beach beach',
-                    rating: '4',
-                    location: 'Panjim',
-                    url: '../../../images/b1.jpg',
-                    //                    price: accounting.formatMoney(800, "₹"),
-                    x: '15.482490',
-                    y: '73.807244'
-                },
-                {
-                    id: '3',
-                    title: 'cvcv',
-                    descr: 'Starts early morning at 6 am',
-                    rating: '3.5',
-                    location: 'Chorla Ghat',
-                    url: '../../../images/trek.jpg',
-                    //                    price: accounting.formatMoney(500, "₹"),
-                    x: '15.4000',
-                    y: '74.0200'
-                },
-                {
-                    id: '4',
-                    title: 'vxvcx vcv',
-                    descr: 'beach beach beach beach',
-                    rating: '4',
-                    location: 'Panjim',
-                    url: '../../../images/beach.jpg',
-                    //                    price: accounting.formatMoney(800, "₹"),
-                    x: '15.482490',
-                    y: '73.807244'
-                }
-            ];
+            var slides = $scope.slides = [{
+                id: '1',
+                title: 'Trek',
+                descr: 'Starts early morning at 6 am',
+                rating: '3.5',
+                location: 'Chorla Ghat',
+                url: '../../../images/b2.jpg',
+                //                    price: accounting.formatMoney(500, "₹"),
+                x: '15.4000',
+                y: '74.0200'
+      }, {
+                id: '2',
+                title: 'Miramar Beach',
+                descr: 'beach beach beach beach',
+                rating: '4',
+                location: 'Panjim',
+                url: '../../../images/b1.jpg',
+                //                    price: accounting.formatMoney(800, "₹"),
+                x: '15.482490',
+                y: '73.807244'
+      }, {
+                id: '3',
+                title: 'cvcv',
+                descr: 'Starts early morning at 6 am',
+                rating: '3.5',
+                location: 'Chorla Ghat',
+                url: '../../../images/trek.jpg',
+                //                    price: accounting.formatMoney(500, "₹"),
+                x: '15.4000',
+                y: '74.0200'
+      }, {
+                id: '4',
+                title: 'vxvcx vcv',
+                descr: 'beach beach beach beach',
+                rating: '4',
+                location: 'Panjim',
+                url: '../../../images/beach.jpg',
+                //                    price: accounting.formatMoney(800, "₹"),
+                x: '15.482490',
+                y: '73.807244'
+      }];
             $scope.addSlide = function () {
                 var newWidth = 600 + slides.length + 1;
 

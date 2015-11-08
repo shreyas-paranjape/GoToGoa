@@ -3,8 +3,15 @@ angular.module('trip', [
     'ui.router',
     'duScroll'
 ])
-    .config(function ($stateProvider) {
+    .config(function ($stateProvider, RestangularProvider) {
         'use strict';
+        RestangularProvider.setDefaultHeaders({
+            "Content-Type": "application/json",
+            'Access-Control-Allow-Origin': "*",
+            'Access-Control-Allow-Methods': "POST, GET, OPTIONS"
+        });
+        RestangularProvider.setBaseUrl("http://localhost:8080/api/");
+
         $stateProvider
             .state('app.trip', {
                 url: '/trip',

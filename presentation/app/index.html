@@ -10,7 +10,10 @@
     <!-- build:css({.tmp,dist}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="../bower_components/leaflet/dist/leaflet.css" />
-    <!--    <link rel="stylesheet" href="bower_components/angular-rangeslider/angular.rangeSlider.css">-->
+    <link rel="stylesheet" href="../bower_components/angularjs-slider/dist/rzslider.min.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
     <!--    <link rel="stylesheet" href="bower_components/mapbox.js/mapbox.css">-->
     <!--    <link rel="stylesheet" href="bower_components/angular-mapbox/examples/lib/MarkerCluster.css">-->
     <!--    <link rel="stylesheet" href="bower_components/angular-mapbox/examples/lib/MarkerCluster.Default.css">-->
@@ -29,7 +32,6 @@
 
     <!-- build:js(.) scripts/vendor.js -->
     <!-- bower:js -->
-    <script src="bower_components/jquery/dist/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
@@ -47,14 +49,15 @@
     <script src="bower_components/angular-simple-logger/dist/angular-simple-logger.js"></script>
     <script src="bower_components/leaflet/dist/leaflet-src.js"></script>
     <script src="bower_components/angular-leaflet-directive/dist/angular-leaflet-directive.js"></script>
+    <script src="bower_components/angularjs-slider/dist/rzslider.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <!--    <script src="bower_components/angular-mapbox/examples/lib/leaflet.markercluster.js"></script>-->
     <!--    <script src="bower_components/angular-mapbox/dist/angular-mapbox.js"></script>-->
-    <!--    <script src="bower_components/angular-rangeslider/angular.rangeSlider.js"></script>-->
     <!--    <script src="bower_components/ngmap//build/scripts/ng-map.min.js"></script>-->
+    <script src="//angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.14.3.js"></script>
     <script src="bower_components/angular-breadcrumb/dist/angular-breadcrumb.js"></script>
     <script src="bower_components/angularjs-dropdown-multiselect/src/angularjs-dropdown-multiselect.js"></script>
     <script src="bower_components/accountingjs/accounting.js"></script>
@@ -70,6 +73,8 @@
     <script src="module/stay/script/controller.js "></script>
     <script src="module/activity/script/base.js "></script>
     <script src="module/activity/script/controller.js "></script>
+    <script src="module/abtgoa/script/base.js"></script>
+    <script src="module/abtgoa/script/controller.js "></script>
 
     <script src="directive/base.js"></script>
     <script src="directive/card/base.js"></script>
