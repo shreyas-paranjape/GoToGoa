@@ -23,6 +23,7 @@
                  [liberator "0.13"]
                  ;; ORM
                  [korma "0.4.2"]
+                 [yesql "0.5.1"]
                  ;; Mail
                  [clojurewerkz/mailer "1.2.0"]
                  ;; Http Client
@@ -37,7 +38,7 @@
   :plugins [[lein-ring "0.9.6"]
             [lein-environ "1.0.0"]]
   :ring {:handler ga.infra.web/app}
-  :main delivery.infra.server
+  ;;:main delivery.infra.server
   :profiles
   {:uberjar {:aot :all}
    :production
