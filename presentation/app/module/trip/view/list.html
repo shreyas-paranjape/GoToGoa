@@ -1,27 +1,57 @@
 <div class="row">
-
-
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
-        <div class="row refine_filter no-margin">
-            <span>I'd like to visit Goa from To as</span>
-            <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="adults" ng-model="selectAdults" style="display:inline-block;"></div>
-            <span>. My Budget is</span>
-            <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="budgets" ng-model="selectBudgets" style="display:inline-block;"></div>
-            <span>and I'm interested in</span>
-            <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="interests" bs-dropdown-multi ng-model="selectinterests" style="display:inline-block;"></div>
-            <span>and i want it to be a</span>
-            <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="type_trips" ng-model="selecttype_trips" style="display:inline-block;"></div>
-            <span>. I am going with my</span>
-            <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="companion" ng-model="selectcompanion" style="display:inline-block;"></div>
-            <span>
-    and want to definately see</span>
-            <div bs-dropdown bs-dropdown-display="Select" bs-dropdown-items="places" bs-dropdown-multi ng-model="selectplaces" style="display:inline-block;"></div>
-            <div style="padding:5px;">
-                <button class="btn btn-primary btn-refine-search" style="" type="button">REFINE SEARCH</button>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
+        <div class="row">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
+                <h4>Dates</h4>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p class="input-group">
+                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" ng-click="open($event)" placeholder="From" type="text" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open($event)" type="button">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <p class="input-group">
+                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions1" datepicker-popup="{{format}}" is-open="status1.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" ng-click="open1($event1)" placeholder="To" type="text" />
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" ng-click="open1($event1)" type="button">
+                            <i class="glyphicon glyphicon-calendar"></i>
+                        </button>
+                    </span>
+                </p>
+            </div>
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
             </div>
         </div>
-        <div ng-repeat="i in [1, 2, 3]">
-            <div card ng-mouseenter="cardMouseEnter(i)"></div>
+        <div class="row">
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+                <h4 style="display:inline-block;">Type: </h4>
+                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 style="display:inline-block;">Places: </h4>
+                <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <h4 style="display:inline-block;">Companion: </h4>
+                <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
+            </div>
+        </div>
+        <div class="row">
+            <h4>Price Range</h4>
+            <div>
+                <rzslider rz-slider-floor="priceSlider.floor" rz-slider-ceil="priceSlider.ceil" rz-slider-model="priceSlider.min" rz-slider-high="priceSlider.max" rz-slider-translate="translate" rz-slider-on-change="onSliderChange()" rz-slider-show-ticks="true"></rzslider>
+            </div>
+        </div>
+
+        <!--        <div ng-repeat="i in [1, 2, 3]">-->
+        <div>
+            <div tripcard ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
     </div>
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">

@@ -1,0 +1,53 @@
+<div ng-repeat="trip in trips">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+            <span style="font-size:16px;font-weight:300;">{{trip.title}}, ₹{{trip.price}}/-</span>
+        </div>
+    </div>
+    <div style="background-color:#343434;">
+        <div style="padding-bottom:15px;">
+            <div class="row ">
+                <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" style="padding-top:15px;">
+                    <img src="{{trip.url}}" height="auto" width="auto">
+                </div>
+            </div>
+            <div class="row" ng-repeat="hotel in trip.hotels" style="padding-left:15px;padding-right:22px;">
+                <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px;background-color:#297EC1;">
+                    <img src="{{hotel.url}}" height="auto" width="auto" style="padding-top:10px;">
+                    <h4 style="color:white;">{{hotel.title}}</h4>
+                    <h5 style="color:white;">{{hotel.descr}}</h5>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="background-color:#00B46D;height:224px;">
+                    yo
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--
+    <div class="animate-switch-container" ng-switch on="currentState">
+    <div class="row" ng-switch-when="category">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-switch-default>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+            <div class="row">
+                <div style="height:200px">Event content</div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+            <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ng-click="change()">Book trip now</a>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+    </div>
+</div>

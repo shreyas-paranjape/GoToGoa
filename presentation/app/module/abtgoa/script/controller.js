@@ -9,109 +9,139 @@ angular.module('abtgoa')
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
-
             angular.extend($scope, {
                 goa: {
                     lat: 15.4989,
                     lng: 73.8278,
-                    zoom: 10
+                    zoom: 8
                 },
-                markers: {
-                    m1: {
-                        lat: 15.399067,
-                        lng: 74.013433,
-                        focus: false,
-                        message: "Ponda ponda",
-                        draggable: false
-                    }
 
-                },
                 defaults: {
                     scrollWheelZoom: false
                 },
-                paths: {
-
-                }
-            });
-            $scope.addMarkers = function (location) {
-                angular.extend($scope, {
-                    markers: {
-                        m2: {
-                            lat: 15.2736,
-                            lng: 73.9581,
-                            focus: true,
-                            message: "<div ng-controller='StayListController' ng-include src=\"'module/stay/view/template.html'\"></div>",
-                            draggable: false
+                markers: {
+                    ponda: {
+                        group: 'goa',
+                        lat: 15.4000,
+                        lng: 74.0200,
+                        label: {
+                            message: "Ponda",
+                            options: {
+                                noHide: true
+                            }
+                        }
+                    },
+                    vasco: {
+                        group: 'goa',
+                        lat: 15.3981,
+                        lng: 73.8111,
+                        label: {
+                            message: "Vasco",
+                            options: {
+                                noHide: true
+                            }
+                        }
+                    },
+                    bicholim: {
+                        group: 'goa',
+                        lat: 15.6000,
+                        lng: 73.9500,
+                        label: {
+                            message: "Bicholim",
+                            options: {
+                                noHide: true
+                            }
+                        }
+                    },
+                    mapusa: {
+                        group: 'goa',
+                        lat: 15.6000,
+                        lng: 73.8200,
+                        label: {
+                            message: "Mapusa",
+                            options: {
+                                noHide: true
+                            }
                         }
                     }
-                });
-            };
+                },
+            });
 
-            //            $scope.openMarker = function () {
-            //                console.log("open marker function 1");
+
+            //            angular.extend($scope, {
+            //                goa: {
+            //                    lat: 15.4989,
+            //                    lng: 73.8278,
+            //                    zoom: 10
+            //                },
+            //                markers: {
+            //                    m1: {
+            //                        lat: 15.399067,
+            //                        lng: 74.013433,
+            //                        focus: false,
+            //                        message: "Ponda ponda",
+            //                        draggable: false
+            //                    }
             //
+            //                },
+            //                defaults: {
+            //                    scrollWheelZoom: false
+            //                },
+            //                paths: {
+            //
+            //                }
+            //            });
+            //            $scope.addMarkers = function (location) {
+            //                angular.extend($scope, {
+            //                    markers: {
+            //                        m2: {
+            //                            lat: 15.2736,
+            //                            lng: 73.9581,
+            //                            focus: true,
+            //                            message: "<div ng-controller='StayListController' ng-include src=\"'module/stay/view/template.html'\"></div>",
+            //                            draggable: false
+            //                        }
+            //                    }
+            //                });
+            //            };
+            //
+            //            $scope.addPath = function (pathName, path) {
+            //                angular.extend($scope, {
+            //                    paths: {
+            //                        pathName: path
+            //                    }
+            //                });
+            //            };
+            //
+            //            $scope.clearPaths = function () {
+            //                angular.extend($scope, {
+            //                    paths: {}
+            //                });
+            //            };
+            //            $scope.clearMarkers = function () {
+            //                angular.extend($scope, {
+            //                    markers: {}
+            //                });
+            //            };
+            //
+            //
+            //
+            //
+            //
+            //            $scope.cardMouseEnter = function (i) {
+            //                $scope.clearPaths();
+            //                $scope.clearMarkers();
+            //               
+            //                $scope.addMarkers({});
+            //
+            //            };
+            //            $scope.openMarker = function () {
+            //                console.log("open marker function");
             //                $state.go('app.trip.edit');
             //            }
-
-
-
-            $scope.addPath = function (pathName, path) {
-                angular.extend($scope, {
-                    paths: {
-                        pathName: path
-                    }
-                });
-            };
-
-            $scope.clearPaths = function () {
-                angular.extend($scope, {
-                    paths: {}
-                });
-            };
-            $scope.clearMarkers = function () {
-                angular.extend($scope, {
-                    markers: {}
-                });
-            };
-
-
-
-
-
-            $scope.cardMouseEnter = function (i) {
-                $scope.clearPaths();
-                $scope.clearMarkers();
-                //                $scope.addPath("p" + i, {
-                //                    color: 'red',
-                //                    weight: 3,
-                //                    latlngs: [
-                //                        {
-                //                            lat: 15.4989,
-                //                            lng: 73.8278
-                //                                            },
-                //                        {
-                //                            lat: 15.4000,
-                //                            lng: 74.0200
-                //                                            },
-                //                        {
-                //                            lat: 15.2736,
-                //                            lng: 73.9581
-                //                                            }
-                //                            ],
-                //                    message: "<div ng-controller='TripListController' ng-include src=\"'module/trip/view/template.html'\"></div>"
-                //
-                //                });
-                $scope.addMarkers({});
-
-            };
-            $scope.openMarker = function () {
-                console.log("open marker function");
-                $state.go('app.trip.edit');
-            }
-            $scope.cardMouseLeave = function () {
-
-            }
-
+            //            $scope.cardMouseLeave = function () {
+            //
+            //            }
             $scope.priceSlider = {
                 min: 500,
                 max: 15000,

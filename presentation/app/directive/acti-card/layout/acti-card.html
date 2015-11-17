@@ -1,0 +1,57 @@
+<div ng-repeat="acti in activity">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+            <span style="font-size:16px;font-weight:600; padding:5px;margin-top:10px;">{{acti.title}}, ₹{{acti.price}}/-</span>
+        </div>
+    </div>
+    <div style="background-color:#343434;">
+        <div style="padding-bottom:15px;">
+            <div class="row ">
+                <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" style="padding-top:15px;">
+                    <!--                    <img src="{{acti.url}}" height="auto" width="auto">-->
+
+                    <div style="height: 305px">
+                        <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+                            <uib-slide ng-repeat="slide in slides" active="slide.active">
+                                <img ng-src="{{slide.image}}" style="margin:auto;">
+                                <div class="carousel-caption">
+                                    <h4>Slide {{$index}}</h4>
+                                    <p>{{slide.text}}</p>
+                                </div>
+                            </uib-slide>
+                        </uib-carousel>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--
+    <div class="animate-switch-container" ng-switch on="currentState">
+    <div class="row" ng-switch-when="category">
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+            </div>
+        </div>
+    </div>
+    <div class="row" ng-switch-default>
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
+            <div class="row">
+                <div style="height:200px">Event content</div>
+            </div>
+        </div>
+    </div>
+</div>
+-->
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+            <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.activity.detail">Add to the cart</a>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+    </div>
+</div>

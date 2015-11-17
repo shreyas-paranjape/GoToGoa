@@ -26,5 +26,10 @@ angular.module('activity', [
                 url: '/edit',
                 templateUrl: '/module/activity/view/edit.html',
                 controller: 'ActivityEditController'
+            })
+            .state('app.activity.detail', {
+                url: '/detail',
+                templateUrl: '/module/activity/view/detail.html',
+                controller: 'ActivityDetailController'
             });
     });

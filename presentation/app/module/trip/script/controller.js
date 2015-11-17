@@ -112,6 +112,233 @@ angular.module('trip')
             $scope.cardMouseLeave = function () {
 
             }
+            $scope.priceSlider = {
+                min: 500,
+                max: 15000,
+                ceil: 20000,
+                floor: 0
+            };
+
+            $scope.translate = function (value) {
+                return '₹' + value;
+            }
+
+            $scope.onSliderChange = function () {
+                console.log('changed', $scope.priceSlider);
+            }
+            $scope.examplemodel = [];
+            $scope.exampledata = [{
+                id: 1,
+                label: "David"
+      }, {
+                id: 2,
+                label: "Jhon"
+      }, {
+                id: 3,
+                label: "Lisa"
+      }, {
+                id: 4,
+                label: "Nicole"
+      }, {
+                id: 5,
+                label: "Danny"
+      }];
+
+            $scope.examplesettings = {
+                smartButtonMaxItems: 5,
+                //                smartButtonTextConverter: function (itemText, originalItem) {
+                //                    if (itemText === 'Jhon') {
+                //                        return 'Jhonny!';
+                //                    }
+                //
+                //                    return itemText;
+                //                }
+            };
+
+            $scope.adults = [];
+            $scope.adultsdata = [
+                {
+                    id: 1,
+                    label: "2 adults"
+                },
+                {
+                    id: 2,
+                    label: "3 adults"
+                },
+                {
+                    id: 3,
+                    label: "4 adults"
+                },
+                {
+                    id: 4,
+                    label: "5 adults"
+                }
+            ];
+
+            $scope.examplesettings1 = {
+                smartButtonMaxItems: 1,
+                selectionLimit: 1
+            };
+
+            $scope.places = [];
+            $scope.placesdata = [
+                {
+                    id: 1,
+                    label: "Panjim"
+                },
+                {
+                    id: 2,
+                    label: "Margao"
+                },
+                {
+                    id: 3,
+                    label: "Candolim"
+                },
+                {
+                    id: 4,
+                    label: "Mapusa"
+                }
+            ];
+
+            $scope.examplesettings2 = {
+                smartButtonMaxItems: 1,
+                selectionLimit: 1
+            };
+
+            $scope.amt = [];
+            $scope.amtdata = [
+                {
+                    id: 1,
+                    label: "Rs.1000-Rs.2000"
+                },
+                {
+                    id: 2,
+                    label: "Rs.2000-Rs.5000"
+                },
+                {
+                    id: 3,
+                    label: "Rs.5000-Rs.7500"
+                },
+                {
+                    id: 4,
+                    label: "Rs.8000-Rs.10000"
+                }
+            ];
+
+            $scope.examplesettings3 = {
+                smartButtonMaxItems: 1,
+                selectionLimit: 1
+            };
+            $scope.companion = [];
+            $scope.companiondata = [
+                {
+                    id: 1,
+                    label: "Family"
+                },
+                {
+                    id: 2,
+                    label: "Friends"
+                },
+                {
+                    id: 3,
+                    label: "Colleagues"
+                }
+            ];
+
+            $scope.examplesettings4 = {
+                smartButtonMaxItems: 1,
+                selectionLimit: 1
+            };
+            $scope.amenities = [];
+            $scope.amenitiesdata = [
+                {
+                    id: 1,
+                    label: "ac"
+                },
+                {
+                    id: 2,
+                    label: "wifi"
+                },
+                {
+                    id: 3,
+                    label: "beaches"
+                }
+            ];
+
+            $scope.examplesettings5 = {
+                smartButtonMaxItems: 3,
+            };
+
+            $scope.maxDate = new Date(2020, 5, 22);
+
+            $scope.status = {
+                opened: false
+            };
+            $scope.open = function () {
+                console.log('hiiiiiiii');
+                $timeout(function () {
+                    $scope.status.opened = true;
+                });
+            };
+
+            $scope.dateOptions = {
+                formatYear: 'yy',
+                startingDay: 1
+            };
+
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+            $scope.format = $scope.formats[0];
+            $scope.status = {
+                isopen: false
+            };
+
+
+
+            $scope.toggleDropdown = function ($event) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.status.isopen = !$scope.status.isopen;
+            };
+
+            //second clanedar
+            $scope.status1 = {
+                opened: false
+            };
+            $scope.open1 = function () {
+                $timeout(function () {
+                    $scope.status1.opened = true;
+                });
+            };
+
+            $scope.dateOptions1 = {
+                formatYear: 'yy',
+                startingDay: 1
+            };
+
+            $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+            $scope.format = $scope.formats[0];
+            $scope.status1 = {
+                isopen: false
+            };
+
+            $scope.toggleDropdown = function ($event1) {
+                $event.preventDefault();
+                $event.stopPropagation();
+                $scope.status1.isopen = !$scope.status1.isopen;
+            };
+
+            $scope.trips = [];
+
+            // Define resource 
+            //defines the url name
+            var tripRes = Restangular.all('trips');
+
+            // CALL GET
+            tripRes.getList().then(function (tripList) {
+                angular.forEach(tripList, function (value, key) {
+                    $scope.trips.push(value);
+                });
+            });
 
             //modal
             //            $scope.animationsEnabled = true;
