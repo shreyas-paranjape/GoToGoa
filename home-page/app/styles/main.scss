@@ -1,37 +1,57 @@
 $icon-font-path: "fonts/bootstrap/";
 @import "../app/styles/stylesheets/_bootstrap.scss";
-
 a {
-  color: white;
-}
-
-ul{
-  list-style-type: none;
-}
-
-.nopadding {
-   padding: 0 !important;
-   margin: 0 !important;
-}
-
-.jumbotron {
-  text-align: center;
-  width: 100%;
-  height:100%;
-  position: absolute;
-  background: url(/images/one.jpg) no-repeat center center;
-  background-size: cover;  
-  border-bottom: 1px solid #e5e5e5;
-  .btn {
-    font-size: 21px;
-    padding: 14px 24px;
-  }
-  h1{
     color: white;
-  }
 }
-
-.trip-planner-form{
+ul {
+    list-style-type: none;
+}
+.nopadding {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+.jumbotron {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: url(/images/index1.jpg) no-repeat left top;
+    background-size: cover;
+    border-bottom: 1px solid #e5e5e5;
+}
+.block {
+    background-color: rgba(255, 255, 255, 0.5);
+    width: 520px;
+    height: 450px;
+    margin-left: 50px;
+    h1 {
+        color: #2495D9;
+        font-family: 'Playfair Display', serif;
+        font-weight: bolder;
+        font-size: 100px;
+    }
+    h2 {
+        text-align: center;
+        color: #2495D9;
+        font-family: 'Playfair Display', serif;
+        font-weight: bolder;
+        font-size: 60px;
+        //        margin-left: 36px;
+    }
+}
+.form-control::-webkit-input-placeholder {
+    color: #2495D9;
+}
+.form-control:-moz-placeholder {
+    color: #2495D9;
+}
+.form-control::-moz-placeholder {
+    color: #2495D9;
+}
+.form-control:-ms-input-placeholder {
+    color: #2495D9;
+}
+.trip-planner-form {
     background-color: greenyellow;
     color: crimson;
     height: 10%;
@@ -39,14 +59,12 @@ ul{
     margin-bottom: 10px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
 }
-
-.random-picks-grid{
+.random-picks-grid {
     padding: 0;
     /*width: 95%;
     margin: 0 auto;*/
     margin-bottom: 10px;
 }
-
 .navbar-gtg {
     background-color: black;
     color: white;
@@ -54,25 +72,12 @@ ul{
     margin: 0px;
     border-radius: 0;
 }
-        
-.jumbo-wrapper{
+.jumbo-wrapper {
     position: relative;
 }
 
 /* Gridster */
 
-.gridster {
-    .grid {
-        background-color: yellow;
-        padding: 0px;
-        section {
-            box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
-            padding: 10px;
-            background: url(/images/one.jpg) no-repeat center center;
-            background-size: cover;
-        }
-    }
-}
 
 /*.gridster > * {
     padding: 0;
@@ -224,6 +229,7 @@ ul{
     }
 }*/
 
+
 /*ruchita*/
 
 
@@ -282,9 +288,8 @@ ul{
         text-align: center;
     }
 }
-
 @media screen and (min-width: 40em) {
-    .footer{
+    .footer {
         .footer-links {
             margin-left: 25.58941%;
         }
