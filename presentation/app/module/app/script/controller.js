@@ -1,6 +1,6 @@
 angular.module('app')
-    .controller('AppListController', ['$scope', '$filter', '$stateParams', '$timeout', 'leafletData', '$uibModal',
-    function ($scope, $filter, $stateParams, $timeout, leafletData, $uibModal) {
+    .controller('AppListController', ['$scope', '$filter', '$stateParams', '$timeout', 'leafletData',
+    function ($scope, $filter, $stateParams, $timeout, leafletData) {
             'use strict';
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
@@ -162,7 +162,7 @@ angular.module('app')
             //modal
             $scope.animationsEnabled = true;
 
-            $scope.open = function () {
+            /*$scope.open = function () {
 
                 var modalInstance = $uibModal.open({
                     animation: $scope.animationsEnabled,
@@ -173,11 +173,11 @@ angular.module('app')
 
             $scope.toggleAnimation = function () {
                 $scope.animationsEnabled = !$scope.animationsEnabled;
-            };
+            };*/
     }
   ])
-    .controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    /*.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
-    }]);
+    }]);*/

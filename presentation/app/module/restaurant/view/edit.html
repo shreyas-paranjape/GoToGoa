@@ -1,0 +1,50 @@
+<div>
+
+    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 tripItem">
+        <tabset>
+            <tab ng-repeat="acti in activity" heading="{{acti.title}}" active="acti.active">
+                <br>
+                <tabset>
+                    <tab ng-repeat="day in acti.days" heading="{{day.title}}" active="day.active">
+                        <section id="{{i + day.id}}" class="event" ng-repeat="event in day.events">
+                            <div class="start-time">{{event.start_time}}</div>
+                            <div class="end-time">{{event.end_time}}</div>
+                            <div class="event-card">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">{{event.title}}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#84D6D6;">
+                                        <div class="row">
+                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                                                {{event.descr}}
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a ui-sref="app.trip.list">Change</a></div>
+                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <br>
+                    </tab>
+                </tabset>
+            </tab>
+        </tabset>
+
+    </div>
+    <aside class="col-xs-3 col-sm-3 col-md-3 col-lg-3 tripSummary">
+        <nav>
+            <ul>
+                <li><a href="#" ng-click="gotoEvent(2)">Event 2</a></li>
+                <li><a href="#" ng-click="gotoEvent(19)">Event 19</a></li>
+                <li><a href="#" ng-click="gotoEvent(24)">Event 24</a></li>
+            </ul>
+        </nav>
+    </aside>
+
+</div>

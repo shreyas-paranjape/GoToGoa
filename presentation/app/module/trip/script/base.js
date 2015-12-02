@@ -27,5 +27,10 @@ angular.module('trip', [
                 url: '/edit',
                 templateUrl: 'module/trip/view/edit.html',
                 controller: 'TripEditController'
+            })
+            .state('app.trip.detail', {
+                url: '/detail',
+                templateUrl: 'module/trip/view/detail.html',
+                controller: 'DetailEditController'
             });
     });

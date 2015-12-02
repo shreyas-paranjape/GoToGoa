@@ -126,6 +126,30 @@ angular.module('trip')
             $scope.onSliderChange = function () {
                 console.log('changed', $scope.priceSlider);
             }
+            $scope.dirty = {};
+
+            var states = ['Alabama', 'Alaska', 'California', /* ... */ ];
+
+            function suggest_state(term) {
+                var q = term.toLowerCase().trim();
+                var results = [];
+
+                // Find first 10 states that start with `term`.
+                for (var i = 0; i < states.length && results.length < 10; i++) {
+                    var state = states[i];
+                    if (state.toLowerCase().indexOf(q) === 0)
+                        results.push({
+                            label: state,
+                            value: state
+                        });
+                }
+
+                return results;
+            }
+
+            $scope.autocomplete_options = {
+                suggest: suggest_state
+            };
             $scope.examplemodel = [];
             $scope.exampledata = [{
                 id: 1,
@@ -176,8 +200,8 @@ angular.module('trip')
             ];
 
             $scope.examplesettings1 = {
-                smartButtonMaxItems: 1,
-                selectionLimit: 1
+                smartButtonMaxItems: 4,
+                //                selectionLimit: 1
             };
 
             $scope.places = [];
@@ -269,6 +293,11 @@ angular.module('trip')
                 smartButtonMaxItems: 3,
             };
 
+            //            var date = new Date();
+
+            $scope.dt = new Date();
+
+
             $scope.maxDate = new Date(2020, 5, 22);
 
             $scope.status = {
@@ -280,13 +309,16 @@ angular.module('trip')
                     $scope.status.opened = true;
                 });
             };
-
+            //            $scope.disabled = function (date, mode) {
+            //                return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 3));
+            //            };
             $scope.dateOptions = {
                 formatYear: 'yy',
-                startingDay: 1
+                startingDay: 1,
+                showWeeks: 'false'
             };
 
-            $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+            $scope.formats = ['dd-MMMM-yyyy'];
             $scope.format = $scope.formats[0];
             $scope.status = {
                 isopen: false
@@ -312,7 +344,8 @@ angular.module('trip')
 
             $scope.dateOptions1 = {
                 formatYear: 'yy',
-                startingDay: 1
+                startingDay: 1,
+                showWeeks: 'false'
             };
 
             $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
@@ -402,139 +435,7 @@ angular.module('trip')
                 });
             });
 
-            /*$scope.trips = [
-                {
-                    id: '1',
-                    title: 'Trip 1',
-                    active: true,
-                    descr: 'lorem lorem lorem',
-                    days: [{
-                            id: 0,
-                            title: 'Day 1',
-                            active: true,
-                            events: [{
-                                    title: 'skydiving',
-                                    descr: 'sky sky sky',
-                                    start_time: '9.30 am',
-                                    end_time: '11.30 am'
-                        },
-                                {
-                                    title: 'skydiving2',
-                                    descr: 'sky sky sky sky',
-                                    start_time: '12.30 pm',
-                                    end_time: '2 pm'
-                            }]
-                    },
-                        {
-                            id: 10,
-                            title: 'Day 2',
-                            active: false,
-                            events: [{
-                                    title: 'skydiving3',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '6.30 pm',
-                                    end_time: '8.30 pm'
-                                },
-                                {
-                                    title: 'skydiving4',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '7.30 pm',
-                                    end_time: '9 pm'
-                            }]
-                    },
-                        {
-                            id: 20,
-                            title: 'Day 3',
-                            active: false,
-                            events: [{
-                                    title: 'skydiving5',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '6.30 pm',
-                                    end_time: '8.30 pm'
-                                },
-                                {
-                                    title: 'skydiving6',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '7.30 pm',
-                                    end_time: '9 pm'
-                            }]
-                    },
-                        {
-                            id: 30,
-                            title: 'Day 4',
-                            active: false,
-                            events: [{
-                                    title: 'skydiving7',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '6.30 pm',
-                                    end_time: '8.30 pm'
-                                },
-                                {
-                                    title: 'skydiving8',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '7.30 pm',
-                                    end_time: '9 pm'
-                            }]
-                    }]
-                },
-                {
-                    id: '2',
-                    title: 'Trip 2',
-                    active: false,
-                    descr: 'lorem lorem lorem',
-                    days: [{
-                            id: 0,
-                            title: 'Day 1',
-                            active: false,
-                            events: [{
-                                    title: 'skydiving',
-                                    descr: 'sky sky sky',
-                                    start_time: '9.30 am',
-                                    end_time: '11.30 am'
-                        },
-                                {
-                                    title: 'skydiving2',
-                                    descr: 'sky sky sky sky',
-                                    start_time: '12.30 pm',
-                                    end_time: '2 pm'
-                            }]
-                    },
-                        {
-                            id: 10,
-                            title: 'Day 2',
-                            active: false,
-                            events: [{
-                                    title: 'skydiving3',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '6.30 pm',
-                                    end_time: '8.30 pm'
-                                },
-                                {
-                                    title: 'skydiving4',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '7.30 pm',
-                                    end_time: '9 pm'
-                            }]
-                    },
-                        {
-                            id: 20,
-                            title: 'Day 3',
-                            active: true,
-                            events: [{
-                                    title: 'skydiving5',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '6.30 pm',
-                                    end_time: '8.30 pm'
-                                },
-                                {
-                                    title: 'skydiving6',
-                                    descr: 'sky sky sky sky sky',
-                                    start_time: '7.30 pm',
-                                    end_time: '9 pm'
-                            }]
-                    }]
-                }
-            ];*/
+            /*;*/
             $scope.gotoEvent = function (event_id) {
                 var tabId = Math.floor(event_id / 10);
                 var day = $scope.trips[days]

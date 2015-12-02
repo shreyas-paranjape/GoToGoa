@@ -1,21 +1,11 @@
-angular.module('directives').controller('ActiCardController', ['$scope', 'Restangular', '$attrs', '$state',
-  function ($scope, Restangular, $attrs, $state) {
+angular.module('directives').controller('TravelCardController', ['$scope', '$attrs', '$state',
+  function ($scope, $attrs, $state) {
         this.init = function (element) {};
         $scope.states = ['event', 'category'];
         $scope.currentState = $scope.states[0];
-        //        $scope.activity = [];
 
-        // Define resource 
-        //defines the url name
-        var actiRes = Restangular.all('activities');
 
-        // CALL GET
-        actiRes.getList().then(function (actiList) {
-            angular.forEach(actiList, function (value, key) {
-                $scope.activity.push(value);
-            });
-        });
-        $scope.myInterval = 5000;
+        $scope.myInterval = 0;
         $scope.noWrapSlides = false;
         var slides = $scope.slides = [];
         $scope.addSlide = function () {
@@ -28,8 +18,8 @@ angular.module('directives').controller('ActiCardController', ['$scope', 'Restan
         for (var i = 0; i < 4; i++) {
             $scope.addSlide();
         }
-        $scope.change1 = function () {
-            $state.go('app.activity.edit');
+        $scope.change = function () {
+            $state.go('app.travel.detail');
             /*if ($scope.currentState == $scope.states[1]) {
         $scope.currentState = $scope.states[0];
       } else {
@@ -38,15 +28,15 @@ angular.module('directives').controller('ActiCardController', ['$scope', 'Restan
         }
   }
 ]);
-angular.module('directives').directive('acticard',
+angular.module('directives').directive('travelcard',
     function () {
         return {
             restrict: 'EA',
-            templateUrl: '/directive/acti-card/layout/acti-card.html',
-            controller: 'ActiCardController',
+            templateUrl: '/directive/travel-card/layout/travel-card.html',
+            controller: 'TravelCardController',
             scope: true,
-            link: function (scope, element, attrs, acticardController) {
-                acticardController.init(element);
+            link: function (scope, element, attrs, cardController) {
+                cardController.init(element);
             }
         }
     });

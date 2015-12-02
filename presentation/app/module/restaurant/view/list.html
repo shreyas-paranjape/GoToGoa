@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 scroll">
         <div class="row">
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
                 <h4>Dates</h4>
@@ -50,13 +50,14 @@
             </div>
         </div>
 
-        <div ng-repeat="stay in stays">
-            <div staycard data="stay" ng-mouseenter="cardMouseEnter(i)"></div>
+
+        <div ng-repeat="rest in restaurant">
+            <div class="my-col-50" restcard data="rest" ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
 
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <leaflet class="map" center="goa" defaults="defaults" markers="markers"></leaflet>
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        <leaflet class="map" center="goa" defaults="defaults" markers="markers" />
     </div>
 
 </div>

@@ -1,62 +1,42 @@
 <div class="row">
-
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
         <div class="row">
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
-                <h4>Dates</h4>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <p class="input-group">
-                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" ng-click="open($event)" placeholder="From" type="text" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open($event)" type="button">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
-                </p>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <p class="input-group">
-                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions1" datepicker-popup="{{format}}" is-open="status1.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" ng-click="open1($event1)" placeholder="To" type="text" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open1($event1)" type="button">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
-                </p>
-            </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
-            </div>
-        </div>
-        <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <h4 style="display:inline-block;">Type: </h4>
+                <p class="input-group">
+                    <input type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" ng-model="dates.date3" is-open="open.date3" />
+                    <span class="input-group-btn">
+                                <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'date3')">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                                </span>
+                </p>
+            </div>
+
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
                 <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <h4 style="display:inline-block;">Places: </h4>
-                <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <h4 style="display:inline-block;">Companion: </h4>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
                 <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
             </div>
         </div>
         <div class="row">
-            <h4>Price Range</h4>
-            <div>
-                <rzslider rz-slider-floor="priceSlider.floor" rz-slider-ceil="priceSlider.ceil" rz-slider-model="priceSlider.min" rz-slider-high="priceSlider.max" rz-slider-translate="translate" rz-slider-on-change="onSliderChange()" rz-slider-show-ticks="true"></rzslider>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+                <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+                <rzslider rz-slider-model="slider.min" rz-slider-high="slider.max" rz-slider-options="slider.options">
+                </rzslider>
             </div>
         </div>
-
-        <div>
-            <div acticard ng-mouseenter="cardMouseEnter(i)"></div>
+        <div ng-repeat="acti in activity">
+            <div acticard data="acti" ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
-
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <leaflet center="goa" defaults="defaults" markers="markers" height="480px" width="100%"></leaflet>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
+        <leaflet class="map" center="goa" defaults="defaults" markers="markers" />
     </div>
 
 </div>

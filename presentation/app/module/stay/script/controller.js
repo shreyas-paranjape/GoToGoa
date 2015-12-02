@@ -9,7 +9,21 @@ angular.module('stay')
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
+            $scope.stays = [
+                {
+                    id: '1',
+                    title: "Hotel 1",
+                    price: '10000',
+                    url: '../../../images/stay.jpg'
 
+            },
+                {
+                    id: '2',
+                    title: "Hotel 2",
+                    price: '20000',
+                    url: '../../../images/stay1.jpg'
+            }
+          ];
             angular.extend($scope, {
                 goa: {
                     lat: 15.4989,

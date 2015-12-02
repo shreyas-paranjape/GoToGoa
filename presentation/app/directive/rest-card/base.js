@@ -1,4 +1,4 @@
-angular.module('directives').controller('ActiCardController', ['$scope', 'Restangular', '$attrs', '$state',
+angular.module('directives').controller('RestCardController', ['$scope', 'Restangular', '$attrs', '$state',
   function ($scope, Restangular, $attrs, $state) {
         this.init = function (element) {};
         $scope.states = ['event', 'category'];
@@ -29,7 +29,7 @@ angular.module('directives').controller('ActiCardController', ['$scope', 'Restan
             $scope.addSlide();
         }
         $scope.change1 = function () {
-            $state.go('app.activity.edit');
+            $state.go('app.restaurant.edit');
             /*if ($scope.currentState == $scope.states[1]) {
         $scope.currentState = $scope.states[0];
       } else {
@@ -38,15 +38,15 @@ angular.module('directives').controller('ActiCardController', ['$scope', 'Restan
         }
   }
 ]);
-angular.module('directives').directive('acticard',
+angular.module('directives').directive('restcard',
     function () {
         return {
             restrict: 'EA',
-            templateUrl: '/directive/acti-card/layout/acti-card.html',
-            controller: 'ActiCardController',
+            templateUrl: '/directive/rest-card/layout/rest-card.html',
+            controller: 'RestCardController',
             scope: true,
-            link: function (scope, element, attrs, acticardController) {
-                acticardController.init(element);
+            link: function (scope, element, attrs, restcardController) {
+                restcardController.init(element);
             }
         }
     });

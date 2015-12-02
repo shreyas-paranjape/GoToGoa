@@ -3,9 +3,48 @@ angular.module('travel')
         'use strict';
         $scope.pageHeader = "Travel";
   }])
-    .controller('TravelListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
-    function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
+    .controller('TravelDetailController', ['$scope', '$stateParams', function ($scope, $stateParams) {
+        'use strict';
+        //console.log($stateParams.data);
+        $scope.store = $stateParams.data;
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = this.href.split('#');
+            $('.nav a').filter('a[href="#' + target[1] + '"]').tab('show');
+        });
+        $("#p").click(function () {
+            $("#caption").slideToggle("slow");
+        });
+
+        $scope.tabs = [false, false, false, false, false, false];
+        $scope.selectTab = function (index) {
+            $scope.tabs = [false, false, false, false, false, false];
+            $scope.tabs[index] = true;
+        };
+}])
+    .controller('TravelListController', ['$scope', 'travelRepository', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
+    function ($scope, travelRepository, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
+            var products = travelRepository.get();
+            $scope.travels = [
+                {
+                    id: '1',
+                    title: "Bike",
+                    price: '10000',
+                    url: '../../../images/travel.jpg'
+
+            },
+                {
+                    id: '2',
+                    title: "car",
+                    price: '20000',
+                    url: '../../../images/travel1.jpg'
+            }
+          ];
+
+            var orderBy = $filter('orderBy');
+            $scope.order = function (predicate, reverse) {
+                $scope.hotels = orderBy($scope.hotels, predicate, reverse);
+            };
             //            $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
             //            var marker, map;
             //            $scope.$on('mapInitialized', function (evt, evtMap) {
@@ -418,124 +457,125 @@ angular.module('travel')
             };
     }
   ])
-    .controller('TravelEditController', [
+
+.controller('TravelEditController', [
     '$scope', '$stateParams', '$timeout', '$document',
     function ($scope, $stateParams, $timeout, $document) {
-            'use strict';
+        'use strict';
 
-            $scope.tabs = [{
-                id: 0,
-                title: 'Day 1',
-                active: true
+        $scope.tabs = [{
+            id: 0,
+            title: 'Day 1',
+            active: true
       }, {
-                id: 10,
-                title: 'Day 2',
-                active: false
+            id: 10,
+            title: 'Day 2',
+            active: false
       }, {
-                id: 20,
-                title: 'Day 3',
-                active: false
+            id: 20,
+            title: 'Day 3',
+            active: false
       }];
 
 
-            $scope.events = [{
-                id: '1',
-                title: 'Trek',
-                descr: 'Starts early morning at 6 am',
-                rating: '3.5',
-                location: 'Chorla Ghat',
-                url: '../../../images/trek.jpg',
-                //                    price: accounting.formatMoney(500, "₹"),
-                x: '15.4000',
-                y: '74.0200'
+        $scope.events = [{
+            id: '1',
+            title: 'Trek',
+            descr: 'Starts early morning at 6 am',
+            rating: '3.5',
+            location: 'Chorla Ghat',
+            url: '../../../images/trek.jpg',
+            //                    price: accounting.formatMoney(500, "₹"),
+            x: '15.4000',
+            y: '74.0200'
       }, {
-                id: '2',
-                title: 'Miramar Beach',
-                descr: 'beach beach beach beach',
-                rating: '4',
-                location: 'Panjim',
-                url: '../../../images/beach.jpg',
-                //                    price: accounting.formatMoney(800, "₹"),
-                x: '15.482490',
-                y: '73.807244'
+            id: '2',
+            title: 'Miramar Beach',
+            descr: 'beach beach beach beach',
+            rating: '4',
+            location: 'Panjim',
+            url: '../../../images/beach.jpg',
+            //                    price: accounting.formatMoney(800, "₹"),
+            x: '15.482490',
+            y: '73.807244'
       }];
 
-            $scope.category = [
+        $scope.category = [
 
       ];
-            $scope.gotoEvent = function (event_id) {
-                var tabId = Math.floor(event_id / 10);
-                $scope.tabs[tabId].active = true;
-                $timeout(function () {
-                    $document.scrollToElement(
-                        angular.element(document.getElementById(event_id)), 0, 3000);
-                }, 1000, false);
+        $scope.gotoEvent = function (event_id) {
+            var tabId = Math.floor(event_id / 10);
+            $scope.tabs[tabId].active = true;
+            $timeout(function () {
+                $document.scrollToElement(
+                    angular.element(document.getElementById(event_id)), 0, 3000);
+            }, 1000, false);
+        }
+        $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
+        var marker, map;
+        $scope.$on('mapInitialized', function (evt, evtMap) {
+            map = evtMap;
+            marker = map.markers[0];
+        });
+        $scope.centerChanged = function (event) {
+            $timeout(function () {
+                map.panTo(marker.getPosition());
+            }, 3000);
+        }
+        $scope.click = function (event) {
+                map.setZoom(8);
+                map.setCenter(marker.getPosition());
             }
-            $scope.googleMapsUrl = "http://maps.google.com/maps/api/js?v=3.20&client=1091949904876-gsunk50dr8urlurrbgctb323e2q5163i.apps.googleusercontent.com";
-            var marker, map;
-            $scope.$on('mapInitialized', function (evt, evtMap) {
-                map = evtMap;
-                marker = map.markers[0];
-            });
-            $scope.centerChanged = function (event) {
-                $timeout(function () {
-                    map.panTo(marker.getPosition());
-                }, 3000);
-            }
-            $scope.click = function (event) {
-                    map.setZoom(8);
-                    map.setCenter(marker.getPosition());
-                }
-                //carousel
-            $scope.myInterval = 5000;
-            $scope.noWrapSlides = false;
-            var slides = $scope.slides = [{
-                id: '1',
-                title: 'Trek',
-                descr: 'Starts early morning at 6 am',
-                rating: '3.5',
-                location: 'Chorla Ghat',
-                url: '../../../images/b2.jpg',
-                //                    price: accounting.formatMoney(500, "₹"),
-                x: '15.4000',
-                y: '74.0200'
+            //carousel
+        $scope.myInterval = 5000;
+        $scope.noslidesWrapSlides = false;
+        var slides = $scope.slides = [{
+            id: '1',
+            title: 'Trek',
+            descr: 'Starts early morning at 6 am',
+            rating: '3.5',
+            location: 'Chorla Ghat',
+            url: '../../../images/b2.jpg',
+            //                    price: accounting.formatMoney(500, "₹"),
+            x: '15.4000',
+            y: '74.0200'
       }, {
-                id: '2',
-                title: 'Miramar Beach',
-                descr: 'beach beach beach beach',
-                rating: '4',
-                location: 'Panjim',
-                url: '../../../images/b1.jpg',
-                //                    price: accounting.formatMoney(800, "₹"),
-                x: '15.482490',
-                y: '73.807244'
+            id: '2',
+            title: 'Miramar Beach',
+            descr: 'beach beach beach beach',
+            rating: '4',
+            location: 'Panjim',
+            url: '../../../images/b1.jpg',
+            //                    price: accounting.formatMoney(800, "₹"),
+            x: '15.482490',
+            y: '73.807244'
       }, {
-                id: '3',
-                title: 'cvcv',
-                descr: 'Starts early morning at 6 am',
-                rating: '3.5',
-                location: 'Chorla Ghat',
-                url: '../../../images/trek.jpg',
-                //                    price: accounting.formatMoney(500, "₹"),
-                x: '15.4000',
-                y: '74.0200'
+            id: '3',
+            title: 'cvcv',
+            descr: 'Starts early morning at 6 am',
+            rating: '3.5',
+            location: 'Chorla Ghat',
+            url: '../../../images/trek.jpg',
+            //                    price: accounting.formatMoney(500, "₹"),
+            x: '15.4000',
+            y: '74.0200'
       }, {
-                id: '4',
-                title: 'vxvcx vcv',
-                descr: 'beach beach beach beach',
-                rating: '4',
-                location: 'Panjim',
-                url: '../../../images/beach.jpg',
-                //                    price: accounting.formatMoney(800, "₹"),
-                x: '15.482490',
-                y: '73.807244'
+            id: '4',
+            title: 'vxvcx vcv',
+            descr: 'beach beach beach beach',
+            rating: '4',
+            location: 'Panjim',
+            url: '../../../images/beach.jpg',
+            //                    price: accounting.formatMoney(800, "₹"),
+            x: '15.482490',
+            y: '73.807244'
       }];
-            $scope.addSlide = function () {
-                var newWidth = 600 + slides.length + 1;
+        $scope.addSlide = function () {
+            var newWidth = 600 + slides.length + 1;
 
-            };
-            for (var i = 0; i < 4; i++) {
-                $scope.addSlide();
-            }
+        };
+        for (var i = 0; i < 4; i++) {
+            $scope.addSlide();
+        }
     }
   ]);

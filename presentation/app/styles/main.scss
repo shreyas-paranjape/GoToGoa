@@ -15,6 +15,7 @@ $icon-font-path: "fonts/bootstrap/";
 body {
     font-family: 'BrandonGrotReg';
     margin: 0 auto;
+    padding-top: 55px;
 }
 .no-padding {
     padding: 0;
@@ -138,13 +139,9 @@ body {
     padding: 5px;
     border: 1px solid #999;
 }
-//.scroll {
-//    height: 500px;
-//    overflow: scroll;
-//}
-//.form {
-//    overflow-y: hidden;
-//}
+.scroll {
+    overflow: auto;
+}
 #map {
     bottom: 0;
     left: 670px;
@@ -187,4 +184,34 @@ body {
 .carousel-control.left,
 .carousel-control.right {
     background-image: none;
+}
+.hotel-details {
+    h1 {
+        font-weight: bolder;
+        //        /text-transform: uppercase;
+    }
+}
+ul[datepicker-popup-wrap] > li > .btn-group > button.btn-info {
+    display: none;
+}
+.my-col-50 {
+    float: left;
+    width: 50%;
+    padding: 10px;
+}
+.form-horizontal {
+    width: 500px;
+}
+.datetime-picker-dropdown {}
+.datetime-picker-dropdown > li.date-picker-menu div > table .btn-default {
+    border: 0;
+}
+.datetime-picker-dropdown > li.time-picker-menu div > table {}
+.navbar {
+    margin-bottom: 0px;
+}
+.map {
+    position: fixed;
+    width: 100%;
+    height: 600px;
 }

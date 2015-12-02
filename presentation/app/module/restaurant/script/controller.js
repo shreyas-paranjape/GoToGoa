@@ -1,53 +1,12 @@
-angular.module('activity')
-    .controller('ActivityController', ['$scope',
+angular.module('restaurant')
+    .controller('RestaurantController', ['$scope',
     function ($scope) {
-            $scope.pageHeader = "Activity";
-        }
+            $scope.pageHeader = "Restaurant";
+    }
   ])
-    .controller('ActivityListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
+    .controller('RestaurantListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
-            $scope.slider = {
-                min: 100,
-                max: 180,
-                options: {
-                    floor: 0,
-                    ceil: 450
-                }
-            };
-
-
-
-            $scope.dates = {
-                date1: new Date('2015-03-01T00:00:00Z'),
-                date2: new Date('2015-03-01T12:30:00Z'),
-                date3: new Date(),
-                date4: new Date(),
-                date5: new Date(),
-                date6: new Date(),
-                date7: new Date(),
-                date8: new Date()
-            };
-
-            $scope.open = {
-                date1: false,
-                date2: false,
-                date3: false,
-                date4: false,
-                date5: false,
-                date6: false,
-                date7: false,
-                date8: false
-            };
-            $scope.openCalendar = function (e, date) {
-                $scope.open[date] = true;
-            };
-
-            $scope.isDisabledDate = function (currentDate, mode) {
-                return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
-            };
-
-
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
@@ -153,21 +112,35 @@ angular.module('activity')
             $scope.cardMouseLeave = function () {
 
             }
-            $scope.activity = [
+            $scope.restaurant = [
                 {
                     id: '1',
-                    title: "Activity 1",
+                    title: "Restaurant 1",
                     price: '10000',
-                    url: '../../../images/travel.jpg'
+                    url: '../../../images/r1.jpg'
 
             },
                 {
                     id: '2',
-                    title: "Activity 2",
+                    title: "Restaurant 2",
                     price: '20000',
-                    url: '../../../images/travel1.jpg'
+                    url: '../../../images/r1.jpg'
+            },
+                {
+                    id: '3',
+                    title: "Restaurant 3",
+                    price: '10000',
+                    url: '../../../images/r1.jpg'
+
+            },
+                {
+                    id: '4',
+                    title: "Restaurant 4",
+                    price: '20000',
+                    url: '../../../images/r1.jpg'
             }
           ];
+
             $scope.priceSlider = {
                 min: 500,
                 max: 15000,
@@ -385,7 +358,7 @@ angular.module('activity')
 
     }
   ])
-    .controller('ActivityEditController', ['$scope', 'Restangular', '$stateParams', '$timeout', '$document', 'leafletData',
+    .controller('RestaurantEditController', ['$scope', 'Restangular', '$stateParams', '$timeout', '$document', 'leafletData',
     function ($scope, Restangular, $stateParams, $timeout, $document, leafletData) {
             'use strict';
             $scope.activity = [];
@@ -502,4 +475,22 @@ angular.module('activity')
                 $scope.addSlide();
             }
     }
-  ]);
+  ])
+    .controller('RestaurantDetailController', ['$scope', '$stateParams', function ($scope, $stateParams) {
+        'use strict';
+        //console.log($stateParams.data);
+        $scope.store = $stateParams.data;
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            var target = this.href.split('#');
+            $('.nav a').filter('a[href="#' + target[1] + '"]').tab('show');
+        });
+        $("#p").click(function () {
+            $("#caption").slideToggle("slow");
+        });
+
+        $scope.tabs = [false, false, false, false, false, false];
+        $scope.selectTab = function (index) {
+            $scope.tabs = [false, false, false, false, false, false];
+            $scope.tabs[index] = true;
+        };
+}]);
