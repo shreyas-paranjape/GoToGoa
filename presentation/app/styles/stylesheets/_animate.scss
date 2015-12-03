@@ -1,0 +1,46 @@
+@charset "UTF-8";
+/*!
+Animate.css - http://daneden.me/animate
+Version - 3.4.0
+Licensed under the MIT license - http://opensource.org/licenses/MIT
+
+Copyright (c) 2015 Daniel Eden
+*/
+
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
+}
+
+.animated.hinge {
+  animation-duration: 2s;
+}
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut{
+  animation-duration: .75s;
+}
+
+//@import "animate.css/attention_seekers";
+//@import "animate.css/bouncing_entrances;
+//@import "animate.css/bouncing_exits;
+@import "animate/fading_entrances/fadeIn";
+@import "animate/fading_entrances/fadeInDownBig";
+@import "animate/fading_entrances/fadeInUpBig";
+@import "animate/fading_exits/fadeOut";
+@import "animate/fading_exits/fadeOutRightBig";
+//@import "animate.css/flippers;
+//@import "animate.css/lightspeed;
+//@import "animate.css/rotating_entrances;
+//@import "animate.css/rotating_exits;
+//@import "animate.css/sliding_entrances;
+//@import "animate.css/sliding_exits;
+//@import "animate.css/specials;
+//@import "animate.css/zooming_entrances;
+//@import "animate.css/zooming_exits

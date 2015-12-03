@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
+<div id="activity" class="row">
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll ">
         <div class="row">
             <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
                 <p class="input-group">
@@ -31,7 +31,7 @@
                 </rzslider>
             </div>
         </div>
-        <div ng-repeat="acti in activity">
+        <div ng-repeat="acti in activity" class="animated fadeInUpBig">
             <div acticard data="acti" ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
     </div>
