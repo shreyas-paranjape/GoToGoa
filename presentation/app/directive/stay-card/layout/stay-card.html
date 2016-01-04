@@ -1,37 +1,28 @@
-<div class="row">
-    <!--    <div ng-repeat="travel in travels">-->
-    <div class="row">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
-            <span style="font-size:16px;font-weight:300;">{{stay.title}}, ₹{{stay.price}}/-</span>
+<section>
+    <div class="row" style="background-color:#26a69a;padding:10px;">
+        <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3 no-padding" style="">
+            <img src="http://placehold.it/152x146">
         </div>
-    </div>
-    <div style="background-color:#343434;">
-        <div style="padding-bottom:15px;">
-            <div class="row ">
-                <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" style="padding-top:15px;">
-                    <img ng-src="{{stay.url}}">
-                    <!--
-                    <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
-    <uib-slide ng-repeat="slide in slides" active="slide.active">
-        <img ng-src="{{slide.image}}" style="margin:auto;">
-        <div class="carousel-caption">
-            <h4>Slide {{$index}}</h4>
-            <p>{{slide.text}}</p>
-        </div>
-    </uib-slide>
-</uib-carousel>
--->
-                </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+            <div class="row">
+                <h3 class="no-padding no-margin">{{stay.title}}</h3>
             </div>
-
+            <div class="row" style="padding-top:10px;">
+                <uib-rating ng-model="stay.rating" max="max" readonly="isReadonly"></uib-rating>
+            </div>
+            <div class="row">
+                <h4 class="no-padding">{{stay.ppty}}</h4>
+            </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3">
+            <div class="row">
+                <h3 class="no-padding no-margin">₹{{stay.price}}</h3>
+            </div>
+            <div class="row">
+               <button class="btn btn-md" ui-sref="app.stay.detail" style="margin-top: 100px;background-color:#e0f2f1">
+                   Get quotes</button>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
-            <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.stay.detail">Book trip now</a>
-        </div>
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
-    </div>
-    <!--    </div>-->
-</div>
+    <br>
+</section>

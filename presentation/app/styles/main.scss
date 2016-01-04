@@ -1,32 +1,127 @@
 $icon-font-path: "fonts/bootstrap/";
 @import "stylesheets/_bootstrap.scss";
 @import "stylesheets/_animate.scss";
+
+/************************ Colour *************************************/
+
+$primary-color: #2196f3;
+$primary-color-dark: #1976d2;
+$secondary-color: #0fb0cf;
+$shadow-color: #000000;
+
+/************************ Fonts *************************************/
+
 @font-face {
-    font-family: 'BrandonGrotReg';
-    src: url("fonts/Brandon_Grot/Brandon_reg.otf");
+    font-family: 'Primary-Reg';
+    src: url("fonts/Roboto/Roboto-Medium.ttf");
 }
 @font-face {
-    font-family: 'BrandonGrotBold';
-    src: url("fonts/Brandon_Grot/Brandon_bld.otf");
+    font-family: 'Primary-Bold';
+    src: url("fonts/Roboto/Roboto-Bold.ttf");
 }
 @font-face {
-    font-family: 'BrandonGrotLight';
-    src: url("fonts/Brandon_Grot/Brandon_light.otf");
+    font-family: 'Primary-Light';
+    src: url("fonts/Roboto/Roboto-Regular.ttf");
 }
+
+/************************* Styles **************************************/
+
 body {
-    font-family: 'BrandonGrotReg';
+    font-family: 'Primary-Light';
     margin: 0 auto;
     padding-top: 55px;
+    //background-color: $primary-color;
 }
 .no-padding {
     padding: 0;
 }
-.navbar-brand {
-    font-family: 'BrandonGrotBold';
+.no-margin {
+    margin: 0;
 }
-.navbar-nav {
-    margin: 7.5px -15px;
+.btn-custom {
+    font-family: 'Primary-Reg';
+    background-color: $primary-color;
+    color: white;
 }
+header {
+    .navbar-custom {
+        background-color: $primary-color;
+        .navbar-brand {
+            font-family: 'Primary-Bold';
+            color: white;
+        }
+        .navbar-nav {
+            margin: 7.5px -15px;
+        }
+        .btn-custom {
+            font-family: 'Primary-Reg';
+            background-color: $primary-color;
+            color: white;
+        }
+        .btn-custom:hover {
+            background-color: $primary-color-dark;
+        }
+    }
+}
+
+/* ****************************************  */
+
+.module {
+    @include make-row();
+    .list {
+        @include make-lg-column(6);
+        .filters {
+            @include make-row();
+            .filter-wrapper {
+                @extend .no-padding;
+                @include make-lg-column(4);
+                .filter {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    .map-wrapper {
+        @include make-lg-column(6);
+    }
+}
+.module {
+    @include make-row();
+    .list {
+        @include make-lg-column(6);
+        .filters {
+            @include make-row();
+            .filter-wrapper-acti {
+                @extend .no-padding;
+                @include make-lg-column(3);
+                .filter {
+                    display: inline-block;
+                }
+            }
+        }
+    }
+    .map-wrapper {
+        @include make-lg-column(6);
+    }
+}
+.activity_detail {
+    @include make-row();
+    .detailscol {
+        @include make-lg-column(6);
+    }
+}
+
+/* ****************************************  */
+
+
+/********************ACTIVITY CARD**************************/
+
+.acti-card {
+    @include make-row();
+}
+
+/***********************************************************/
+
 .group:after {
     content: "";
     display: table;
@@ -73,7 +168,7 @@ body {
 }
 .black-col {
     color: white;
-    background-color: #343434;
+    background-color: $primary-color;
 }
 .btn-refine-search {
     background-color: #fc573b;
@@ -139,9 +234,6 @@ body {
     background-color: #fff;
     padding: 5px;
     border: 1px solid #999;
-}
-.scroll {
-    overflow: auto;
 }
 #map {
     bottom: 0;
@@ -215,4 +307,58 @@ ul[datepicker-popup-wrap] > li > .btn-group > button.btn-info {
     position: fixed;
     width: 100%;
     height: 600px;
+}
+.box {
+    border: 2px solid rgb(235, 235, 235);
+    .my-or {
+        position: relative;
+        text-align: center;
+    }
+    .my-or > span {
+        background-color: #fff;
+        border: 1px solid #e2e2e2;
+        border-radius: 18px;
+        color: #c0c0c0;
+        display: inline-block;
+        font-size: 1.286em;
+        padding: 4px 15px 6px;
+        position: relative;
+        z-index: 1;
+    }
+    .my-or::before {
+        background-color: #e2e2e2;
+        content: " ";
+        display: inline-block;
+        height: 1px;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 49%;
+    }
+    a {
+        text-decoration: none;
+        outline: none;
+    }
+    a:hover {
+        color: rgb(234, 100, 9);
+    }
+    ul {
+        color: #666666;
+        list-style-type: none;
+        padding: 0px;
+        .lists {
+            border-bottom: 2px solid rgb(235, 235, 235);
+            padding: 10px;
+        }
+    }
+    .col5 {
+        border-right: 2px solid rgb(235, 235, 235);
+    }
+    .btn-block {
+        margin-top: 10px;
+        span {
+            color: white;
+            font-weight: 300;
+        }
+    }
 }

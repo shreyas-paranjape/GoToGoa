@@ -7,6 +7,16 @@ angular.module('restaurant')
     .controller('RestaurantListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
+            $scope.showMap();
+            $scope.isCollapsed = true;
+            $scope.slider = {
+                min: 1000,
+                max: 18000,
+                options: {
+                    floor: 0,
+                    ceil: 450
+                }
+            };
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
@@ -116,28 +126,36 @@ angular.module('restaurant')
                 {
                     id: '1',
                     title: "Restaurant 1",
-                    price: '10000',
-                    url: '../../../images/r1.jpg'
+                    price: '10,000',
+                    rating: 4,
+                    url: '../../../images/r1.jpg',
+                    cuisine: 'Chinese'
 
             },
                 {
                     id: '2',
                     title: "Restaurant 2",
-                    price: '20000',
-                    url: '../../../images/r1.jpg'
+                    price: '20,000',
+                    rating: 3,
+                    url: '../../../images/r1.jpg',
+                    cuisine: 'Indian'
             },
                 {
                     id: '3',
                     title: "Restaurant 3",
-                    price: '10000',
-                    url: '../../../images/r1.jpg'
+                    price: '10,000',
+                    rating: 2,
+                    url: '../../../images/r1.jpg',
+                    cuisine: 'Continental'
 
             },
                 {
                     id: '4',
                     title: "Restaurant 4",
-                    price: '20000',
-                    url: '../../../images/r1.jpg'
+                    price: '20,000',
+                    rating: 4,
+                    url: '../../../images/r1.jpg',
+                    cuisine: 'Goan'
             }
           ];
 
@@ -184,119 +202,143 @@ angular.module('restaurant')
                 //                }
             };
 
-            $scope.adults = [];
-            $scope.adultsdata = [
+            /****Cuisines**/
+            $scope.cuisines = [];
+            $scope.cuisinesData = [
                 {
                     id: 1,
-                    label: "2 adults"
+                    label: "North Indian"
                 },
                 {
                     id: 2,
-                    label: "3 adults"
+                    label: "South Indian"
                 },
                 {
                     id: 3,
-                    label: "4 adults"
+                    label: "Chinese"
                 },
                 {
                     id: 4,
-                    label: "5 adults"
+                    label: "Goan"
+                },
+                {
+                    id: 5,
+                    label: "Sea food"
+                },
+                {
+                    id: 6,
+                    label: "Continental"
+                },
+                {
+                    id: 7,
+                    label: "Street Food"
                 }
             ];
 
-            $scope.examplesettings1 = {
+            $scope.cuisineSettings = {
                 smartButtonMaxItems: 1,
-                selectionLimit: 1
+                selectionLimit: 1,
+                showCheckAll: false,
+                scrollable: true
             };
 
-            $scope.places = [];
-            $scope.placesdata = [
+            /***establishment type**/
+            $scope.est = [];
+            $scope.estData = [
                 {
                     id: 1,
-                    label: "Panjim"
+                    label: "Casual Dining"
                 },
                 {
                     id: 2,
-                    label: "Margao"
+                    label: "Bars"
                 },
                 {
                     id: 3,
-                    label: "Candolim"
+                    label: "Quick Bites"
                 },
                 {
                     id: 4,
-                    label: "Mapusa"
+                    label: "Fine Dining"
+                },
+                {
+                    id: 5,
+                    label: "Shacks"
+                },
+                {
+                    id: 6,
+                    label: "Cafes"
+                },
+                {
+                    id: 7,
+                    label: "Pubs"
                 }
             ];
 
-            $scope.examplesettings2 = {
+            $scope.estSettings = {
                 smartButtonMaxItems: 1,
-                selectionLimit: 1
+                selectionLimit: 1,
+                showCheckAll: false,
+                scrollable: true
             };
 
-            $scope.amt = [];
-            $scope.amtdata = [
+            /***rating**/
+            $scope.rating = [];
+            $scope.ratingData = [
                 {
                     id: 1,
-                    label: "Rs.1000-Rs.2000"
+                    label: "2 star"
                 },
                 {
                     id: 2,
-                    label: "Rs.2000-Rs.5000"
+                    label: "3 star"
                 },
                 {
                     id: 3,
-                    label: "Rs.5000-Rs.7500"
-                },
-                {
-                    id: 4,
-                    label: "Rs.8000-Rs.10000"
+                    label: "4 & above"
                 }
             ];
 
-            $scope.examplesettings3 = {
+            $scope.ratingSettings = {
                 smartButtonMaxItems: 1,
-                selectionLimit: 1
+                selectionLimit: 1,
+                showCheckAll: false
             };
-            $scope.companion = [];
-            $scope.companiondata = [
-                {
-                    id: 1,
-                    label: "Family"
-                },
-                {
-                    id: 2,
-                    label: "Friends"
-                },
-                {
-                    id: 3,
-                    label: "Colleagues"
-                }
-            ];
 
-            $scope.examplesettings4 = {
-                smartButtonMaxItems: 1,
-                selectionLimit: 1
-            };
+            /***amanties**/
             $scope.amenities = [];
-            $scope.amenitiesdata = [
+            $scope.amenitiesData = [
                 {
                     id: 1,
-                    label: "ac"
+                    label: "Pure veg"
                 },
                 {
                     id: 2,
-                    label: "wifi"
+                    label: "Credit cards accepted"
                 },
                 {
                     id: 3,
-                    label: "beaches"
+                    label: "Buffet"
+                },
+                {
+                    id: 4,
+                    label: "Happy Hour"
+                },
+                {
+                    id: 5,
+                    label: "Alcohol served"
+                },
+                {
+                    id: 6,
+                    label: "Alcohol not served"
                 }
             ];
 
-            $scope.examplesettings5 = {
-                smartButtonMaxItems: 3,
+            $scope.amenitiesSettings = {
+                smartButtonMaxItems: 6,
+                showCheckAll: false
             };
+
 
             $scope.maxDate = new Date(2020, 5, 22);
 

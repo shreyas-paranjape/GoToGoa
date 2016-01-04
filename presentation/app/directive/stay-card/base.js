@@ -5,6 +5,9 @@ angular.module('directives').controller('StayCardController', ['$scope', 'Restan
         $scope.currentState = $scope.states[0];
         //        $scope.activity = [];
 
+        $scope.max = 5;
+        $scope.isReadonly = true;
+
         // Define resource 
         //defines the url name
         var actiRes = Restangular.all('activities');

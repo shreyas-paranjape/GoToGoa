@@ -2,6 +2,17 @@ angular.module('app')
     .controller('AppListController', ['$scope', '$filter', '$stateParams', '$timeout', 'leafletData',
     function ($scope, $filter, $stateParams, $timeout, leafletData) {
             'use strict';
+
+            $scope.mapVisible = true;
+
+            $scope.hideMap = function () {
+                $scope.mapVisible = false;
+            }
+
+            $scope.showMap = function () {
+                $scope.mapVisible = true;
+            }
+
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
@@ -176,8 +187,20 @@ angular.module('app')
             };*/
     }
   ])
-    /*.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
-        $scope.cancel = function () {
-            $uibModalInstance.dismiss('cancel');
-        };
-    }]);*/
+    .controller('AppLoginController', ['$scope', '$filter', '$stateParams', '$timeout', 'leafletData',
+    function ($scope, $filter, $stateParams, $timeout, leafletData) {
+            'use strict';
+            $scope.hideMap();
+
+    }])
+    .controller('AppSignupController', ['$scope', '$filter', '$stateParams', '$timeout', 'leafletData',
+    function ($scope, $filter, $stateParams, $timeout, leafletData) {
+            'use strict';
+            $scope.hideMap();
+
+    }]);
+/*.controller('ModalInstanceCtrl', ['$scope', '$uibModalInstance', function ($scope, $uibModalInstance) {
+    $scope.cancel = function () {
+        $uibModalInstance.dismiss('cancel');
+    };
+}]);*/

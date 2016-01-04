@@ -15,6 +15,12 @@ angular.module('directives').controller('RestCardController', ['$scope', 'Restan
                 $scope.activity.push(value);
             });
         });
+
+//        $scope.rate = $scope.rating;
+        $scope.max = 5;
+        $scope.isReadonly = true;
+
+
         $scope.myInterval = 5000;
         $scope.noWrapSlides = false;
         var slides = $scope.slides = [];

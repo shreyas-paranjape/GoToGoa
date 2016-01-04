@@ -1,42 +1,182 @@
-<div id="activity" class="row">
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll ">
-        <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
+<div class="module">
+    <div class="list">
+        <div class="well">
+        <div class="filters">
+            <div class="col-md-3">
+                <label style="margin-top: 10px;">Date And Time:</label>
+            </div>
+            <div class="col-md-9">
                 <p class="input-group">
-                    <input type="text" class="form-control" datetime-picker="MM/dd/yyyy HH:mm" ng-model="dates.date3" is-open="open.date3" />
+                    <input id="stayFromDate"
+                           type="text" 
+                           class="form-control" 
+                           datetime-picker="dd MMM yyyy hh:mm" 
+                           ng-model="fromDate" 
+                           is-open="calendarOpenFrom"
+                           min-date="fromDateMin"/>
                     <span class="input-group-btn">
-                                <button type="button" class="btn btn-default" ng-click="openCalendar($event, 'date3')">
+                        <button type="button" 
+                                class="btn btn-default" 
+                                ng-click="openCalendarFrom($event,'date1')">
                                     <i class="glyphicon glyphicon-calendar"></i>
-                                </button>
-                                </span>
+                        </button>
+                    </span>
                 </p>
             </div>
-
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+        </div>
+<!--
+            <div class="filter-wrapper-acti">
+                <div checkboxes="true" 
+                     extra-settings="examplesettings1" 
+                     ng-dropdown-multiselect="" 
+                     options="adultsdata" 
+                     selected-model="adults" 
+                     class="filter">
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
+-->
+<!--
+            <div class="filter-wrapper-acti">
+                <div checkboxes="true" 
+                     extra-settings="examplesettings4" 
+                     ng-dropdown-multiselect="" 
+                     options="companiondata" 
+                     selected-model="companion" 
+                     class="filter">
+                </div>
+            </div>
+            <div class="filter-wrapper-acti">
+                <button type="button" 
+                    class="btn btn-default" 
+                    ng-click="isCollapsed = !isCollapsed">
+                    <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                </button>
+         </div>
+-->
+        
+            <div class="filters" style="padding-top: 10px;">
+                <div class="col-md-4">
+                    <label>No. Of people:</label>
+                </div>
+                <div class="col-md-4 no-padding">
+                    <label>Adults:</label>
+                    <div>
+                        <div fs-counter value="1" 
+                             data-min="0" 
+                             data-max="10" 
+                             data-step="1" 
+                             data-addclass="col-xs-4" 
+                             data-width="130px" 
+                             data-editable>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Child:</label>
+                    <div>
+                        <div fs-counter value="1" 
+                                        data-min="0" 
+                                        data-max="10" 
+                                        data-step="1" 
+                                        data-addclass="col-xs-4" 
+                                        data-width="130px" 
+                                        data-editable>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="filters">
+                <input type="checkbox" ng-click="includeLocation('A')" /> A</br>
+                <input type="checkbox" ng-click="includeLocation('B')" /> B </br>
+            </div>
+            
+            <div class="filters" style="padding-top:20px;">
+                <div class="col-md-6 col-sm-6">
+                    <label>MORE FILTERS</label>
+                    <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+                        <span class="glyphicon glyphicon-filter" aria-hidden="true"></span>
+                    </button>
+                </div>
+                <div class="col-md-6 col-sm-6 sorts">
+                    <div class="filters " style="width:95%;">
+                        <div uib-dropdown is-open="status.isopen">
+                            <button id="single-button" type="button" class="btn btn-custom" uib-dropdown-toggle 
+                                    ng-disabled="disabled"><img src="../../../images/icons/sorts.png"/>
+                                Sort <span class="caret"></span>
+                            </button>
+                            <ul class="uib-dropdown-menu sorts" role="menu" aria-labelledby="single-button">
+                                <li role="menuitem">
+                                    <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" 
+                                       ng-click="reverse=!reverse;order('id', reverse)">Id</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" 
+                                       ng-click="reverse=!reverse;order('title', reverse)">Name</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" 
+                                       ng-click="reverse=!reverse;order('location', reverse)">Location</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" 
+                                       ng-click="reverse=!reverse;order('rating', reverse)">Stars</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" 
+                                       ng-click="reverse=!reverse;order('price', reverse)">Price</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="filters" uib-collapse="isCollapsed">
+               <div class="filters" style="padding-top:20px;">
+                    <div class="col-md-12">
+                        <label style="display:inline-block;">Price Range</label>
+                        <rzslider rz-slider-model="slider.min" 
+                                  rz-slider-high="slider.max" 
+                                  rz-slider-options="slider.options" 
+                                  rz-slider-translate="translate" 
+                                  style="display: inline-block; 
+                                          margin-bottom: 0px; 
+                                          margin-left: 25px; 
+                                          margin-top: 35px;">
+                        </rzslider>
+                    </div>
+                </div> 
+               <div class="row" style="padding-top:5px;">
+                    <div class="col-md-6">
+                        <label>Location:</label>
+                        <div checkboxes="true"
+                             extra-settings="examplesettings7"
+                             ng-dropdown-multiselect=""
+                             options="placesdata"
+                             selected-model="places"
+                             style="display:inline-block;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Activity Types</label>
+                        <div checkboxes="true" 
+                             extra-settings="actisettings"
+                             ng-dropdown-multiselect=""
+                             options="actiData"
+                             selected-model="acti"
+                             class="filter"
+                             style="display:inline-block;">
+                        </div>
+                    </div>
+                </div> 
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <rzslider rz-slider-model="slider.min" rz-slider-high="slider.max" rz-slider-options="slider.options">
-                </rzslider>
-            </div>
-        </div>
-        <div ng-repeat="acti in activity" class="animated fadeInUpBig">
+        <div ng-repeat="acti in activity| filter: items.keyword | filter: locationFilter" class="animated fadeInUpBig cards">
             <div acticard data="acti" ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 no-padding">
-        <leaflet class="map" center="goa" defaults="defaults" markers="markers" />
+    <div class="map-wrapper">
+<!--        <leaflet class="map" center="goa" defaults="defaults" markers="markers" />-->
     </div>
 
 </div>

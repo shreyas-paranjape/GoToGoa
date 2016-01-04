@@ -7,46 +7,138 @@ angular.module('activity')
     .controller('ActivityListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
+            $scope.showMap();
+            $scope.isCollapsed = true;
+            $scope.count = 1;
+
             $scope.slider = {
-                min: 100,
-                max: 180,
+                min: 1000,
+                max: 18000,
                 options: {
                     floor: 0,
                     ceil: 450
                 }
             };
 
+            //            $scope.date = new Date();
+            //            $scope.calendarOpen = false;
+            //            $scope.openCalendar = function (e) {
+            //                $scope.calendarOpen = true;
+            //            };
+            //
+            //            $scope.isDisabledDate = function (currentDate, mode) {
+            //                return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
+            //            };
 
-
-            $scope.dates = {
-                date1: new Date('2015-03-01T00:00:00Z'),
-                date2: new Date('2015-03-01T12:30:00Z'),
-                date3: new Date(),
-                date4: new Date(),
-                date5: new Date(),
-                date6: new Date(),
-                date7: new Date(),
-                date8: new Date()
+            /*****datepicker****/
+            $scope.dateOptions = {
+                showWeeks: true,
+                startingDay: 1
             };
+            $scope.calendarOpenFrom = false;
+            $scope.calendarOpenTo = false;
 
-            $scope.open = {
-                date1: false,
-                date2: false,
-                date3: false,
-                date4: false,
-                date5: false,
-                date6: false,
-                date7: false,
-                date8: false
-            };
-            $scope.openCalendar = function (e, date) {
-                $scope.open[date] = true;
-            };
+            $scope.fromDate = new Date();
+            $scope.fromDateMin = new Date();
 
+            $scope.toDate = new Date();
+            $scope.toDateMin = new Date();
+            $scope.toDateMax = new Date();
+            $scope.toDate.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMin.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMax.setDate($scope.fromDate.getDate() + 90);
+
+            $scope.onFromDateSelect = function (dat) {
+                $scope.calendarOpenTo = true;
+                $scope.toDate = new Date();
+                $scope.toDate.setDate(dat.getDate() + 1);
+                $scope.toDateMin = new Date();
+                $scope.toDateMin.setDate(dat.getDate() + 1);
+            }
+
+            $scope.openCalendarFrom = function (e, date) {
+                $scope.calendarOpenFrom = true;
+            };
+            $scope.openCalendarTo = function (e, date) {
+                $scope.calendarOpenTo = true;
+            };
             $scope.isDisabledDate = function (currentDate, mode) {
                 return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
             };
 
+
+            /****places*****/
+            $scope.places = [];
+            $scope.placesdata = [
+                {
+                    id: 1,
+                    label: "Panjim"
+                },
+                {
+                    id: 2,
+                    label: "Candolim"
+                },
+                {
+                    id: 3,
+                    label: "Mapusa"
+                },
+                {
+                    id: 4,
+                    label: "Mapusa"
+                },
+                {
+                    id: 5,
+                    label: "Old Goa"
+                },
+                {
+                    id: 6,
+                    label: "Ponda"
+                },
+                {
+                    id: 7,
+                    label: "Porvorim"
+                }
+            ];
+
+            $scope.examplesettings7 = {
+                smartButtonMaxItems: 3,
+                showUncheckAll: false,
+                showCheckAll: false,
+                enableSearch: true,
+                scrollable: true
+            };
+
+            /****activities*****/
+            $scope.acti = [];
+            $scope.actiData = [
+                {
+                    id: 1,
+                    label: "Snorkeling"
+                },
+                {
+                    id: 2,
+                    label: "Parasailing"
+                },
+                {
+                    id: 3,
+                    label: "Kayaking"
+                },
+                {
+                    id: 4,
+                    label: "Scuba Diving"
+                },
+                {
+                    id: 5,
+                    label: "Beach Activities"
+                }
+            ];
+
+            $scope.actisettings = {
+                smartButtonMaxItems: 5,
+                //                selectionLimit: 1,
+                showCheckAll: false,
+                scrollable: true
+            };
 
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
@@ -157,24 +249,71 @@ angular.module('activity')
                 {
                     id: '1',
                     title: "Activity 1",
+                    "location": "A",
+                    rating: 4,
+                    actitype: 'Parasailing',
                     price: '10000',
+                    noppl: 2,
                     url: '../../../images/travel.jpg'
 
             },
                 {
                     id: '2',
                     title: "Activity 2",
+                    "location": "B",
+                    rating: 5,
+                    actitype: 'Kayaking',
                     price: '20000',
+                    noppl: 4,
+                    url: '../../../images/travel1.jpg'
+            },
+                {
+                    id: '3',
+                    title: "Activity 3",
+                    "location": "B",
+                    rating: 3,
+                    actitype: 'Partying',
+                    price: '5000',
+                    noppl: 'unlimited',
+                    url: '../../../images/travel1.jpg'
+            },
+                {
+                    id: '4',
+                    title: "Activity 4",
+                    "location": "A",
+                    rating: 3.5,
+                    actitype: 'Mountain Climbing',
+                    price: '3000',
+                    noppl: 'unlimited',
                     url: '../../../images/travel1.jpg'
             }
           ];
-            $scope.priceSlider = {
-                min: 500,
-                max: 15000,
-                ceil: 20000,
-                floor: 0
-            };
 
+            /****** sorts and filters****/
+            var orderBy = $filter('orderBy');
+            $scope.order = function (predicate, reverse) {
+                $scope.activity = orderBy($scope.activity, predicate, reverse);
+            };
+            $scope.locationIncludes = [];
+            $scope.includeLocation = function (location) {
+                var i = $.inArray(location, $scope.locationIncludes);
+                if (i > -1) {
+                    $scope.locationIncludes.splice(i, 1);
+                } else {
+                    $stateParams
+                    $scope.locationIncludes.push(location);
+                }
+            }
+            $scope.locationFilter = function (activity) {
+                if ($scope.locationIncludes.length > 0) {
+                    if ($.inArray(activity.location, $scope.locationIncludes) < 0)
+                        return;
+                }
+
+                return activity;
+            }
+
+            
             $scope.translate = function (value) {
                 return '₹' + value;
             }
@@ -182,148 +321,8 @@ angular.module('activity')
             $scope.onSliderChange = function () {
                 console.log('changed', $scope.priceSlider);
             }
-            $scope.examplemodel = [];
-            $scope.exampledata = [{
-                id: 1,
-                label: "David"
-      }, {
-                id: 2,
-                label: "Jhon"
-      }, {
-                id: 3,
-                label: "Lisa"
-      }, {
-                id: 4,
-                label: "Nicole"
-      }, {
-                id: 5,
-                label: "Danny"
-      }];
 
-            $scope.examplesettings = {
-                smartButtonMaxItems: 5,
-                //                smartButtonTextConverter: function (itemText, originalItem) {
-                //                    if (itemText === 'Jhon') {
-                //                        return 'Jhonny!';
-                //                    }
-                //
-                //                    return itemText;
-                //                }
-            };
 
-            $scope.adults = [];
-            $scope.adultsdata = [
-                {
-                    id: 1,
-                    label: "2 adults"
-                },
-                {
-                    id: 2,
-                    label: "3 adults"
-                },
-                {
-                    id: 3,
-                    label: "4 adults"
-                },
-                {
-                    id: 4,
-                    label: "5 adults"
-                }
-            ];
-
-            $scope.examplesettings1 = {
-                smartButtonMaxItems: 1,
-                selectionLimit: 1
-            };
-
-            $scope.places = [];
-            $scope.placesdata = [
-                {
-                    id: 1,
-                    label: "Panjim"
-                },
-                {
-                    id: 2,
-                    label: "Margao"
-                },
-                {
-                    id: 3,
-                    label: "Candolim"
-                },
-                {
-                    id: 4,
-                    label: "Mapusa"
-                }
-            ];
-
-            $scope.examplesettings2 = {
-                smartButtonMaxItems: 1,
-                selectionLimit: 1
-            };
-
-            $scope.amt = [];
-            $scope.amtdata = [
-                {
-                    id: 1,
-                    label: "Rs.1000-Rs.2000"
-                },
-                {
-                    id: 2,
-                    label: "Rs.2000-Rs.5000"
-                },
-                {
-                    id: 3,
-                    label: "Rs.5000-Rs.7500"
-                },
-                {
-                    id: 4,
-                    label: "Rs.8000-Rs.10000"
-                }
-            ];
-
-            $scope.examplesettings3 = {
-                smartButtonMaxItems: 1,
-                selectionLimit: 1
-            };
-            $scope.companion = [];
-            $scope.companiondata = [
-                {
-                    id: 1,
-                    label: "Family"
-                },
-                {
-                    id: 2,
-                    label: "Friends"
-                },
-                {
-                    id: 3,
-                    label: "Colleagues"
-                }
-            ];
-
-            $scope.examplesettings4 = {
-                smartButtonMaxItems: 1,
-                selectionLimit: 1
-            };
-            $scope.amenities = [];
-            $scope.amenitiesdata = [
-                {
-                    id: 1,
-                    label: "ac"
-                },
-                {
-                    id: 2,
-                    label: "wifi"
-                },
-                {
-                    id: 3,
-                    label: "beaches"
-                }
-            ];
-
-            $scope.examplesettings5 = {
-                smartButtonMaxItems: 3,
-            };
 
             $scope.maxDate = new Date(2020, 5, 22);
 
@@ -347,8 +346,6 @@ angular.module('activity')
             $scope.status = {
                 isopen: false
             };
-
-
 
             $scope.toggleDropdown = function ($event) {
                 $event.preventDefault();
@@ -502,4 +499,23 @@ angular.module('activity')
                 $scope.addSlide();
             }
     }
-  ]);
+  ])
+    .controller('ActivityDetailController', ['$scope', 'Restangular', '$stateParams', '$timeout', '$document', 'leafletData',
+    function ($scope, Restangular, $stateParams, $timeout, $document, leafletData) {
+            'use strict';
+            //            $scope.hideMap();
+            $scope.store = $stateParams.data;
+            $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+                var target = this.href.split('#');
+                $('.nav a').filter('a[href="#' + target[1] + '"]').tab('show');
+            });
+            $("#p").click(function () {
+                $("#caption").slideToggle("slow");
+            });
+
+            $scope.tabs = [false, false, false, false, false];
+            $scope.selectTab = function (index) {
+                $scope.tabs = [false, false, false, false, false];
+                $scope.tabs[index] = true;
+            };
+    }]);

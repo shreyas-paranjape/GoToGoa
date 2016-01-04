@@ -1,5 +1,5 @@
-angular.module('travel')
-    .factory('travelRepository', ['$log', 'Restangular',
+angular.module('taxi')
+    .factory('taxiRepository', ['$log', 'Restangular',
     function ($log, Restangular) {
             var activityRepository = {};
             var activities = [

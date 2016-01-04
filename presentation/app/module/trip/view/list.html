@@ -1,4 +1,113 @@
-<div class="row">
+<div class="module" style="margin:0 auto; width:90%">
+
+    <div style="padding:15px;font-size:20px;">
+        <span>I'd like to visit Goa from</span>
+        <div class="filter-wrapper" style="display:inline-block;">
+        <p class="input-group" style="margin-bottom:-10px;">
+            <input id="stayFromDate"
+                   type="text" 
+                   class="form-control" 
+                   datetime-picker="dd MMM yyyy"
+                   ng-model="fromDate" 
+                   ng-change="onFromDateSelect(fromDate)"
+                   enable-time="false" 
+                   is-open="calendarOpenFrom" 
+                   min-date="fromDateMin" />
+            <span class="input-group-btn">
+                    <button type="button" 
+                            class="btn btn-default" 
+                            ng-click="openCalendarFrom($event,'date1')"><i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+        </p>
+        </div>
+        <span>to</span>
+
+        <div class="filter-wrapper" style="display:inline-block;">
+            <p class="input-group" style="margin-bottom:-10px;">
+                <input id="stayToDate"
+                       type="text" 
+                       class="form-control" 
+                       datetime-picker="dd MMM yyyy"
+                       datepicker-options="dateOptions"
+                       ng-model="toDate" 
+                       is-open="calendarOpenTo" 
+                       enable-time="false" 
+                       min-date="toDateMin"
+                       max-date="toDateMax"/>
+                <span class="input-group-btn">
+                    <button type="button" 
+                            class="btn btn-default" 
+                            ng-click="openCalendarTo($event, 'date2')"><i class="glyphicon glyphicon-calendar"></i>
+                    </button>
+                </span>
+            </p>
+        </div>
+        <span>as</span>
+        <div checkboxes="true" 
+             extra-settings="examplesettings1" 
+             ng-dropdown-multiselect="" 
+             options="adultsdata"
+             translation-texts="adultsacustomTexts"
+             selected-model="adults" 
+             style="display:inline-block;">
+        </div>
+        <span>. My Budget is</span>
+        <div checkboxes="true" 
+             extra-settings="examplesettings3" 
+             ng-dropdown-multiselect="" 
+             options="budgetdata" 
+             selected-model="budget" 
+             style="display:inline-block;">
+        </div>
+        <span>and I'm interested in</span>
+        <div checkboxes="true" 
+             extra-settings="examplesettings4" 
+             ng-dropdown-multiselect="" 
+             options="interestdata" 
+             selected-model="interests" 
+             style="display:inline-block;">
+        </div>
+        <span>and i want it to be a</span>
+        <div checkboxes="true" 
+             extra-settings="examplesettings5"
+             translation-texts="tripcustomTexts"
+             ng-dropdown-multiselect="" 
+             options="triptypedata" 
+             selected-model="type_trip" 
+             style="display:inline-block;">
+        </div>
+        <span>. I am going with my</span>
+        <div checkboxes="true" 
+             extra-settings="examplesettings6"
+             translation-texts="companioncustomTexts"
+             ng-dropdown-multiselect="" 
+             options="companiondata" 
+             selected-model="companion" 
+             style="display:inline-block;">
+        </div>
+        <span> and I want to definately see</span>
+        <div checkboxes="true" 
+             extra-settings="examplesettings7"
+             translation-texts="placescustomTexts"
+             ng-dropdown-multiselect="" 
+             options="placesdata" 
+             selected-model="places" 
+             style="display:inline-block;">
+        </div>
+        <div style="padding:5px;">
+            <button class="btn btn-primary btn-refine-search" style="" type="button">Create a trip</button>
+        </div>
+    </div>
+
+    <div tripcard>
+    </div>
+
+</div>
+
+
+
+<!--<div class="row">
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 ">
         <div class="row">
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
@@ -57,7 +166,7 @@
             <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 " href="" ng-click="reverse=!reverse;order('price', reverse)">Price</a>
         </aside>
         <br>
-        <!--        <div ng-repeat="i in [1, 2, 3]">-->
+                <div ng-repeat="i in [1, 2, 3]">
         <div>
             <div tripcard ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
@@ -65,4 +174,4 @@
     <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
         <leaflet class="map" center="goa" defaults="defaults" markers="markers" />
     </div>
-</div>
+</div>-->

@@ -1,5 +1,5 @@
 <header class="header">
-    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="navbar navbar-custom navbar-fixed-top" role="navigation">
         <div>
             <div class="navbar-header">
                 <a class="navbar-brand" href="#">Goa Amigo</a>
@@ -7,36 +7,71 @@
             <div>
                 <ul class="nav navbar-nav">
                     <li style="margin-left: 20px;">
-                        <button class="btn btn-primary" ui-sref="app.trip.list">Trip</button>
+                        <button class="btn btn-custom" ui-sref="app.trip.list">Trip</button>
                     </li>
                     <li style="margin-left: 20px;">
-                        <button class="btn btn-primary" ui-sref="app.activity.list">
-                            <i class="material-icons md-18">local_activity</i> Activity
+                        <button class="btn btn-custom" ui-sref="app.activity.list">
+                            <img src="../../../images/icons/activity.png"> Activity
                         </button>
                     </li>
                     <li style="margin-left: 20px;">
-                        <button class="btn btn-primary" ui-sref="app.stay.list">
-                            <i class="material-icons md-18">hotel</i>Stay
+                        <button class="btn btn-custom" ui-sref="app.stay.list">
+                            <img src="../../../images/icons/stay.png"> Stay
                         </button>
                     </li>
                     <li style="margin-left: 20px;">
-                        <button class="btn btn-primary" ui-sref="app.travel.list">
-                            <i class="material-icons md-18">card_travel</i> Travel
+                        <div uib-dropdown is-open="status.isopen">
+                            <button id="single-button" 
+                                    type="button" 
+                                    class="btn btn-custom" 
+                                    uib-dropdown-toggle 
+                                    ng-disabled="disabled"><img src="../../../images/icons/travel.png">
+                                Travel <span class="caret"></span>
+                            </button>
+                            <ul class="uib-dropdown-menu" role="menu" aria-labelledby="single-button">
+                                <li role="menuitem">
+                                    <a ui-sref="app.taxi.list"><img src="../../../images/icons/taxi.png"> Taxi</a>
+                                </li>
+                                <li role="menuitem">
+                                    <a ui-sref="app.rentals.list"><img src="../../../images/icons/motorcycle.png"> Rentals</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li style="margin-left: 20px;">
+                        <button class="btn btn-custom" ui-sref="app.restaurant.list">
+                            <img src="../../../images/icons/rest.png"> Restaurants
+                            <!--                            <i class="material-icons md-18">restaurant_menu</i>Restaurants-->
                         </button>
                     </li>
                     <li style="margin-left: 20px;">
-                        <button class="btn btn-primary" ui-sref="app.restaurant.list">
-                            <i class="material-icons md-18">restaurant_menu</i>Restaurants
+                        <button class="btn btn-custom" ui-sref="app.abtgoa.list">About Goa</button>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li style="margin-right: 10px;">
+                        <button class="btn btn-custom" ui-sref="app.abtgoa.list">
+                            <img src="../../../images/icons/cart.png">
                         </button>
                     </li>
-                    <li style="margin-left: 20px;">
-                        <button class="btn btn-primary" ui-sref="app.abtgoa.list">About Goa</button>
+                    <li style="margin-right: 20px;">
+                        <button class="btn btn-custom" ui-sref="app.login">
+                            <span class="glyphicon glyphicon-log-in"></span> Log In
+                        </button>
                     </li>
                 </ul>
             </div>
         </div>
     </div>
 </header>
-<div class="col-md-12 col-lg-12 col-sm-12 col-xs-12">
-    <div ui-view></div>
+<div>
+    <div class="row" style="z-index:2" ng-if="mapVisible">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
+        </div>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
+            <leaflet class="map" center="goa" defaults="defaults" markers="markers" />
+        </div>
+    </div>
+    <div class="row" style="z-index:1">
+        <div ui-view></div>
+    </div>
 </div>

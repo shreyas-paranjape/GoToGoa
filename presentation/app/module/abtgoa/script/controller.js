@@ -6,6 +6,7 @@ angular.module('abtgoa')
     .controller('AbtGoaListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
+             $scope.showMap();
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });

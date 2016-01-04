@@ -1,4 +1,4 @@
-angular.module('directives').controller('TravelCardController', ['$scope', '$attrs', '$state',
+angular.module('directives').controller('RentalCardController', ['$scope', '$attrs', '$state',
   function ($scope, $attrs, $state) {
         this.init = function (element) {};
         $scope.states = ['event', 'category'];
@@ -19,7 +19,7 @@ angular.module('directives').controller('TravelCardController', ['$scope', '$att
             $scope.addSlide();
         }
         $scope.change = function () {
-            $state.go('app.travel.detail');
+            $state.go('app.rental.detail');
             /*if ($scope.currentState == $scope.states[1]) {
         $scope.currentState = $scope.states[0];
       } else {
@@ -28,12 +28,12 @@ angular.module('directives').controller('TravelCardController', ['$scope', '$att
         }
   }
 ]);
-angular.module('directives').directive('travelcard',
+angular.module('directives').directive('rentalcard',
     function () {
         return {
             restrict: 'EA',
-            templateUrl: '/directive/travel-card/layout/travel-card.html',
-            controller: 'TravelCardController',
+            templateUrl: '/directive/rental-card/layout/rental-card.html',
+            controller: 'RentalCardController',
             scope: true,
             link: function (scope, element, attrs, cardController) {
                 cardController.init(element);

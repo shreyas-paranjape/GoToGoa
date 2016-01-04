@@ -1,9 +1,9 @@
-angular.module('travel')
-    .controller('TravelController', ['$scope', function ($scope) {
+angular.module('rentals')
+    .controller('RentalsController', ['$scope', function ($scope) {
         'use strict';
-        $scope.pageHeader = "Travel";
+        $scope.pageHeader = "Rentals";
   }])
-    .controller('TravelDetailController', ['$scope', '$stateParams', function ($scope, $stateParams) {
+    .controller('RentalsDetailController', ['$scope', '$stateParams', function ($scope, $stateParams) {
         'use strict';
         //console.log($stateParams.data);
         $scope.store = $stateParams.data;
@@ -21,22 +21,78 @@ angular.module('travel')
             $scope.tabs[index] = true;
         };
 }])
-    .controller('TravelListController', ['$scope', 'travelRepository', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
-    function ($scope, travelRepository, $filter, $stateParams, $timeout, $log, leafletData, $state) {
+    .controller('RentalsListController', ['$scope', 'rentalsRepository', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
+    function ($scope, rentalsRepository, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
-            var products = travelRepository.get();
-            $scope.travels = [
+            $scope.showMap();
+            $scope.slider = {
+                min: 5000,
+                max: 15000,
+                options: {
+                    floor: 0,
+                    ceil: 450
+                }
+            };
+
+            /*****datepicker****/
+            $scope.dateOptions = {
+                showWeeks: true,
+                startingDay: 1
+            };
+            $scope.calendarOpenFrom = false;
+            $scope.calendarOpenTo = false;
+
+            $scope.fromDate = new Date();
+            $scope.fromDateMin = new Date();
+
+            $scope.toDate = new Date();
+            $scope.toDateMin = new Date();
+            $scope.toDateMax = new Date();
+            $scope.toDate.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMin.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMax.setDate($scope.fromDate.getDate() + 90);
+
+            $scope.onFromDateSelect = function (dat) {
+                $scope.calendarOpenTo = true;
+                $scope.toDate = new Date();
+                $scope.toDate.setDate(dat.getDate() + 1);
+                $scope.toDateMin = new Date();
+                $scope.toDateMin.setDate(dat.getDate() + 1);
+            }
+
+            $scope.openCalendarFrom = function (e, date) {
+                $scope.calendarOpenFrom = true;
+            };
+            $scope.openCalendarTo = function (e, date) {
+                $scope.calendarOpenTo = true;
+            };
+            $scope.isDisabledDate = function (currentDate, mode) {
+                return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
+            };
+
+
+            var products = rentalsRepository.get();
+            $scope.rentals = [
                 {
                     id: '1',
-                    title: "Bike",
-                    price: '10000',
+                    title: "Bike 1",
+                    typeVehicle: 'Deo',
+                    price: '10,000',
                     url: '../../../images/travel.jpg'
 
             },
                 {
                     id: '2',
-                    title: "car",
-                    price: '20000',
+                    title: "Car 2",
+                    typeVehicle: 'Alto',
+                    price: '20,000',
+                    url: '../../../images/travel1.jpg'
+            },
+                {
+                    id: '3',
+                    title: "Bike 3",
+                    typeVehicle: 'Activa',
+                    price: '5,000',
                     url: '../../../images/travel1.jpg'
             }
           ];
@@ -95,7 +151,7 @@ angular.module('travel')
                             lat: 15.2736,
                             lng: 73.9581,
                             focus: true,
-                            message: "<div ng-controller='TravelListController' ng-include src=\"'module/travel/view/template.html'\"></div>",
+                            message: "<div ng-controller='RentalsListController' ng-include src=\"'module/rentals/view/template.html'\"></div>",
                             draggable: false
                         }
                     }
@@ -458,7 +514,7 @@ angular.module('travel')
     }
   ])
 
-.controller('TravelEditController', [
+.controller('RentalsEditController', [
     '$scope', '$stateParams', '$timeout', '$document',
     function ($scope, $stateParams, $timeout, $document) {
         'use strict';

@@ -6,6 +6,173 @@ angular.module('stay')
     .controller('StayListController', ['$scope', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
+            $scope.showMap();
+            $scope.isCollapsed = true;
+            $scope.slider = {
+                min: 1000,
+                max: 18000,
+                options: {
+                    floor: 0,
+                    ceil: 450
+                }
+            };
+            $scope.count = 1;
+            /*****datepicker****/
+            $scope.dateOptions = {
+                showWeeks: true,
+                startingDay: 1
+            };
+            $scope.calendarOpenFrom = false;
+            $scope.calendarOpenTo = false;
+
+            $scope.fromDate = new Date();
+            $scope.fromDateMin = new Date();
+
+            $scope.toDate = new Date();
+            $scope.toDateMin = new Date();
+            $scope.toDateMax = new Date();
+            $scope.toDate.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMin.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMax.setDate($scope.fromDate.getDate() + 90);
+
+            $scope.onFromDateSelect = function (dat) {
+                $scope.calendarOpenTo = true;
+                $scope.toDate = new Date();
+                $scope.toDate.setDate(dat.getDate() + 1);
+                $scope.toDateMin = new Date();
+                $scope.toDateMin.setDate(dat.getDate() + 1);
+            }
+
+            $scope.openCalendarFrom = function (e, date) {
+                $scope.calendarOpenFrom = true;
+            };
+            $scope.openCalendarTo = function (e, date) {
+                $scope.calendarOpenTo = true;
+            };
+            $scope.isDisabledDate = function (currentDate, mode) {
+                return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
+            };
+
+            /***rating**/
+            $scope.rating = [];
+            $scope.ratingData = [
+                {
+                    id: 1,
+                    label: "2 star"
+                },
+                {
+                    id: 2,
+                    label: "3 star"
+                },
+                {
+                    id: 3,
+                    label: "4 & above"
+                }
+            ];
+
+            $scope.ratingSettings = {
+                smartButtonMaxItems: 1,
+                selectionLimit: 1,
+                showCheckAll: false
+            };
+
+            /***amanties**/
+            $scope.amenities = [];
+            $scope.amenitiesData = [
+                {
+                    id: 1,
+                    label: "Air Conditioning"
+                },
+                {
+                    id: 2,
+                    label: "24 hours check-in"
+                },
+                {
+                    id: 3,
+                    label: "Internet access"
+                },
+                {
+                    id: 4,
+                    label: "Free Wifi"
+                },
+                {
+                    id: 5,
+                    label: "Gym"
+                }
+            ];
+
+            $scope.amenitiesSettings = {
+                smartButtonMaxItems: 6,
+                showCheckAll: false
+            };
+
+            /****places*****/
+            $scope.places = [];
+            $scope.placesdata = [
+                {
+                    id: 1,
+                    label: "Panjim"
+                },
+                {
+                    id: 2,
+                    label: "Candolim"
+                },
+                {
+                    id: 3,
+                    label: "Mapusa"
+                },
+                {
+                    id: 4,
+                    label: "Mapusa"
+                },
+                {
+                    id: 5,
+                    label: "Old Goa"
+                },
+                {
+                    id: 6,
+                    label: "Ponda"
+                },
+                {
+                    id: 7,
+                    label: "Porvorim"
+                }
+            ];
+
+            $scope.examplesettings7 = {
+                smartButtonMaxItems: 3,
+                showUncheckAll: false,
+                showCheckAll: false,
+                enableSearch: true,
+                scrollable: true
+            };
+
+            /***amanties**/
+            $scope.ppty = [];
+            $scope.pptyData = [
+                {
+                    id: 1,
+                    label: "Appartment"
+                },
+                {
+                    id: 2,
+                    label: "Villa"
+                },
+                {
+                    id: 3,
+                    label: "Hotel"
+                },
+                {
+                    id: 4,
+                    label: "Guest House"
+                }
+            ];
+
+            $scope.pptySettings = {
+                smartButtonMaxItems: 4,
+                showCheckAll: false
+            };
+
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
@@ -13,6 +180,9 @@ angular.module('stay')
                 {
                     id: '1',
                     title: "Hotel 1",
+                    descr: "bdsbsbsah",
+                    rating: 5,
+                    ppty: "HomeStay",
                     price: '10000',
                     url: '../../../images/stay.jpg'
 
@@ -20,6 +190,9 @@ angular.module('stay')
                 {
                     id: '2',
                     title: "Hotel 2",
+                    descr: "bdsbsbsah",
+                    rating: 3,
+                    ppty: "Guest House",
                     price: '20000',
                     url: '../../../images/stay1.jpg'
             }

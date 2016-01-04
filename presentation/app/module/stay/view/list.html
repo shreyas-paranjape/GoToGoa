@@ -1,62 +1,160 @@
-<div class="row">
-
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
-        <div class="row">
-            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
-                <h4>Dates</h4>
+<div class="module">
+    <div class="list">
+        <div class="well">
+            <div class="filters">
+                <div class="col-md-6">
+                    <label>From:</label>
+                    <div style="display:inline-block;">
+                        <p class="input-group" style="margin-bottom:-10px;">
+                            <input id="stayFromDate" 
+                                   type="text"
+                                   class="form-control"
+                                   datetime-picker="dd MMM yyyy"
+                                   ng-model="fromDate"
+                                   ng-change="onFromDateSelect(fromDate)"
+                                   enable-time="false"
+                                   is-open="calendarOpenFrom"
+                                   min-date="fromDateMin" />
+                            <span class="input-group-btn">
+                                    <button type="button" 
+                                            class="btn btn-default" 
+                                            ng-click="openCalendarFrom($event,'date1')">
+                                                <i class="glyphicon glyphicon-calendar"></i>
+                                    </button>
+                                </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label>To:</label>
+                    <div class="" style="display:inline-block;">
+                        <p class="input-group" style="margin-bottom:-10px;">
+                            <input id="stayToDate"
+                                   type="text"
+                                   class="form-control"
+                                   datetime-picker="dd MMM yyyy"
+                                   datepicker-options="dateOptions"
+                                   ng-model="toDate" is-open="calendarOpenTo"
+                                   enable-time="false"
+                                   min-date="toDateMin"
+                                   max-date="toDateMax" />
+                            <span class="input-group-btn">
+                                <button type="button" 
+                                        class="btn btn-default" 
+                                        ng-click="openCalendarTo($event, 'date2')">
+                                            <i class="glyphicon glyphicon-calendar"></i>
+                                </button>
+                            </span>
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <p class="input-group">
-                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions" datepicker-popup="{{format}}" is-open="status.opened" max-date="maxDate" min-date="minDate" ng-model="from" ng-required="true" ng-click="open($event)" placeholder="From" type="text" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open($event)" type="button">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
-                </p>
+            <div class="filters" style="padding-top: 10px;">
+                <div class="col-md-4">
+                    <label>Room:{{count}}</label>
+                </div>
+                <div class="col-md-4 no-padding">
+                    <label>Adults:</label>
+                    <div>
+                        <div fs-counter value="1" 
+                             data-min="0" 
+                             data-max="10" 
+                             data-step="1" 
+                             data-addclass="col-xs-4" 
+                             data-width="130px" 
+                             data-editable>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <label>Child:</label>
+                    <div>
+                        <div fs-counter value="1" 
+                                        data-min="0" 
+                                        data-max="10" 
+                                        data-step="1" 
+                                        data-addclass="col-xs-4" 
+                                        data-width="130px" 
+                                        data-editable>
+                        </div>
+                    </div>
+                </div>
+                <addbuttonsbutton></addbuttonsbutton>
+                <div id="space-for-buttons"></div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <p class="input-group">
-                    <input class="form-control" close-text="Close" date-disabled="disabled(date, mode)" datepicker-options="dateOptions1" datepicker-popup="{{format}}" is-open="status1.opened" max-date="maxDate" min-date="minDate" ng-model="to" ng-required="true" ng-click="open1($event1)" placeholder="To" type="text" />
-                    <span class="input-group-btn">
-                        <button class="btn btn-default" ng-click="open1($event1)" type="button">
-                            <i class="glyphicon glyphicon-calendar"></i>
-                        </button>
-                    </span>
-                </p>
+            <div class="filters" style="padding-top:20px;">
+                <div class="">
+                    <label>MORE FILTERS</label>
+                    <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+                        <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+                    </button>
+                </div>
             </div>
-            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
-                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+            <div class="filters" uib-collapse="isCollapsed" style="padding-top:20px;">
+                <div class="row">
+                    <div class="col-md-6">
+                        <label>Rating:</label>
+                        <div checkboxes="true" 
+                             extra-settings="ratingSettings" 
+                             ng-dropdown-multiselect="" 
+                             options="ratingData" 
+                             selected-model="rating" 
+                             class="filter" 
+                             style="display:inline-block;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Other amenities:</label>
+                        <div checkboxes="true"
+                             extra-settings="amenitiesSettings"
+                             ng-dropdown-multiselect=""
+                             options="amenitiesData" 
+                             selected-model="amenities"
+                             class="filter"
+                             style="display:inline-block;">
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="padding-top:5px;">
+                    <div class="col-md-6">
+                        <label>Location:</label>
+                        <div checkboxes="true"
+                             extra-settings="examplesettings7"
+                             ng-dropdown-multiselect=""
+                             options="placesdata"
+                             selected-model="places"
+                             style="display:inline-block;">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label>Property Types:</label>
+                        <div checkboxes="true" 
+                             extra-settings="pptySettings"
+                             ng-dropdown-multiselect=""
+                             options="pptyData"
+                             selected-model="ppty"
+                             class="filter"
+                             style="display:inline-block;">
+                        </div>
+                    </div>
+                </div>
+                <div class="filters" style="padding-top:20px;">
+                    <div class="col-md-12">
+                        <label style="display:inline-block;">Price Range</label>
+                        <rzslider rz-slider-model="slider.min" 
+                                  rz-slider-high="slider.max" 
+                                  rz-slider-options="slider.options" 
+                                  rz-slider-translate="translate" 
+                                  style="display: inline-block; 
+                                          margin-bottom: 0px; 
+                                          margin-left: 25px; 
+                                          margin-top: 35px;">
+                        </rzslider>
+                    </div>
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 no-padding">
-                <h4 style="display:inline-block;">Type: </h4>
-                <div checkboxes="true" extra-settings="examplesettings1" ng-dropdown-multiselect="" options="adultsdata" selected-model="adults" style="display:inline-block;"></div>
+        <div ng-repeat="stay in stays" class="animated fadeInUpBig cards">
+                <div staycard data="stay" ng-mouseenter="cardMouseEnter(i)"></div>
             </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <h4 style="display:inline-block;">Places: </h4>
-                <div checkboxes="true" extra-settings="examplesettings2" ng-dropdown-multiselect="" options="placesdata" selected-model="places" style="display:inline-block;"></div>
-            </div>
-            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-                <h4 style="display:inline-block;">Companion: </h4>
-                <div checkboxes="true" extra-settings="examplesettings4" ng-dropdown-multiselect="" options="companiondata" selected-model="companion" style="display:inline-block;"></div>
-            </div>
-        </div>
-        <div class="row">
-            <h4>Price Range</h4>
-            <div>
-                <rzslider rz-slider-floor="priceSlider.floor" rz-slider-ceil="priceSlider.ceil" rz-slider-model="priceSlider.min" rz-slider-high="priceSlider.max" rz-slider-translate="translate" rz-slider-on-change="onSliderChange()" rz-slider-show-ticks="true"></rzslider>
-            </div>
-        </div>
-
-        <div ng-repeat="stay in stays">
-            <div staycard data="stay" ng-mouseenter="cardMouseEnter(i)"></div>
-        </div>
-
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <leaflet class="map" center="goa" defaults="defaults" markers="markers"></leaflet>
-    </div>
-
-</div>

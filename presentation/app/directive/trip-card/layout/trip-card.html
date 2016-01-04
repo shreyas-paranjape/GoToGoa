@@ -1,53 +1,66 @@
 <div ng-repeat="trip in trips">
     <div class="row">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
-            <span style="font-size:16px;font-weight:300;">{{trip.title}}, ₹{{trip.price}}/-</span>
-        </div>
-    </div>
-    <div style="background-color:#343434;">
-        <div style="padding-bottom:15px;">
-            <div class="row ">
-                <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" style="padding-top:15px;">
-                    <img src="{{trip.url}}" height="auto" width="auto">
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">&nbsp;</div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 black-col">
+                    <span style="font-size:16px;font-weight:300;">{{trip.title}}, ₹{{trip.price}}/-</span>
                 </div>
             </div>
-            <div class="row" ng-repeat="hotel in trip.hotels" style="padding-left:15px;padding-right:22px;">
-                <div class="col-md-6 col-xs-6 col-sm-6 col-lg-6" style="padding-right:0px;background-color:#297EC1;">
-                    <img src="{{hotel.url}}" height="auto" width="auto" style="padding-top:10px;">
-                    <h4 style="color:white;">{{hotel.title}}</h4>
-                    <h5 style="color:white;">{{hotel.descr}}</h5>
-                </div>
-                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6" style="background-color:#00B46D;height:224px;">
-                    yo
-                </div>
-            </div>
-        </div>
-    </div>
-    <!--
-        <div class="animate-switch-container" ng-switch on="currentState">
-        <div class="row" ng-switch-when="category">
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
-                <div class="row">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">See</div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Do</div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4" style="height:100px">Eat</div>
+            <div style="background-color:#343434;">
+                <div style="padding-bottom:15px;">
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 col-sm-8 col-lg-8" style="padding-top:15px;background-color:#673ab7;height:100px;">
+                           <embed src="https://res.cloudinary.com/fomentotravel-com/video/upload/v1449123653/DJI_0001_-_Segment1_00_00_33.654-00_00_40.120_n0kn7a.mp4" autostart="true" height="100" width="400" />
+</div>
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#7e57c2;height:100px;">
+                            <img src="{{trip.url}}" height="auto" width="auto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#263238;height:100px;"></div>
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#607d8b;height:100px;"></div>
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#b0bec5;height:100px;"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="row" ng-switch-default>
-            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:blue;">
-                <div class="row">
-                    <div style="height:200px">Event content</div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 black-col">
+                    <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.trip.detail">Book now</a>
                 </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">&nbsp;</div>
             </div>
         </div>
-    </div>
-    -->
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
-            <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.trip.detail">Book trip now</a>
+        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+            <div class="row">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">&nbsp;</div>
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 black-col">
+                    <span style="font-size:16px;font-weight:300;">{{trip.title}}, ₹{{trip.price}}/-</span>
+                </div>
+            </div>
+            <div style="background-color:#343434;">
+                <div style="padding-bottom:15px;">
+                    <div class="row ">
+                        <div class="col-xs-8 col-md-8 col-sm-8 col-lg-8" style="padding-top:15px;background-color:#673ab7;height:100px;">
+                            <img src="{{trip.url}}" height="auto" width="auto">
+                        </div>
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#7e57c2;height:100px;">
+                            <img src="{{trip.url}}" height="auto" width="auto">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#263238;height:100px;"></div>
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#607d8b;height:100px;"></div>
+                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#b0bec5;height:100px;"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 black-col">
+                    <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.trip.detail">Book now</a>
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">&nbsp;</div>
+            </div>
         </div>
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
     </div>
 </div>

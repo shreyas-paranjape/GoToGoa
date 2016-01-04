@@ -16,7 +16,8 @@ angular.module('trip', [
             .state('app.trip', {
                 url: '/trip',
                 templateUrl: 'module/trip/view/home.html',
-                abstract: true
+                abstract: true,
+                controller: 'TripListController'
             })
             .state('app.trip.list', {
                 url: '',

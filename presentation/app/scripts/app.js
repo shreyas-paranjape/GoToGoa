@@ -10,6 +10,7 @@ angular.element(document).ready(function () {
             'permission',
             'ngSanitize',
             'ngTouch',
+            'Firestitch.angular-counter',
 //            'ngMap',
             'ui.bootstrap',
             'angularjs-dropdown-multiselect',
@@ -22,7 +23,8 @@ angular.element(document).ready(function () {
             'activity',
             'restaurant',
             'stay',
-            'travel',
+            'taxi',
+            'rentals',
             'abtgoa',
             'rzModule'
         ])

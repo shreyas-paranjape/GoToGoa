@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 scroll">
+    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 scroll">
         <div class="row">
             <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 no-padding">
                 <h4>Dates</h4>
@@ -45,32 +45,21 @@
         </div>
         <div class="row">
             <h4>Price Range</h4>
-
-            <div class="col-md-4 col-lg-4 col-sm-3 col-xs-4 ">
-                <button type="button" class="btn btn-default">₹5000/- - ₹10000/-</button>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
-                <button type="button" class="btn btn-default">₹10000/- - ₹15000/-</button>
-            </div>
-            <div class="col-md-4 col-lg-4 col-sm-4 col-xs-4">
-                <button type="button" class="btn btn-default">₹15000/- - ₹25000/-</button>
+            <div>
+                <rzslider rz-slider-model="slider.min" 
+                          rz-slider-high="slider.max" 
+                          rz-slider-options="slider.options">
+                </rzslider>
             </div>
         </div>
-        <aside class="row sorts well" style="width:95%;">
-            <h4 class="col-xs-2 col-sm-2 col-md-2 col-lg-2 ">Sort :</h4>
-            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('id', reverse)">Id</a>
-            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('name', reverse)">Name</a>
-            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('location', reverse)">Location</a>
-            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('stars', reverse)">Stars</a>
-            <a class="col-xs-2 col-sm-2 col-md-2 col-lg-2 no-padding" href="" ng-click="reverse=!reverse;order('price', reverse)">Price</a>
-        </aside>
-        <div ng-repeat="travel in travels">
-            <div travelcard data="travel" ng-mouseenter="cardMouseEnter(i)"></div>
+
+
+        <div ng-repeat="rest in restaurant">
+            <div class="my-col-50" restcard data="rest" ng-mouseenter="cardMouseEnter(i)"></div>
         </div>
 
     </div>
-    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-        <leaflet class="map" center="goa" defaults="defaults" markers="markers" />
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
     </div>
 
 </div>

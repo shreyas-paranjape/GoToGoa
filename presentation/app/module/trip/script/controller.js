@@ -3,6 +3,44 @@ angular.module('trip')
     function ($scope, Restangular, $filter, $stateParams, $timeout, leafletData, $state, $uibModal) {
             'use strict';
 
+            $scope.hideMap();
+
+            /*****datepicker****/
+            $scope.dateOptions = {
+                showWeeks: true,
+                startingDay: 1
+            };
+            $scope.calendarOpenFrom = false;
+            $scope.calendarOpenTo = false;
+
+            $scope.fromDate = new Date();
+            $scope.fromDateMin = new Date();
+
+            $scope.toDate = new Date();
+            $scope.toDateMin = new Date();
+            $scope.toDateMax = new Date();
+            $scope.toDate.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMin.setDate($scope.fromDate.getDate() + 1);
+            $scope.toDateMax.setDate($scope.fromDate.getDate() + 90);
+
+            $scope.onFromDateSelect = function (dat) {
+                $scope.calendarOpenTo = true;
+                $scope.toDate = new Date();
+                $scope.toDate.setDate(dat.getDate() + 1);
+                $scope.toDateMin = new Date();
+                $scope.toDateMin.setDate(dat.getDate() + 1);
+            }
+
+            $scope.openCalendarFrom = function (e, date) {
+                $scope.calendarOpenFrom = true;
+            };
+            $scope.openCalendarTo = function (e, date) {
+                $scope.calendarOpenTo = true;
+            };
+            $scope.isDisabledDate = function (currentDate, mode) {
+                return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
+            };
+
             leafletData.getMap().then(function (map) {
                 // L.GeoIP.centerMapOnPosition(map, 15);
             });
@@ -179,6 +217,7 @@ angular.module('trip')
                 //                }
             };
 
+            /******no of adults****/
             $scope.adults = [];
             $scope.adultsdata = [
                 {
@@ -196,63 +235,103 @@ angular.module('trip')
                 {
                     id: 4,
                     label: "5 adults"
+                },
+                {
+                    id: 5,
+                    label: "7 adults"
                 }
             ];
 
             $scope.examplesettings1 = {
-                smartButtonMaxItems: 4,
-                //                selectionLimit: 1
-            };
-
-            $scope.places = [];
-            $scope.placesdata = [
-                {
-                    id: 1,
-                    label: "Panjim"
-                },
-                {
-                    id: 2,
-                    label: "Margao"
-                },
-                {
-                    id: 3,
-                    label: "Candolim"
-                },
-                {
-                    id: 4,
-                    label: "Mapusa"
-                }
-            ];
-
-            $scope.examplesettings2 = {
                 smartButtonMaxItems: 1,
-                selectionLimit: 1
+                selectionLimit: 1,
+                showUncheckAll: false
+            };
+            $scope.adultsacustomTexts = {
+                buttonDefaultText: 'No of adults'
             };
 
-            $scope.amt = [];
-            $scope.amtdata = [
+            /******budget*****/
+            $scope.budget = [];
+            $scope.budgetdata = [
                 {
                     id: 1,
-                    label: "Rs.1000-Rs.2000"
+                    label: "₹5,000 - ₹10,000"
                 },
                 {
                     id: 2,
-                    label: "Rs.2000-Rs.5000"
+                    label: "₹10,000 - ₹15,0000"
                 },
                 {
                     id: 3,
-                    label: "Rs.5000-Rs.7500"
+                    label: "₹15,000 - ₹20,0000"
                 },
                 {
                     id: 4,
-                    label: "Rs.8000-Rs.10000"
+                    label: "₹20,000 - ₹25,0000"
                 }
             ];
 
             $scope.examplesettings3 = {
                 smartButtonMaxItems: 1,
-                selectionLimit: 1
+                selectionLimit: 1,
+                showCheckAll: false,
+                showUncheckAll: false
             };
+
+            /*****interest******/
+            $scope.interests = [{
+                id: 3
+            }];
+            $scope.interestdata = [
+                {
+                    id: 1,
+                    label: "Skydiving"
+                },
+                {
+                    id: 2,
+                    label: "Temple/church visits"
+                },
+                {
+                    id: 3,
+                    label: "Beach"
+                },
+                {
+                    id: 4,
+                    label: "Yoga"
+                }
+            ];
+
+            $scope.examplesettings4 = {
+                smartButtonMaxItems: 4,
+            };
+
+            /*****type of trip******/
+            $scope.type_trip = [];
+            $scope.triptypedata = [
+                {
+                    id: 1,
+                    label: "Comfortable trip"
+                },
+                {
+                    id: 2,
+                    label: "Spiritual trip"
+                },
+                {
+                    id: 3,
+                    label: "Romantic trip"
+                }
+            ];
+            $scope.examplesettings5 = {
+                smartButtonMaxItems: 1,
+                selectionLimit: 1,
+                showUncheckAll: false
+            };
+            $scope.tripcustomTexts = {
+                buttonDefaultText: 'Type of trip'
+            };
+
+            /******companions***/
             $scope.companion = [];
             $scope.companiondata = [
                 {
@@ -269,28 +348,57 @@ angular.module('trip')
                 }
             ];
 
-            $scope.examplesettings4 = {
+            $scope.examplesettings6 = {
                 smartButtonMaxItems: 1,
-                selectionLimit: 1
+                selectionLimit: 1,
+                showUncheckAll: false
             };
-            $scope.amenities = [];
-            $scope.amenitiesdata = [
+            $scope.companioncustomTexts = {
+                buttonDefaultText: 'Companions'
+            };
+
+            /****places*****/
+            $scope.places = [];
+            $scope.placesdata = [
                 {
                     id: 1,
-                    label: "ac"
+                    label: "Panjim"
                 },
                 {
                     id: 2,
-                    label: "wifi"
+                    label: "Candolim"
                 },
                 {
                     id: 3,
-                    label: "beaches"
+                    label: "Mapusa"
+                },
+                {
+                    id: 4,
+                    label: "Mapusa"
+                },
+                {
+                    id: 5,
+                    label: "Old Goa"
+                },
+                {
+                    id: 6,
+                    label: "Ponda"
+                },
+                {
+                    id: 7,
+                    label: "Porvorim"
                 }
             ];
 
-            $scope.examplesettings5 = {
+            $scope.examplesettings7 = {
                 smartButtonMaxItems: 3,
+                showUncheckAll: false,
+                showCheckAll: false,
+                enableSearch: true,
+                scrollable: true
+            };
+            $scope.placescustomTexts = {
+                buttonDefaultText: 'these places'
             };
 
             //            var date = new Date();

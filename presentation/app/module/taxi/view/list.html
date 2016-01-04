@@ -1,0 +1,43 @@
+<div class="module">
+    <div class="list">
+        <div class="well">
+            <div class="filters">
+                <div class="col-md-6">
+                    <label>Start point:</label>
+                    <input type="text" class="form-control" id="start">
+                </div>
+                <div class="col-md-6">
+                    <label>End point:</label>
+                    <input type="text" class="form-control" id="end">
+                </div>
+            </div>
+            <div class="filters" style="padding-top:10px;">
+                <div class="col-md-3">
+                    <label style="margin-top: 10px;">Date And Time:</label>
+                </div>
+                <div class="col-md-9">
+                    <p class="input-group">
+                        <input  id="stayFromDate"
+                                type="text" 
+                                class="form-control" 
+                                datetime-picker="dd MMM yyyy hh:mm" 
+                                ng-model="fromDate" 
+                                is-open="calendarOpenFrom"
+                                min-date="fromDateMin"/>
+                                    <span class="input-group-btn">
+                                            <button type="button" 
+                                                    class="btn btn-default" 
+                                                    ng-click="openCalendarFrom($event,'date1')">
+                                                        <i class="glyphicon glyphicon-calendar"></i>
+                                            </button>
+                                    </span>
+                    </p>
+            </div>
+            </div>
+        </div>
+        <div ng-repeat="taxi in taxi" class="animated fadeInUpBig cards">
+            <div taxicard data="taxi" ng-mouseenter="cardMouseEnter(i)"></div>
+        </div>
+    </div>
+</div>
+

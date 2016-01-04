@@ -1,0 +1,48 @@
+<!--
+<div class="acti-card">
+    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+        hi
+    </div>
+    <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">hii</div>
+    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">hiiiiiiiii</div>
+</div>
+-->
+
+
+<div class="acti-card">
+    <div class="row">
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+            <span style="font-size:16px;font-weight:300;">{{acti.title}}, ₹{{acti.price}}/-</span>
+        </div>
+    </div>
+    <div style="background-color:#2196f3;">
+        <div style="padding-bottom:15px;">
+            <div class="row ">
+                <div class="col-xs-12 col-md-12 col-sm-12 col-lg-12" style="padding-top:15px;">
+                    <img ng-src="{{acti.url}}">
+<!--
+                    
+                    <uib-carousel interval="myInterval" no-wrap="noWrapSlides">
+    <uib-slide ng-repeat="slide in slides" active="slide.active">
+        <img ng-src="{{slide.image}}" style="margin:auto;">
+        <div class="carousel-caption">
+            <h4>Slide {{$index}}</h4>
+            <p>{{slide.text}}</p>
+        </div>
+    </uib-slide>
+</uib-carousel>
+-->
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 black-col">
+            <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.activity.detail">Book trip now</a>
+        </div>
+        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">&nbsp;</div>
+    </div>
+</div>
