@@ -1,0 +1,37 @@
+<section>
+    <div class="row">
+        <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+            <h4><span class="glyphicon glyphicon-user" aria-hidden="true" ></span></h4>
+        </div>
+        <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10">
+            <h4>Amenities?</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <input type="checkbox"> Wifi
+        </div>
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <input type="checkbox"> GYM
+        </div>
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <input type="checkbox"> AC
+        </div>
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <button type="button" class="btn btn-default" ng-click="isCollapsed = !isCollapsed">
+                <span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span>
+            </button>
+        </div>
+    </div>
+    <div class="row" uib-collapse="isCollapsed">
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <input type="checkbox"> Wifi
+        </div>
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <input type="checkbox"> GYM
+        </div>
+        <div class="col-md-3 col-xs-3 col-lg-3 col-sm-3">
+            <input type="checkbox"> Air Conditioning
+        </div>
+    </div>
+</section>

@@ -1,0 +1,40 @@
+<section>
+    <div class="row">
+        <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+            <h4><span class="glyphicon glyphicon-user" aria-hidden="true" ></span></h4>
+        </div>
+        <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10">
+            <h4>Rating?</h4>
+        </div>
+    </div>
+    <div class="row">
+        <uib-tabset justified="false" class="row">
+            <uib-tab class="col-md-4 col-xs-4 col-lg-4 col-sm-4 no-padding" heading="GoaAmigo rating">
+                <label style="padding-left:15px;">Abc:</label>
+                <uib-rating ng-model="rating1" max="max"></uib-rating>
+                <label style="padding-left:15px;">Xyz:</label>
+                <uib-rating ng-model="rating" max="max"></uib-rating>
+            </uib-tab>
+            <uib-tab class="col-md-4 col-xs-4 col-lg-4 col-sm-4 no-padding" heading="User rating">
+                <label style="padding-left:15px;">Xyz:</label>
+                <uib-rating ng-model="rating1" max="max"></uib-rating>
+                <label style="padding-left:15px;">Abc:</label>
+                <uib-rating ng-model="rating" max="max"></uib-rating>
+            </uib-tab>
+            <uib-tab class="col-md-4 col-xs-4 col-lg-4 col-sm-4 no-padding" heading="Facility rating">
+                <div>
+                    <label style="padding-left:15px;">Cleanliness:</label>
+                    <uib-rating ng-model="rating1" max="max"></uib-rating>
+                </div>
+                <div>
+                    <label style="padding-left:15px;">Hospitality:</label>
+                    <uib-rating ng-model="rating" max="max"></uib-rating>
+                </div>
+                <div>
+                    <label style="padding-left:15px;">Food:</label>
+                    <uib-rating ng-model="rating2" max="max"></uib-rating>
+                </div>
+            </uib-tab>
+        </uib-tabset>
+    </div>
+</section>
