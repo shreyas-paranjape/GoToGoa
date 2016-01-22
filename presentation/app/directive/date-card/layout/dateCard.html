@@ -1,0 +1,54 @@
+<section>
+    <div class="row">
+        <div class="col-md-2 col-xs-2 col-lg-2 col-sm-2">
+            <h4><span class="glyphicon glyphicon-user" aria-hidden="true" ></span></h4>
+        </div>
+        <div class="col-md-10 col-xs-10 col-lg-10 col-sm-10">
+            <h4>Dates?</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="display:inline-block;">
+            <p class="input-group">
+                <input id="stayFromDate" 
+                       type="text" 
+                       class="form-control" 
+                       datetime-picker="dd/MM/yy" 
+                       datepicker-options="dateOptions" 
+                       ng-model="fromDate" 
+                       ng-change="onFromDateSelect(fromDate)" 
+                       enable-time="false" 
+                       is-open="calendarOpenFrom"
+                       min-date="fromDateMin" />
+                        <span class="input-group-btn">
+                            <button type="button" 
+                                    class="btn btn-default" 
+                                    ng-click="openCalendarFrom($event,'date1')">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+            </p>
+        </div>
+        <div class="col-md-6 col-xs-6 col-lg-6 col-sm-6" style="display:inline-block;">
+            <p class="input-group">
+                <input id="stayToDate" 
+                       type="text"
+                       class="form-control"
+                       datetime-picker="dd/MM/yy"
+                       datepicker-options="dateOptions"
+                       ng-model="toDate" 
+                       is-open="calendarOpenTo"
+                       enable-time="false" 
+                       min-date="toDateMin"
+                       max-date="toDateMax" />
+                        <span class="input-group-btn">
+                            <button type="button" 
+                                    class="btn btn-default" 
+                                    ng-click="openCalendarTo($event, 'date2')">
+                                    <i class="glyphicon glyphicon-calendar"></i>
+                            </button>
+                        </span>
+            </p>
+        </div>
+    </div>
+</section>

@@ -21,7 +21,7 @@ angular.module('app')
                 goa: {
                     lat: 15.4989,
                     lng: 73.8278,
-                    zoom: 10
+                    zoom: 11
                 },
                 markers: {
                     m1: {

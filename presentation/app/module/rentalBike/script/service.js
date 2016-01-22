@@ -1,4 +1,4 @@
-angular.module('rentals')
+angular.module('rentalBike')
     .factory('rentalsRepository', ['$log', 'Restangular',
     function ($log, Restangular) {
             var activityRepository = {};

@@ -1,6 +1,5 @@
 <div ng-repeat="trip in trips">
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
             <div class="row">
                 <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">&nbsp;</div>
                 <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 black-col">
@@ -30,37 +29,5 @@
                 </div>
                 <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">&nbsp;</div>
             </div>
-        </div>
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-            <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">&nbsp;</div>
-                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 black-col">
-                    <span style="font-size:16px;font-weight:300;">{{trip.title}}, ₹{{trip.price}}/-</span>
-                </div>
-            </div>
-            <div style="background-color:#343434;">
-                <div style="padding-bottom:15px;">
-                    <div class="row ">
-                        <div class="col-xs-8 col-md-8 col-sm-8 col-lg-8" style="padding-top:15px;background-color:#673ab7;height:100px;">
-                            <img src="{{trip.url}}" height="auto" width="auto">
-                        </div>
-                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#7e57c2;height:100px;">
-                            <img src="{{trip.url}}" height="auto" width="auto">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#263238;height:100px;"></div>
-                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#607d8b;height:100px;"></div>
-                        <div class="col-xs-4 col-md-4 col-sm-4 col-lg-4" style="padding-top:15px;background-color:#b0bec5;height:100px;"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 black-col">
-                    <a style="cursor:pointer;color:white;text-decoration:none;text-transform:uppercase;" ui-sref="app.trip.detail">Book now</a>
-                </div>
-                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">&nbsp;</div>
-            </div>
-        </div>
     </div>
 </div>

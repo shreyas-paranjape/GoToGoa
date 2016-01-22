@@ -1,47 +1,48 @@
-<div class="module" style="margin:0 auto; width:90%">
+<div class="row">
+    <div class="col-md-3 col-lg-3 col-xs-3 col-sm-3 no-padding">
+        <h3>Preferences</h3>
+        <!--        dates-->
+        <div class="row" style="border:1px black solid;">
+            <div datecard></div>
+        </div>
+        <!--        budget-->
+        <div class="row" style="border:1px black solid;margin-top:30px;">
+            <div budgetcard></div>
+        </div>
 
+        <!--        people-->
+        <div class="row" style="border:1px black solid;margin-top:30px;">
+            <div pplcard></div>
+        </div>
+
+        <!--        ppl-->
+        <div class="row" style="border:1px black solid;margin-top:30px;">
+            <div pacecard></div>
+        </div>
+
+        <!--        todo-->
+        <div class="row" style="border:1px black solid;margin-top:30px;">
+            <div todocard></div>
+        </div>
+    </div>
+    <div class="col-md-9 col-lg-9 col-xs-9 col-sm-9">
+        <h3>Trips</h3>
+        <div tripcard></div>
+    </div>
+</div>
+
+
+<!--
+<div class="module" style="margin:0 auto; width:90%">
     <div style="padding:15px;font-size:20px;">
         <span>I'd like to visit Goa from</span>
         <div class="filter-wrapper" style="display:inline-block;">
-        <p class="input-group" style="margin-bottom:-10px;">
-            <input id="stayFromDate"
-                   type="text" 
-                   class="form-control" 
-                   datetime-picker="dd MMM yyyy"
-                   ng-model="fromDate" 
-                   ng-change="onFromDateSelect(fromDate)"
-                   enable-time="false" 
-                   is-open="calendarOpenFrom" 
-                   min-date="fromDateMin" />
-            <span class="input-group-btn">
-                    <button type="button" 
-                            class="btn btn-default" 
-                            ng-click="openCalendarFrom($event,'date1')"><i class="glyphicon glyphicon-calendar"></i>
-                    </button>
-                </span>
-        </p>
+        
         </div>
         <span>to</span>
 
         <div class="filter-wrapper" style="display:inline-block;">
-            <p class="input-group" style="margin-bottom:-10px;">
-                <input id="stayToDate"
-                       type="text" 
-                       class="form-control" 
-                       datetime-picker="dd MMM yyyy"
-                       datepicker-options="dateOptions"
-                       ng-model="toDate" 
-                       is-open="calendarOpenTo" 
-                       enable-time="false" 
-                       min-date="toDateMin"
-                       max-date="toDateMax"/>
-                <span class="input-group-btn">
-                    <button type="button" 
-                            class="btn btn-default" 
-                            ng-click="openCalendarTo($event, 'date2')"><i class="glyphicon glyphicon-calendar"></i>
-                    </button>
-                </span>
-            </p>
+            
         </div>
         <span>as</span>
         <div checkboxes="true" 
@@ -61,31 +62,11 @@
              style="display:inline-block;">
         </div>
         <span>and I'm interested in</span>
-        <div checkboxes="true" 
-             extra-settings="examplesettings4" 
-             ng-dropdown-multiselect="" 
-             options="interestdata" 
-             selected-model="interests" 
-             style="display:inline-block;">
-        </div>
+        
         <span>and i want it to be a</span>
-        <div checkboxes="true" 
-             extra-settings="examplesettings5"
-             translation-texts="tripcustomTexts"
-             ng-dropdown-multiselect="" 
-             options="triptypedata" 
-             selected-model="type_trip" 
-             style="display:inline-block;">
-        </div>
+        
         <span>. I am going with my</span>
-        <div checkboxes="true" 
-             extra-settings="examplesettings6"
-             translation-texts="companioncustomTexts"
-             ng-dropdown-multiselect="" 
-             options="companiondata" 
-             selected-model="companion" 
-             style="display:inline-block;">
-        </div>
+        
         <span> and I want to definately see</span>
         <div checkboxes="true" 
              extra-settings="examplesettings7"
@@ -104,6 +85,7 @@
     </div>
 
 </div>
+-->
 
 
 

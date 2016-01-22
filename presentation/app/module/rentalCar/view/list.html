@@ -2,17 +2,18 @@
     <div class="list">
         <div class="well">
             <div class="filters">
-                <div class="col-md-3">
-                    <label style="margin-top: 10px;">Date And Time:</label>
+                <div class="col-md-1">
+                    <label style="margin-top: 10px;">Date:</label>
                 </div>
-                <div class="col-md-9">
+                <div class="col-md-11">
                     <p class="input-group">
                         <input  id="stayFromDate"
                                 type="text" 
                                 class="form-control" 
-                                datetime-picker="dd MMM yyyy hh:mm" 
+                                datetime-picker="dd MMM yyyy" 
                                 ng-model="fromDate" 
                                 is-open="calendarOpenFrom"
+                                enable-time="false"
                                 min-date="fromDateMin"/>
                                     <span class="input-group-btn">
                                             <button type="button" 
@@ -25,11 +26,22 @@
                 </div>
             </div>
             <div class="filters">
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="text" placeholder="Location" class="form-control" id="loc">
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <input type="number" min="0" max="10" placeholder="No. of days" class="form-control" id="days">
+                </div>
+                <div class="col-md-4">
+                    <div checkboxes="true" 
+                         extra-settings="typeSettings" 
+                         ng-dropdown-multiselect="" 
+                         options="TypeData" 
+                         selected-model="type" 
+                         translation-texts="example5customTexts" 
+                         class="filter" 
+                         style="display:inline-block;">
+                    </div>
                 </div>
             </div>
         </div>

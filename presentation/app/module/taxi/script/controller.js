@@ -69,12 +69,23 @@ angular.module('taxi')
             $scope.isDisabledDate = function (currentDate, mode) {
                 return mode === 'day' && (currentDate.getDay() === 0 || currentDate.getDay() === 6);
             };
+
+            $scope.time = new Date('2015-03-01T00:30:00Z');
+            $scope.timeOpenFrom = false;
+            $scope.timeOptions = {
+                readonlyInput: false,
+                showMeridian: false
+            };
+            $scope.openCalendar = function (e, date) {
+              $scope.timeOpenFrom  = true;
+            };
+
             var products = taxiRepository.get();
             $scope.taxi = [
                 {
                     id: '1',
-                    title: "Taxi 1",
-                    typeVehicle: 'Wagon R',
+                    //                    title: "Taxi 1",
+                    typeVehicle: 'Ac Hatchback Car',
                     price: '10,000',
                     noppl: 4,
                     descr: 'Ac car, with stereo',
@@ -83,19 +94,19 @@ angular.module('taxi')
             },
                 {
                     id: '2',
-                    title: "Taxi 2",
+                    //                    title: "Taxi 2",
+                    typeVehicle: 'Ac LUV',
                     descr: 'Ac car, with stereo',
-                    noppl: 4,
-                    typeVehicle: 'Alto',
+                    noppl: 6,
                     price: '20,000',
                     url: '../../../images/travel1.jpg'
             },
                 {
                     id: '3',
-                    title: "Taxi 3",
+                    typeVehicle: 'Ac Sedan',
+                    //                    title: "Taxi 3",
                     descr: 'Ac car, with stereo',
                     noppl: 4,
-                    typeVehicle: 'Swift',
                     price: '5,000',
                     url: '../../../images/travel1.jpg'
             }
@@ -456,6 +467,37 @@ angular.module('taxi')
 
             $scope.examplesettings5 = {
                 smartButtonMaxItems: 3,
+            };
+
+            $scope.type = [];
+            $scope.TypeData = [
+                {
+                    id: 1,
+                    label: "Hatchback"
+                },
+                {
+                    id: 2,
+                    label: "Sedan"
+                },
+                {
+                    id: 3,
+                    label: "LUV/SUV"
+                },
+                {
+                    id: 4,
+                    label: "Luxury"
+                }
+            ];
+
+            $scope.typeSettings = {
+                smartButtonMaxItems: 3,
+                //                selectionLimit: 1,
+                showCheckAll: false,
+                showUncheckAll: false,
+                scrollable: false
+            };
+            $scope.example5customTexts = {
+                buttonDefaultText: 'Vehicle Type'
             };
 
             $scope.maxDate = new Date(2020, 5, 22);

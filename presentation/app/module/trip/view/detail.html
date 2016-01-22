@@ -1,30 +1,86 @@
-<div style="width:800px;">
-    <carousel interval="myInterval" no-wrap="noWrapSlides">
-        <slide ng-repeat="slide in slides" active="slide.active">
-            <div class="event-card-list">
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{slide.title}} , {{slide.price}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#84D6D6;">
-                        <div class="row">
-                            <img ng-src="{{slide.url}}">
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{slide.descr}},{{slide.location}}</div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">ratings</div>
-                        </div>
+<div>
+    <h3 class="container">Trip 1</h3>
+    <div class="row">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 no-padding">
+            <div class="row" >
+                <h3 style="padding:5px;" class="no-margin">Day Items</h3>
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                    <div class="row" >
+                        <img ng-src="{{try.acti[0].url}}">
+                    </div>
+                    <div class="row">
+                        {{try.acti[0].title}}
                     </div>
                 </div>
-                <div class="row event-card-list">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                        <span class="edit">Edit</span>
-                    </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                    <leaflet center="goa" defaults="defaults" markers="markers" />
                 </div>
             </div>
-        </slide>
-    </carousel>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 no-padding">
+            <div class="row">
+                <uib-tabset>
+                    <uib-tab ng-repeat="day in days" heading="{{day.title}}" active="day.active" ng-click="active()" style="margin-top:-5px;">
+                        <div class="row" style="border:black 2px solid;">
+                            <div class="col-md-6 col-lg-6" style="border-right:black 1px solid;">
+                                <h3 class="no-margin"><u>Stay</u></h3>
+                                <h4>{{day.stay}}</h4>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <h3 class="no-margin"><u>Travel</u></h3>
+                                <h4>{{day.travel}}</h4>
+                            </div>
+                        </div>
+
+                        <hr style="margin:0;">
+                        <h3>{{day.title}} activities</h3>
+                        <div class="row" ng-repeat="acti in day.acti" >
+                            <div class="row">
+                                <div class="col-md-3 col-xs-3"></div>
+                                <div class="col-md-3 col-xs-3">
+                                    <img src="http://placehold.it/60x60" class="img-circle" alt="Cinque Terre" style="border:black 1px solid;">
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <h4 style="text-align:center;">{{acti.title}}</h4>
+                                </div>
+                                <div class="col-md-3 col-xs-3"></div>
+                            </div>
+<!--
+                            <svg style="height:auto; width:auto;">
+                                <line x1="150" y1="0" x2="150" y2="50" style="stroke:rgb(255,0,0);stroke-width:2" /> Sorry, your browser does not support inline SVG.
+                            </svg>
+-->
+                            <div class="row">
+                                <div class="col-md-3 col-xs-3"></div>
+                                <div class="col-md-3 col-xs-3" >
+                                    <img src="../../../images/icons/run.png" style="padding:12px;">
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <h5 style="border:black 1px solid;width:auto;padding:12px; text-align:center;">10km/30min</h5>
+                                </div>
+                                <div class="col-md-2 col-xs-2"></div>
+                            </div>
+
+                        </div>
+
+                        <!--
+                        <div class="row" ng-repeat="acti in day.acti">
+                            <div class="row">
+                                <div class="col-md-4 col-xs-4">
+                                    <img src="http://placehold.it/60x60" class="img-circle" alt="Cinque Terre" style="border:black 1px solid;">
+                                </div>
+                                <div class="col-md-8 col-xs-8">
+                                    {{acti.title}}
+                                </div>
+                            </div>
+                            
+                        </div>
+-->
+                    </uib-tab>
+                </uib-tabset>
+            </div>
+        </div>
+    </div>
 </div>

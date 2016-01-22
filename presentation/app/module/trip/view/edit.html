@@ -1,126 +1,93 @@
 <div>
-
-    <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 tripItem">
-        <tabset>
-            <tab ng-repeat="trip in trips" heading="{{trip.title}}" active="trip.active">
-                <br>
-                <tabset>
-                    <tab ng-repeat="day in trip.days" heading="{{day.title}}" active="day.active">
-                        <section id="{{i + day.id}}" class="event" ng-repeat="event in day.events">
-                            <!--                <section id="{{i + tab.id}}" class="event" ng-repeat="i in [1,2,3,4,5,6,7,8,9,10]">-->
-                            <div class="start-time">{{event.start_time}}</div>
-                            <div class="end-time">{{event.end_time}}</div>
-                            <div class="event-card">
-                                <div class="row">
-                                    <!--                            <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 blank-col">&nbsp;</div>-->
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 title">{{event.title}}</div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#84D6D6;">
-                                        <!--
-                               <div class="row">
-    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8"><img ng-src="{{event.url}}"></div>
-    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-        <map zoom="10" center="{{event.x}}, {{event.y}}" on-center-changed="centerChanged()">
-            <marker position="{{event.x}}, {{event.y}}"></marker>
-        </map>
-    </div>
-</div>
--->
-                                        <!--                                <hr>-->
-                                        <div class="row">
-                                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-                                                {{event.descr}}
-                                            </div>
-                                            <!--
-                                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-    {{event.rating}}
-</div>
--->
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4"><a ui-sref="app.trip.list">Change</a></div>
-                                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-                                </div>
-                            </div>
-                        </section>
-                        <!--
-                <div class="event-card-list" ng-repeat="i in [1,2,3]">
+    <h3 class="container">Trip 1</h3>
     <div class="row">
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">Top content</div>
-        <div my-dom-directive><a href="">Click Me!</a></div>
-    </div>
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#84D6D6;">
+        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8 no-padding">
             <div class="row">
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 rect">
-                    <h4>See</h4></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 rect">
-                    <h4>Do</h4></div>
-                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 rect">
-                    <h4>Eat</h4></div>
+                <h3 style="padding:5px;" class="no-margin">filters</h3>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" ng-click="includeType('Stay')" /><span class="glyphicon glyphicon-bed" aria-hidden="true"></span>
+                    <span>Stay</span>
+
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" ng-click="includeType('Travel')" /> Travel
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" ng-click="includeType('Food')" /> Food
+                </div>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                    <input type="checkbox" ng-click="includeType('Activity')" /> Activity
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                    <div ng-repeat="event in events| filter: items.keyword | filter: typeFilter" class="animated fadeInUpBig" style="margin-bottom:10px;border:black 1px solid;">
+                        <div class="row">
+                            <img src="http://placehold.it/415x150" style="padding:5px;">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-lg-6">
+                                <h4>{{event.title}}</h4>
+                                <h5>{{event.desc}}</h5>
+                            </div>
+                            <div class="col-md-3 col-lg-3"></div>
+                            <div class="col-md-3 col-lg-3">
+                                <button class="btn btn-md" ng-click="addToEvent(event.id)" style="border:black 2px solid;">
+                                    Add +</button>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 no-padding">
+                    <leaflet center="goa" defaults="defaults" markers="markers" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 no-padding">
+            <div class="row">
+                <uib-tabset>
+                    <uib-tab ng-repeat="day in days" heading="{{day.title}}" active="day.active" ng-click="active()" style="margin-top:-5px;">
+                        <div class="row" style="border:black 2px solid;">
+                            <div class="col-md-6 col-lg-6" style="border-right:black 1px solid;">
+                                <h3 class="no-margin"><u>Stay</u></h3>
+                                <h4>{{day.stay}}</h4>
+                            </div>
+                            <div class="col-md-6 col-lg-6">
+                                <h3 class="no-margin"><u>Travel</u></h3>
+                                <h4>{{day.travel}}</h4>
+                            </div>
+                        </div>
+
+                        <hr style="margin:0;">
+                        <h3>{{day.title}} activities</h3>
+                        <div class="row" ng-repeat="acti in day.acti">
+                            <div class="row">
+                                <div class="col-md-3 col-xs-3"></div>
+                                <div class="col-md-3 col-xs-3">
+                                    <img src="http://placehold.it/60x60" class="img-circle" alt="Cinque Terre" style="border:black 1px solid;">
+                                </div>
+                                <div class="col-md-3 col-xs-3">
+                                    <h4 style="text-align:center;">{{acti.title}}</h4>
+                                </div>
+                                <div class="col-md-3 col-xs-3"></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3 col-xs-3"></div>
+                                <div class="col-md-3 col-xs-3">
+                                    <img src="../../../images/icons/run.png" style="padding:12px;">
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <h5 style="border:black 1px solid;width:auto;padding:12px; text-align:center;">10km/30min</h5>
+                                </div>
+                                <div class="col-md-2 col-xs-2"></div>
+                            </div>
+
+                        </div>
+                    </uib-tab>
+                </uib-tabset>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
-            <a href="" ui-sref="trip.edit"><span class="edit">Edit</span></a>
-        </div>
-        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-    </div>
-</div>
--->
-
-                        <!--
-                <div style="width:800px;">
-    <carousel interval="myInterval" no-wrap="noWrapSlides">
-        <slide ng-repeat="slide in slides" active="slide.active">
-            <div class="event-card-list">
-                <div class="row">
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">{{slide.title}} , {{slide.price}}</div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12" style="background-color:#84D6D6;">
-                        <div class="row">
-                            <img ng-src="{{slide.url}}">
-                        </div>
-                        <hr>
-                        <div class="row">
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">{{slide.descr}},{{slide.location}}</div>
-                            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">ratings</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row event-card-list">
-                    <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 ">
-                        <span class="edit">Edit</span>
-                    </div>
-                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 blank-col">&nbsp;</div>
-                </div>
-            </div>
-        </slide>
-    </carousel>
-</div>
--->
-                        <br>
-                    </tab>
-                </tabset>
-            </tab>
-        </tabset>
-
-    </div>
-    <aside class="col-xs-3 col-sm-3 col-md-3 col-lg-3 tripSummary">
-        <nav>
-            <ul>
-                <li><a href="#" ng-click="gotoEvent(2)">Event 2</a></li>
-                <li><a href="#" ng-click="gotoEvent(19)">Event 19</a></li>
-                <li><a href="#" ng-click="gotoEvent(24)">Event 24</a></li>
-            </ul>
-        </nav>
-    </aside>
-
 </div>

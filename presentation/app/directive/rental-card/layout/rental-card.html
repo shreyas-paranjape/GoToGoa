@@ -1,25 +1,25 @@
 <section>
-    <div class="row" style="background-color:#26a69a;padding:10px;">
+    <div class="row" style="border:black solid 1px;padding:10px;">
         <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3 no-padding" style="">
             <img src="http://placehold.it/152x146">
         </div>
-        <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
-            <div class="row">
-                <h3 class="no-padding no-margin">{{rental.title}}</h3>
-            </div>
+        <div class="col-md-9 col-sm-9 col-xs-9 col-lg-9">
             <div class="row" style="padding-top:10px;">
-                <h4 class="no-padding no-margin">Type of vehicle: {{rental.typeVehicle}}</h4>
-<!--                <uib-rating ng-model="rest.rating" max="max" readonly="isReadonly"></uib-rating>-->
+                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6 no-padding">
+                    <h4 class="no-padding no-margin"><b>{{rental.typeVehicle}}</b></h4>
+                </div>
+                <div class="col-md-6 col-sm-6 col-xs-6 col-lg-6">
+                    <h3 style="text-align:right;" class="no-padding no-margin"><b>₹{{rental.price}}</b></h3>
+                </div>
+
             </div>
-            
-        </div>
-        <div class="col-md-3 col-sm-3 col-xs-3 col-lg-3">
             <div class="row">
-                <h3 class="no-padding no-margin">₹{{rental.price}}</h3>
+                <p style="text-align:justify;">{{rental.desc}}</p>
             </div>
             <div class="row">
-               <button class="btn btn-md" ui-sref="app.rentals.detail" style="margin-top: 100px;background-color:#e0f2f1">
-                   Book now</button>
+                <button class="btn btn-md" ui-sref="app.rentalBike.detail({data:rental})" style="border:black solid 1px;">
+                    Book now
+                </button>
             </div>
         </div>
     </div>

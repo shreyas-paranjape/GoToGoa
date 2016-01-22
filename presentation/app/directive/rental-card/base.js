@@ -1,10 +1,11 @@
-angular.module('directives').controller('RentalCardController', ['$scope', '$attrs', '$state',
-  function ($scope, $attrs, $state) {
+angular.module('directives').controller('RentalCardController', ['$scope', '$stateParams', '$attrs', '$state',
+  function ($scope, $stateParams, $attrs, $state) {
         this.init = function (element) {};
         $scope.states = ['event', 'category'];
         $scope.currentState = $scope.states[0];
 
-
+        $scope.store = $stateParams.data;
+      console.log($stateParams.data);
         $scope.myInterval = 0;
         $scope.noWrapSlides = false;
         var slides = $scope.slides = [];

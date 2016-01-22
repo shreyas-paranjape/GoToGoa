@@ -2,27 +2,19 @@
     <div class="list">
         <div class="well">
             <div class="filters">
-                <div class="col-md-6">
-                    <label>Start point:</label>
-                    <input type="text" class="form-control" id="start">
+<!--                <div class="col-md-2"></div>-->
+                <div class="col-md-1">
+                    <label style="margin-top: 10px;">Date:</label>
                 </div>
-                <div class="col-md-6">
-                    <label>End point:</label>
-                    <input type="text" class="form-control" id="end">
-                </div>
-            </div>
-            <div class="filters" style="padding-top:10px;">
                 <div class="col-md-3">
-                    <label style="margin-top: 10px;">Date And Time:</label>
-                </div>
-                <div class="col-md-9">
                     <p class="input-group">
                         <input  id="stayFromDate"
                                 type="text" 
                                 class="form-control" 
-                                datetime-picker="dd MMM yyyy hh:mm" 
+                                datetime-picker="dd MMM yyyy" 
                                 ng-model="fromDate" 
                                 is-open="calendarOpenFrom"
+                                enable-time="false"
                                 min-date="fromDateMin"/>
                                     <span class="input-group-btn">
                                             <button type="button" 
@@ -32,7 +24,53 @@
                                             </button>
                                     </span>
                     </p>
+                </div>
+                
+                <div class="col-md-1">
+                    <label style="margin-top: 10px;">Time:</label>
+                </div>
+                <div class="col-md-3">
+                    <p class="input-group">
+                        <input  type="text" 
+                                class="form-control" 
+                                datetime-picker="HH:mm" 
+                                ng-model="time" 
+                                is-open="timeOpenFrom" 
+                                enable-date="false" 
+                                timepicker-options="timeOptions" 
+                                close-on-selection="true"
+                                defaultTime='00:00 PM'/>
+                                    <span class="input-group-btn">
+                                        <button type="button" 
+                                                class="btn btn-default" 
+                                                ng-click="openCalendar($event, 'date2')">
+                                                    <i class="glyphicon glyphicon-time"></i>
+                                        </button>
+                                    </span>
+                    </p>
+                </div>
+                <div class="col-md-4">
+                    <div checkboxes="true" 
+                         extra-settings="typeSettings" 
+                         ng-dropdown-multiselect="" 
+                         options="TypeData" 
+                         selected-model="type" 
+                         translation-texts="example5customTexts" 
+                         class="filter" 
+                         style="display:inline-block;">
+                    </div>
+                </div>
             </div>
+            <div class="filters">
+                <div class="col-md-4">
+                    <input type="text" placeholder="Location" class="form-control" id="loc">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" min="1" max="10" placeholder="No. of days" class="form-control" id="days">
+                </div>
+                <div class="col-md-4">
+                    <input type="number" min="1" max="10" placeholder="No. of people" class="form-control" id="ppl">
+                </div>
             </div>
         </div>
         <div ng-repeat="taxi in taxi" class="animated fadeInUpBig cards">

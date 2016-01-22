@@ -24,7 +24,8 @@ angular.element(document).ready(function () {
             'restaurant',
             'stay',
             'taxi',
-            'rentals',
+            'rentalCar',
+            'rentalBike',
             'abtgoa',
             'rzModule'
         ])

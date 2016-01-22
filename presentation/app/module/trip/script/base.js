@@ -32,6 +32,6 @@ angular.module('trip', [
             .state('app.trip.detail', {
                 url: '/detail',
                 templateUrl: 'module/trip/view/detail.html',
-                controller: 'DetailEditController'
+                controller: 'TripDetailController'
             });
     });

@@ -67,9 +67,10 @@ header {
 /* ****************************************  */
 
 .module {
-    @include make-row();
+//    @include make-row();
     .list {
-        @include make-lg-column(6);
+        @include make-lg-column(7);
+        padding: 0;
         .filters {
             @include make-row();
             .filter-wrapper {
@@ -82,32 +83,33 @@ header {
         }
     }
     .map-wrapper {
-        @include make-lg-column(6);
+        @extend .no-padding;
+        @include make-lg-column(5);
     }
 }
-.module {
-    @include make-row();
-    .list {
-        @include make-lg-column(6);
-        .filters {
-            @include make-row();
-            .filter-wrapper-acti {
-                @extend .no-padding;
-                @include make-lg-column(3);
-                .filter {
-                    display: inline-block;
-                }
-            }
-        }
-    }
-    .map-wrapper {
-        @include make-lg-column(6);
-    }
-}
-.activity_detail {
+//.module {
+//    @include make-row();
+//    .list {
+//        @include make-lg-column(6);
+//        .filters {
+//            @include make-row();
+//            .filter-wrapper-acti {
+//                @extend .no-padding;
+//                @include make-lg-column(3);
+//                .filter {
+//                    display: inline-block;
+//                }
+//            }
+//        }
+//    }
+//    .map-wrapper {
+//        @include make-lg-column(6);
+//    }
+//}
+.detail {
     @include make-row();
     .detailscol {
-        @include make-lg-column(6);
+        @include make-lg-column(7);
     }
 }
 
@@ -254,7 +256,7 @@ header {
 }
 .angular-leaflet-map {
     width: 100%;
-    height: 320px;
+    height: 600px;
 }
 .left {
     float: left;
@@ -305,7 +307,7 @@ ul[datepicker-popup-wrap] > li > .btn-group > button.btn-info {
 }
 .map {
     position: fixed;
-    width: 100%;
+    width: 42%;
     height: 600px;
 }
 .box {

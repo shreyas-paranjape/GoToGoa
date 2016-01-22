@@ -1,7 +1,7 @@
-angular.module('rentals')
-    .controller('RentalsController', ['$scope', function ($scope) {
+angular.module('rentalCar')
+    .controller('RentalCarController', ['$scope', function ($scope) {
         'use strict';
-        $scope.pageHeader = "Rentals";
+        $scope.pageHeader = "Rental Car";
   }])
     .controller('RentalsDetailController', ['$scope', '$stateParams', function ($scope, $stateParams) {
         'use strict';
@@ -21,7 +21,7 @@ angular.module('rentals')
             $scope.tabs[index] = true;
         };
 }])
-    .controller('RentalsListController', ['$scope', 'rentalsRepository', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
+    .controller('RentalCarListController', ['$scope', 'rentalsRepository', '$filter', '$stateParams', '$timeout', '$log', 'leafletData', '$state',
     function ($scope, rentalsRepository, $filter, $stateParams, $timeout, $log, leafletData, $state) {
             'use strict';
             $scope.showMap();
@@ -76,7 +76,7 @@ angular.module('rentals')
                 {
                     id: '1',
                     title: "Bike 1",
-                    typeVehicle: 'Deo',
+                    typeVehicle: 'Hatchback',
                     price: '10,000',
                     url: '../../../images/travel.jpg'
 
@@ -84,14 +84,14 @@ angular.module('rentals')
                 {
                     id: '2',
                     title: "Car 2",
-                    typeVehicle: 'Alto',
+                    typeVehicle: 'Thar',
                     price: '20,000',
                     url: '../../../images/travel1.jpg'
             },
                 {
                     id: '3',
                     title: "Bike 3",
-                    typeVehicle: 'Activa',
+                    typeVehicle: 'Luxury',
                     price: '5,000',
                     url: '../../../images/travel1.jpg'
             }
@@ -454,6 +454,43 @@ angular.module('rentals')
                 smartButtonMaxItems: 3,
             };
 
+            $scope.type = [];
+            $scope.TypeData = [
+                {
+                    id: 1,
+                    label: "Hatchback"
+                },
+                {
+                    id: 2,
+                    label: "Sedan"
+                },
+                {
+                    id: 3,
+                    label: "LUV"
+                },
+                {
+                    id: 4,
+                    label: "SUV"
+                },
+                {
+                    id: 5,
+                    label: "Thar"
+                },
+                {
+                    id: 6,
+                    label: "Luxury"
+                }
+            ];
+
+            $scope.typeSettings = {
+                smartButtonMaxItems: 3,
+                //                selectionLimit: 1,
+                showCheckAll: false,
+                scrollable: true
+            };
+            $scope.example5customTexts = {
+                buttonDefaultText: 'Vehicle Type'
+            };
             $scope.maxDate = new Date(2020, 5, 22);
 
             $scope.status = {
@@ -514,7 +551,7 @@ angular.module('rentals')
     }
   ])
 
-.controller('RentalsEditController', [
+.controller('RentalCarEditController', [
     '$scope', '$stateParams', '$timeout', '$document',
     function ($scope, $stateParams, $timeout, $document) {
         'use strict';
